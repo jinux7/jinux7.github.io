@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>tags-test | jinux</title>
+  <title>webSocket | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,17 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tag-jquery">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags-test">
-<meta property="og:url" content="/tags/index.html">
+  <meta name="description" content="webSocket在项目中的使用&amp;emsp;&amp;emsp;webSocket,这个技术相信大家都已经很熟悉了，就是前端浏览器与后端服务器一直保持连通状态，我们在项目中，经常会遇到这样的需求，一个数据图表展示页面，产品的需求是每隔5秒钟页面刷新一次，传统的做法是请求轮询机制，也就是setInterval这个定时器，一遍又一遍的请求后端接口，这个方法简单（特别是后端简单），但是如果前端页面有大量的这种需">
+<meta name="keywords" content="webSocket,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webSocket">
+<meta property="og:url" content="/2018/08/29/webSocket项目中的使用/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="tag-jquery">
+<meta property="og:description" content="webSocket在项目中的使用&amp;emsp;&amp;emsp;webSocket,这个技术相信大家都已经很熟悉了，就是前端浏览器与后端服务器一直保持连通状态，我们在项目中，经常会遇到这样的需求，一个数据图表展示页面，产品的需求是每隔5秒钟页面刷新一次，传统的做法是请求轮询机制，也就是setInterval这个定时器，一遍又一遍的请求后端接口，这个方法简单（特别是后端简单），但是如果前端页面有大量的这种需">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-27T06:24:35.212Z">
+<meta property="og:updated_time" content="2018-08-29T03:00:13.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags-test">
-<meta name="twitter:description" content="tag-jquery">
+<meta name="twitter:title" content="webSocket">
+<meta name="twitter:description" content="webSocket在项目中的使用&amp;emsp;&amp;emsp;webSocket,这个技术相信大家都已经很熟悉了，就是前端浏览器与后端服务器一直保持连通状态，我们在项目中，经常会遇到这样的需求，一个数据图表展示页面，产品的需求是每隔5秒钟页面刷新一次，传统的做法是请求轮询机制，也就是setInterval这个定时器，一遍又一遍的请求后端接口，这个方法简单（特别是后端简单），但是如果前端页面有大量的这种需">
 
   <link rel="shortcut icon" href="" />
   <link rel="icon" href="" />
@@ -149,31 +150,63 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="page-" class="post white-box article-type-page" itemscope itemprop="blogPost">
+        <article id="post-webSocket项目中的使用" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                tags-test
+                webSocket
             
         </h1>
         <time>
-            2018-08-20 Monday&nbsp;&nbsp;
+            2018-08-29 Wednesday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webSocket在项目中的使用"><span class="toc-number">1.</span> <span class="toc-text">webSocket在项目中的使用</span></a></li></ol>
+            </div>
+        </section>
     
 
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="/tags/jQuery/">tag-jquery</a></p>
+            <h2 id="webSocket在项目中的使用"><a href="#webSocket在项目中的使用" class="headerlink" title="webSocket在项目中的使用"></a>webSocket在项目中的使用</h2><p>&emsp;&emsp;webSocket,这个技术相信大家都已经很熟悉了，就是前端浏览器与后端服务器一直保持连通状态，我们在项目中，经常会遇到这样的需求，一个数据图表展示页面，产品的需求是每隔5秒钟页面刷新一次，传统的做法是请求轮询机制，也就是setInterval这个定时器，一遍又一遍的请求后端接口，这个方法简单（特别是后端简单），但是如果前端页面有大量的这种需求，会影响性能，所以，webSocket是现在最好的选择。<br>&emsp;&emsp;其实webSocket现在还是比较重要的，一般在面试的时候，被问到的几率还是很大的。我之前在项目中没有用到过，但是自己写过webSocket的demo，浏览器配合nodejs来写，也是参考了网上的代码，还是很简单的<a href="https://github.com/jinux7/study-collections/tree/master/websocket-test" target="_blank" rel="noopener">webSocket详细代码看这里</a>。在面试时被问到的时候，也是实话实说，有可能面试官也是小白，基本上都没往下问，但是，确实是这么简单吗？答案显然不是，待我慢慢道来。<br>&emsp;&emsp;首先，我在最近两个项目中，都用到了webSocket，所以还是有发言权的。如果，产品提出了webSocket的需求，对于我们前端来说，并不是直接写个原生的webSocket就可以，而是需要看后端小伙伴们的脸色，什么意思？就是说得看后端用的是什么webSocket库，我接触的有两种，第一个是stomp,说是webSocket的子协议，后端选了这个库之后，我们前端也得相应的选择与后端相配合的前端库，一般情况下，官网很明确的给出了后端和前端相配合写法，当然，写法也是很简单，跟原生差不多。第二个是，sockjs这个库，当然，也是后端小伙伴选好了之后，告诉我，我相应的在前端也用的跟后端一样库。<br>&emsp;&emsp;最后总结一下，webSocket技术并不难（对于我们前端来说，当然，nodejs的后端也很简单，java就不知道了，每次调起来看他们都是一脸懵逼的样子），无论是面试还是在实际工作中，问道这个问题时，我们首先想到的应该是，后端选择的是什么库，我们前端应该跟后端小伙伴保持一致，可别需求以来，觉得简单直接开些，等联调的时候，我靠，为什么连不上呢？你们前后端不在一个频道上，怎么连接啊。所以，我们要说，我做过的项目是这样这样滴，不知道这次我们后端小伙伴用到的webSocket库是什么呢？</p>
 
         </div>
 
         
+            <div class="article-tags tags">
+                
+                    <a href="/tags/webSocket/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webSocket</a>
+                
+                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
+                
+            </div>
+        
 
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/08/27/nodejs代理服务器/" rel="next" title="nodejs代理服务器">
+                            nodejs代理服务器
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
         
 
     </section>
@@ -187,10 +220,11 @@
 
 <script>
     window.subData = {
-        title: 'tags-test',
+        title: 'webSocket',
         tools: true
     }
 </script>
+
 
       </div>
       <aside class='l_side'>

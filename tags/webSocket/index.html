@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: nodejs | jinux</title>
+  <title>Tag: webSocket | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,7 +15,7 @@
   <meta name="description" content="前端 学习 javascript">
 <meta property="og:type" content="website">
 <meta property="og:title" content="jinux">
-<meta property="og:url" content="/categories/nodejs/index.html">
+<meta property="og:url" content="/tags/webSocket/index.html">
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="前端 学习 javascript">
 <meta property="og:locale" content="zh-Hans">
@@ -150,7 +150,7 @@
       <div class='l_main'>
         
     <script>
-        window.subData= { title:'category : nodejs'}
+        window.subData= { title:'tag : webSocket'}
     </script>
 
 
@@ -161,35 +161,35 @@
     <article class="post reveal">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/08/27/nodejs代理服务器/">
+            <a href="/2018/08/29/webSocket项目中的使用/">
                 
-                    nodejs代理服务器
+                    webSocket
                 
             </a>
         </h2>
         <time>
-            2018-08-27 Monday
+            2018-08-29 Wednesday
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/nodejs/">nodejs</a>
+        <a href="/categories/javascript/">javascript</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <h2 id="nodejs代理服务"><a href="#nodejs代理服务" class="headerlink" title="nodejs代理服务"></a>nodejs代理服务</h2><p> 最近在与后台同事联调的时候，出现了点故障，跨域，这个经常碰到很好解决的问题，但是一般情况下需要前后端一起配合来解决，比如jsonp，或者h5后端在返回头加上允许跨域的头设置，但是如果后台同事是个小白，问啥啥不明白，也是没招了。我之前还用过将chrome的跨域设置给禁掉的方法，但是这次不知道为啥，也不好使了。最后，只能是用代理这种方式，我现在用的是vue框架，其实vue的脚手架已经集成了跨域功能，只需要配置一下就可以，但是，现在框架这么多，前一阵子还react，angular的项目，最近有换成vue，配置的话，肯定要去查看api，记不住啊，而且，版本不同，设置方法也不同，不如自己写一个，这样多简单，需要的时候把代理服务开启就搞定了。于是乎，自己写一个，当然，稍微想一下就知道，代理的原理，就是利用nodejs在中间做一次请求以及数据返回，不过自己写还得思考，上网找一下多简单，baidu一搜索，哇靠，第一个映入眼帘的就是nodejs代理服务8行代码，嗯，就是这么简单，废话不多说，上代码,当然，自己还得加工一下哦。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxyUrl = process.argv[<span class="number">2</span>] || <span class="string">'http://127.0.0.1:8888'</span>; <span class="comment">// 如果有传入的代理url，使用它</span></span><br><span class="line">app.all(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br><span class="line">    res.header(<span class="string">"X-Powered-By"</span>,<span class="string">' 3.2.1'</span>)</span><br><span class="line">    <span class="keyword">if</span>(req.method==<span class="string">"OPTIONS"</span>) res.send(<span class="number">200</span>); <span class="comment">// 让options请求快速返回</span></span><br><span class="line">    <span class="keyword">else</span>  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = proxyUrl + req.url;</span><br><span class="line">    req.pipe(request(url)).pipe(res);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(process.env.PORT || <span class="number">3000</span>, ()=&gt;&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'代理服务器，在3000端口已经开启'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p> 再把package.json文件内容贴出来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;node-proxy&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;serve&quot;: &quot;node server http://127.0.0.1:9000&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;express&quot;: &quot;^4.16.3&quot;,</span><br><span class="line">    &quot;request&quot;: &quot;^2.88.0&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/jinux7/study-collections/tree/master/node-proxy-代理服务器" target="_blank" rel="noopener">源码在这里</a></p>
+        <h2 id="webSocket在项目中的使用"><a href="#webSocket在项目中的使用" class="headerlink" title="webSocket在项目中的使用"></a>webSocket在项目中的使用</h2><p>&emsp;&emsp;webSocket,这个技术相信大家都已经很熟悉了，就是前端浏览器与后端服务器一直保持连通状态，我们在项目中，经常会遇到这样的需求，一个数据图表展示页面，产品的需求是每隔5秒钟页面刷新一次，传统的做法是请求轮询机制，也就是setInterval这个定时器，一遍又一遍的请求后端接口，这个方法简单（特别是后端简单），但是如果前端页面有大量的这种需求，会影响性能，所以，webSocket是现在最好的选择。<br>&emsp;&emsp;其实webSocket现在还是比较重要的，一般在面试的时候，被问到的几率还是很大的。我之前在项目中没有用到过，但是自己写过webSocket的demo，浏览器配合nodejs来写，也是参考了网上的代码，还是很简单的<a href="https://github.com/jinux7/study-collections/tree/master/websocket-test" target="_blank" rel="noopener">webSocket详细代码看这里</a>。在面试时被问到的时候，也是实话实说，有可能面试官也是小白，基本上都没往下问，但是，确实是这么简单吗？答案显然不是，待我慢慢道来。<br>&emsp;&emsp;首先，我在最近两个项目中，都用到了webSocket，所以还是有发言权的。如果，产品提出了webSocket的需求，对于我们前端来说，并不是直接写个原生的webSocket就可以，而是需要看后端小伙伴们的脸色，什么意思？就是说得看后端用的是什么webSocket库，我接触的有两种，第一个是stomp,说是webSocket的子协议，后端选了这个库之后，我们前端也得相应的选择与后端相配合的前端库，一般情况下，官网很明确的给出了后端和前端相配合写法，当然，写法也是很简单，跟原生差不多。第二个是，sockjs这个库，当然，也是后端小伙伴选好了之后，告诉我，我相应的在前端也用的跟后端一样库。<br>&emsp;&emsp;最后总结一下，webSocket技术并不难（对于我们前端来说，当然，nodejs的后端也很简单，java就不知道了，每次调起来看他们都是一脸懵逼的样子），无论是面试还是在实际工作中，问道这个问题时，我们首先想到的应该是，后端选择的是什么库，我们前端应该跟后端小伙伴保持一致，可别需求以来，觉得简单直接开些，等联调的时候，我靠，为什么连不上呢？你们前后端不在一个频道上，怎么连接啊。所以，我们要说，我做过的项目是这样这样滴，不知道这次我们后端小伙伴用到的webSocket库是什么呢？</p>
 
         
 
         
             <div class="full-width auto-padding tags">
                 
-                    <a href="/tags/后端代理服务/"><i class="fa fa-tag"></i>&nbsp;&nbsp;后端代理服务</a>
+                    <a href="/tags/webSocket/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webSocket</a>
+                
+                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
                 
             </div>
         
