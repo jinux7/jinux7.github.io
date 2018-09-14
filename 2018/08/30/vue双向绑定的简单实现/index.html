@@ -12,20 +12,20 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue双向绑定的简单实现&amp;emsp;&amp;emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。废话不多说，开始。 1.原理&amp;emsp;&amp;emsp;Vue的双向数据绑定的原理相信大家也都十分了解了，主要是通过 Object对象的defineProperty属性，重写data的set和get函数来实现的,这里对原理不做过多描述，主要还">
+  <meta name="description" content="参考网上vue实现教程简单整理">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue双向绑定的简单实现">
 <meta property="og:url" content="/2018/08/30/vue双向绑定的简单实现/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="vue双向绑定的简单实现&amp;emsp;&amp;emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。废话不多说，开始。 1.原理&amp;emsp;&amp;emsp;Vue的双向数据绑定的原理相信大家也都十分了解了，主要是通过 Object对象的defineProperty属性，重写data的set和get函数来实现的,这里对原理不做过多描述，主要还">
+<meta property="og:description" content="参考网上vue实现教程简单整理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq7aw6sl3hg30go072qva.gif">
-<meta property="og:updated_time" content="2018-08-30T06:15:17.610Z">
+<meta property="og:updated_time" content="2018-09-14T05:58:16.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue双向绑定的简单实现">
-<meta name="twitter:description" content="vue双向绑定的简单实现&amp;emsp;&amp;emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。废话不多说，开始。 1.原理&amp;emsp;&amp;emsp;Vue的双向数据绑定的原理相信大家也都十分了解了，主要是通过 Object对象的defineProperty属性，重写data的set和get函数来实现的,这里对原理不做过多描述，主要还">
+<meta name="twitter:description" content="参考网上vue实现教程简单整理">
 <meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 
   <link rel="shortcut icon" href="" />
@@ -184,7 +184,8 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="vue双向绑定的简单实现"><a href="#vue双向绑定的简单实现" class="headerlink" title="vue双向绑定的简单实现"></a>vue双向绑定的简单实现</h2><p>&emsp;&emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。<br>废话不多说，开始。</p>
+            <p>参考网上vue实现教程简单整理<br><a id="more"></a></p>
+<h2 id="vue双向绑定的简单实现"><a href="#vue双向绑定的简单实现" class="headerlink" title="vue双向绑定的简单实现"></a>vue双向绑定的简单实现</h2><p>&emsp;&emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。<br>废话不多说，开始。</p>
 <h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p>&emsp;&emsp;Vue的双向数据绑定的原理相信大家也都十分了解了，主要是通过 Object对象的defineProperty属性，重写data的set和get函数来实现的,这里对原理不做过多描述，主要还是来实现一个实例。为了使代码更加的清晰，这里只会实现最基本的内容，主要实现v-model，v-bind 和v-click三个命令，其他命令也可以自行补充。<br><br>添加网上的一张图<br><br><img src="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <h3 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h3><p>页面结构很简单，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"number"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">ype</span>=<span class="string">"button"</span> <span class="attr">v-click</span>=<span class="string">"increment"</span>&gt;</span>增加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-bind</span>=<span class="string">"number"</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>包含：<br><br>1.一个input，使用v-model指令<br><br>2.一个button，使用v-click指令<br><br>3.一个h3，使用v-bind指令。<br><br>我们最后会通过类似于vue的方式来使用我们的双向数据绑定，结合我们的数据结构添加注释：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> myVue(&#123;</span><br><span class="line">            el:<span class="string">'#app'</span>,</span><br><span class="line">            data:&#123;</span><br><span class="line">              number:<span class="number">0</span>    </span><br><span class="line">            &#125;,</span><br><span class="line">            methods:&#123;</span><br><span class="line">              increment:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.number++;</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure></p>
@@ -261,7 +262,9 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>4</div></a></li>
     
         <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>1</div></a></li>
     
@@ -275,7 +278,7 @@
 <div class="m_widget tagcloud">
     <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
     <div class='content'>
-        <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/面试题/" style="font-size: 24px; color: #555">面试题</a>
+        <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/面试题/" style="font-size: 24px; color: #555">面试题</a>
     </div>
 </div>
 
