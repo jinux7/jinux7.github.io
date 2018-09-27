@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-09-14T08:09:22.697Z</updated>
+  <updated>2018-09-21T03:34:34.812Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo中使用hexo-asset-image插件来加载本地图片</title>
+    <link href="/2018/09/21/hexo%E4%B8%AD%E4%BD%BF%E7%94%A8hexo-asset-image%E6%8F%92%E4%BB%B6%E6%9D%A5%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/"/>
+    <id>/2018/09/21/hexo中使用hexo-asset-image插件来加载本地图片/</id>
+    <published>2018-09-21T02:55:52.000Z</published>
+    <updated>2018-09-21T03:34:34.812Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo中使用hexo-asset-image插件来加载本地图片,因为版本兼容问题不显示图片的解决办法。<br><a id="more"></a></p><h2 id="hexo中使用hexo-asset-image插件来加载本地图片"><a href="#hexo中使用hexo-asset-image插件来加载本地图片" class="headerlink" title="hexo中使用hexo-asset-image插件来加载本地图片"></a>hexo中使用hexo-asset-image插件来加载本地图片</h2><p>在使用hexo时，在md文件里加载图片一般都会用到网络上的图片，但是如果有些图片不允许使用，怎么办？当然可以用七牛云这种图床网站，如果想使用本地的图片怎么办呢？那就用到了hexo-asset-image这个插件，但是这个插件写的很早，与现在新版本的hexo不兼容，于是乎就有一些大牛进行了修改，这里贴出这位大牛的github地址，<a href="https://github.com/7ym0n/hexo-asset-image" target="_blank" rel="noopener">兼容新版本hexo的hexo-asset-image插件</a>。<br><br>使用方法就是替换掉npm安装的hexo-asset-image插件中的文件,代码如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">str, m, i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="built_in">String</span>(hexo.version).split(<span class="string">'.'</span>);</span><br><span class="line">hexo.extend.filter.register(<span class="string">'after_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="keyword">if</span>(config.post_asset_folder)&#123;</span><br><span class="line">    <span class="keyword">var</span> link = data.permalink;</span><br><span class="line"><span class="keyword">if</span>(version.length &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">   <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line"><span class="comment">// In hexo 3.1.1, the permalink of "about" page is like ".../about/index.html".</span></span><br><span class="line"><span class="keyword">var</span> endPos = link.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">'excerpt'</span>, <span class="string">'more'</span>, <span class="string">'content'</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: <span class="literal">false</span>,</span><br><span class="line">        xmlMode: <span class="literal">false</span>,</span><br><span class="line">        lowerCaseTags: <span class="literal">false</span>,</span><br><span class="line">        decodeEntities: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">'img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span> ($(<span class="keyword">this</span>).attr(<span class="string">'src'</span>))&#123;</span><br><span class="line"><span class="comment">// For windows style path, we replace '\' to '/'.</span></span><br><span class="line"><span class="keyword">var</span> src = $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>).replace(<span class="string">'\\'</span>, <span class="string">'/'</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.test(src) &amp;&amp;</span><br><span class="line">   !<span class="regexp">/^\s*\//</span>.test(src)) &#123;</span><br><span class="line">  <span class="comment">// For "about" page, the first part of "src" can't be removed.</span></span><br><span class="line">  <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">  <span class="keyword">var</span> linkArray = link.split(<span class="string">'/'</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> elem != <span class="string">''</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">var</span> srcArray = src.split(<span class="string">'/'</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> elem != <span class="string">''</span> &amp;&amp; elem != <span class="string">'.'</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span>(srcArray.length &gt; <span class="number">1</span>)</span><br><span class="line">srcArray.shift();</span><br><span class="line">  src = srcArray.join(<span class="string">'/'</span>);</span><br><span class="line">  $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>, config.root + link + src);</span><br><span class="line">  <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">"update link as:--&gt;"</span>+config.root + link + src);</span><br><span class="line">&#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">"no src attr, skipped..."</span>);</span><br><span class="line"><span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info($(<span class="keyword">this</span>));</span><br><span class="line">&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p><p>图片具体的引入方式：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">MacGesture2-Publish.md</span><br><span class="line"></span><br><span class="line">Make sure post_asset_folder: <span class="literal">true</span> <span class="keyword">in</span> your _config.yml.</span><br><span class="line">Just use ![logo](logo.jpg) to insert logo.jpg.</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo中使用hexo-asset-image插件来加载本地图片,因为版本兼容问题不显示图片的解决办法。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="hexo" scheme="/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP缓存机制及原理</title>
+    <link href="/2018/09/19/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%8E%9F%E7%90%86/"/>
+    <id>/2018/09/19/HTTP缓存机制及原理/</id>
+    <published>2018-09-19T02:14:58.000Z</published>
+    <updated>2018-09-21T03:32:01.666Z</updated>
+    
+    <content type="html"><![CDATA[<p>HTTP缓存机制及原理的一些小总结<br><a id="more"></a></p><h2 id="HTTP缓存机制及原理"><a href="#HTTP缓存机制及原理" class="headerlink" title="HTTP缓存机制及原理"></a>HTTP缓存机制及原理</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Http 缓存机制作为 web 性能优化的重要手段，对于从事 Web 开发的同学们来说，应该是知识体系库中的一个基础环节，同时对于有志成为前端架构师的同学来说是必备的知识技能。<br><br>但是对于很多前端同学来说，仅仅只是知道浏览器会对请求的静态文件进行缓存，但是为什么被缓存，缓存是怎样生效的，却并不是很清楚。<br><br>在此，我会尝试用简单明了的文字，像大家系统的介绍HTTP缓存机制，期望对各位正确的理解前端缓存有所帮助。<br></p><h3 id="在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文"><a href="#在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文" class="headerlink" title="在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文"></a>在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文</h3><p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。<br><br>浏览器向服务器请求数据，发送请求(request)报文；服务器向浏览器返回数据，返回响应(response)报文。<br><br>报文信息主要分为两部分<br><br>1.包含属性的首部(header)————————–附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中<br><br>2.包含数据的主体部分(body)———————–HTTP请求真正想要传输的部分<br></p><h3 id="缓存规则解析"><a href="#缓存规则解析" class="headerlink" title="缓存规则解析"></a>缓存规则解析</h3><p>为方便大家理解，我们认为浏览器存在一个缓存数据库,用于存储缓存信息。<br><br>在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141639213-1923993391.png" alt="img"><br>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(强制缓存，对比缓存)<br>在详细介绍这两种规则之前，先通过时序图的方式，让大家对这两种规则有个简单了解。<br><br>已存在缓存数据时，仅基于强制缓存，请求数据的流程如下<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210135521072-1812985836.png" alt="img"><br>已存在缓存数据时，仅基于对比缓存，请求数据的流程如<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141716838-764535017.png" alt="img"><br>对缓存机制不太了解的同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？<br><br>这个问题，我们暂且放下，后文在详细介绍每种缓存规则的时候，会带给大家答案。<br><br>我们可以看到两类缓存规则的不同，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br><br>两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。<br></p><h3 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h3><p>从上文我们得知，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br><br>我们知道，在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，缓存规则信息包含在响应header中。<br><br>对于强制缓存来说，响应header中会有两个字段来标明失效规则（Expires/Cache-Control）<br><br>使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141755072-1978466289.png" alt="img"></p><h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。<br><br>不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。<br><br>另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。<br><br>所以HTTP 1.1 的版本，使用Cache-Control替代。<br></p><h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。<br><br>private:             客户端可以缓存<br><br>public:              客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）<br><br>max-age=xxx:   缓存的内容将在 xxx 秒后失效<br><br>no-cache:          需要使用对比缓存来验证缓存数据（后面介绍）<br><br>no-store:           所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so…基本上和它说886）<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141836104-1513192908.png" alt="img"><br>图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）<br><br>也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。<br></p><h3 id="对比缓存"><a href="#对比缓存" class="headerlink" title="对比缓存"></a>对比缓存</h3><p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br><br>浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br><br>再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据。<br><br>第一次访问：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141911682-1756976419.png" alt="img"><br>再次访问：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141921697-379821074.png" alt="img"><br>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为304，并且报文大小和请求时间大大减少。<br><br>原因是，服务端在进行标识比较后，只返回header部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。<br><br>对于对比缓存来说，缓存标识的传递是我们着重需要理解的，它在请求header和响应header间进行传递，一共分为两种标识传递，接下来，我们分开介绍。<br></p><h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified  /  If-Modified-Since"></a>Last-Modified  /  If-Modified-Since</h3><h4 id="Last-Modified："><a href="#Last-Modified：" class="headerlink" title="Last-Modified："></a>Last-Modified：</h4><p>服务器在响应请求时，告诉浏览器资源的最后修改时间。<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142249541-789089587.png" alt="img"></p><h4 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a>If-Modified-Since：</h4><p>再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br><br>服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br><br>若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br><br>若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142307166-135607673.png" alt="img"></p><h3 id="Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）"><a href="#Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）" class="headerlink" title="Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）"></a>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</h3><h4 id="Etag："><a href="#Etag：" class="headerlink" title="Etag："></a>Etag：</h4><p>服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142054182-1766818273.png" alt="img"></p><h4 id="If-None-Match："><a href="#If-None-Match：" class="headerlink" title="If-None-Match："></a>If-None-Match：</h4><p>再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br><br>服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br><br>相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142115479-1921175758.png" alt="img"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br><br>对于比较缓存，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。<br><br>浏览器第一次请求：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142134291-1976923079.png" alt="img"><br>浏览器再次请求时：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141453338-1263276228.png" alt="img"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HTTP缓存机制及原理的一些小总结&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="面试题" scheme="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>css省略号</title>
@@ -27,7 +73,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;页面中文字溢出的省略号&lt;br&gt;
+      &lt;p&gt;页面中文字溢出的省略号&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -43,13 +89,13 @@
     <link href="/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/"/>
     <id>/2018/09/06/技术博客网站收集整理/</id>
     <published>2018-09-06T09:05:00.000Z</published>
-    <updated>2018-09-14T05:47:04.975Z</updated>
+    <updated>2018-09-27T04:53:46.921Z</updated>
     
-    <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><p><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></p>]]></content>
+    <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神些webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;对一些大牛的blog或者github的收集。&lt;br&gt;
+      &lt;p&gt;对一些大牛的blog或者github的收集。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -69,7 +115,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;之前在项目中使用jquery，Formdata实现文件上传&lt;br&gt;
+      &lt;p&gt;之前在项目中使用jquery，Formdata实现文件上传&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -91,7 +137,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;javascript提高性能的方式总结&lt;br&gt;
+      &lt;p&gt;javascript提高性能的方式总结&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -113,7 +159,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;参考网上vue实现教程简单整理&lt;br&gt;
+      &lt;p&gt;参考网上vue实现教程简单整理&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -135,7 +181,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;在项目中使用websocket的小心得&lt;br&gt;
+      &lt;p&gt;在项目中使用websocket的小心得&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -159,7 +205,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;nodejs代理服务器简单实现&lt;br&gt;
+      &lt;p&gt;nodejs代理服务器简单实现&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
