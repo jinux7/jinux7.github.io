@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>编译与解释 | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="编译与解释的介绍">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译与解释">
+<meta property="og:url" content="/2018/10/10/编译与解释/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="编译与解释的介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2018/10/10/编译与解释/1.webp">
+<meta property="og:image" content="/2018/10/10/编译与解释/2.webp">
+<meta property="og:image" content="/2018/10/10/编译与解释/3.webp">
+<meta property="og:updated_time" content="2018-10-10T06:09:09.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编译与解释">
+<meta name="twitter:description" content="编译与解释的介绍">
+<meta name="twitter:image" content="/2018/10/10/编译与解释/1.webp">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-about' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-projects' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-home' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archives' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-about nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-projects nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-home nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archives nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-编译与解释" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                编译与解释
+            
+        </h1>
+        <time>
+            2018-10-10 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/计算机原理/">计算机原理</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译与解释"><span class="toc-number">1.</span> <span class="toc-text">编译与解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是编译器"><span class="toc-number">1.1.</span> <span class="toc-text">什么是编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是解释器"><span class="toc-number">1.2.</span> <span class="toc-text">什么是解释器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分两个维度比较一下"><span class="toc-number">1.3.</span> <span class="toc-text">分两个维度比较一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表现-Behavior"><span class="toc-number">1.3.1.</span> <span class="toc-text">表现 Behavior</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能-Performance"><span class="toc-number">1.3.2.</span> <span class="toc-text">性能 Performance</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于代码，需要知道的几个概念"><span class="toc-number">1.4.</span> <span class="toc-text">关于代码，需要知道的几个概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#高级语言代码-High-Level-Code"><span class="toc-number">1.4.1.</span> <span class="toc-text">高级语言代码 High-Level Code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#低级语言代码-Low-Level-Code"><span class="toc-number">1.4.2.</span> <span class="toc-text">低级语言代码 Low-Level Code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#汇编语言-Assembly-Language"><span class="toc-number">1.4.3.</span> <span class="toc-text">汇编语言 Assembly Language</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字节码-Byte-Code"><span class="toc-number">1.4.4.</span> <span class="toc-text">字节码 Byte Code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#机器码-Machine-Code"><span class="toc-number">1.4.5.</span> <span class="toc-text">机器码 Machine Code</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从熟悉的编程语言的角度来看看"><span class="toc-number">1.5.</span> <span class="toc-text">从熟悉的编程语言的角度来看看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象看本质：人与计算机之间的鸿沟"><span class="toc-number">1.6.</span> <span class="toc-text">抽象看本质：人与计算机之间的鸿沟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后用一张图来展示一下编译与解释"><span class="toc-number">1.7.</span> <span class="toc-text">最后用一张图来展示一下编译与解释</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>编译与解释的介绍<br><a id="more"></a></p>
+<h2 id="编译与解释"><a href="#编译与解释" class="headerlink" title="编译与解释"></a>编译与解释</h2><h3 id="什么是编译器"><a href="#什么是编译器" class="headerlink" title="什么是编译器"></a>什么是编译器</h3><p>编译器是一种计算机程序，负责把一种编程语言编写的源码转换成另外一种计算机代码，后者往往是以二进制的形式被称为目标代码(object code)。这个转换的过程通常的目的是生成可执行的程序。<br><br>编译器的产出是「另外一种代码」，然后这些代码等着被别人拿来执行，如果还不能直接被执行，那么还需要再编译或解释一遍，再交由计算机硬件执行。<br>编译器，往往是在「执行」之前完成，产出是一种可执行或需要再编译或者解释的「代码」。</p>
+<h3 id="什么是解释器"><a href="#什么是解释器" class="headerlink" title="什么是解释器"></a>什么是解释器</h3><p>在计算机科学中，解释器是一种计算机程序，它直接执行由编程语言或脚本语言编写的代码，并不会把源代码预编译成机器码。一个解释器，通常会用以下的姿势来执行程序代码：<br><br>1.分析源代码，并且直接执行。<br>2.把源代码翻译成相对更加高效率的中间码，然后立即执行它。<br>3.执行由解释器内部的编译器预编译后保存的代码<br>可以把解释器看成一个黑盒子，我们输入源码，它就会实时返回结果。<br>不同类型的解释器，黑盒子里面的构造不一样，有些还会集成编译器，缓存编译结果，用来提高执行效率（例如 Chrome V8 也是这么做的）。<br>解释器通常是工作在「运行时」，并且对于我们输入的源码，是一行一行的解释然后执行，然后返回结果。</p>
+<h3 id="分两个维度比较一下"><a href="#分两个维度比较一下" class="headerlink" title="分两个维度比较一下"></a>分两个维度比较一下</h3><h4 id="表现-Behavior"><a href="#表现-Behavior" class="headerlink" title="表现 Behavior"></a>表现 Behavior</h4><ul>
+<li>编译器把源代码转换成其他的更低级的代码(例如二进制码、机器码)，但是不会执行它。</li>
+<li>解释器会读取源代码，并且直接生成指令让计算机硬件执行，不会输出另外一种代码。</li>
+</ul>
+<h4 id="性能-Performance"><a href="#性能-Performance" class="headerlink" title="性能 Performance"></a>性能 Performance</h4><ul>
+<li>编译器会事先用比较多的时间把整个程序的源代码编译成另外一种代码，后者往往较前者更加接近机器码，所以执行的效率会更加高。时间是消耗在预编译的过程中。</li>
+<li>解释器会一行一行的读取源代码，解释，然后立即执行。这中间往往使用相对简单的词法分析、语法分析，压缩解释的时间，最后生成机器码，交由硬件执行。解释器适合比较低级的语言。但是相对于预编译好的代码，效率往往会更低。如何减少解释的次数和复杂性，是提高解释器效率的难题。</li>
+</ul>
+<h3 id="关于代码，需要知道的几个概念"><a href="#关于代码，需要知道的几个概念" class="headerlink" title="关于代码，需要知道的几个概念"></a>关于代码，需要知道的几个概念</h3><p>在看了不少不多关于「编译和解释」的文章之后，我发现下面的词汇是大量出现的。<br>知道这些词汇代表的意思，以及对应的层次，能够更好地看懂别人所要表达的意思。</p>
+<h4 id="高级语言代码-High-Level-Code"><a href="#高级语言代码-High-Level-Code" class="headerlink" title="高级语言代码 High-Level Code"></a>高级语言代码 High-Level Code</h4><p>高级语言代码，自然是指由高级编程语言编写代码，对计算机的细节有更高层次的抽象。<br>相对于低级编程语言（low-level programming language）更接近自然语言（人类的语言）。<br>集成一系列的自动工具（垃圾回收，内存管理等），会让程序员延长寿命，更快乐的编写出更简洁，更易读的程序代码。</p>
+<h4 id="低级语言代码-Low-Level-Code"><a href="#低级语言代码-Low-Level-Code" class="headerlink" title="低级语言代码 Low-Level Code"></a>低级语言代码 Low-Level Code</h4><p>低级语言代码，指由低级编程语言编写的代码，相对高级语言，少了更多的抽象概念，更加接近于汇编或者机器指令。<br>但是这也意味着代码的可移植性很差。<br>在我看来，高与低，只是一组相对词而已。<br>越高级的语言，性能、自由度越不及低级语言。<br>但是在抽象、可读可写性、可移植性越比低级语言优秀。<br>在以前的年代，C/C++语言相对汇编语言，机器指令来说，肯定是高级语言。<br>而到了今天，我们更多人对C语言偏向认知为「低级语言」。<br>或许未来世界的开发者，看我们现在所熟悉的Java、PHP、Python、ECMAScript等等，都是「low」到爆的语言。</p>
+<h4 id="汇编语言-Assembly-Language"><a href="#汇编语言-Assembly-Language" class="headerlink" title="汇编语言 Assembly Language"></a>汇编语言 Assembly Language</h4><p>汇编语言作为一门低级语言，对应于计算机或者其他可编程的硬件。<br>它和计算机的体系结构以及机器指令是强关联的。<br>换句话说，就是不同的汇编语言代码对应特定的硬件，所以不用谈可移植性了。<br>相对于需要编译和解释的高级语言代码来说，汇编代码只需要翻译成机器码就可以执行了。<br>所以汇编语言也往往被称作象征性机器码(symbolic machine code)</p>
+<h4 id="字节码-Byte-Code"><a href="#字节码-Byte-Code" class="headerlink" title="字节码 Byte Code"></a>字节码 Byte Code</h4><p>字节码严格来说不算是编程语言，而是高级编程语言为了种种需求（可移植性、可传输性、预编译等）而产生的中间码（Intermediate Code）。<br>它是由一堆指令集组成的代码，例如在javac编译过后的java源码产生的就是字节码。<br>源码在编译的过程中，是需要进行「词法分析 → 语法分析 → 生成目标代码」等过程的，在预编译的过程中，就完成这部分工作，生成字节码。<br>然后在后面交由解释器（这里通常指编程语言的虚拟机）解释执行，省去前面预编译的开销。</p>
+<h4 id="机器码-Machine-Code"><a href="#机器码-Machine-Code" class="headerlink" title="机器码 Machine Code"></a>机器码 Machine Code</h4><p>机器码是一组可以直接被CPU执行的指令集，<br>每一条指令都代表一个特定的任务，或者是加载，或者是跳转，亦或是计算操作等等。<br>所有可以直接被CPU执行的程序，都是由这么一系列的指令组成的。<br>机器码可是看作是编译过程中，最低级的代码，因外再往下就是交由硬件来执行了。<br>当然机器码也是可以被编辑的，但是以人类难以看懂的姿势存在，可读性非常差。</p>
+<h3 id="从熟悉的编程语言的角度来看看"><a href="#从熟悉的编程语言的角度来看看" class="headerlink" title="从熟悉的编程语言的角度来看看"></a>从熟悉的编程语言的角度来看看</h3><p><img src="/2018/10/10/编译与解释/1.webp" alt="img"><br>从左往右看，<br>1.以 Java 为例，我们在文本编译器写好了 Java 代码，交由「编译器」编译成 Java Bytecode。然后 Bytecode 交由 JVM 来执行，这时候 JVM 充当了「解释器」的角色，在解释 Bytecode 成 Machine Code 的同时执行它，返回结果。<br>2.以 BASIC 语言（早期的可以由计算机直译的语言） 为例，通过文本编译器编写好，不用经历「编译」的过程，就可以直接交由操作系统内部来进行「解释」然后执行。<br>3.以 C 语言为例，我们在文本编译器编写好源代码，然后运行 gcc hello.c 编译出 hello.out 文件，该文件由一系列的机器指令组成的机器码，可以直接交由硬件来执行。</p>
+<h3 id="抽象看本质：人与计算机之间的鸿沟"><a href="#抽象看本质：人与计算机之间的鸿沟" class="headerlink" title="抽象看本质：人与计算机之间的鸿沟"></a>抽象看本质：人与计算机之间的鸿沟</h3><p>无论是最近在看《暗时间》的作者刘未鹏，还是前一段时间听《以产品思维写文章》讲座的阿禅，还是其他的很多聪明的人。<br>他们都强调「抽象看本质」的能力，能从事物本身抽象出共通属性，看待本质。<br>这也是很多人所说的「跳出这个框框再看」的思维方式。</p>
+<p>无论是「编译 Compile」还是「解释 Interpret」。<br>本质还是「人与计算机的交流形式」，人的语言最终转换成机器语言。<br>一句 「Hello World」，经过一些列的「编译」和「解释」，最终转换成一系列包含机器指令的那些0和1，机器傻傻执行完之后，告诉你结果。</p>
+<p>就这么一个过程，我们就需要很多的翻译官。<br>有些翻译官可以做到同声传译（解释），有些翻译官却只能把我们的意图记下来再全部翻译（编译）给计算机。<br>而往往一个翻译官能力有限，也只能把你的语言，翻译成另外一种低级点的语言，再由另外懂这个语言的翻译官来翻译更接近计算机能读得懂的语言。<br><img src="/2018/10/10/编译与解释/2.webp" alt="img"></p>
+<h3 id="最后用一张图来展示一下编译与解释"><a href="#最后用一张图来展示一下编译与解释" class="headerlink" title="最后用一张图来展示一下编译与解释"></a>最后用一张图来展示一下编译与解释</h3><p><img src="/2018/10/10/编译与解释/3.webp" alt="img"></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/10/08/vue不同路由使用同一个组件重新加载这个组件/" rel="next" title="vue不同路由使用同一个组件重新加载这个组件">
+                            vue不同路由使用同一个组件重新加载这个组件
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '编译与解释',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>9</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>1</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/vue/" style="font-size: 19px; color: #777">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 14px; color: #999">图片处理</a> <a href="/tags/基础知识/" style="font-size: 14px; color: #999">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/网络基础/" style="font-size: 14px; color: #999">网络基础</a> <a href="/tags/面试题/" style="font-size: 24px; color: #555">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
