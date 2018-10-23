@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: css | jinux</title>
+  <title>ajax跨域请求自定义header字段问题 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/categories/css/index.html">
+  <meta name="description" content="Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法">
+<meta name="keywords" content="ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax跨域请求自定义header字段问题">
+<meta property="og:url" content="/2018/10/16/ajax跨域请求自定义header字段问题/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-16T03:31:27.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="ajax跨域请求自定义header字段问题">
+<meta name="twitter:description" content="Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法">
 
   <link rel="shortcut icon" href="" />
   <link rel="icon" href="" />
@@ -148,59 +150,89 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-    <script>
-        window.subData= { title:'category : css'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/09/14/css省略号/">
-                
-                    css省略号
-                
-            </a>
-        </h2>
+        <article id="post-ajax跨域请求自定义header字段问题" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                ajax跨域请求自定义header字段问题
+            
+        </h1>
         <time>
-            2018-09-14 Friday
+            2018-10-16 Tuesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/css/">css</a>
+        <a href="/categories/javascript/">javascript</a>
     </div>
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ajax跨域请求自定义header字段问题"><span class="toc-number">1.</span> <span class="toc-text">ajax跨域请求自定义header字段问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-第一步"><span class="toc-number">1.1.</span> <span class="toc-text">1.第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-第二步"><span class="toc-number">1.2.</span> <span class="toc-text">2.第二步</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>页面中文字溢出的省略号<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/09/14/css省略号/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/样式/"><i class="fa fa-tag"></i>&nbsp;&nbsp;样式</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法<br><a id="more"></a></p>
+<h2 id="ajax跨域请求自定义header字段问题"><a href="#ajax跨域请求自定义header字段问题" class="headerlink" title="ajax跨域请求自定义header字段问题"></a>ajax跨域请求自定义header字段问题</h2><p>首先，在后端允许跨域请求的情况下，前端加上自定义的请求字段，如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        method: <span class="string">'POST'</span>,</span><br><span class="line">        url: reqUrl,</span><br><span class="line">        headers: &#123;</span><br><span class="line">              <span class="string">'client-token'</span>: <span class="string">'123456'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        data: &#123;<span class="attr">goodsId</span>: goodsId&#125;,</span><br><span class="line">        dataType: <span class="string">'json'</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>客户端 按照上面的写，你需要处理的是 服务端 响应头的设置</p>
+<h3 id="1-第一步"><a href="#1-第一步" class="headerlink" title="1.第一步"></a>1.第一步</h3><p>设置响应头<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">'Access-Control-Allow-Origin:*'</span>);  <span class="comment">//支持全域名访问，不安全，部署后需要固定限制为客户端网址</span></span><br><span class="line">header(<span class="string">'Access-Control-Allow-Methods:POST,GET,OPTIONS,DELETE'</span>); <span class="comment">//支持的http 动作</span></span><br><span class="line">header(<span class="string">'Access-Control-Allow-Headers:x-requested-with,content-type'</span>);  <span class="comment">//响应头 请按照自己需求添加。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h3><p>了解IE chrome 等浏览器 对于 跨域请求并要求设置Headers自定义参数的时候的 “预请求”   就是如果遇到 跨域并设置headers的请求，所有请求需要两步完成！<br>A 第一步：发送预请求 OPTIONS 请求。此时 服务器端需要对于OPTIONS请求作出响应 一般使用202响应即可 不用返回任何内容信息。（能看到这份手稿的人，本人不相信你后台处理不了一个options请求）<br>B 第二步：服务器accepted 第一步请求后 浏览器自动执行第二步 发送真正的请求。此时 大多数人 会发现请求成功了，但是 有那么几个人会发现 请求成功了但是没有任何信息返回 why？因为你自定义的请求头在服务器响应中不存在！<br>查看console输出 会发现一个问题：<br>“Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX”【IE】，<br>request header field xxxxxx is not allowed by Access-Control-Allow-Header【chrome】<br>这是因为 你的XXXX请求头 没有在服务器端被允许哦~<br>遇到这个问题 只有通过修改服务器端来完成，举例：需要设置 client-token这么一个自定义头，那么 你需要在 服务端里面 将header(‘Access-Control-Allow-Headers:x-requested-with,content-type，client-token’);  同学们自行体会吧 这种语法就是根据“,”分割 自己需要设置什么头，必须要在 服务端请求的响应头里面设置好，不然客户端永远永远提交不上去！<br>至此  JavaScript/ajax  跨域+ 修改httpheader 任务完美实现。<br>“人们都一直在抱怨 JavaScript同源策略限制了web前端的发展！然而是服务端做的不够细致！”</p>
 
         </div>
-    
-</section>
 
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/ajax/"><i class="fa fa-tag"></i>&nbsp;&nbsp;ajax</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/10/19/实现call函数/" rel="prev" title="实现call函数">
+                            实现call函数
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/10/11/scratch介绍/" rel="next" title="scratch介绍">
+                            scratch介绍
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'ajax跨域请求自定义header字段问题',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -290,6 +322,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>

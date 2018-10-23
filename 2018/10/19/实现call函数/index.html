@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: css | jinux</title>
+  <title>实现call函数 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/categories/css/index.html">
+  <meta name="description" content="自己实现call函数">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现call函数">
+<meta property="og:url" content="/2018/10/19/实现call函数/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="自己实现call函数">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-19T06:03:10.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="实现call函数">
+<meta name="twitter:description" content="自己实现call函数">
 
   <link rel="shortcut icon" href="" />
   <link rel="icon" href="" />
@@ -148,59 +150,86 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-    <script>
-        window.subData= { title:'category : css'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/09/14/css省略号/">
-                
-                    css省略号
-                
-            </a>
-        </h2>
+        <article id="post-实现call函数" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                实现call函数
+            
+        </h1>
         <time>
-            2018-09-14 Friday
+            2018-10-19 Friday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/css/">css</a>
+        <a href="/categories/javascript/">javascript</a>
     </div>
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现call函数"><span class="toc-number">1.</span> <span class="toc-text">实现call函数</span></a></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>页面中文字溢出的省略号<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/09/14/css省略号/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/样式/"><i class="fa fa-tag"></i>&nbsp;&nbsp;样式</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>自己实现call函数<br><a id="more"></a></p>
+<h2 id="实现call函数"><a href="#实现call函数" class="headerlink" title="实现call函数"></a>实现call函数</h2><p>实现代码很简单，直接贴出来<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">arguments</span>, str=<span class="string">''</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;args.length; i++) &#123;</span><br><span class="line">    str += (args[i]+<span class="string">','</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> newStr = str.slice(<span class="number">0</span>,(str.length<span class="number">-1</span>));</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+newStr+<span class="string">')'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+a+b);</span><br><span class="line">&#125;</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'join'</span></span><br><span class="line">&#125;,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'mike'</span></span><br><span class="line">&#125;,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
 
         </div>
-    
-</section>
 
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/10/23/js类的继承-ES5写法/" rel="prev" title="js类的继承(ES5写法)">
+                            js类的继承(ES5写法)
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/10/16/ajax跨域请求自定义header字段问题/" rel="next" title="ajax跨域请求自定义header字段问题">
+                            ajax跨域请求自定义header字段问题
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '实现call函数',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -290,6 +319,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
