@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>实现call函数 | jinux</title>
+  <title>对象链式取值(如loadsh的_.get()方法)在项目中的应用 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自己实现call函数">
+  <meta name="description" content="对象的链式取值在项目中的应用场景。">
 <meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实现call函数">
-<meta property="og:url" content="/2018/10/19/实现call函数/index.html">
+<meta property="og:title" content="对象链式取值(如loadsh的_.get()方法)在项目中的应用">
+<meta property="og:url" content="/2018/11/05/对象链式取值-如loadsh的-get-方法-在项目中的应用/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="自己实现call函数">
+<meta property="og:description" content="对象的链式取值在项目中的应用场景。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T06:03:10.245Z">
+<meta property="og:updated_time" content="2018-11-05T06:15:20.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实现call函数">
-<meta name="twitter:description" content="自己实现call函数">
+<meta name="twitter:title" content="对象链式取值(如loadsh的_.get()方法)在项目中的应用">
+<meta name="twitter:description" content="对象的链式取值在项目中的应用场景。">
 
   <link rel="shortcut icon" href="" />
   <link rel="icon" href="" />
@@ -150,15 +150,15 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-实现call函数" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-对象链式取值-如loadsh的-get-方法-在项目中的应用" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                实现call函数
+                对象链式取值(如loadsh的_.get()方法)在项目中的应用
             
         </h1>
         <time>
-            2018-10-19 Friday&nbsp;&nbsp;
+            2018-11-05 Monday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现call函数"><span class="toc-number">1.</span> <span class="toc-text">实现call函数</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象链式取值-如loadsh的-get-方法-在项目中的应用"><span class="toc-number">1.</span> <span class="toc-text">对象链式取值(如loadsh的_.get()方法)在项目中的应用</span></a></li></ol>
             </div>
         </section>
     
@@ -181,8 +181,11 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>自己实现call函数<br><a id="more"></a></p>
-<h2 id="实现call函数"><a href="#实现call函数" class="headerlink" title="实现call函数"></a>实现call函数</h2><p>实现代码很简单，直接贴出来<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">arguments</span>, str=<span class="string">''</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;args.length; i++) &#123;</span><br><span class="line">    str += (args[i]+<span class="string">','</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> newStr = str.slice(<span class="number">0</span>,(str.length<span class="number">-1</span>));</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+newStr+<span class="string">')'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+a+b);</span><br><span class="line">&#125;</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'join'</span></span><br><span class="line">&#125;,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'mike'</span></span><br><span class="line">&#125;,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+            <p>对象的链式取值在项目中的应用场景。<br><a id="more"></a></p>
+<h2 id="对象链式取值-如loadsh的-get-方法-在项目中的应用"><a href="#对象链式取值-如loadsh的-get-方法-在项目中的应用" class="headerlink" title="对象链式取值(如loadsh的_.get()方法)在项目中的应用"></a>对象链式取值(如loadsh的_.get()方法)在项目中的应用</h2><p>相信大家在从后端获取数据的时候，像这样res.data.rows.count来获取数据的情况很多，如果后台返回的格式不对了，或则data是个null，那么很容易报<strong>Uncaught TypeError: Cannot read property ‘goods’ of undefined</strong>这样的错。<br>我们一般会这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(res &amp;&amp; res.data &amp;&amp; res.data.rows &amp;&amp; res.data.count) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过这么写实在是有些麻烦，我一般的做法是直接catch住error，然后定位到具体错误在哪，在改正。<br>不过，最近在网上看到一篇专门写关于对象的链式取值的文章，里边写了大概4种解决方法，这里我只记录学习了其中一种，也是兼容性最好的一种，就想使用loadsh的_.get方法，先看看loadsh是怎么用的，见下边<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = &#123; <span class="string">'a'</span>: [&#123; <span class="string">'b'</span>: &#123; <span class="string">'c'</span>: <span class="number">3</span> &#125; &#125;] &#125;;</span><br><span class="line">_.get(object, <span class="string">'a[0].b.c'</span>);</span><br><span class="line"><span class="comment">// =&gt; 3</span></span><br><span class="line">_.get(object, [<span class="string">'a'</span>, <span class="string">'0'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);</span><br><span class="line"><span class="comment">// =&gt; 3</span></span><br><span class="line">_.get(object, <span class="string">'a.b.c'</span>, <span class="string">'default'</span>);</span><br><span class="line"><span class="comment">// =&gt; 'default'</span></span><br></pre></td></tr></table></figure></p>
+<p>使用方法一目了然，第一个参数：对象，第二个参数：链式字符串，第三个参数是，如果按照这个链式字符串在对象中取不到值，返回这个默认值。这样写的话，就像上边即使后台同事更改了数据结构，不会报错，而是返回默认值。（不过这种写法我觉得也有不好的地方，那就是不容易发现错误，后台返回的数据结构都变了，而我们前台并没有出现异常，而是返回来初始写的默认值，是不是有点。。。）不过，这种写法在其它场合我想一定会有用武之地。<br>我现在的项目中并没有用到loadsh这个库，但是还想用咋办呢？自己写一个喽，还好，写法简单，容易理解，注意，下边给出的代码交通过函数解析字符串方式来处理的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span> (<span class="params">obj, props, def</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((obj == <span class="literal">null</span>) || obj == <span class="literal">null</span> || <span class="keyword">typeof</span> props !== <span class="string">'string'</span>) <span class="keyword">return</span> def;</span><br><span class="line">    <span class="keyword">const</span> temp = props.split(<span class="string">'.'</span>);</span><br><span class="line">    <span class="keyword">const</span> fieldArr = [].concat(temp);</span><br><span class="line">    temp.forEach(<span class="function">(<span class="params">e, i</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="regexp">/^(\w+)\[(\w+)\]$/</span>.test(e)) &#123;</span><br><span class="line">            <span class="keyword">const</span> matchs = e.match(<span class="regexp">/^(\w+)\[(\w+)\]$/</span>);</span><br><span class="line">            <span class="keyword">const</span> field1 = matchs[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> field2 = matchs[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">const</span> index = fieldArr.indexOf(e);</span><br><span class="line">            fieldArr.splice(index, <span class="number">1</span>, field1, field2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> fieldArr.reduce(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> target = pre[cur] || def;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(target <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> [].concat(target);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(target <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, target)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;, obj)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = &#123;<span class="attr">a</span>: &#123;<span class="attr">b</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] &#125;&#125;</span><br><span class="line">get(c ,<span class="string">'a.b'</span>)     <span class="comment">// [1,2,3]</span></span><br><span class="line">get(c, <span class="string">'a.b[1]'</span>)  <span class="comment">// 2</span></span><br><span class="line">get(c, <span class="string">'a.d'</span>, <span class="number">12</span>)  <span class="comment">// 12</span></span><br></pre></td></tr></table></figure></p>
+<p>其实，在项目无论如何使用都没什么问题，即使什么都不做，最后项目完成时，也一定会因为出现报错而改正过来，最多就是不够健壮。我觉得这个函数解析字符串的方式很好，值得举一反三，值得学习。</p>
 
         </div>
 
@@ -197,17 +200,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2018/10/23/js类的继承-ES5写法/" rel="prev" title="js类的继承(ES5写法)">
-                            js类的继承(ES5写法)
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2018/10/16/ajax跨域请求自定义header字段问题/" rel="next" title="ajax跨域请求自定义header字段问题">
-                            ajax跨域请求自定义header字段问题
+                        <a href="/2018/11/01/webpack打包bundle-js文件代码分析/" rel="next" title="webpack打包bundle.js文件代码分析">
+                            webpack打包bundle.js文件代码分析
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -226,7 +222,7 @@
 
 <script>
     window.subData = {
-        title: '实现call函数',
+        title: '对象链式取值(如loadsh的_.get()方法)在项目中的应用',
         tools: true
     }
 </script>
