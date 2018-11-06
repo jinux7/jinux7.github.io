@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>js抽象语法树AST | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="通过javascript parser将代码转化成抽象语法树，这棵树定义了代码本身，通过操作这颗树，可以精准的定位到赋值语句、声明语句和运算语句。">
+<meta name="keywords" content="基础知识,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js抽象语法树AST">
+<meta property="og:url" content="/2018/11/06/js抽象语法树AST/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="通过javascript parser将代码转化成抽象语法树，这棵树定义了代码本身，通过操作这颗树，可以精准的定位到赋值语句、声明语句和运算语句。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2018/11/06/js抽象语法树AST/astImg1.png">
+<meta property="og:updated_time" content="2018-11-06T09:02:14.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js抽象语法树AST">
+<meta name="twitter:description" content="通过javascript parser将代码转化成抽象语法树，这棵树定义了代码本身，通过操作这颗树，可以精准的定位到赋值语句、声明语句和运算语句。">
+<meta name="twitter:image" content="/2018/11/06/js抽象语法树AST/astImg1.png">
+
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-js抽象语法树AST" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                js抽象语法树AST
+            
+        </h1>
+        <time>
+            2018-11-06 Tuesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#js抽象语法树AST"><span class="toc-number">1.</span> <span class="toc-text">js抽象语法树AST</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是抽象语法树"><span class="toc-number">1.1.</span> <span class="toc-text">什么是抽象语法树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#众多AST解析引擎"><span class="toc-number">1.2.</span> <span class="toc-text">众多AST解析引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AST的学习三板斧"><span class="toc-number">1.3.</span> <span class="toc-text">AST的学习三板斧</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>通过javascript parser将代码转化成抽象语法树，这棵树定义了代码本身，通过操作这颗树，可以精准的定位到赋值语句、声明语句和运算语句。<br><a id="more"></a></p>
+<h2 id="js抽象语法树AST"><a href="#js抽象语法树AST" class="headerlink" title="js抽象语法树AST"></a>js抽象语法树AST</h2><p>最近在研究webpack，想研究一下它是如何打包的，不过，刚刚入门，就有一个知识点把我难住了，那就是AST抽象语法树。于是乎，上网查了查，原理就是把代码解析，解析成一个有各种属性状态的json树，便于对代码进行操作，具体的解析代码当然是很难的，像我们这种菜鸟只需要了解一下用法就可以了。<br>babel是现在几乎每个项目中必备的一个东西，但是其工作原理避不开对js的解析在生成的过程，babel有引擎babylon，早期fork了项目acron，了解这个之前我们先来看看这种引擎解析出来是什么东西。不光是babel还有webpack等。</p>
+<h3 id="什么是抽象语法树"><a href="#什么是抽象语法树" class="headerlink" title="什么是抽象语法树"></a>什么是抽象语法树</h3><p>见下面例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = a + <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<p>之后我们通过这个<a href="http://esprima.org/demo/parse.html" target="_blank" rel="noopener">网站</a>，他是一个esprima引擎的网站，十分好用.画成流程图如下：<br><img src="/2018/11/06/js抽象语法树AST/astImg1.png" alt="img"><br>而他的json对象格式是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"type"</span>: <span class="string">"Program"</span>,</span><br><span class="line">    <span class="string">"body"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"VariableDeclaration"</span>,</span><br><span class="line">            <span class="string">"declarations"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"type"</span>: <span class="string">"VariableDeclarator"</span>,</span><br><span class="line">                    <span class="string">"id"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                        <span class="string">"name"</span>: <span class="string">"a"</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">"init"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"Literal"</span>,</span><br><span class="line">                        <span class="string">"value"</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="string">"raw"</span>: <span class="string">"1"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"kind"</span>: <span class="string">"var"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"VariableDeclaration"</span>,</span><br><span class="line">            <span class="string">"declarations"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"type"</span>: <span class="string">"VariableDeclarator"</span>,</span><br><span class="line">                    <span class="string">"id"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                        <span class="string">"name"</span>: <span class="string">"b"</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">"init"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"BinaryExpression"</span>,</span><br><span class="line">                        <span class="string">"operator"</span>: <span class="string">"+"</span>,</span><br><span class="line">                        <span class="string">"left"</span>: &#123;</span><br><span class="line">                            <span class="string">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                            <span class="string">"name"</span>: <span class="string">"a"</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="string">"right"</span>: &#123;</span><br><span class="line">                            <span class="string">"type"</span>: <span class="string">"Literal"</span>,</span><br><span class="line">                            <span class="string">"value"</span>: <span class="number">1</span>,</span><br><span class="line">                            <span class="string">"raw"</span>: <span class="string">"1"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"kind"</span>: <span class="string">"var"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"sourceType"</span>: <span class="string">"script"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="众多AST解析引擎"><a href="#众多AST解析引擎" class="headerlink" title="众多AST解析引擎"></a>众多AST解析引擎</h3><p>chrome有v8，firefix有spidermonkey.还有一些常用的引擎有：</p>
+<ul>
+<li>esprima</li>
+<li>acron</li>
+<li>Traceur</li>
+<li>UglifyJS2</li>
+<li>shift</li>
+</ul>
+<h3 id="AST的学习三板斧"><a href="#AST的学习三板斧" class="headerlink" title="AST的学习三板斧"></a>AST的学习三板斧</h3><ul>
+<li>通过esprima生成AST</li>
+<li>通过estraverse遍历和更新AST</li>
+<li>通过escodegen将AST重新生成源码</li>
+</ul>
+<p>来一个简单例子，看看用法：<br>1.先新建一个test的工程目录<br>2.在test工程下安装esprima、estraverse、escodegen的npm模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i esprima estraverse escodegen --save</span><br></pre></td></tr></table></figure></p>
+<p>3.在目录下面新建一个test.js文件,载入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> esprima = <span class="built_in">require</span>(<span class="string">'esprima'</span>);</span><br><span class="line"><span class="keyword">let</span> code = <span class="string">'const a = 1'</span>;</span><br><span class="line"><span class="keyword">const</span> ast = esprima.parseScript(code);</span><br><span class="line"><span class="built_in">console</span>.log(ast);</span><br></pre></td></tr></table></figure></p>
+<p>你将会看到输出结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Script &#123;</span><br><span class="line">  type: <span class="string">'Program'</span>,</span><br><span class="line">  body:</span><br><span class="line">   [ VariableDeclaration &#123;</span><br><span class="line">       type: <span class="string">'VariableDeclaration'</span>,</span><br><span class="line">       declarations: [<span class="built_in">Array</span>],</span><br><span class="line">       kind: <span class="string">'const'</span> &#125; ],</span><br><span class="line">  sourceType: <span class="string">'script'</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.再在test文件中，载入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> estraverse = <span class="built_in">require</span>(<span class="string">'estraverse'</span>);</span><br><span class="line"></span><br><span class="line">estraverse.traverse(ast, &#123;</span><br><span class="line">    enter: <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">        node.kind = <span class="string">"var"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(ast);</span><br></pre></td></tr></table></figure></p>
+<p>输出的结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Script &#123;</span><br><span class="line">  type: <span class="string">'Program'</span>,</span><br><span class="line">  body:</span><br><span class="line">   [ VariableDeclaration &#123;</span><br><span class="line">       type: <span class="string">'VariableDeclaration'</span>,</span><br><span class="line">       declarations: [<span class="built_in">Array</span>],</span><br><span class="line">       kind: <span class="string">'var'</span> &#125; ],</span><br><span class="line">  sourceType: <span class="string">'script'</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.最后在test文件中，加入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> escodegen = <span class="built_in">require</span>(<span class="string">"escodegen"</span>);</span><br><span class="line"><span class="keyword">const</span> transformCode = escodegen.generate(ast)</span><br><span class="line"><span class="built_in">console</span>.log(transformCode);</span><br></pre></td></tr></table></figure></p>
+<p>输出的结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<p>通过这三步，我们将const a = 1转化成了var a = 1</p>
+<p>虽然，具体的解析原理我们并不知道，但是，通过这三个模块包，是不是有种自己搞出一个babel的赶脚。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+                    <a href="/tags/webpack/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webpack</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/11/05/对象链式取值-如loadsh的-get-方法-在项目中的应用/" rel="next" title="对象链式取值(如loadsh的_.get()方法)在项目中的应用">
+                            对象链式取值(如loadsh的_.get()方法)在项目中的应用
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'js抽象语法树AST',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>1</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 17.33px; color: #828282">ajax</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 17.33px; color: #828282">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.33px; color: #828282">webpack</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 14px; color: #999">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/网络基础/" style="font-size: 14px; color: #999">网络基础</a> <a href="/tags/面试题/" style="font-size: 20.67px; color: #6c6c6c">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
