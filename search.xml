@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>javascript获取数据类型</title>
+      <link href="/2018/11/14/javascript%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+      <url>/2018/11/14/javascript%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[<p>判断js的数据类型，如：Boolean Number String等<br><a id="more"></a></p><h2 id="javascript获取数据类型"><a href="#javascript获取数据类型" class="headerlink" title="javascript获取数据类型"></a>javascript获取数据类型</h2><p>平时在工作中，偶尔会用到判断一下这个数据是什么类型，是数组的？string的？function的？我一般都直接按照代码的需求，只写了需要判断的类型，用完就丢到一边，最近在看jquery源码，人家大牛写的真不错，改一改，封装一下，自己用哈。<br>话不多说，直接贴出代码，其实很简单的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toType</span>(<span class="params"> obj </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> class2type = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="string">"Boolean Number String Function Array Date RegExp Object Error Symbol"</span></span><br><span class="line">    .split( <span class="string">" "</span> )</span><br><span class="line">    .forEach(<span class="function"><span class="keyword">function</span>(<span class="params"> name </span>) </span>&#123;</span><br><span class="line">        class2type[ <span class="string">"[object "</span> + name + <span class="string">"]"</span> ] = name.toLowerCase();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( obj == <span class="literal">null</span> ) &#123;</span><br><span class="line">      <span class="keyword">return</span> obj + <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">"object"</span> || <span class="keyword">typeof</span> obj === <span class="string">"function"</span> ?</span><br><span class="line">      class2type[ toString.call( obj ) ] || <span class="string">"object"</span> :</span><br><span class="line">      <span class="keyword">typeof</span> obj;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p><p>代码一共没有几行，接下来看看管不管用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'对象的类型-&gt;'</span>,toType(&#123;&#125;));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'函数的类型-&gt;'</span>,toType(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'null的类型-&gt;'</span>,toType(<span class="literal">null</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'undefined的类型-&gt;'</span>,toType(<span class="literal">undefined</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'boolean的类型-&gt;'</span>,toType(<span class="literal">true</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'number的类型-&gt;'</span>,toType(<span class="number">555</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'string的类型-&gt;'</span>,toType(<span class="string">'abc'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'array的类型-&gt;'</span>,toType([]));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'date的类型-&gt;'</span>,toType(<span class="keyword">new</span> <span class="built_in">Date</span>()));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'正则的类型-&gt;'</span>,toType(<span class="regexp">/abc/g</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'symbol-&gt;'</span>,toType(<span class="built_in">Symbol</span>()));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Error的类型-&gt;'</span>,toType(<span class="keyword">new</span> <span class="built_in">Error</span>()));</span><br></pre></td></tr></table></figure></p><p>基本上的类型都判断出来了，不错吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jquery </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>tcp三次握手和四次挥手</title>
       <link href="/2018/11/07/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
       <url>/2018/11/07/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
@@ -42,9 +65,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> webpack </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
