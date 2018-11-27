@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>利用正则表达式统计代码行数</title>
+      <link href="/2018/11/27/%E5%88%A9%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/"/>
+      <url>/2018/11/27/%E5%88%A9%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>利用ide编辑器统计代码行数<br><a id="more"></a></p><h2 id="利用正则表达式统计代码行数"><a href="#利用正则表达式统计代码行数" class="headerlink" title="利用正则表达式统计代码行数"></a>利用正则表达式统计代码行数</h2><p>在项目中，我们常常有统计代码行数的需要，但是如果不利用第三方工具的话，面对一个项目（甚至一个工程或解决方案中若干个项目）中成百上千的代码文件，实在有一种力不从心的感觉。</p><p>但利用正则表达式可以巧妙解决。用的工具不是别的，正是所有的IDE（Visual Studio、Eclipse等等）和常用的文本编辑器（SublimeText2、Notepad++等）日常必备软件的“在文件中查找”，不同的软件略有不同，但大同小异。</p><p>再复杂的IDE，其搜索功能也是基于字符串的匹配进行的。我们知道，文本中每次换行会增加一个 \n 。如果直接用正则\n每一个匹配项就代表一次换行。但需要注意的是文件的最后一行是没有换行符的，所以文本行数=文件数+换行符数目，因而把两个看到的两个数字加起来才是文本行数。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^.*$</span><br></pre></td></tr></table></figure><p>表示搜索条件为行首与行尾之间包含任意个任意字符（非换行符）。</p><p>上面的方法可以很迅速地得到代码行数，不过遗憾的是统计结果把空行（仅包含空格和制表符的行）也统计进去了，然而很多时候我们并不想把这些文本也给算进代码量里去，怎么办呢？别急，我们只要对正则表达式做一点点修改。我的思路是，只需要找出一个不是空格或制表符的字符即可，于是可写出了这个正则表达式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\s*[^\s]+.*$</span><br></pre></td></tr></table></figure></p><p>它表示先忽略一行前面的连续空格和制表符等，然后寻找是否有一个字符不为空格、制表符、换行符和回车符，如果有则表明这行不为空行。<br>不用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\s*\S+.*$</span><br></pre></td></tr></table></figure></p><p>是为了下面方便添加其他要排除的注释行或者独立的括号行。</p><p>在实际项目中，我们或许认为注释行不应成为生产量，应从统计数据中排除出去。我们首先要能够对注释行有一个认识。很多程序设计语言中，注释行都会用“/”或者“#”等字符开头。我们假设项目中的注释行都是以“/”或“#”开头的（请读者考虑自己项目的特点自行修改）。下面的正则表示，我们要查找的是一行中第一个非空字符不是“/”或“#”或“{”或“}”的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^\s*[^\s/#&#123;&#125;]+.*$ </span><br><span class="line">^\s*[^ \t\n\r/#&#123;&#125;]+.*$</span><br></pre></td></tr></table></figure></p><p>作用同上，说明在中括号[]内自定义原子表，打个空格，也可以代表空格。<br>因为控制开头和结尾，所以 + 后不必加问号 ? 取消贪婪模式了。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\s*[^\s/#&#123;&#125;]+</span><br></pre></td></tr></table></figure><p>也行，但是上面加上控制结尾比较严谨。另外，文本编辑框默认是视为单行的，没有设置多行模式，如果设为多行模式就得注意了。php 中，在定界符最右边加 m 即可视为多行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>zepto源码</title>
       <link href="/2018/11/16/zepto%E6%BA%90%E7%A0%81/"/>
       <url>/2018/11/16/zepto%E6%BA%90%E7%A0%81/</url>
@@ -88,9 +111,9 @@
       
         <tags>
             
-            <tag> webpack </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> webpack </tag>
             
         </tags>
       
@@ -448,7 +471,7 @@
       <link href="/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/"/>
       <url>/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神些webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li></ul>]]></content>
       
       
       
