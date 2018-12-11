@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>setTimeout&amp;async&amp;Promise执行顺序</title>
+      <link href="/2018/12/11/setTimeout-async-Promise%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/"/>
+      <url>/2018/12/11/setTimeout-async-Promise%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<p>setTimeout&amp;async&amp;Promise执行顺序简要分析<br><a id="more"></a></p><h2 id="setTimeout-amp-async-amp-Promise执行顺序"><a href="#setTimeout-amp-async-amp-Promise执行顺序" class="headerlink" title="setTimeout&amp;async&amp;Promise执行顺序"></a>setTimeout&amp;async&amp;Promise执行顺序</h2><p>看到标题，觉得这种需求在实际项目中基本遇不到，是的，我从没有遇到过，而且，要用就用一种，既然用了async，还用啥Promise。不过，网上有一道面试题，据说是今日头条的面试题，考的就是这方面的知识，先贴出代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async1 start'</span>)</span><br><span class="line">    <span class="keyword">await</span> async2()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async1 end'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async2'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">async1();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">    resolve();</span><br><span class="line">&#125; ).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">&#125; )</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>)</span><br></pre></td></tr></table></figure></p><p>答案一会再说。<br>先来分析一下，setTimeout,async,Promise执行的有先顺序。其实，要想研究明白这个问题，需要了解异步执行的宏任务，微任务知识，而且，在浏览器和nodejs环境下还不一样，这里我不对这些知识作深入分析，因为我看了些相关知识，看的晕头转向，所以，我只简单的记一下在浏览器环境下的优先顺序。<br>异步发生的节点是：<br>1.setTimeout的回调函数。<br>2.Promise实例的then方法中的回调函数。<br>3.async函数中await 后面紧跟着的函数（如async2），这个地方比较有意思，进入async2的时候是同步的，async2里边如果都是同步函数，那就继续执行，等执行完毕，返回先关东西后，”await async2()”这句话下边的语句不会马上执行，有点像Promise实例的then方法中的回调一样，需要排队等待。<br>所以，优先顺序是Promise的then方法回调第一，async await 之后的语句排第二，setTimeout的回调排第三。<br>记住了吗？我没有考虑理论知识，只是简单地死记硬背而已。<br>最后，把上边代码的结果写出来，看看与你想的是否一样。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">script start</span><br><span class="line">async1 start</span><br><span class="line">async2</span><br><span class="line">promise1</span><br><span class="line">script end</span><br><span class="line">promise2</span><br><span class="line">async1 end</span><br><span class="line">setTimeout</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试题 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>nodejs搭建https服务器</title>
       <link href="/2018/12/07/nodejs%E6%90%AD%E5%BB%BAhttps%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
       <url>/2018/12/07/nodejs%E6%90%AD%E5%BB%BAhttps%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
