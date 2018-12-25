@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-12-11T02:36:37.697Z</updated>
+  <updated>2018-12-19T05:22:57.679Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cordova android打包配置详解</title>
+    <link href="/2018/12/18/cordova-android%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
+    <id>/2018/12/18/cordova-android打包配置详解/</id>
+    <published>2018-12-18T07:27:22.000Z</published>
+    <updated>2018-12-19T05:22:57.679Z</updated>
+    
+    <content type="html"><![CDATA[<p>cordova打包android app<br><a id="more"></a></p><h2 id="cordova-android打包配置详解"><a href="#cordova-android打包配置详解" class="headerlink" title="cordova android打包配置详解"></a>cordova android打包配置详解</h2><p>前几天在网上看到了cordova的东西，之前有过鼓捣react native和weex，所以看看它有什么特点。<br>由于我用的是win10系统，所以在配置环境的时候相当的麻烦，这里稍微的屡一下。</p><h3 id="一-安装JDK"><a href="#一-安装JDK" class="headerlink" title="一 安装JDK"></a>一 安装JDK</h3><p>JDK是java的开发工具包，因为我们打包安卓的apk文件，安卓是依赖java的，所以这个必须安装。<br>我刚开始安装的是最新版的，但是与cordova版本好像不是很搭，于是安装了JDK8这个版本。<br>安装好了之后要配置环境变量，首先是新建变量名JAVA_HOME，指向JDK的安装目录，之后再配置一下path，指向JDK里的bin目录。<br>再配置一下jre的path，也是指向jre里的bin目录。（jre安装有的直接安装JDK的时候顺便安装了，有的版本需要另外单独安装）</p><h3 id="二-安装SDK"><a href="#二-安装SDK" class="headerlink" title="二 安装SDK"></a>二 安装SDK</h3><p>SDK稍微有点复杂，首先还是下载SDK并且安装，这里需要注意，安装路径，我用的win10，必须安装在 用户/用户名/AppData/Local,<br>其它系统可能无所谓。安装好了之后，还是配置环境变量，新建变量名ANDROID_SDK_HOME，指向安装的SDK目录，再配置path，指向SDK下的<br>tools和platform-tools。</p><h3 id="三-安装Gradle"><a href="#三-安装Gradle" class="headerlink" title="三 安装Gradle"></a>三 安装Gradle</h3><p>Gradle好像是一个打包工具，直接下载安装，之后配置一下Gradle的bin目录环境变量。</p><h3 id="四-安装cordova"><a href="#四-安装cordova" class="headerlink" title="四 安装cordova"></a>四 安装cordova</h3><p>cordova的安装和运行需要nodejs，所以用npm来安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g cordova@6.1.1</span><br></pre></td></tr></table></figure></p><p>注意，这里我安装的是6.1.1版本，高版本莫名其妙的报错，这个稳妥一些。<br>之后就是使用cordova来创建项目喽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cordova create app jinux.com.cn app  // 创建一个项目</span><br><span class="line">cd app // 进入app项目</span><br><span class="line">cordova platform android  // 添加安卓模板</span><br><span class="line">cordova requirements  // 查看打包缺少什么依赖项</span><br><span class="line">cordova build android  // 打包apk</span><br></pre></td></tr></table></figure></p><p>以上的这些命令，在查看依赖项的时候肯定回报一些错误，SDK的一些依赖没有安装，进入SDK文件夹，打开SDK Manager.exe，根据依赖的提示下载相应的包，注意，这里是从谷歌上拉取，所以要开代理哦。<br>第一次build的时候，Gradle需要从网络上下载一堆包，还是注意需要代理拉取谷歌的文件，很慢的，耐心等待。<br>*下面是一个别人写的cordova博文，可供参考<br><a href="http://www.xiaoxiaohan.com/js/58.html#comments" target="_blank" rel="noopener">参考</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;cordova打包android app&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="cordova" scheme="/tags/cordova/"/>
+    
+  </entry>
   
   <entry>
     <title>setTimeout&amp;async&amp;Promise执行顺序</title>
@@ -437,28 +459,6 @@
     
     
       <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ajax跨域请求自定义header字段问题</title>
-    <link href="/2018/10/16/ajax%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E8%87%AA%E5%AE%9A%E4%B9%89header%E5%AD%97%E6%AE%B5%E9%97%AE%E9%A2%98/"/>
-    <id>/2018/10/16/ajax跨域请求自定义header字段问题/</id>
-    <published>2018-10-16T03:14:48.000Z</published>
-    <updated>2018-10-16T03:31:27.520Z</updated>
-    
-    <content type="html"><![CDATA[<p>Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法<br><a id="more"></a></p><h2 id="ajax跨域请求自定义header字段问题"><a href="#ajax跨域请求自定义header字段问题" class="headerlink" title="ajax跨域请求自定义header字段问题"></a>ajax跨域请求自定义header字段问题</h2><p>首先，在后端允许跨域请求的情况下，前端加上自定义的请求字段，如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        method: <span class="string">'POST'</span>,</span><br><span class="line">        url: reqUrl,</span><br><span class="line">        headers: &#123;</span><br><span class="line">              <span class="string">'client-token'</span>: <span class="string">'123456'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        data: &#123;<span class="attr">goodsId</span>: goodsId&#125;,</span><br><span class="line">        dataType: <span class="string">'json'</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p><p>客户端 按照上面的写，你需要处理的是 服务端 响应头的设置</p><h3 id="1-第一步"><a href="#1-第一步" class="headerlink" title="1.第一步"></a>1.第一步</h3><p>设置响应头<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">'Access-Control-Allow-Origin:*'</span>);  <span class="comment">//支持全域名访问，不安全，部署后需要固定限制为客户端网址</span></span><br><span class="line">header(<span class="string">'Access-Control-Allow-Methods:POST,GET,OPTIONS,DELETE'</span>); <span class="comment">//支持的http 动作</span></span><br><span class="line">header(<span class="string">'Access-Control-Allow-Headers:x-requested-with,content-type'</span>);  <span class="comment">//响应头 请按照自己需求添加。</span></span><br></pre></td></tr></table></figure></p><h3 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h3><p>了解IE chrome 等浏览器 对于 跨域请求并要求设置Headers自定义参数的时候的 “预请求”   就是如果遇到 跨域并设置headers的请求，所有请求需要两步完成！<br>A 第一步：发送预请求 OPTIONS 请求。此时 服务器端需要对于OPTIONS请求作出响应 一般使用202响应即可 不用返回任何内容信息。（能看到这份手稿的人，本人不相信你后台处理不了一个options请求）<br>B 第二步：服务器accepted 第一步请求后 浏览器自动执行第二步 发送真正的请求。此时 大多数人 会发现请求成功了，但是 有那么几个人会发现 请求成功了但是没有任何信息返回 why？因为你自定义的请求头在服务器响应中不存在！<br>查看console输出 会发现一个问题：<br>“Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX”【IE】，<br>request header field xxxxxx is not allowed by Access-Control-Allow-Header【chrome】<br>这是因为 你的XXXX请求头 没有在服务器端被允许哦~<br>遇到这个问题 只有通过修改服务器端来完成，举例：需要设置 client-token这么一个自定义头，那么 你需要在 服务端里面 将header(‘Access-Control-Allow-Headers:x-requested-with,content-type，client-token’);  同学们自行体会吧 这种语法就是根据“,”分割 自己需要设置什么头，必须要在 服务端请求的响应头里面设置好，不然客户端永远永远提交不上去！<br>至此  JavaScript/ajax  跨域+ 修改httpheader 任务完美实现。<br>“人们都一直在抱怨 JavaScript同源策略限制了web前端的发展！然而是服务端做的不够细致！”</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Access-Control-Allow-Headers 列表中不存在请求标头 XXXXXX的处理办法&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="ajax" scheme="/tags/ajax/"/>
     
   </entry>
   

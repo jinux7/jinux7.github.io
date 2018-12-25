@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>jinux</title>
+  <title>cordova android打包配置详解 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/page/4/index.html">
+  <meta name="description" content="cordova打包android app">
+<meta name="keywords" content="cordova">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cordova android打包配置详解">
+<meta property="og:url" content="/2018/12/18/cordova-android打包配置详解/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="cordova打包android app">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-19T05:22:57.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="cordova android打包配置详解">
+<meta name="twitter:description" content="cordova打包android app">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -148,23 +150,16 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/09/03/jquery上传文件/">
-                
-                    jquery上传文件
-                
-            </a>
-        </h2>
+        <article id="post-cordova-android打包配置详解" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                cordova android打包配置详解
+            
+        </h1>
         <time>
-            2018-09-03 Monday
+            2018-12-18 Tuesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -174,209 +169,66 @@
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cordova-android打包配置详解"><span class="toc-number">1.</span> <span class="toc-text">cordova android打包配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-安装JDK"><span class="toc-number">1.1.</span> <span class="toc-text">一 安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-安装SDK"><span class="toc-number">1.2.</span> <span class="toc-text">二 安装SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-安装Gradle"><span class="toc-number">1.3.</span> <span class="toc-text">三 安装Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-安装cordova"><span class="toc-number">1.4.</span> <span class="toc-text">四 安装cordova</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>之前在项目中使用jquery，Formdata实现文件上传<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/09/03/jquery上传文件/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/ajax/"><i class="fa fa-tag"></i>&nbsp;&nbsp;ajax</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>cordova打包android app<br><a id="more"></a></p>
+<h2 id="cordova-android打包配置详解"><a href="#cordova-android打包配置详解" class="headerlink" title="cordova android打包配置详解"></a>cordova android打包配置详解</h2><p>前几天在网上看到了cordova的东西，之前有过鼓捣react native和weex，所以看看它有什么特点。<br>由于我用的是win10系统，所以在配置环境的时候相当的麻烦，这里稍微的屡一下。</p>
+<h3 id="一-安装JDK"><a href="#一-安装JDK" class="headerlink" title="一 安装JDK"></a>一 安装JDK</h3><p>JDK是java的开发工具包，因为我们打包安卓的apk文件，安卓是依赖java的，所以这个必须安装。<br>我刚开始安装的是最新版的，但是与cordova版本好像不是很搭，于是安装了JDK8这个版本。<br>安装好了之后要配置环境变量，首先是新建变量名JAVA_HOME，指向JDK的安装目录，之后再配置一下path，指向JDK里的bin目录。<br>再配置一下jre的path，也是指向jre里的bin目录。（jre安装有的直接安装JDK的时候顺便安装了，有的版本需要另外单独安装）</p>
+<h3 id="二-安装SDK"><a href="#二-安装SDK" class="headerlink" title="二 安装SDK"></a>二 安装SDK</h3><p>SDK稍微有点复杂，首先还是下载SDK并且安装，这里需要注意，安装路径，我用的win10，必须安装在 用户/用户名/AppData/Local,<br>其它系统可能无所谓。安装好了之后，还是配置环境变量，新建变量名ANDROID_SDK_HOME，指向安装的SDK目录，再配置path，指向SDK下的<br>tools和platform-tools。</p>
+<h3 id="三-安装Gradle"><a href="#三-安装Gradle" class="headerlink" title="三 安装Gradle"></a>三 安装Gradle</h3><p>Gradle好像是一个打包工具，直接下载安装，之后配置一下Gradle的bin目录环境变量。</p>
+<h3 id="四-安装cordova"><a href="#四-安装cordova" class="headerlink" title="四 安装cordova"></a>四 安装cordova</h3><p>cordova的安装和运行需要nodejs，所以用npm来安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g cordova@6.1.1</span><br></pre></td></tr></table></figure></p>
+<p>注意，这里我安装的是6.1.1版本，高版本莫名其妙的报错，这个稳妥一些。<br>之后就是使用cordova来创建项目喽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cordova create app jinux.com.cn app  // 创建一个项目</span><br><span class="line">cd app // 进入app项目</span><br><span class="line">cordova platform android  // 添加安卓模板</span><br><span class="line">cordova requirements  // 查看打包缺少什么依赖项</span><br><span class="line">cordova build android  // 打包apk</span><br></pre></td></tr></table></figure></p>
+<p>以上的这些命令，在查看依赖项的时候肯定回报一些错误，SDK的一些依赖没有安装，进入SDK文件夹，打开SDK Manager.exe，根据依赖的提示下载相应的包，注意，这里是从谷歌上拉取，所以要开代理哦。<br>第一次build的时候，Gradle需要从网络上下载一堆包，还是注意需要代理拉取谷歌的文件，很慢的，耐心等待。<br>*下面是一个别人写的cordova博文，可供参考<br><a href="http://www.xiaoxiaohan.com/js/58.html#comments" target="_blank" rel="noopener">参考</a></p>
 
         </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/09/01/javascript提高性能/">
+
+        
+            <div class="article-tags tags">
                 
-                    javascript提高性能
-                
-            </a>
-        </h2>
-        <time>
-            2018-09-01 Saturday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>javascript提高性能的方式总结<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/09/01/javascript提高性能/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
+                    <a href="/tags/cordova/"><i class="fa fa-tag"></i>&nbsp;&nbsp;cordova</a>
                 
             </div>
         
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/12/11/setTimeout-async-Promise执行顺序/" rel="next" title="setTimeout&amp;async&amp;Promise执行顺序">
+                            setTimeout&amp;async&amp;Promise执行顺序
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
     </section>
+
 </article>
 
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/08/30/vue双向绑定的简单实现/">
-                
-                    vue双向绑定的简单实现
-                
-            </a>
-        </h2>
-        <time>
-            2018-08-30 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
+<br>
+
+<!-- 显示推荐文章和评论 -->
 
 
-    </section>
-
-    <section class="article typo">
-        <p>参考网上vue实现教程简单整理<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/08/30/vue双向绑定的简单实现/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/08/29/webSocket项目中的使用/">
-                
-                    webSocket
-                
-            </a>
-        </h2>
-        <time>
-            2018-08-29 Wednesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>在项目中使用websocket的小心得<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/08/29/webSocket项目中的使用/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
-                
-                    <a href="/tags/webSocket/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webSocket</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/08/27/nodejs代理服务器/">
-                
-                    nodejs代理服务器
-                
-            </a>
-        </h2>
-        <time>
-            2018-08-27 Monday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/nodejs/">nodejs</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>nodejs代理服务器简单实现<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/08/27/nodejs代理服务器/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/后端代理服务/"><i class="fa fa-tag"></i>&nbsp;&nbsp;后端代理服务</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-</section>
-
-
-    <nav id="page-nav">
-        
-            <a class="prev" rel="prev" href="/page/3/">
-                <span class="icon icon-chevron-left"></span>
-                <span class="text">PREVIOUS</span>
-            </a>
-        
-        
-    </nav>
+<script>
+    window.subData = {
+        title: 'cordova android打包配置详解',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -466,6 +318,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
