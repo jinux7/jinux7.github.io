@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>手写一个trigger插件</title>
+      <link href="/2019/01/22/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAtrigger%E6%8F%92%E4%BB%B6/"/>
+      <url>/2019/01/22/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAtrigger%E6%8F%92%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>自己写一个简单的trigger来触发事件<br><a id="more"></a></p><h2 id="手写一个trigger插件"><a href="#手写一个trigger插件" class="headerlink" title="手写一个trigger插件"></a>手写一个trigger插件</h2><p>各位小伙伴们，jquery大家超级熟悉吧，jquery的trigger函数一定知道吧，反正我是非常喜欢用它，有时候比如要把一个弹出层隐藏掉，大家可能会去改这个弹出层的css，但是我可能会直接trigger一下这个弹出层取消按钮，因为我懒嘛，哈哈。<br>但是，有时候可能想用trigger的时候，发现并没有使用jquery，额，自己写一个吧，其实，这段代码的核心部分我是参考了百度的一个手势库，好像叫touch.js,当时看的时候貌似这个库已经5年没人维护了，不过，模拟触发事件的代码被我留下了。见下面：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">root, factory</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = factory;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd)</span><br><span class="line">define([], factory);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span>)</span><br><span class="line">exports[<span class="string">"jinuxTrigger"</span>] = factory;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">root[<span class="string">"jinuxTrigger"</span>] = factory;</span><br><span class="line">&#125;)(<span class="keyword">this</span>, <span class="function"><span class="keyword">function</span>(<span class="params">el, evt, detail</span>) </span>&#123;</span><br><span class="line">detail = detail || &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> e, opt = &#123;</span><br><span class="line">            bubbles: <span class="literal">true</span>,</span><br><span class="line">            cancelable: <span class="literal">true</span>,</span><br><span class="line">            detail: detail</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> CustomEvent !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            e = <span class="keyword">new</span> CustomEvent(evt, opt);</span><br><span class="line">            <span class="keyword">if</span> (el) &#123;</span><br><span class="line">                el.dispatchEvent(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            e = <span class="built_in">document</span>.createEvent(<span class="string">"CustomEvent"</span>);</span><br><span class="line">            e.initCustomEvent(evt, <span class="literal">true</span>, <span class="literal">true</span>, detail);</span><br><span class="line">            <span class="keyword">if</span> (el) &#123;</span><br><span class="line">                el.dispatchEvent(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ex) &#123;</span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">"jinux-trigger is not supported by environment."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p><p>再附上一个小demo<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>jinux-trigger<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./trigger.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>页面加载进来之后，等待3秒后代码触发按钮的点击事件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>点击...<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'button'</span>);</span></span><br><span class="line"><span class="javascript">    btn.addEventListener(<span class="string">'click'</span>,()=&gt;&#123;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">'点击按钮被点击了！！！'</span>);</span></span><br><span class="line"><span class="javascript">    &#125;,<span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">    <span class="comment">//页面加载进来之后，等待3秒后代码触发按钮的点击</span></span></span><br><span class="line"><span class="javascript">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">        jinuxTrigger(btn,<span class="string">'click'</span>);</span></span><br><span class="line"><span class="undefined">    &#125;,3000);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>谷歌黑语法</title>
       <link href="/2019/01/14/%E8%B0%B7%E6%AD%8C%E9%BB%91%E8%AF%AD%E6%B3%95/"/>
       <url>/2019/01/14/%E8%B0%B7%E6%AD%8C%E9%BB%91%E8%AF%AD%E6%B3%95/</url>
@@ -111,9 +134,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 面试题 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -136,9 +159,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> 网络基础 </tag>
+            
+            <tag> web安全 </tag>
             
         </tags>
       
@@ -715,9 +738,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 网络基础 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
