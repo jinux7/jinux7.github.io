@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>jquery座位插件</title>
+      <link href="/2019/01/29/jquery%E5%BA%A7%E4%BD%8D%E6%8F%92%E4%BB%B6/"/>
+      <url>/2019/01/29/jquery%E5%BA%A7%E4%BD%8D%E6%8F%92%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>一个画座位图的jquery插件<br><a id="more"></a></p><h2 id="jquery座位插件"><a href="#jquery座位插件" class="headerlink" title="jquery座位插件"></a>jquery座位插件</h2><p>最近这两天在画飞机的座位布局图和选座系统，本来想自己直接用原生画出来的，但是领导说其他部门做过相关功能，别的部门用的是jQuery-Seat-Charts这个插件，所以我也得使用。<br><a href="https://github.com/jixoba/jQuery-Seat-Charts" target="_blank" rel="noopener">这里是插件地址，我fork了下来</a><br>其实，这个插件的使用很简单，按照giyhub的文档就可以使用，因为需要定制开发，所以我大致的看了一下源码，觉得很好，主要是它在每个座位上加的事件，如果是我写的话，可能使用click事件，但是它用的focus事件和blur事件，正常情况下只有form表单的一些元素才有focus事件，但是想在div上也使用focus事件的话，需要给这个div加上tabIndex属性，一般情况下设为-1，就可以直接使用div的el.focus()方法了，我觉得这个好处就是，当点击其它座位时，之前focus的座位会触发blur事件，可以在这里做一些操作，简化了代码。<br>以后再画座位的时候还可以使用这个插件，比如电影院选做系统，动车，飞机等，还是很方便的的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jquery </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>手写一个trigger插件</title>
       <link href="/2019/01/22/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAtrigger%E6%8F%92%E4%BB%B6/"/>
       <url>/2019/01/22/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAtrigger%E6%8F%92%E4%BB%B6/</url>
