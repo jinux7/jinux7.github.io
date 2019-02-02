@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: github | jinux</title>
+  <title>git常用命令 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/tags/github/index.html">
+  <meta name="description" content="工作中常用的git命令小总结">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令">
+<meta property="og:url" content="/2019/01/31/git常用命令/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="工作中常用的git命令小总结">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-01T05:08:51.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="git常用命令">
+<meta name="twitter:description" content="工作中常用的git命令小总结">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -148,27 +150,16 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-    <script>
-        window.subData= { title:'tag : github'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/02/github预览静态库页面/">
-                
-                    github预览静态库页面
-                
-            </a>
-        </h2>
+        <article id="post-git常用命令" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                git常用命令
+            
+        </h1>
         <time>
-            2019-01-02 Wednesday
+            2019-01-31 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -178,29 +169,88 @@
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git常用命令"><span class="toc-number">1.</span> <span class="toc-text">git常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先来个简单点的"><span class="toc-number">1.1.</span> <span class="toc-text">先来个简单点的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说点复杂的"><span class="toc-number">1.2.</span> <span class="toc-text">说点复杂的</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>github预览静态库页面<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/01/02/github预览静态库页面/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/github/"><i class="fa fa-tag"></i>&nbsp;&nbsp;github</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>工作中常用的git命令小总结<br><a id="more"></a></p>
+<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><p>git在我们工作中使用的很多，还有想github这样牛逼的代码托管网站，所以，git这个版本管理工具越来越多的被使用，其实git使用起来还是很复杂的，但是，我平时只是提交代码，所以就用到了几个命令而已，在这里做一下记录。</p>
+<h3 id="先来个简单点的"><a href="#先来个简单点的" class="headerlink" title="先来个简单点的"></a>先来个简单点的</h3><ul>
+<li><p>首先就是把现有的项目clone到本地。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jixoba/jQuery-Seat-Charts.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后就是我常用的几个提交命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status  // 查看更改的文件有哪些</span><br><span class="line">git add .   // add后边.的话，就是把所有改动的文件添加进去</span><br><span class="line">git commit -m &quot;提交log信息&quot; // 提交信息</span><br><span class="line">git push    // 最后把更改内容推到远程仓库中</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上就是我经常用到的简单命令，如果有分支的话可能会复杂点，根据提示就可以了</p>
+<h3 id="说点复杂的"><a href="#说点复杂的" class="headerlink" title="说点复杂的"></a>说点复杂的</h3><ul>
+<li><p>新建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branchname // branchname就是分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -a  //查看所有分支</span><br><span class="line">git branch -r  //查看远程分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branchname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆带有分支的项目方法一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b template https://github.com/iview/iview-admin.git  // clone template分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆带有分支的项目方法二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iview/iview-admin.git // clone整个项目</span><br><span class="line"></span><br><span class="line">git branch -a  //列出所有分支名称如下： * 号表示当前分支</span><br><span class="line">  * dev  </span><br><span class="line">  remotes/origin/HEAD -&gt; origin/dev</span><br><span class="line">  remotes/origin/desktop</span><br><span class="line">  remotes/origin/template</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来，可以在本地新建分支并与远程仓库的分支进行关联了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b template origin/template   // 作用是checkout远程仓库origin的分支template，在本地起名为template分支，并切换到本地的template分支</span><br></pre></td></tr></table></figure></li>
+</ul>
 
         </div>
-    
-</section>
 
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/01/29/jquery座位插件/" rel="next" title="jquery座位插件">
+                            jquery座位插件
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'git常用命令',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -290,6 +340,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
