@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>github预览静态库页面 | jinux</title>
+  <title>vue自定义指令之输入框限制字数 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github预览静态库页面">
-<meta name="keywords" content="github">
+  <meta name="description" content="input输入框限制字数的指令制作">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github预览静态库页面">
-<meta property="og:url" content="/2019/01/02/github预览静态库页面/index.html">
+<meta property="og:title" content="vue自定义指令之输入框限制字数">
+<meta property="og:url" content="/2019/03/01/vue自定义指令之输入框限制字数/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="github预览静态库页面">
+<meta property="og:description" content="input输入框限制字数的指令制作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T00:52:33.164Z">
+<meta property="og:updated_time" content="2019-03-01T06:51:59.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github预览静态库页面">
-<meta name="twitter:description" content="github预览静态库页面">
+<meta name="twitter:title" content="vue自定义指令之输入框限制字数">
+<meta name="twitter:description" content="input输入框限制字数的指令制作">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -150,15 +150,15 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-github预览静态库页面" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-vue自定义指令之输入框限制字数" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                github预览静态库页面
+                vue自定义指令之输入框限制字数
             
         </h1>
         <time>
-            2019-01-02 Wednesday&nbsp;&nbsp;
+            2019-03-01 Friday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#github预览静态库页面"><span class="toc-number">1.</span> <span class="toc-text">github预览静态库页面</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue自定义指令之输入框限制字数"><span class="toc-number">1.</span> <span class="toc-text">vue自定义指令之输入框限制字数</span></a></li></ol>
             </div>
         </section>
     
@@ -181,16 +181,20 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>github预览静态库页面<br><a id="more"></a></p>
-<h2 id="github预览静态库页面"><a href="#github预览静态库页面" class="headerlink" title="github预览静态库页面"></a>github预览静态库页面</h2><p>类似于 <a href="https://jinux7.github.io" target="_blank" rel="noopener">https://jinux7.github.io</a> 这样的github静态网站展示大家都知道怎么弄，在网上可以搜索到很多教程，我自己的blog网站就是这么搞的，但是这种方法我发现一个github账户只能弄出一个，今天我想说的是另一种方式，直接可以访问到普通库里的静态页面。<br>这里需要github提供的一个服务地址，见下边：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://htmlpreview.github.io/?https://raw.githubusercontent.com/jixoba/mobile_company/master/index.html</span><br></pre></td></tr></table></figure></p>
-<p>上边的这段地址就可以访问普通库里的静态页面了，注意jixoba/mobile_company这个，是库的名称，只需要更改这个库名，其它地方不需要动。</p>
+            <p>input输入框限制字数的指令制作<br><a id="more"></a></p>
+<h2 id="vue自定义指令之输入框限制字数"><a href="#vue自定义指令之输入框限制字数" class="headerlink" title="vue自定义指令之输入框限制字数"></a>vue自定义指令之输入框限制字数</h2><p>vue自定义指令没啥说的，说明见<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank" rel="noopener">官网</a>,具体代码见下面:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'inputvalidatecounter'</span>, &#123;</span><br><span class="line">  inserted: <span class="function"><span class="keyword">function</span> (<span class="params">el, binding</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nSpan = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>),</span><br><span class="line">        nInput = el.querySelector(<span class="string">'input'</span>),</span><br><span class="line">        count = +binding.expression || <span class="number">50</span>;</span><br><span class="line">    el.appendChild(nSpan);</span><br><span class="line">    nSpan.innerHTML = <span class="string">'还可以填写'</span>+count+<span class="string">'字'</span>;</span><br><span class="line">    nInput.addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> num = count - <span class="keyword">this</span>.value.length;</span><br><span class="line">      <span class="keyword">if</span>(num&lt;=<span class="number">0</span>) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">var</span> substr = <span class="keyword">this</span>.value.substring(<span class="number">0</span>,count<span class="number">-1</span>);</span><br><span class="line">          <span class="keyword">this</span>.value = substr;</span><br><span class="line">        &#125;, <span class="number">10</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      nSpan.innerHTML = <span class="string">'还可以填写'</span>+(num&lt;<span class="number">0</span>?<span class="number">0</span>:num)+<span class="string">'字'</span>;</span><br><span class="line">    &#125;, <span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的地方：</p>
+<ul>
+<li>这个指令只适用于iview的Input组件，看里边操作dom元素就可以看出来，想改成其它的也是简单。</li>
+<li>在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。</li>
+</ul>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/github/"><i class="fa fa-tag"></i>&nbsp;&nbsp;github</a>
+                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
                 
             </div>
         
@@ -198,17 +202,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2019/01/03/es6-async-await/" rel="prev" title="es6-async-await">
-                            es6-async-await
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2018/12/18/cordova-android打包配置详解/" rel="next" title="cordova android打包配置详解">
-                            cordova android打包配置详解
+                        <a href="/2019/02/27/js图片下载之后端部分/" rel="next" title="js图片下载之后端部分">
+                            js图片下载之后端部分
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -227,7 +224,7 @@
 
 <script>
     window.subData = {
-        title: 'github预览静态库页面',
+        title: 'vue自定义指令之输入框限制字数',
         tools: true
     }
 </script>
