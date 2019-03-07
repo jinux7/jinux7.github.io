@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="input输入框限制字数的指令制作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T06:51:59.946Z">
+<meta property="og:updated_time" content="2019-03-04T08:15:45.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue自定义指令之输入框限制字数">
 <meta name="twitter:description" content="input输入框限制字数的指令制作">
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue自定义指令之输入框限制字数"><span class="toc-number">1.</span> <span class="toc-text">vue自定义指令之输入框限制字数</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue自定义指令之输入框限制字数"><span class="toc-number">1.</span> <span class="toc-text">vue自定义指令之输入框限制字数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。"><span class="toc-number"></span> <span class="toc-text">在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。</span></a>
             </div>
         </section>
     
@@ -186,8 +186,10 @@
 <p>需要注意的地方：</p>
 <ul>
 <li>这个指令只适用于iview的Input组件，看里边操作dom元素就可以看出来，想改成其它的也是简单。</li>
-<li>在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。</li>
+<li><h1 id="在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。"><a href="#在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。" class="headerlink" title="在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。"></a>在更改input的value的时候，最开始改不过来，后来我做了下延迟才解决这个问题，我想应该是在直接给input的value赋值后由于vue还在做监控，所以又给改回去了，所以来个延迟，在它监控触发结束后再改正。</h1>2019年3月4日更改<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'inputvalidatecounter'</span>, &#123;</span><br><span class="line">  inserted: <span class="function"><span class="keyword">function</span> (<span class="params">el, binding, vnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nSpan = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>),</span><br><span class="line">        nInput = el.querySelector(<span class="string">'input'</span>) || el.querySelector(<span class="string">'textarea'</span>),</span><br><span class="line">        count = +binding.expression || <span class="number">50</span>;</span><br><span class="line">    el.appendChild(nSpan);</span><br><span class="line">    nSpan.innerHTML = <span class="string">'还可以填写'</span>+count+<span class="string">'字'</span>;</span><br><span class="line">    nInput.addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> num = count - <span class="keyword">this</span>.value.length;</span><br><span class="line">      <span class="keyword">if</span>(num&lt;=<span class="number">0</span>) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">var</span> substr = <span class="keyword">this</span>.value.substring(<span class="number">0</span>,count);</span><br><span class="line">          <span class="keyword">this</span>.value = substr;</span><br><span class="line">          <span class="comment">// 新添加开始</span></span><br><span class="line">          <span class="keyword">var</span> keyArr = vnode.data.model.expression.split(<span class="string">'.'</span>);</span><br><span class="line">          <span class="keyword">var</span> evalStr = <span class="string">'vnode.context._data'</span>;</span><br><span class="line">          keyArr.forEach(<span class="function">(<span class="params">item, index</span>)=&gt;</span> &#123;</span><br><span class="line">            evalStr += <span class="string">'["'</span>+item+<span class="string">'"]'</span>;</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="built_in">eval</span>(evalStr+<span class="string">'="'</span>+<span class="keyword">this</span>.value+<span class="string">'"'</span>)</span><br><span class="line">          <span class="comment">// 新添加结束</span></span><br><span class="line">        &#125;, <span class="number">10</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      nSpan.innerHTML = <span class="string">'还可以填写'</span>+(num&lt;<span class="number">0</span>?<span class="number">0</span>:num)+<span class="string">'字'</span>;</span><br><span class="line">    &#125;, <span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>新添加的内容只有几行，其实是为了修改第一版的bug，当在input里输入内容的时候，超过一定字数后，进入延迟函数，这里把input的value值更改了，但是并没有更改这个指令所在组件里v-model的值，所以，这里需要修正。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vnode是这个指令所在的组建的虚拟dom</span></span><br><span class="line"><span class="comment">// vnode.data.model.expression 这就可以直接找到v-model里的变量名</span></span><br><span class="line"><span class="keyword">var</span> keyArr = vnode.data.model.expression.split(<span class="string">'.'</span>);</span><br><span class="line"><span class="comment">// vnode知道了，vnode.context很显然就是组件所在的父级组件，可以通过 _data 这个数据去改变v-model里变量的值。</span></span><br><span class="line"><span class="keyword">var</span> evalStr = <span class="string">'vnode.context._data'</span>;</span><br><span class="line">keyArr.forEach(<span class="function">(<span class="params">item, index</span>)=&gt;</span> &#123;</span><br><span class="line">  evalStr += <span class="string">'["'</span>+item+<span class="string">'"]'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 经过上边的循环是因为这种情况, v-model="formitem.name"，像这种的值，而不是v-model="name"这种。</span></span><br><span class="line"><span class="comment">// 最后需要eval来执行这些字符串组成的代码。</span></span><br><span class="line"><span class="built_in">eval</span>(evalStr+<span class="string">'="'</span>+<span class="keyword">this</span>.value+<span class="string">'"'</span>)</span><br></pre></td></tr></table></figure></p>
 
         </div>
 
@@ -201,6 +203,13 @@
 
         
             <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/03/05/移动端兼容性-html标签/" rel="prev" title="移动端兼容性-html标签">
+                            移动端兼容性-html标签
+                        </a>
+                    </span>
                 
                 
                     <span class="art-item-right">
@@ -248,7 +257,7 @@
     
         <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>1</div></a></li>
     
-        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>36</div></a></li>
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>37</div></a></li>
     
         <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>3</div></a></li>
     
@@ -266,7 +275,7 @@
 <div class="m_widget tagcloud">
     <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
     <div class='content'>
-        <a href="/tags/ajax/" style="font-size: 16px; color: #8b8b8b">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/jquery/" style="font-size: 18px; color: #7e7e7e">jquery</a> <a href="/tags/js工具库/" style="font-size: 18px; color: #7e7e7e">js工具库</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 20px; color: #707070">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 16px; color: #8b8b8b">webpack</a> <a href="/tags/web安全/" style="font-size: 18px; color: #7e7e7e">web安全</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18px; color: #7e7e7e">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/网络基础/" style="font-size: 18px; color: #7e7e7e">网络基础</a> <a href="/tags/面试题/" style="font-size: 22px; color: #636363">面试题</a>
+        <a href="/tags/ajax/" style="font-size: 16px; color: #8b8b8b">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/jquery/" style="font-size: 18px; color: #7e7e7e">jquery</a> <a href="/tags/js工具库/" style="font-size: 18px; color: #7e7e7e">js工具库</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 20px; color: #707070">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 16px; color: #8b8b8b">webpack</a> <a href="/tags/web安全/" style="font-size: 18px; color: #7e7e7e">web安全</a> <a href="/tags/兼容性/" style="font-size: 14px; color: #999">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18px; color: #7e7e7e">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/移动端/" style="font-size: 14px; color: #999">移动端</a> <a href="/tags/网络基础/" style="font-size: 18px; color: #7e7e7e">网络基础</a> <a href="/tags/面试题/" style="font-size: 22px; color: #636363">面试题</a>
     </div>
 </div>
 
