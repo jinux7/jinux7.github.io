@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ajax携带cookie | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ajax同域和跨域情况下携带cookie问题">
+<meta name="keywords" content="ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax携带cookie">
+<meta property="og:url" content="/2019/04/15/ajax携带cookie/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="ajax同域和跨域情况下携带cookie问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-15T08:59:48.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax携带cookie">
+<meta name="twitter:description" content="ajax同域和跨域情况下携带cookie问题">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ajax携带cookie" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                ajax携带cookie
+            
+        </h1>
+        <time>
+            2019-04-15 Monday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ajax携带cookie"><span class="toc-number">1.</span> <span class="toc-text">ajax携带cookie</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>ajax同域和跨域情况下携带cookie问题<br><a id="more"></a></p>
+<h2 id="ajax携带cookie"><a href="#ajax携带cookie" class="headerlink" title="ajax携带cookie"></a>ajax携带cookie</h2><p>这是一个老生常谈的问题，但是时间长了总容易忘掉，今天记录下来，以便下次方便记起来。</p>
+<p>首先，今天我遇到了一个坑，chrome浏览无论是同域还是跨域状态下，浏览器request headers里居然都不显示，刚开始我还以为是设置错了，后来发现其他浏览器都显示，我想有可能是chrome浏览器安全考虑吧，但是，这并不影响后台接收，只是不显示而已。</p>
+<p>同域下无可厚非，什么都不用做就会带上cookie。</p>
+<p>跨域下的设置：<br>浏览器端，需要设置withCredentials为true<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生方式</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://example.com/'</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jquery方式</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">        url: <span class="string">"http://192.168.252.12:3006/post_form"</span>,</span><br><span class="line">        type: <span class="string">'POST'</span>,</span><br><span class="line">        xhrFields: &#123;</span><br><span class="line">            withCredentials: <span class="literal">true</span> <span class="comment">// 这里设置了withCredentials</span></span><br><span class="line">        &#125;,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data)</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.error(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// axios方式</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line">axios.defaults.withCredentials = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
+<p>再来说说后端的设置，以nodejs的express为例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回头设置</span></span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://localhost:9000"</span>); <span class="comment">// 注意，这里不能写*,应该是具体的地址</span></span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"true"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>最后附上demo代码：<br>前端<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">  &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script src="jquery.js"&gt;&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  ajax cookie demo</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">            url: <span class="string">"http://192.168.252.12:3006/post_form"</span>,</span><br><span class="line">            type: <span class="string">'POST'</span>,</span><br><span class="line">            xhrFields: &#123;</span><br><span class="line">                withCredentials: <span class="literal">true</span> <span class="comment">// 这里设置了withCredentials</span></span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(data)</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.error(err)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>后端<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> multiparty = <span class="built_in">require</span>(<span class="string">'multiparty'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>); </span><br><span class="line"></span><br><span class="line">app.set(<span class="string">'port'</span>,process.env.PORT || <span class="number">3006</span>);   <span class="comment">//设置端口</span></span><br><span class="line"></span><br><span class="line">app.all(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://localhost:9000"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"true"</span>);</span><br><span class="line"></span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"client-token,Content-Type,Content-Length, Authorization, Accept,X-Requested-With"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br><span class="line">    res.header(<span class="string">"X-Powered-By"</span>,<span class="string">' 3.2.1'</span>);</span><br><span class="line">    <span class="keyword">if</span>(req.method==<span class="string">"OPTIONS"</span>) res.send(<span class="number">200</span>); <span class="comment">//让options请求快速返回</span></span><br><span class="line">    <span class="keyword">else</span>  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用static中间件 制定public目录为静态资源目录,其中资源不会经过任何处理</span></span><br><span class="line">app.use(express.static(__dirname + <span class="string">'/public'</span>));</span><br><span class="line">app.use(bodyParser.json()); <span class="comment">// for parsing application/json</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;)); <span class="comment">// for parsing application/x-www-form-urlencoded</span></span><br><span class="line">app.use(cookieParser()); <span class="comment">// cookie解析</span></span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/post_form'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            name: req.body.name,</span><br><span class="line">            info: req.body.info,</span><br><span class="line">            hostName: req.hostname</span><br><span class="line">        &#125;;</span><br><span class="line">        res.cookie(<span class="string">"add"</span>, <span class="string">'test456'</span>, &#123;<span class="attr">maxAge</span>: <span class="number">900000</span>, <span class="attr">httpOnly</span>: <span class="literal">true</span>&#125;); <span class="comment">// 设置cookie</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'cookie-&gt;'</span> + req.cookies.add); <span class="comment">// 读取cookie</span></span><br><span class="line">        res.send(data);  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">'服务器启动完成，端口为： '</span>+app.get(<span class="string">'port'</span>) );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/ajax/"><i class="fa fa-tag"></i>&nbsp;&nbsp;ajax</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/04/15/http请求头响应头字段详解/" rel="prev" title="http请求头响应头字段详解">
+                            http请求头响应头字段详解
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/04/10/let存在变量提升吗/" rel="next" title="let存在变量提升吗?">
+                            let存在变量提升吗?
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'ajax携带cookie',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>43</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>3</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 20px; color: #707070">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/jquery/" style="font-size: 18px; color: #7e7e7e">jquery</a> <a href="/tags/js工具库/" style="font-size: 18px; color: #7e7e7e">js工具库</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 20px; color: #707070">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 16px; color: #8b8b8b">webpack</a> <a href="/tags/web安全/" style="font-size: 18px; color: #7e7e7e">web安全</a> <a href="/tags/兼容性/" style="font-size: 14px; color: #999">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18px; color: #7e7e7e">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/移动端/" style="font-size: 14px; color: #999">移动端</a> <a href="/tags/网络基础/" style="font-size: 20px; color: #707070">网络基础</a> <a href="/tags/面试题/" style="font-size: 22px; color: #636363">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
