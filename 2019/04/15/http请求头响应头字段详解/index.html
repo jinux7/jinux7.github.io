@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="http请求头和返回头字段的解释">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-16T07:09:09.914Z">
+<meta property="og:updated_time" content="2019-04-16T08:35:39.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http请求头响应头字段详解">
 <meta name="twitter:description" content="http请求头和返回头字段的解释">
@@ -332,7 +332,8 @@
 </li>
 <li><p>Public-Key-Pins 设置站点的授权TLS证书<br>Public-Key-Pins: max-age=2592000; pin-sha256=”E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=”;</p>
 </li>
-<li><p>Refresh “重定向或者新资源创建时使用，在页面的头部有个扩展可以实现相似的功能，并且大部分浏览器都支持<br><meta http-equiv="refresh" content="5; url=http://example.com/"><br>Refresh: 5; url=<a href="http://www.w3.org/pub/WWW/People.html" target="_blank" rel="noopener">http://www.w3.org/pub/WWW/People.html</a></p>
+<li><p>Refresh “重定向或者新资源创建时使用，在页面的头部有个扩展可以实现相似的功能，并且大部分浏览器都支持</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"5; url=http://example.com/"</span>&gt;</span><br><span class="line">Refresh: <span class="number">5</span>; url=http:<span class="comment">//www.w3.org/pub/WWW/People.html</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Retry-After 如果实体暂时不可用，可以设置这个值让客户端重试，可以使用时间段（单位是秒）或者HTTP时间<br>Example 1: Retry-After: 120<br>Example 2: Retry-After: Fri, 07 Nov 2014 23:59:59 GMT</p>
 </li>
