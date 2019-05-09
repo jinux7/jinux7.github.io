@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>import和require的本质区别</title>
+      <link href="/2019/05/09/import%E5%92%8Crequire%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/"/>
+      <url>/2019/05/09/import%E5%92%8Crequire%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<p>简单的说一下import和require的本质区别<br><a id="more"></a></p><h2 id="import和require的本质区别"><a href="#import和require的本质区别" class="headerlink" title="import和require的本质区别"></a>import和require的本质区别</h2><p>import是ES6的模块规范，require是commonjs的模块规范，详细的用法我不介绍，我只想说一下他们最基本的区别，import是静态加载模块，require是动态加载，那么静态加载和动态加载的区别是什么呢？<br>静态加载时代码在编译的时候已经执行了，动态加载是编译后在代码运行的时候再执行，那么具体点是什么呢？<br>先说说import，如下代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">'name.js'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// name.js文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name = <span class="string">'jinux'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> age = <span class="number">20</span></span><br></pre></td></tr></table></figure></p><p>上面的代码表示main.js文件里引入了name.js文件导出的变量，在代码编译阶段执行后的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'jinux'</span></span><br></pre></td></tr></table></figure></p><p>这个是我自己理解的，其实就是直接把name.js里的代码放到了main.js文件里，好比是在main.js文件中声明一样。<br>再来看看require<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="built_in">require</span>(<span class="string">'obj.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// obj.js文件</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'jinux'</span>,</span><br><span class="line">  age: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.export obj;</span><br></pre></td></tr></table></figure></p><p>require是在运行阶段，需要把obj对象整个加载进内存，之后用到哪个变量就用哪个，这里再对比一下import，import是静态加载，如果只引入了name，age是不会引入的，所以是按需引入，性能更高。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>http常用状态码</title>
       <link href="/2019/05/06/http%E5%B8%B8%E7%94%A8%E7%8A%B6%E6%80%81%E7%A0%81/"/>
       <url>/2019/05/06/http%E5%B8%B8%E7%94%A8%E7%8A%B6%E6%80%81%E7%A0%81/</url>

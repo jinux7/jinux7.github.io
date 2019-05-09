@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>vue-iview Modal组件简单分析 | jinux</title>
+  <title>Archives: 2019 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,21 +12,16 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue-iview Modal组件简单分析">
-<meta name="keywords" content="vue">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue-iview Modal组件简单分析">
-<meta property="og:url" content="/2018/12/04/vue-iview-Modal组件简单分析/index.html">
+  <meta name="description" content="前端 学习 javascript">
+<meta property="og:type" content="website">
+<meta property="og:title" content="jinux">
+<meta property="og:url" content="/archives/2019/page/3/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="vue-iview Modal组件简单分析">
+<meta property="og:description" content="前端 学习 javascript">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2018/12/04/vue-iview-Modal组件简单分析/1.png">
-<meta property="og:image" content="/2018/12/04/vue-iview-Modal组件简单分析/2.png">
-<meta property="og:updated_time" content="2018-12-05T02:22:50.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue-iview Modal组件简单分析">
-<meta name="twitter:description" content="vue-iview Modal组件简单分析">
-<meta name="twitter:image" content="/2018/12/04/vue-iview-Modal组件简单分析/1.png">
+<meta name="twitter:title" content="jinux">
+<meta name="twitter:description" content="前端 学习 javascript">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -153,16 +148,28 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-vue-iview-Modal组件简单分析" class="post white-box article-type-post" itemscope itemprop="blogPost">
-    <section class='meta'>
-        <h1 class="title">
-            
-                vue-iview Modal组件简单分析
-            
-        </h1>
+        
+	
+    <script>
+        window.subData= { title:'year : 2019'}
+    </script>
+
+
+<section class="post-list">
+    
+    
+        <div class='post-wrapper'>
+    <article class="post reveal">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2019/01/02/github预览静态库页面/">
+                
+                    github预览静态库页面
+                
+            </a>
+        </h2>
         <time>
-            2018-12-04 Tuesday&nbsp;&nbsp;
-            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+            2019-01-02 Wednesday
         </time>
         
     
@@ -172,70 +179,41 @@
 
 
     </section>
-    
-        <section class="toc-wrapper">
-            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
-            <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-iview-Modal组件简单分析"><span class="toc-number">1.</span> <span class="toc-text">vue-iview Modal组件简单分析</span></a></li></ol>
-            </div>
-        </section>
-    
 
     <section class="article typo">
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>vue-iview Modal组件简单分析<br><a id="more"></a></p>
-<h2 id="vue-iview-Modal组件简单分析"><a href="#vue-iview-Modal组件简单分析" class="headerlink" title="vue-iview Modal组件简单分析"></a>vue-iview Modal组件简单分析</h2><p>现在公司的项目前端框架用的是vue，在工作中避免不了要写一些组件，其实写组件的方法千千种，怎么写都行，但是，总想写出来的组件像一些ui框架里的组件一样高大上，于是乎，今天有点时间，大致的看了一下iview的Modal组件，简单的记录一下思想。<br>由于时间原因，代码并没有深入往里边看，只是把大致的框框看了一下。<br>首先，我们看看Modal组件的用法，<a href="https://www.iviewui.com/components/modal#API" target="_blank" rel="noopener">官方文档点这里</a><br>简单的用法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Modal v-model=<span class="string">"modal12"</span> draggable scrollable title=<span class="string">"Modal 1"</span>&gt;</span><br><span class="line">    &lt;div&gt;This is the first modal&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>Modal&gt;</span><br><span class="line"><span class="comment">// 上边这个是基础写法</span></span><br><span class="line"><span class="comment">// 下边这个写法可以直接调用，不需要在html中写出&lt;Modal&gt;&lt;/Modal&gt;标签</span></span><br><span class="line"><span class="keyword">this</span>.$Modal.info(config)</span><br><span class="line"><span class="keyword">this</span>.$Modal.success(config)</span><br></pre></td></tr></table></figure></p>
-<p>先看一下iview的Modal组件文件夹结构<br><img src="/2018/12/04/vue-iview-Modal组件简单分析/1.png" alt="img"><br>index文件是入口文件，里边导出了Modal对象。也就是可以使用<modal></modal>标签的原因，因为给Modal对象加一大堆方法，但是它还是一个vue的基础组件。大家可能注意到了，当使用<modal></modal>标签定义组建的时候，发现最后组件的dom元素被插入到了body下，而不是在具体引入的位置，这是因为Modal组件里有一个指令：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Modal组件里有</span></span><br><span class="line">directives: &#123; TransferDom &#125;</span><br><span class="line"><span class="comment">// 追溯TransferDom指令，发现有如下代码</span></span><br><span class="line">parentNode.replaceChild(home, el); <span class="comment">// moving out, el is no longer in the document</span></span><br><span class="line">getTarget(value).appendChild(el); <span class="comment">// moving into new place</span></span><br></pre></td></tr></table></figure></p>
-<p>modal.vue文件是组件的基础文件，也就是页面显示出来的东西，index文件里的东西可以看出来，只是给Modal对象添加了一些静态方法，为了this.$Modal.info(config)这样调用的时候使用。<br>confrim文件里主要做了this.$Modal.info()这样调用的时候动态new Vue()实例，也是以modal.vue这个组件为基础，动态的插入到body节点里，代码见下边:<br><img src="/2018/12/04/vue-iview-Modal组件简单分析/2.png" alt="img"><br>就是通过new Vue()的实例获取到这个组建的html代码片段，再插入到body节点中。<br>最后，再看看iview如何变成vue的全局组件的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> install = <span class="function"><span class="keyword">function</span>(<span class="params">Vue, opts = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里添加全局组件</span></span><br><span class="line">    <span class="built_in">Object</span>.keys(iview).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        Vue.component(key, iview[key]);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里添加实例方法</span></span><br><span class="line">    Vue.prototype.$Modal = Modal;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>以上就是大概思路哈。</p>
-
-        </div>
-
+        <p>github预览静态库页面<br></p>
         
-            <div class="article-tags tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
+            <div class="readmore">
+                <a href="/2019/01/02/github预览静态库页面/" class="flat-box">READ MORE</a>
             </div>
         
 
         
-            <div class="art-item-footer">
+            <div class="full-width auto-padding tags">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2018/12/07/nodejs搭建https服务器/" rel="prev" title="nodejs搭建https服务器">
-                            nodejs搭建https服务器
-                        </a>
-                    </span>
-                
-                
-                    <span class="art-item-right">
-                        <a href="/2018/11/30/小巧的html模板引擎/" rel="next" title="小巧的html模板引擎">
-                            小巧的html模板引擎
-                        </a>&nbsp;
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </span>
+                    <a href="/tags/github/"><i class="fa fa-tag"></i>&nbsp;&nbsp;github</a>
                 
             </div>
         
-
     </section>
-
 </article>
 
-<br>
+        </div>
+    
+</section>
 
-<!-- 显示推荐文章和评论 -->
+
+    <nav id="page-nav">
+        
+            <a class="prev" rel="prev" href="/archives/2019/page/2/">
+                <span class="icon icon-chevron-left"></span>
+                <span class="text">PREVIOUS</span>
+            </a>
+        
+        
+    </nav>
 
 
-<script>
-    window.subData = {
-        title: 'vue-iview Modal组件简单分析',
-        tools: true
-    }
-</script>
 
 
       </div>
@@ -325,10 +303,6 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
-
-    
-    
-    
 
 
   <script>setLoadingBarProgress(100);</script>
