@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>cordova android打包配置详解 | jinux</title>
+  <title>windows下git命令批处理执行 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,21 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cordova打包android app">
-<meta name="keywords" content="cordova">
+  <meta name="description" content="win10操作系统下利用批处理程序来运行git操作。">
+<meta name="keywords" content="基础知识,github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cordova android打包配置详解">
-<meta property="og:url" content="/2018/12/18/cordova-android打包配置详解/index.html">
+<meta property="og:title" content="windows下git命令批处理执行">
+<meta property="og:url" content="/2019/05/24/windows下git命令批处理执行/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="cordova打包android app">
+<meta property="og:description" content="win10操作系统下利用批处理程序来运行git操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T05:22:57.679Z">
+<meta property="og:image" content="/2019/05/24/windows下git命令批处理执行/1.png">
+<meta property="og:image" content="/2019/05/24/windows下git命令批处理执行/2.png">
+<meta property="og:updated_time" content="2019-05-27T03:13:50.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova android打包配置详解">
-<meta name="twitter:description" content="cordova打包android app">
+<meta name="twitter:title" content="windows下git命令批处理执行">
+<meta name="twitter:description" content="win10操作系统下利用批处理程序来运行git操作。">
+<meta name="twitter:image" content="/2019/05/24/windows下git命令批处理执行/1.png">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -150,21 +153,21 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-cordova-android打包配置详解" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-windows下git命令批处理执行" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                cordova android打包配置详解
+                windows下git命令批处理执行
             
         </h1>
         <time>
-            2018-12-18 Tuesday&nbsp;&nbsp;
+            2019-05-24 Friday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
+        <a href="/categories/计算机原理/">计算机原理</a>
     </div>
 
 
@@ -173,7 +176,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cordova-android打包配置详解"><span class="toc-number">1.</span> <span class="toc-text">cordova android打包配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-安装JDK"><span class="toc-number">1.1.</span> <span class="toc-text">一 安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-安装SDK"><span class="toc-number">1.2.</span> <span class="toc-text">二 安装SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-安装Gradle"><span class="toc-number">1.3.</span> <span class="toc-text">三 安装Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-安装cordova"><span class="toc-number">1.4.</span> <span class="toc-text">四 安装cordova</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows下git命令批处理执行"><span class="toc-number">1.</span> <span class="toc-text">windows下git命令批处理执行</span></a></li></ol>
             </div>
         </section>
     
@@ -181,21 +184,21 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>cordova打包android app<br><a id="more"></a></p>
-<h2 id="cordova-android打包配置详解"><a href="#cordova-android打包配置详解" class="headerlink" title="cordova android打包配置详解"></a>cordova android打包配置详解</h2><p>前几天在网上看到了cordova的东西，之前有过鼓捣react native和weex，所以看看它有什么特点。<br>由于我用的是win10系统，所以在配置环境的时候相当的麻烦，这里稍微的屡一下。</p>
-<h3 id="一-安装JDK"><a href="#一-安装JDK" class="headerlink" title="一 安装JDK"></a>一 安装JDK</h3><p>JDK是java的开发工具包，因为我们打包安卓的apk文件，安卓是依赖java的，所以这个必须安装。<br>我刚开始安装的是最新版的，但是与cordova版本好像不是很搭，于是安装了JDK8这个版本。<br>安装好了之后要配置环境变量，首先是新建变量名JAVA_HOME，指向JDK的安装目录，之后再配置一下path，指向JDK里的bin目录。<br>再配置一下jre的path，也是指向jre里的bin目录。（jre安装有的直接安装JDK的时候顺便安装了，有的版本需要另外单独安装）</p>
-<h3 id="二-安装SDK"><a href="#二-安装SDK" class="headerlink" title="二 安装SDK"></a>二 安装SDK</h3><p>SDK稍微有点复杂，首先还是下载SDK并且安装，这里需要注意，安装路径，我用的win10，必须安装在 用户/用户名/AppData/Local,<br>其它系统可能无所谓。安装好了之后，还是配置环境变量，新建变量名ANDROID_SDK_HOME，指向安装的SDK目录，再配置path，指向SDK下的<br>tools和platform-tools。</p>
-<h3 id="三-安装Gradle"><a href="#三-安装Gradle" class="headerlink" title="三 安装Gradle"></a>三 安装Gradle</h3><p>Gradle好像是一个打包工具，直接下载安装，之后配置一下Gradle的bin目录环境变量。</p>
-<h3 id="四-安装cordova"><a href="#四-安装cordova" class="headerlink" title="四 安装cordova"></a>四 安装cordova</h3><p>cordova的安装和运行需要nodejs，所以用npm来安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g cordova@6.1.1</span><br></pre></td></tr></table></figure></p>
-<p>注意，这里我安装的是6.1.1版本，高版本莫名其妙的报错，这个稳妥一些。<br>之后就是使用cordova来创建项目喽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cordova create app jinux.com.cn app  // 创建一个项目</span><br><span class="line">cd app // 进入app项目</span><br><span class="line">cordova platform android  // 添加安卓模板</span><br><span class="line">cordova requirements  // 查看打包缺少什么依赖项</span><br><span class="line">cordova build android  // 打包apk</span><br></pre></td></tr></table></figure></p>
-<p>以上的这些命令，在查看依赖项的时候肯定回报一些错误，SDK的一些依赖没有安装，进入SDK文件夹，打开SDK Manager.exe，根据依赖的提示下载相应的包，注意，这里是从谷歌上拉取，所以要开代理哦。<br>第一次build的时候，Gradle需要从网络上下载一堆包，还是注意需要代理拉取谷歌的文件，很慢的，耐心等待。<br>*下面是一个别人写的cordova博文，可供参考<br><a href="http://www.xiaoxiaohan.com/js/58.html#comments" target="_blank" rel="noopener">参考</a></p>
+            <p>win10操作系统下利用批处理程序来运行git操作。<br><a id="more"></a></p>
+<h2 id="windows下git命令批处理执行"><a href="#windows下git命令批处理执行" class="headerlink" title="windows下git命令批处理执行"></a>windows下git命令批处理执行</h2><p>首先，我说一下我要这样做的起因，也许大家都会有感。<br>目前，我在做的项目是一个，但是下面分了5个子项目，这5个子项目，每一个自己拥有一个git仓库，所以，我在上传代码的操作就是，commit-&gt;pull-&gt;push,这样反复5回，因为有5个仓库嘛。有时候一天要好多次，效率太低了，于是我就想起了利用windows系统的批处理来做。<br>在使用批处理来操作git命令，首先需要把git的操作仓库方式改为ssh，使用ssh的话，还需要ssh key，ssh key的生成方法是，打开git的命令行工具，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 首先检查一下现在电脑里是否已经有生成的ssh key</span><br><span class="line">cd ~/.ssh</span><br><span class="line">// ~这个符号我在git命令行下才能打出来，cmd没打出来。</span><br><span class="line">// ~/ 这个路径就是C:\Users\kaiya这个，看看现在是否已经有现成的ssh key</span><br><span class="line">// 如果有，就不用再生成了</span><br><span class="line"></span><br><span class="line">// 接下来是生成ssh key命令</span><br><span class="line">ssh-keygen -t rsa -C &quot;124076***@qq.com&quot;</span><br><span class="line">// 需要自己在电脑中注册的git邮箱,如果不知道，可以查一下 git config --global user.email</span><br><span class="line">// 生成的ssh key自动保存在C:\Users\kaiya这个目录下（这个是我的用户名）</span><br><span class="line">// 生成过程中一路回车就好，不用设置密码等</span><br></pre></td></tr></table></figure></p>
+<p>有了ssh key，添加到github或自己公司的gitlab上就好了。<br>比如要添加到github上，登录账号进入自己的github库，步骤见下图<br><img src="/2019/05/24/windows下git命令批处理执行/1.png" alt="img"><br><img src="/2019/05/24/windows下git命令批处理执行/2.png" alt="img"><br>点进去之后，按照页面提示填写就可以了。<br>以上就是配置好了ssh key，之后就是用git拉取，推送代码了，这里有一个地方需要注意，那就是Git对仓库的操作方式，既然已经添加了ssh key，就需要用git的ssh提交方式。查看.git文件夹下的config文件，找到下面的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">  // 这个是ssh提交方式</span><br><span class="line">	url = git@172.24.112.158:root/airport.git</span><br><span class="line">  </span><br><span class="line">  // 这个是http提交方式</span><br><span class="line">  url = http://172.24.112.158/root/webviewpage</span><br><span class="line"></span><br><span class="line">	fetch = +refs/heads/*:refs/remotes/origin/*</span><br></pre></td></tr></table></figure></p>
+<p>按照上面的写法，只留下ssh提交方式即可。<br>接下来，我们来写windows的批处理命令,先写一个处理一个仓库的git操作批处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">chcp 65001</span><br><span class="line">cd C:\WORK\git-ku\ejashop</span><br><span class="line">@echo off</span><br><span class="line">echo git批处理开始执行</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git pull</span><br><span class="line">git push</span><br><span class="line">echo ----------</span><br><span class="line">echo git commit pull push都已完成，点击任意键退出</span><br><span class="line">pause</span><br></pre></td></tr></table></figure></p>
+<p>再写一个调用多个批处理文件的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chcp 65001</span><br><span class="line">pause</span><br><span class="line">start /D &quot;C:\Users\kaiya\Desktop\批处理node\git&quot; call ehome.bat</span><br><span class="line">start /D &quot;C:\Users\kaiya\Desktop\批处理node\git&quot; call airport.bat</span><br><span class="line">start /D &quot;C:\Users\kaiya\Desktop\批处理node\git&quot; call eHomeOperation.bat</span><br><span class="line">start /D &quot;C:\Users\kaiya\Desktop\批处理node\git&quot; call kaidian.bat</span><br></pre></td></tr></table></figure></p>
+<p>这里，需要注意一下，因为批处理是在cmd命令行下执行的，所以要把git的环境变量配好哦。<br>好了，通过这样的方法，以后麻烦的git操作，点击一下就可以搞定喽。</p>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/cordova/"><i class="fa fa-tag"></i>&nbsp;&nbsp;cordova</a>
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+                    <a href="/tags/github/"><i class="fa fa-tag"></i>&nbsp;&nbsp;github</a>
                 
             </div>
         
@@ -203,17 +206,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2019/01/02/github预览静态库页面/" rel="prev" title="github预览静态库页面">
-                            github预览静态库页面
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2018/12/11/setTimeout-async-Promise执行顺序/" rel="next" title="setTimeout&amp;async&amp;Promise执行顺序">
-                            setTimeout&amp;async&amp;Promise执行顺序
+                        <a href="/2019/05/20/多个ajax请求-页面渲染顺序问题/" rel="next" title="多个ajax请求,页面渲染顺序问题">
+                            多个ajax请求,页面渲染顺序问题
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -232,7 +228,7 @@
 
 <script>
     window.subData = {
-        title: 'cordova android打包配置详解',
+        title: 'windows下git命令批处理执行',
         tools: true
     }
 </script>
