@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-05-27T03:13:50.466Z</updated>
+  <updated>2019-05-28T06:22:37.985Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker常用命令</title>
+    <link href="/2019/05/28/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>/2019/05/28/docker常用命令/</id>
+    <published>2019-05-28T06:14:50.000Z</published>
+    <updated>2019-05-28T06:22:37.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>docker常用命令<br><a id="more"></a></p><h2 id="docker常用命令"><a href="#docker常用命令" class="headerlink" title="docker常用命令"></a>docker常用命令</h2><p>最近想在win10下安装mysql5.6版本，装了半天没装成功，于是乎用docker来解决了。<br>docker需要命令行，这里以mysql为例，贴出一个别人的blog(懒得写了)。<br><a href="https://www.cnblogs.com/pwc1996/p/5425234.html" target="_blank" rel="noopener">docker运行mysql</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;docker常用命令&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="docker" scheme="/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>windows下git命令批处理执行</title>
@@ -426,28 +448,6 @@
     <summary type="html">
     
       &lt;p&gt;浏览器自带的消息提示框&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git常用命令</title>
-    <link href="/2019/01/31/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>/2019/01/31/git常用命令/</id>
-    <published>2019-01-31T08:57:14.000Z</published>
-    <updated>2019-02-01T05:08:51.840Z</updated>
-    
-    <content type="html"><![CDATA[<p>工作中常用的git命令小总结<br><a id="more"></a></p><h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><p>git在我们工作中使用的很多，还有想github这样牛逼的代码托管网站，所以，git这个版本管理工具越来越多的被使用，其实git使用起来还是很复杂的，但是，我平时只是提交代码，所以就用到了几个命令而已，在这里做一下记录。</p><h3 id="先来个简单点的"><a href="#先来个简单点的" class="headerlink" title="先来个简单点的"></a>先来个简单点的</h3><ul><li><p>首先就是把现有的项目clone到本地。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jixoba/jQuery-Seat-Charts.git</span><br></pre></td></tr></table></figure></li><li><p>之后就是我常用的几个提交命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status  // 查看更改的文件有哪些</span><br><span class="line">git add .   // add后边.的话，就是把所有改动的文件添加进去</span><br><span class="line">git commit -m &quot;提交log信息&quot; // 提交信息</span><br><span class="line">git push    // 最后把更改内容推到远程仓库中</span><br></pre></td></tr></table></figure></li></ul><p>以上就是我经常用到的简单命令，如果有分支的话可能会复杂点，根据提示就可以了</p><h3 id="说点复杂的"><a href="#说点复杂的" class="headerlink" title="说点复杂的"></a>说点复杂的</h3><ul><li><p>新建分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branchname // branchname就是分支名</span><br></pre></td></tr></table></figure></li><li><p>查看分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -a  //查看所有分支</span><br><span class="line">git branch -r  //查看远程分支</span><br></pre></td></tr></table></figure></li><li><p>本地切换分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branchname</span><br></pre></td></tr></table></figure></li><li><p>克隆带有分支的项目方法一</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b template https://github.com/iview/iview-admin.git  // clone template分支</span><br></pre></td></tr></table></figure></li><li><p>克隆带有分支的项目方法二</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iview/iview-admin.git // clone整个项目</span><br><span class="line"></span><br><span class="line">git branch -a  //列出所有分支名称如下： * 号表示当前分支</span><br><span class="line">  * dev  </span><br><span class="line">  remotes/origin/HEAD -&gt; origin/dev</span><br><span class="line">  remotes/origin/desktop</span><br><span class="line">  remotes/origin/template</span><br></pre></td></tr></table></figure></li><li><p>接下来，可以在本地新建分支并与远程仓库的分支进行关联了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b template origin/template   // 作用是checkout远程仓库origin的分支template，在本地起名为template分支，并切换到本地的template分支</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;工作中常用的git命令小总结&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
