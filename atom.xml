@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-05-28T06:22:37.985Z</updated>
+  <updated>2019-06-06T07:54:33.774Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>web页面性能测试demo</title>
+    <link href="/2019/06/06/web%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95demo/"/>
+    <id>/2019/06/06/web页面性能测试demo/</id>
+    <published>2019-06-06T07:30:17.000Z</published>
+    <updated>2019-06-06T07:54:33.774Z</updated>
+    
+    <content type="html"><![CDATA[<p>web页面性能测试demo<br><a id="more"></a></p><h2 id="web页面性能测试demo"><a href="#web页面性能测试demo" class="headerlink" title="web页面性能测试demo"></a>web页面性能测试demo</h2><p>写这篇文章的起因，有时候有人问，css会不会阻塞页面渲染了，js如何触发页面渲染了等等，所以，最好的方式就是自己写一个小demo，自己试一下不就一目了然了吗，目前这个demo的内容很简单，以后会慢慢增加。<br>下面是github的链接地址:<br><a href="https://github.com/jinux7/study-collections/tree/master/web-performance-test" target="_blank" rel="noopener">点我进入仓库</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;web页面性能测试demo&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="web性能" scheme="/tags/web%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>docker常用命令</title>
@@ -433,28 +455,6 @@
       <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
       <category term="图片处理" scheme="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器消息提示Notification</title>
-    <link href="/2019/02/14/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BANotification/"/>
-    <id>/2019/02/14/浏览器消息提示Notification/</id>
-    <published>2019-02-14T06:41:44.000Z</published>
-    <updated>2019-02-14T06:54:50.672Z</updated>
-    
-    <content type="html"><![CDATA[<p>浏览器自带的消息提示框<br><a id="more"></a></p><h2 id="浏览器消息提示Notification"><a href="#浏览器消息提示Notification" class="headerlink" title="浏览器消息提示Notification"></a>浏览器消息提示Notification</h2><p>这两天有一个新需求，微信网页版有这个功能，就是当浏览器最小化后，微信来消息，这时在电脑桌面的右下角会有消息提示框。<br>这个功能用到了浏览器新特性的Notification接口，虽说兼容性不好，但是在现代浏览器上使用还是可以的。<br>直接贴出demo:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">  &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">  &lt;title&gt;Notification&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=<span class="string">"message"</span>&gt;弹消息&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button id="message-delay"&gt;弹消息延迟&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">  var btn = document.getElementById('message');</span></span><br><span class="line"><span class="regexp">  var btnDelay = document.getElementById('message-delay');</span></span><br><span class="line"><span class="regexp">  btn.addEventListener('click', ()=&gt; &#123;</span></span><br><span class="line"><span class="regexp">    notifyMe(&#123;</span></span><br><span class="line"><span class="regexp">      title: '消息通知',</span></span><br><span class="line"><span class="regexp">      body: '菜品订单',</span></span><br><span class="line"><span class="regexp">      icon: './</span>asset/image/icon.png<span class="string">'</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">  &#125;, false);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  btnDelay.addEventListener('</span>click<span class="string">', ()=&gt; &#123;</span></span><br><span class="line"><span class="string">      setTimeout(()=&gt; &#123;</span></span><br><span class="line"><span class="string">        notifyMe(&#123;</span></span><br><span class="line"><span class="string">          title: '</span>消息通知<span class="string">',</span></span><br><span class="line"><span class="string">          body: '</span>菜品订单<span class="string">',</span></span><br><span class="line"><span class="string">          icon: '</span>./asset/image/icon.png<span class="string">'</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">      &#125;, 5000);</span></span><br><span class="line"><span class="string">  &#125;, false);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  function notifyMe(options) &#123;</span></span><br><span class="line"><span class="string">    // if(!document.hidden) return; // 判断浏览器是否最小化</span></span><br><span class="line"><span class="string">    // 先检查浏览器是否支持</span></span><br><span class="line"><span class="string">    if (!("Notification" in window)) &#123;</span></span><br><span class="line"><span class="string">      alert("This browser does not support desktop notification");</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    // 检查用户是否同意接受通知</span></span><br><span class="line"><span class="string">    else if (Notification.permission === "granted") &#123;</span></span><br><span class="line"><span class="string">      // If it'</span>s okay <span class="keyword">let</span><span class="string">'s create a notification</span></span><br><span class="line"><span class="string">      var notification = new Notification(options.title, &#123;</span></span><br><span class="line"><span class="string">        body: options.body,</span></span><br><span class="line"><span class="string">        icon: options.icon,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      &#125;);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    // 否则我们需要向用户获取权限</span></span><br><span class="line"><span class="string">    else if (Notification.permission !== '</span>denied<span class="string">') &#123;</span></span><br><span class="line"><span class="string">      Notification.requestPermission(function (permission) &#123;</span></span><br><span class="line"><span class="string">        // 如果用户同意，就可以向他们发送通知</span></span><br><span class="line"><span class="string">        if (permission === "granted") &#123;</span></span><br><span class="line"><span class="string">          var notification = new Notification(options.title, &#123;</span></span><br><span class="line"><span class="string">            body: options.body,</span></span><br><span class="line"><span class="string">            icon: options.icon,</span></span><br><span class="line"><span class="string">          &#125;);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      &#125;);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    // 过3秒关闭提示框</span></span><br><span class="line"><span class="string">    setTimeout(function() &#123;</span></span><br><span class="line"><span class="string">      notification.close();</span></span><br><span class="line"><span class="string">    &#125;, 3000);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;浏览器自带的消息提示框&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   

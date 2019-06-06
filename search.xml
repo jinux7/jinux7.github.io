@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>web页面性能测试demo</title>
+      <link href="/2019/06/06/web%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95demo/"/>
+      <url>/2019/06/06/web%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95demo/</url>
+      
+        <content type="html"><![CDATA[<p>web页面性能测试demo<br><a id="more"></a></p><h2 id="web页面性能测试demo"><a href="#web页面性能测试demo" class="headerlink" title="web页面性能测试demo"></a>web页面性能测试demo</h2><p>写这篇文章的起因，有时候有人问，css会不会阻塞页面渲染了，js如何触发页面渲染了等等，所以，最好的方式就是自己写一个小demo，自己试一下不就一目了然了吗，目前这个demo的内容很简单，以后会慢慢增加。<br>下面是github的链接地址:<br><a href="https://github.com/jinux7/study-collections/tree/master/web-performance-test" target="_blank" rel="noopener">点我进入仓库</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web性能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>docker常用命令</title>
       <link href="/2019/05/28/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2019/05/28/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
@@ -646,9 +669,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 面试题 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
