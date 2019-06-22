@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2019 | jinux</title>
+  <title>写一个自己的富文本编辑器 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/archives/2019/page/4/index.html">
+  <meta name="description" content="写一个稍微复杂点的富文本编辑器">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写一个自己的富文本编辑器">
+<meta property="og:url" content="/2019/06/22/写一个自己的富文本编辑器/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="写一个稍微复杂点的富文本编辑器">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-22T09:10:22.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="写一个自己的富文本编辑器">
+<meta name="twitter:description" content="写一个稍微复杂点的富文本编辑器">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -148,28 +150,16 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-	
-    <script>
-        window.subData= { title:'year : 2019'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/03/es6-async-await/">
-                
-                    es6-async-await
-                
-            </a>
-        </h2>
+        <article id="post-写一个自己的富文本编辑器" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                写一个自己的富文本编辑器
+            
+        </h1>
         <time>
-            2019-01-03 Thursday
+            2019-06-22 Saturday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -179,83 +169,62 @@
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写一个自己的富文本编辑器"><span class="toc-number">1.</span> <span class="toc-text">写一个自己的富文本编辑器</span></a></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>es6中async-await的demo<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/01/03/es6-async-await/" class="flat-box">READ MORE</a>
-            </div>
-        
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>写一个稍微复杂点的富文本编辑器<br><a id="more"></a></p>
+<h2 id="写一个自己的富文本编辑器"><a href="#写一个自己的富文本编辑器" class="headerlink" title="写一个自己的富文本编辑器"></a>写一个自己的富文本编辑器</h2><p>前几天写了一个<a href="https://jinux7.github.io/2019/06/17/简单的富文本编辑器/" target="_blank" rel="noopener">《简单的富文本编辑器》</a>这篇博文，没想到刚过两天，项目中就需要自己写一个富文本编辑器。<br>具体的需求是，在富文本编辑器中编辑好内容，存到数据库，之后app端拿到这些数据以webview的形式展示出来，当然，webview这块也是我来做，但是，在pc端编辑的内容直接放到移动端显示是有问题的，比如像图片大小问题，而且编辑的样式和展示出来的样式完全不一样。所以，我就想自己写一个，不用第三方的库，这样自己可以灵活的按照需求来修改。<br>暂时写这个小插件只用了一天多，还不是很完善，有些地方还有待修改，如果有时间的话，以后会陆续更新。<br>废话不多说，直接贴源码地址喽:<br><a href="https://github.com/jinux7/study-collections/tree/master/jinux-editor" target="_blank" rel="noopener">jinux-editor</a><br>这里有些注意的地方，比如把文字变成粗体，用到了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>,<span class="literal">false</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></p>
+<p>而取消粗体还是用到了这个命令，执行同一个命令，会切换字体的粗体和非粗体的状态。<br>但是，这里注意，还有一个方法可以获取现在文本是否是粗体状态<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.queryCommandState(<span class="string">'bold'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>可以用上面这个命令判断现在的状态，进而修改点击按钮的样式。</p>
+
+        </div>
 
         
-            <div class="full-width auto-padding tags">
+            <div class="article-tags tags">
                 
                     <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
                 
             </div>
         
-    </section>
-</article>
 
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/02/github预览静态库页面/">
+        
+            <div class="art-item-footer">
                 
-                    github预览静态库页面
                 
-            </a>
-        </h2>
-        <time>
-            2019-01-02 Wednesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>github预览静态库页面<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/01/02/github预览静态库页面/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/github/"><i class="fa fa-tag"></i>&nbsp;&nbsp;github</a>
+                    <span class="art-item-right">
+                        <a href="/2019/06/20/base64加密原理/" rel="next" title="base64加密原理">
+                            base64加密原理
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
                 
             </div>
         
+
     </section>
+
 </article>
 
-        </div>
-    
-</section>
+<br>
+
+<!-- 显示推荐文章和评论 -->
 
 
-    <nav id="page-nav">
-        
-            <a class="prev" rel="prev" href="/archives/2019/page/3/">
-                <span class="icon icon-chevron-left"></span>
-                <span class="text">PREVIOUS</span>
-            </a>
-        
-        
-    </nav>
-
-
+<script>
+    window.subData = {
+        title: '写一个自己的富文本编辑器',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -345,6 +314,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>

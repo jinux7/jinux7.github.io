@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-06-20T00:40:18.705Z</updated>
+  <updated>2019-06-22T09:10:22.225Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写一个自己的富文本编辑器</title>
+    <link href="/2019/06/22/%E5%86%99%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    <id>/2019/06/22/写一个自己的富文本编辑器/</id>
+    <published>2019-06-22T08:42:09.000Z</published>
+    <updated>2019-06-22T09:10:22.225Z</updated>
+    
+    <content type="html"><![CDATA[<p>写一个稍微复杂点的富文本编辑器<br><a id="more"></a></p><h2 id="写一个自己的富文本编辑器"><a href="#写一个自己的富文本编辑器" class="headerlink" title="写一个自己的富文本编辑器"></a>写一个自己的富文本编辑器</h2><p>前几天写了一个<a href="https://jinux7.github.io/2019/06/17/简单的富文本编辑器/" target="_blank" rel="noopener">《简单的富文本编辑器》</a>这篇博文，没想到刚过两天，项目中就需要自己写一个富文本编辑器。<br>具体的需求是，在富文本编辑器中编辑好内容，存到数据库，之后app端拿到这些数据以webview的形式展示出来，当然，webview这块也是我来做，但是，在pc端编辑的内容直接放到移动端显示是有问题的，比如像图片大小问题，而且编辑的样式和展示出来的样式完全不一样。所以，我就想自己写一个，不用第三方的库，这样自己可以灵活的按照需求来修改。<br>暂时写这个小插件只用了一天多，还不是很完善，有些地方还有待修改，如果有时间的话，以后会陆续更新。<br>废话不多说，直接贴源码地址喽:<br><a href="https://github.com/jinux7/study-collections/tree/master/jinux-editor" target="_blank" rel="noopener">jinux-editor</a><br>这里有些注意的地方，比如把文字变成粗体，用到了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>,<span class="literal">false</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></p><p>而取消粗体还是用到了这个命令，执行同一个命令，会切换字体的粗体和非粗体的状态。<br>但是，这里注意，还有一个方法可以获取现在文本是否是粗体状态<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.queryCommandState(<span class="string">'bold'</span>);</span><br></pre></td></tr></table></figure></p><p>可以用上面这个命令判断现在的状态，进而修改点击按钮的样式。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写一个稍微复杂点的富文本编辑器&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>base64加密原理</title>
@@ -422,28 +444,6 @@
     <summary type="html">
     
       &lt;p&gt;简单的介绍一下防抖与节流&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5中Video标签无法播放mp4的解决办法</title>
-    <link href="/2019/03/21/HTML5%E4%B8%ADVideo%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%92%AD%E6%94%BEmp4%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/</id>
-    <published>2019-03-21T01:13:22.000Z</published>
-    <updated>2019-03-27T07:32:06.085Z</updated>
-    
-    <content type="html"><![CDATA[<p>解决其它格式视频转mp4格式文件，video标签无法播放问题<br><a id="more"></a></p><h2 id="HTML5中Video标签无法播放mp4的解决办法"><a href="#HTML5中Video标签无法播放mp4的解决办法" class="headerlink" title="HTML5中Video标签无法播放mp4的解决办法"></a>HTML5中Video标签无法播放mp4的解决办法</h2><p>首先，浏览器使用环境chrome<br>在使用video标签播放视频的时候，我一般都选择mp4格式的文件，在网上下载的demo视频或者是手机拍摄的mp4文件都可以播放，但是，我用格式工厂把avi格式的文件转换成mp4文件就无法播放，为什么呢？<br>带着疑问，上网找答案，找到了原因，如下：<br><img src="/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/1.png" alt="img"><br>使用格式工厂的mp4转换功能转出来的mp4文件并不能使用，于是把能播放的视频文件和不能播放的视频文件的编码格式对比了一下<br>可以播放的：<br><img src="/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/2.png" alt="img"><br>不可以播放的：<br><img src="/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/3.png" alt="img"><br>所以，在格式工厂转换的时候需要转成AVC编码格式的mp4文件<br><img src="/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/4.png" alt="img"><br>好了，按照这种方式就可以正常播放了。<br>*补充更新：<br>上边的方式在pc端chrome浏览器上可以，但是在移动端上还是无法播放，最后没有办法，我采用了WebM格式。<br>格式工厂可以转换，见下图<br><img src="/2019/03/21/HTML5中Video标签无法播放mp4的解决办法/5.png" alt="img"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;解决其它格式视频转mp4格式文件，video标签无法播放问题&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
