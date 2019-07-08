@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>实现一个串行异步执行类</title>
+      <link href="/2019/07/08/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%B8%B2%E8%A1%8C%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E7%B1%BB/"/>
+      <url>/2019/07/08/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%B8%B2%E8%A1%8C%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<p>写一个按顺序执行操作的类工具<br><a id="more"></a></p><h2 id="实现一个串行异步执行类"><a href="#实现一个串行异步执行类" class="headerlink" title="实现一个串行异步执行类"></a>实现一个串行异步执行类</h2><p>今天在学习webpack源码时，看到了webpack的核心模块tapable，里边有很多方法，其中之一就是串行异步执行方法，于是，自己准备实现一个简单的，其实很简单，见下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明类SerialAsync</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SerialAsync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.arrFns = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型链上添加addFn方法</span></span><br><span class="line">SerialAsync.prototype.addFn = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.arrFns.push(fn);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型链上添加emitFn方法</span></span><br><span class="line">SerialAsync.prototype.emitFn = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// next是核心代码</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">par</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> fn = self.arrFns[index++];</span><br><span class="line">    fn?fn(next):callback(par);</span><br><span class="line">  &#125;</span><br><span class="line">  next();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SerialAsync结束</span></span><br><span class="line"><span class="comment">// 是不是超级的简单，就15行代码，记住，核心代码是next方法</span></span><br><span class="line"><span class="comment">// 下面是具体的使用</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> SerialAsync();</span><br><span class="line">s.addFn(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    done(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;);</span><br><span class="line">s.addFn(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    done(<span class="number">2</span>);</span><br><span class="line">  &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line">s.addFn(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line">    done(<span class="number">2</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.time();</span><br><span class="line">s.emitFn(<span class="function">(<span class="params">par</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'over-&gt;'</span>, par);</span><br><span class="line">  <span class="built_in">console</span>.timeEnd();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p><p>可以看到，最关键部分就是next函数，有个递归的过程，据说，nodejs中很多类似的串行方法都是这么实现的，一定要记住哦。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>js中小数精度问题</title>
+      <link href="/2019/07/04/js%E4%B8%AD%E5%B0%8F%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/"/>
+      <url>/2019/07/04/js%E4%B8%AD%E5%B0%8F%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>js中的小数精度问题分析<br><a id="more"></a></p><h2 id="js中小数精度问题"><a href="#js中小数精度问题" class="headerlink" title="js中小数精度问题"></a>js中小数精度问题</h2><p>我们在日常开发中，是否遇到过0.1+0.2，一看马上答案就出来了，0.3啊，多么简单的加法，但是，如果你在代码里运行一下，结果出乎意料哦，是0.30000000000000004，哈哈，有意思吧，不仅在js中这样，java，python等语言都是这个德行。<br>奇怪了，这是为什么呢？这就需要了解一下小数在计算机中的存储方式了。<br>我在这里只说小数部分的保存方式。<br>先来说一下小数如何存储，如0.6：</p><ul><li>将该数字乘以2，取出整数部分作为二进制表示的第1位；然后再将小数部分乘以2，将得到的整数部分作为二进制表示的第2位；以此类推，直到小数部分为0。 </li><li>特殊情况： 小数部分出现循环，无法停止，则用有限的二进制位无法准确表示一个小数，这也是在编程语言中表示小数会出现误差的原因<br>再具体的分步骤看一下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.6</span> * <span class="number">2</span> = <span class="number">1.2</span> —————— <span class="number">1</span> </span><br><span class="line"><span class="number">0.2</span> * <span class="number">2</span> = <span class="number">0.4</span> —————— <span class="number">0</span> </span><br><span class="line"><span class="number">0.4</span> * <span class="number">2</span> = <span class="number">0.8</span> —————— <span class="number">0</span> </span><br><span class="line"><span class="number">0.8</span> * <span class="number">2</span> = <span class="number">1.6</span> —————— <span class="number">1</span> </span><br><span class="line"><span class="number">0.6</span> * <span class="number">2</span> = <span class="number">1.2</span> —————— <span class="number">1</span> </span><br><span class="line">…………</span><br></pre></td></tr></table></figure></li></ul><p>我们可以发现在该计算中已经出现了循环，0.6用二进制表示为 1001 1001 1001 1001 ……<br>如果是10.6，那个10.6的完整二进制表示为 1010.100110011001……<br>通过上边的解释，就知道为什么有的小数在js里会出现精度不准的问题了吧，接下来，我们再看看二进制小数如何还原成十进制。<br>我们还拿0.6这个小数来举例子,1001 1001 1001 1001 :</p><ul><li>从左到右，v[i] * 2^( - i ), i 为从左到右的index，v[i]为该位的值，直接看例子，很直接的<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.6</span> = <span class="number">1</span> * <span class="number">2</span>^<span class="number">-1</span> + <span class="number">0</span> * <span class="number">2</span>^<span class="number">-2</span> + <span class="number">0</span> * <span class="number">2</span>^<span class="number">-3</span> + <span class="number">1</span> * <span class="number">2</span>^<span class="number">-4</span> + ……</span><br></pre></td></tr></table></figure></li></ul><p>好了，通过上面大概的了解了小数为什么精度有时候不准的问题，这也只是粗略的理解一下而已，具体在各种语言中运行时可能情况会很复杂，我就点到而止了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>js中的递归总结</title>
       <link href="/2019/07/02/js%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/"/>
       <url>/2019/07/02/js%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/</url>
@@ -1493,7 +1539,7 @@
       <link href="/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/"/>
       <url>/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li><li><a href="https://itxiaohao.github.io" target="_blank" rel="noopener">webpack4教程挺好</a></li></ul>]]></content>
       
       
       
