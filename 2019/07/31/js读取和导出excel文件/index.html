@@ -194,7 +194,7 @@
 <h1 id="js读取和导出excel文件"><a href="#js读取和导出excel文件" class="headerlink" title="js读取和导出excel文件"></a>js读取和导出excel文件</h1><h2 id="js-xlsx-介绍"><a href="#js-xlsx-介绍" class="headerlink" title="js-xlsx 介绍"></a>js-xlsx 介绍</h2><p>由SheetJS出品的js-xlsx是一款非常方便的只需要纯JS即可读取和导出excel的工具库，功能强大，支持格式众多，支持xls、xlsx、ods(一种OpenOffice专有表格文件格式)等十几种格式。本文全部都是以xlsx格式为例。</p>
 <ul>
 <li>官方github：<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">https://github.com/SheetJS/js-xlsx</a></li>
-<li>本文配套demo：<a href="https://github.com/jinux7/study-collections/tree/master/js处理excel之js-xlsx" target="_blank" rel="noopener">点这里</a><h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3>见下图：<br><img src="/2019/07/31/js读取和导出excel文件/1.png" alt="img"><h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3>dist目录下有很多个JS文件，一般情况下用xlsx.core.min.js就够了，xlsx.full.min.js则是包含了所有功能模块。<br><img src="/2019/07/31/js读取和导出excel文件/2.png" alt="img"><br>直接script标签引入即可：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"./js/xlsx.core.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<li>本文配套demo：<a href="https://github.com/jinux7/study-collections/tree/master/js处理excel之js-xlsx" target="_blank" rel="noopener">点这里</a><h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3>见下图：<br><img src="/2019/07/31/js读取和导出excel文件/1.png" alt="img"><h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3>dist目录下有很多个JS文件，一般情况下用xlsx.core.min.js就够了，xlsx.full.min.js则是包含了所有功能模块。<br><img src="/2019/07/31/js读取和导出excel文件/2.png" alt="img"><br>直接script标签引入即可：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"./js/xlsx.core.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="读取excel"><a href="#读取excel" class="headerlink" title="读取excel"></a>读取excel</h2><p>读取excel主要是通过XLSX.read(data, {type: type});方法来实现，返回一个叫WorkBook的对象，type主要取值如下：</p>
@@ -265,6 +265,13 @@
         
             <div class="art-item-footer">
                 
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/08/02/js中的valueOf和toString/" rel="prev" title="js中的valueOf和toString">
+                            js中的valueOf和toString
+                        </a>
+                    </span>
+                
                 
                     <span class="art-item-right">
                         <a href="/2019/07/30/ES6-Symbol-iterator-迭代器/" rel="next" title="ES6-Symbol.iterator 迭代器">
@@ -311,7 +318,7 @@
     
         <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>2</div></a></li>
     
-        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>66</div></a></li>
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>67</div></a></li>
     
         <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>4</div></a></li>
     
