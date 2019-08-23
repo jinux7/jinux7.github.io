@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>nw.js入门小结</title>
+      <link href="/2019/08/22/nw-js%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93/"/>
+      <url>/2019/08/22/nw-js%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p>nw.js方便简单的pc端app开发工具<br><a id="more"></a></p><h1 id="nw-js入门小结"><a href="#nw-js入门小结" class="headerlink" title="nw.js入门小结"></a>nw.js入门小结</h1><p>nw.js和electron都是利用html来开发pc端应用的工具，今天我写一写nw.js的入门知识。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，去官网下载nw，<a href="https://nwjs.io" target="_blank" rel="noopener">官网地址</a>,首页就可以看到下载地址，有两个下载，一个是normal,一个是sdk，见下图：<br><img src="/2019/08/22/nw-js入门小结/1.png" alt="img"><br>sdk是有调试功能的，生成的应用，在上面点击右键可以看到类似浏览器F12的调试面板。<br>normal就是没有调试功能的包，用于生产发布的时候用。<br>下载后不需要安装，直接解压后就可以使用。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在nw的sdk包解压后的文件中，新建一个app文件夹，在app文件夹中放一个index.html的页面，再建一个package.json的文件，内容是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"fullscreen"</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">"main"</span>: <span class="string">"index.html"</span>,</span><br><span class="line"><span class="string">"name"</span>: <span class="string">"layout"</span>,</span><br><span class="line"><span class="string">"description"</span>: <span class="string">"nw学习"</span>,</span><br><span class="line"><span class="string">"version"</span>: <span class="string">"0.1.0"</span>,</span><br><span class="line"><span class="string">"keywords"</span>: [  <span class="string">"指令学习"</span>, <span class="string">"在线"</span>],</span><br><span class="line"><span class="string">"window"</span>: &#123;</span><br><span class="line"><span class="string">"title"</span>: <span class="string">"指令学习"</span>,</span><br><span class="line"><span class="string">"icon"</span>: <span class="string">"icon.png"</span>,</span><br><span class="line"><span class="string">"toolbar"</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">"frame"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"width"</span>: <span class="number">375</span>,</span><br><span class="line"><span class="string">"height"</span>: <span class="number">750</span>,</span><br><span class="line"><span class="string">"position"</span>: <span class="string">"center"</span>,</span><br><span class="line"><span class="string">"min_width"</span>: <span class="number">375</span>,</span><br><span class="line"><span class="string">"min_height"</span>: <span class="number">750</span>,</span><br><span class="line"><span class="string">"max_width"</span>: <span class="number">1920</span>,</span><br><span class="line"><span class="string">"max_height"</span>: <span class="number">1080</span>,</span><br><span class="line"><span class="string">"resizable"</span>: <span class="literal">true</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"webkit"</span>: &#123;</span><br><span class="line"><span class="string">"plugin"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"java"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"page-cache"</span>: <span class="literal">false</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"user-agent"</span>: <span class="string">"%name %ver %nwver %webkit_ver %osinfo"</span>,</span><br><span class="line"><span class="string">"chromium-args"</span>: <span class="string">"--allow-file-access-from-files"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// main属性是关键，指的是入口文件的位置</span></span><br></pre></td></tr></table></figure></p><p>准备工作完毕，目录结构见下图：<br><img src="/2019/08/22/nw-js入门小结/2.png" alt="img"><br>将app文件夹拖拽到nw.exe上即可打开应用进行开发调试。</p><h2 id="打包发布"><a href="#打包发布" class="headerlink" title="打包发布"></a>打包发布</h2><p>如果开发完了之后，给别人用，就需要进行打包了。<br>首先将app文件夹压缩，比如压缩成app.zip文件，之后改名为app.nw文件。<br>打包需要在命令行下进行，打开cmd命令行（注意，这里只能用cmd，gitBash和powerShell都不好使哦），切换到当前目录，执行下面的命令:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy /b nw.exe+app.nw app.exe</span><br></pre></td></tr></table></figure></p><p><img src="/2019/08/22/nw-js入门小结/3.png" alt="img"><br>可以看到，app.exe就是打包出来的可执行文件，这时候直接点击它就可以运行程序了。</p><ul><li>把这个app.exe文件复制到normal的运行文件夹下，也可以点击运行，这时其实就是一个绿色版的应用程序了，完全可以交付给客户使用了。</li><li>如果感觉一堆文件看起来不舒服，还可以使用enigmavirtualbox工具进行打包成一个.exe的文件，不过这个文件一般都比较大哦。</li><li>最后一种方法，innosetup工具，可以制作成安装版本，这样体积就小了。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>前端静态资源服务器都用到了啥？</title>
+      <link href="/2019/08/22/%E5%89%8D%E7%AB%AF%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%95%A5%EF%BC%9F/"/>
+      <url>/2019/08/22/%E5%89%8D%E7%AB%AF%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%95%A5%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<p>前端都用到了哪些技术实现静态资源服务器<br><a id="more"></a></p><h1 id="前端静态资源服务器都用到了啥？"><a href="#前端静态资源服务器都用到了啥？" class="headerlink" title="前端静态资源服务器都用到了啥？"></a>前端静态资源服务器都用到了啥？</h1><p>平时我们在开发的时候，肯定会自己架一个服务，把网页放进去，再跑，那么，我们平时都用到了哪些手段来实现呢？</p><h2 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h2><p><a href="https://www.npmjs.com/package/http-server" target="_blank" rel="noopener">官网</a>,使用起来很方便。</p><h2 id="browser-sync"><a href="#browser-sync" class="headerlink" title="browser-sync"></a>browser-sync</h2><p><a href="http://www.browsersync.cn" target="_blank" rel="noopener">官网</a>,功能非常之强大。</p><h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">官网下载</a>,nginx可是现在静态资源服务器中响应速度最快的了，如果在生产环境下，还是使用nginx吧。</p><h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><p>nginx出来之前大家都用，现在基本上没人用了，淘汰掉。</p><h2 id="webpack-dev"><a href="#webpack-dev" class="headerlink" title="webpack-dev"></a>webpack-dev</h2><p>这个其实是webpack的一个插件，我们在开发react，vue，angular的时候会用到它。</p><h2 id="express-amp-koa"><a href="#express-amp-koa" class="headerlink" title="express&amp;koa"></a>express&amp;koa</h2><p>express和koa中都有静态资源的中间件，用起来就是麻烦些。</p><h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>最后就是可以利用nodejs的http模块手写一个静态资源服务器。 </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>移动端设置root font-size代码</title>
       <link href="/2019/08/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E7%BD%AEroot-font-size%E4%BB%A3%E7%A0%81/"/>
       <url>/2019/08/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E7%BD%AEroot-font-size%E4%BB%A3%E7%A0%81/</url>
