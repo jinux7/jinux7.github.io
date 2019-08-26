@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>window下flutter环境搭建</title>
+      <link href="/2019/08/26/window%E4%B8%8Bflutter%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+      <url>/2019/08/26/window%E4%B8%8Bflutter%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<p>flutter在window 10下的环境搭建<br><a id="more"></a></p><h1 id="window下flutter环境搭建"><a href="#window下flutter环境搭建" class="headerlink" title="window下flutter环境搭建"></a>window下flutter环境搭建</h1><p>flutter是google出的一个跨平台移动端app开发框架，据说性能已经超过了原生开发，作为一名前端，即使不深入研究，也得浅浅的看一下这是个什么东西吧，所以今天记录一下flutter在win10下的安装步骤。</p><h2 id="1-安装flutter"><a href="#1-安装flutter" class="headerlink" title="1.安装flutter"></a>1.安装flutter</h2><p>去flutter官网下载flutter的压缩包，<a href="https://flutterchina.club/setup-windows/" target="_blank" rel="noopener">flutter官网地址</a>,将压缩包解压到一个目录下，之后配置一下环境变量（这里不细说了，就是把bin目录配到系统的环境变量下），之后开启终端，运行flutter，第一次运行flutter需要去网络拉取资源，所以电脑必须得安装好了git，再有一点，由于防火墙的原因，拉取国外资源有时候不成功，所以在运行flutter之前最好配一下资源镜像路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure></p><p>这两句话最好在git bash下执行哦，之后就可以运行flutter初始化了。</p><ul><li>这里注意一下，最好选择flutter的最新版本安装，因为下一步会安装android sdk，android会自动下载最新版本的，所以为了兼容，我在有的电脑中安装的flutter不是最新版本，andriod是最新的，出现了无法run的问题。</li></ul><h2 id="2-安装JDK"><a href="#2-安装JDK" class="headerlink" title="2.安装JDK"></a>2.安装JDK</h2><p>由于是android开发，所以java的sdk是必不可少的，去<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">java sdk</a>下载，注意，一定要下载java SE 8u***版本的，其他版本不兼容，下载之后安装即可。</p><h2 id="3-安装vs-code以及flutter插件。"><a href="#3-安装vs-code以及flutter插件。" class="headerlink" title="3.安装vs code以及flutter插件。"></a>3.安装vs code以及flutter插件。</h2><h2 id="4-安装android-studio"><a href="#4-安装android-studio" class="headerlink" title="4.安装android studio"></a>4.安装android studio</h2><p><a href="https://developer.android.google.cn/studio" target="_blank" rel="noopener">下载链接</a>,下载好之后，一路下一步就可以，第一次安装需要下载android sdk，会下载很长时间，不过虽然有墙的存在，但是依然可以安装成功,如果不成功就多试几次。安装好了sdk后，软件就会自动打开，来到首页，也就是新建项目的地方，这时候可以安装android studio的flutter插件，第一次打开安装插件面板的时候会一直loading，最开始我还以为是墙的原因呢，不要着急，慢慢的等待即可。安装好了flutter插件后重启ide，重启后新建一个flutter项目，建好之后我们创建android虚拟机，点击tools-&gt;avd manager,创建一个虚拟机。创建虚拟机需要安装android的系统，非常的慢，慢慢等待吧。</p><ul><li>有的电脑安装模拟器的时候会报HAXM的安装不上错误，这是因为win10默认开启了Hyer-V微软的虚拟机，只需到服务里把它关掉即可。</li></ul><h2 id="5-以上完成之后，打开命令行，运行flutter-doctor-会有一段"><a href="#5-以上完成之后，打开命令行，运行flutter-doctor-会有一段" class="headerlink" title="5.以上完成之后，打开命令行，运行flutter doctor,会有一段"></a>5.以上完成之后，打开命令行，运行flutter doctor,会有一段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android toolchain - develop for Android devices (Android SDK version 29.0.2)</span><br><span class="line">   X Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses</span><br></pre></td></tr></table></figure><p>的提示，直接运行flutter doctor –android-licenses，一路y就可以。</p><p>如果顺利的话，现在就可以运行你的flutter项目了，我在自己的电脑上安装的很顺利，但是在公司的电脑上安装的很是肯可啊。</p><ul><li>还需要注意下，有的电脑会让你升级android sdk，命令行会提示你具体的路径，里边是一个.bat的文件，不用担心，.bat和.exe一样的，在cmd下一样可以在后边传参数。如果你运行的是powerShell，注意一下，执行命令需要这样<code>./manager.bat</code>。再有，升级可能会删除tools文件夹再下载，不过win10不允许程序随意删除文件，这时候需要手动删除一下（改个名字更好）。</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是我在搭建flutter环境的时候遇到的一些状况。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 移动端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>nw.js入门小结</title>
       <link href="/2019/08/22/nw-js%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93/"/>
       <url>/2019/08/22/nw-js%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93/</url>
