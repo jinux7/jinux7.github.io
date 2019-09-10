@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-09-09T07:59:40.940Z</updated>
+  <updated>2019-09-10T07:02:46.923Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Puppeteer</title>
+    <link href="/2019/09/10/Puppeteer/"/>
+    <id>/2019/09/10/Puppeteer/</id>
+    <published>2019-09-10T06:50:51.000Z</published>
+    <updated>2019-09-10T07:02:46.923Z</updated>
+    
+    <content type="html"><![CDATA[<p>Puppeteer工具<br><a id="more"></a></p><h1 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h1><p>Puppeteer是谷歌官方出品的一个通过DevTools协议控制headless Chrome的Node库。可以通过Puppeteer的提供的api直接控制Chrome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据。<br>这里不做太多的介绍，贴出官方网址链接自行查看</p><ul><li><a href="https://www.npmjs.com/package/puppeteer" target="_blank" rel="noopener">npm-puppeteer</a></li><li><a href="https://www.findbestopensource.com/product/zhaoqize-puppeteer-api-zh-cn" target="_blank" rel="noopener">findbestopensource</a></li><li><a href="https://github.com/zhaoqize/puppeteer-api-zh_CN#readme" target="_blank" rel="noopener">Puppeteer 中文文档</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Puppeteer工具&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="工具库" scheme="/tags/%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>JS中的offset、scroll、client</title>
@@ -424,28 +446,6 @@
     <summary type="html">
     
       &lt;p&gt;快速并且简单的创建数组&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>手写前端自动化构建工具</title>
-    <link href="/2019/06/26/%E6%89%8B%E5%86%99%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
-    <id>/2019/06/26/手写前端自动化构建工具/</id>
-    <published>2019-06-26T03:13:33.000Z</published>
-    <updated>2019-06-26T05:36:06.527Z</updated>
-    
-    <content type="html"><![CDATA[<p>写一个自己的前端自动化构建工具<br><a id="more"></a></p><h2 id="手写前端自动化构建工具"><a href="#手写前端自动化构建工具" class="headerlink" title="手写前端自动化构建工具"></a>手写前端自动化构建工具</h2><p>现在我们使用vue，react等框架来开发已经很普遍了，当我们初始化一个项目的时候，是不是在命令行下按照提示一步一步的操作，最后在本地生成了一个现成的项目，是不是感觉很快捷，很方便，用来生成这个项目的工具就叫做构建工具（有的也称之为脚手架工具）。<br>我现在需要在命令行下进行各种操作，交互，npm上已经有人写好了这类工具，常用的就是commander和inquirer,使用它们来开发脚手架，真的是好简单。<br>我写了两个小demo，一个是围绕着commander，另一个则是围绕inquirer。<br>这两个小例子都很简单，可以根据具体的要求组合到一起。<br><a href="https://github.com/jinux7/study-collections/tree/master/手写自己的构建工具" target="_blank" rel="noopener">点这里看源码</a><br>select-list.js这个文件的功能是，可以根据列表的上下选择，下载github上对应的项目模板。<br>init-commander.js这个文件的功能是，命令行里传入的文件夹名和文件名来生成新项目文件。<br>题外话，这里还可以制作成系统命令，在package.json里的bin字段下。<br>如果，都配置好了，就可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm link</span><br></pre></td></tr></table></figure></p><p>这个命令，把bin字段下的内容生成系统命令，这是一种方式来生成系统命令，另一种应该是把这个项目发布到npm上，安装的时候直接全局安装就可以喽。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;写一个自己的前端自动化构建工具&lt;br&gt;&lt;/p&gt;
     
     </summary>
     

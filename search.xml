@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Puppeteer</title>
+      <link href="/2019/09/10/Puppeteer/"/>
+      <url>/2019/09/10/Puppeteer/</url>
+      
+        <content type="html"><![CDATA[<p>Puppeteer工具<br><a id="more"></a></p><h1 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h1><p>Puppeteer是谷歌官方出品的一个通过DevTools协议控制headless Chrome的Node库。可以通过Puppeteer的提供的api直接控制Chrome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据。<br>这里不做太多的介绍，贴出官方网址链接自行查看</p><ul><li><a href="https://www.npmjs.com/package/puppeteer" target="_blank" rel="noopener">npm-puppeteer</a></li><li><a href="https://www.findbestopensource.com/product/zhaoqize-puppeteer-api-zh-cn" target="_blank" rel="noopener">findbestopensource</a></li><li><a href="https://github.com/zhaoqize/puppeteer-api-zh_CN#readme" target="_blank" rel="noopener">Puppeteer 中文文档</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>JS中的offset、scroll、client</title>
       <link href="/2019/09/09/JS%E4%B8%AD%E7%9A%84offset%E3%80%81scroll%E3%80%81client/"/>
       <url>/2019/09/09/JS%E4%B8%AD%E7%9A%84offset%E3%80%81scroll%E3%80%81client/</url>

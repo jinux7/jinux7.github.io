@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>测试及爬虫工具nightmare | jinux</title>
+  <title>Puppeteer | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nightmare工具的使用">
+  <meta name="description" content="Puppeteer工具">
 <meta name="keywords" content="工具库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试及爬虫工具nightmare">
-<meta property="og:url" content="/2019/06/18/测试及爬虫工具nightmare/index.html">
+<meta property="og:title" content="Puppeteer">
+<meta property="og:url" content="/2019/09/10/Puppeteer/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="nightmare工具的使用">
+<meta property="og:description" content="Puppeteer工具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-18T07:00:25.232Z">
+<meta property="og:updated_time" content="2019-09-10T07:02:46.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试及爬虫工具nightmare">
-<meta name="twitter:description" content="nightmare工具的使用">
+<meta name="twitter:title" content="Puppeteer">
+<meta name="twitter:description" content="Puppeteer工具">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -150,15 +150,15 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-测试及爬虫工具nightmare" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Puppeteer" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                测试及爬虫工具nightmare
+                Puppeteer
             
         </h1>
         <time>
-            2019-06-18 Tuesday&nbsp;&nbsp;
+            2019-09-10 Tuesday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试及爬虫工具nightmare"><span class="toc-number">1.</span> <span class="toc-text">测试及爬虫工具nightmare</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Puppeteer"><span class="toc-number">1.</span> <span class="toc-text">Puppeteer</span></a></li></ol>
             </div>
         </section>
     
@@ -181,9 +181,13 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>nightmare工具的使用<br><a id="more"></a></p>
-<h2 id="测试及爬虫工具nightmare"><a href="#测试及爬虫工具nightmare" class="headerlink" title="测试及爬虫工具nightmare"></a>测试及爬虫工具nightmare</h2><p>nightmare是一个可视化的页面操作工具，<a href="https://www.npmjs.com/package/nightmare" target="_blank" rel="noopener">官网点这里</a><br>如何安装就不说了，npm就可以搞定，但是，安装的时候会很慢，因为它依赖electron<br>具体的使用方法可以直接看官网的api，下面是一个小demo，是对本博客网站的简单操作，可以看一下它强大的效果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nightmare = <span class="built_in">require</span>(<span class="string">'nightmare'</span>);       </span><br><span class="line"><span class="keyword">var</span> nightmare = Nightmare(&#123; </span><br><span class="line">      show: <span class="literal">true</span>,</span><br><span class="line">      gotoTimeout: <span class="number">100000</span> <span class="comment">// goto页面的等待时长，不写的话默认30000ms，访问慢的网页会报错</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">nightmare</span><br><span class="line">  .goto(<span class="string">'https://jinux7.github.io'</span>) <span class="comment">// 打开的网页</span></span><br><span class="line">  .type(<span class="string">'.m_search .u-search-input'</span>, <span class="string">'javascript'</span>) <span class="comment">// 向input中写入javascript</span></span><br><span class="line">  .type(<span class="string">'.m_search .u-search-input'</span>, <span class="string">'\u000d'</span>) <span class="comment">// 触发input的点击回车事件</span></span><br><span class="line">  .wait(<span class="string">'.icon.icon-close'</span>) <span class="comment">// 等待弹出层的.icon.icon-close元素节点出现</span></span><br><span class="line">  .click(<span class="string">'.icon.icon-close'</span>) <span class="comment">// 出现后点击它</span></span><br><span class="line">  .evaluate(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 注入到页面里执行的js代码</span></span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(<span class="string">'.avatar.waves-image'</span>).src;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// .end() // 关闭nightmare</span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Search failed:'</span>, error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如需要更丰富的功能，按照api一点点添加就可以喽.</p>
+            <p>Puppeteer工具<br><a id="more"></a></p>
+<h1 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h1><p>Puppeteer是谷歌官方出品的一个通过DevTools协议控制headless Chrome的Node库。可以通过Puppeteer的提供的api直接控制Chrome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据。<br>这里不做太多的介绍，贴出官方网址链接自行查看</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/puppeteer" target="_blank" rel="noopener">npm-puppeteer</a></li>
+<li><a href="https://www.findbestopensource.com/product/zhaoqize-puppeteer-api-zh-cn" target="_blank" rel="noopener">findbestopensource</a></li>
+<li><a href="https://github.com/zhaoqize/puppeteer-api-zh_CN#readme" target="_blank" rel="noopener">Puppeteer 中文文档</a></li>
+</ul>
 
         </div>
 
@@ -198,17 +202,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2019/06/20/base64加密原理/" rel="prev" title="base64加密原理">
-                            base64加密原理
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2019/06/17/简单的富文本编辑器/" rel="next" title="简单的富文本编辑器">
-                            简单的富文本编辑器
+                        <a href="/2019/09/09/JS中的offset、scroll、client/" rel="next" title="JS中的offset、scroll、client">
+                            JS中的offset、scroll、client
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -227,7 +224,7 @@
 
 <script>
     window.subData = {
-        title: '测试及爬虫工具nightmare',
+        title: 'Puppeteer',
         tools: true
     }
 </script>
