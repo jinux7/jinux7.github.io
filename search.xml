@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>iscroll移动端卡顿解决办法</title>
+      <link href="/2019/09/19/iscroll%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <url>/2019/09/19/iscroll%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>解决iscroll在移动端卡顿<br><a id="more"></a></p><h1 id="iscroll移动端卡顿解决办法"><a href="#iscroll移动端卡顿解决办法" class="headerlink" title="iscroll移动端卡顿解决办法"></a>iscroll移动端卡顿解决办法</h1><p>iscroll是模拟区域滚动的一个库，很有名的，类似的还有一个库叫better-scroll，作者是中国人，好像是阿里的吧，是在iscroll的基础上开发的，很灵活，支持es6等语法导入，不过本篇博文不做介绍，我们来讨论iscroll。<br>有一个需求是页面拒不缩放并且可以滚动，正好用到了iscroll-zoom.js,但是引入后发现在pc端嗷嗷流畅，但是移动端就卡顿，后来在网上查到解决办法，但是感觉并不是好的解决办法，应该还有更好的，暂时贴出现在的解决办法，以后在陆续跟进。</p><h2 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">  * &#123; touch-action: pan-y; &#125;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure><h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">　  <span class="built_in">window</span>.PointerEvent = <span class="literal">undefined</span>;</span><br><span class="line">　  <span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">　　  e.preventDefault();</span><br><span class="line">　　&#125;, <span class="literal">false</span>);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure><h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">　  tabContentScroll = </span><br><span class="line">  <span class="keyword">new</span> IScroll(<span class="string">"#tabContentWrapper"</span>, &#123;</span><br><span class="line">      tap: <span class="literal">true</span>,</span><br><span class="line">      probeType: <span class="number">2</span>,</span><br><span class="line">      deceleration: <span class="number">0.001</span>,</span><br><span class="line">      vScrollbar: <span class="literal">false</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">　　<span class="comment">// 初始化IScroll的时候，加上vScrollbar: false，最关键这句，不加这句，完成其他几点只可以改好Chorme的问题，安卓的问题解决不了！！！</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure><h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>我觉得是最主要的，比如iscroll-zoom.js文件，我是用的是v5.2.0版本，大约在290行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> disablePointer : !utils.hasPointer,</span><br><span class="line">disableTouch : utils.hasPointer || !utils.hasTouch,</span><br><span class="line"> disableMouse : utils.hasPointer || utils.hasTouch,</span><br><span class="line"> <span class="comment">// 修改成</span></span><br><span class="line"> disablePointer : <span class="literal">true</span>,</span><br><span class="line">disableTouch : <span class="literal">false</span>,</span><br><span class="line">disableMouse : <span class="literal">true</span>,</span><br></pre></td></tr></table></figure></p><p><a href="https://github.com/cubiq/iscroll/issues/1100" target="_blank" rel="noopener">官网issus的解释</a><br><a href="https://www.cnblogs.com/KAI0725/p/11019971.html" target="_blank" rel="noopener">这个是在网络上找到的参考答案连接</a></p><h2 id="解决方法二"><a href="#解决方法二" class="headerlink" title="解决方法二"></a>解决方法二</h2><p>既然v5.2.0有bug，那我们不用这个版本的，可以用以前的老版本啊。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm info iscroll</span><br></pre></td></tr></table></figure></p><p>可以查看历史版本等信息，我下载了v5.0.8这个版本，经过测试可用了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Puppeteer</title>
       <link href="/2019/09/10/Puppeteer/"/>
       <url>/2019/09/10/Puppeteer/</url>
