@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>SVG动画介绍 | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SVG动画效果简单入门介绍">
+<meta name="keywords" content="web图形">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG动画介绍">
+<meta property="og:url" content="/2019/09/30/SVG动画介绍/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="SVG动画效果简单入门介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/1.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/2.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/3.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/4.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/2.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/1.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/6.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/7.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/8.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/9.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/27.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/10.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/4.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/10.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/11.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/12.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/13.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/14.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/15.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/16.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/28.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/17.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/18.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/19.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/20.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/21.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/3.gif">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/22.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/23.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/24.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/25.png">
+<meta property="og:image" content="/2019/09/30/SVG动画介绍/26.png">
+<meta property="og:updated_time" content="2019-10-08T06:23:13.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVG动画介绍">
+<meta name="twitter:description" content="SVG动画效果简单入门介绍">
+<meta name="twitter:image" content="/2019/09/30/SVG动画介绍/1.gif">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-SVG动画介绍" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                SVG动画介绍
+            
+        </h1>
+        <time>
+            2019-09-30 Monday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SVG动画介绍"><span class="toc-number">1.</span> <span class="toc-text">SVG动画介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG-Animation"><span class="toc-number">1.1.</span> <span class="toc-text">SVG Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#animate-morph"><span class="toc-number">1.1.1.</span> <span class="toc-text">animate morph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#animateMotion"><span class="toc-number">1.1.2.</span> <span class="toc-text">animateMotion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">1.1.3.</span> <span class="toc-text">set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵动画"><span class="toc-number">1.2.</span> <span class="toc-text">矩阵动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵高级用法"><span class="toc-number">1.2.1.</span> <span class="toc-text">矩阵高级用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线条动画"><span class="toc-number">1.3.</span> <span class="toc-text">线条动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG-中使用-transition"><span class="toc-number">1.4.</span> <span class="toc-text">SVG 中使用 transition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG-文字"><span class="toc-number">1.5.</span> <span class="toc-text">SVG 文字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#text-anchor"><span class="toc-number">1.5.1.</span> <span class="toc-text">text-anchor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tspan"><span class="toc-number">1.5.2.</span> <span class="toc-text">tspan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-Path-展示-text"><span class="toc-number">1.5.3.</span> <span class="toc-text">在 Path 展示 text</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clip"><span class="toc-number">1.6.</span> <span class="toc-text">Clip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appendix-参考标签"><span class="toc-number">1.7.</span> <span class="toc-text">Appendix 参考标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#g"><span class="toc-number">1.7.1.</span> <span class="toc-text">g</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use"><span class="toc-number">1.7.2.</span> <span class="toc-text">use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#defs"><span class="toc-number">1.7.3.</span> <span class="toc-text">defs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#symbol"><span class="toc-number">1.7.4.</span> <span class="toc-text">symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image"><span class="toc-number">1.7.5.</span> <span class="toc-text">image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#marker"><span class="toc-number">1.7.6.</span> <span class="toc-text">marker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a"><span class="toc-number">1.7.7.</span> <span class="toc-text">a</span></a></li></ol></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>SVG动画效果简单入门介绍<br><a id="more"></a></p>
+<h1 id="SVG动画介绍"><a href="#SVG动画介绍" class="headerlink" title="SVG动画介绍"></a>SVG动画介绍</h1><p>本文主要是讲解关于 SVG 的一些高级动画特效，比如 SVG 动画标签，图形渐变，路径动画，线条动画，SVG 裁剪等。<br>例如：路径动画<br><img src="/2019/09/30/SVG动画介绍/1.gif" alt="img"><br>图形渐变：<br><img src="/2019/09/30/SVG动画介绍/2.gif" alt="img"><br>线条动画：<br><img src="/2019/09/30/SVG动画介绍/3.gif" alt="img"><br>以及，相关的动画的矩阵知识，这个也是现在 CSS 动画里面最重要，同时也是最为欠缺的知识点：<br><img src="/2019/09/30/SVG动画介绍/4.png" alt="img"><br>文章会先从基本语法入手，然后，慢慢深入。介绍一些动画基本原理和对应的数学原理知识点。并且文章后面，还附有相关语法的介绍，当你在遇到不熟悉语法的时候可以参考参考。<br><a href="https://jinux7.github.io/2019/09/29/SVG入门教程/" target="_blank" rel="noopener">前面一篇文章</a>，主要介绍了一些 SVG 的基本概念和基本图形。接下来我们需要了解一下，SVG 处理矢量这个特性之外，还有啥内容吸引我们，能让 SVG 现在普及度这么高？</p>
+<h2 id="SVG-Animation"><a href="#SVG-Animation" class="headerlink" title="SVG Animation"></a>SVG Animation</h2><p>在 SVG 中，如果我们想实现一个动画效果，可以使用 CSS，JS，或者直接使用 SVG 中自带的 animate 元素添加动画。<br>使用 CSS 的话，有两种选择一种是通过 style 直接内联在里面，另外是直接使用相关的动画属性– transform。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;use id=<span class="string">"star"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"starStyle"</span> xlink:href=<span class="string">"#starDef"</span></span><br><span class="line">       transform=<span class="string">"translate(100, 100)"</span></span><br><span class="line">       style=<span class="string">"fill: #008000; stroke: #008000"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>而使用 SVG 中自定的 animate 主要还是 SVG 自己的东西，比较好用。如果想用 CSS 的动画，这都无所谓。<br>先看一个 SVG animate DEMO:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;rect x=<span class="string">"10"</span> y=<span class="string">"10"</span> width=<span class="string">"200"</span> height=<span class="string">"20"</span> stroke=<span class="string">"black"</span> fill=<span class="string">"none"</span>&gt;</span><br><span class="line">  &lt;animate</span><br><span class="line">    attributeName=<span class="string">"width"</span></span><br><span class="line">    attributeType=<span class="string">"XML"</span></span><br><span class="line">    <span class="keyword">from</span>=<span class="string">"200"</span> to=<span class="string">"20"</span></span><br><span class="line">    begin=<span class="string">"0s"</span> dur=<span class="string">"5s"</span></span><br><span class="line">    fill=<span class="string">"freeze"</span> /&gt;</span><br><span class="line">&lt;<span class="regexp">/rect&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>通过将 animate 标签嵌套在指定的图形里面，即可实现变换的效果。另外，还有 animateTransform，它主要是用来做变形动画的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;rect x=<span class="string">"-10"</span> y=<span class="string">"-10"</span> width=<span class="string">"20"</span> height=<span class="string">"20"</span></span><br><span class="line">    style=<span class="string">"fill: #ff9; stroke: black;"</span>&gt;</span><br><span class="line">    &lt;animateTransform attributeType=<span class="string">"XML"</span></span><br><span class="line">      attributeName=<span class="string">"transform"</span> type=<span class="string">"scale"</span></span><br><span class="line">      <span class="keyword">from</span>=<span class="string">"1"</span> to=<span class="string">"4 2"</span></span><br><span class="line">      begin=<span class="string">"0s"</span> dur=<span class="string">"4s"</span> fill=<span class="string">"freeze"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/rect&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>简单来说：</p>
+<ul>
+<li>animate: 相当于 CSS 中的 transition</li>
+<li>animateTransform: 相当于 CSS 中的 transform</li>
+</ul>
+<p>里面一些技术细节我们这里就不过多讲解了。这里，主要想介绍一下 animate 中的 morph 的效果。</p>
+<h3 id="animate-morph"><a href="#animate-morph" class="headerlink" title="animate morph"></a>animate morph</h3><p>该效果主要做的就是图形内部的渐变。如图：<br><img src="/2019/09/30/SVG动画介绍/2.gif" alt="img"><br>这种动画是怎么实现呢？<br>直接看代码吧：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;path fill=<span class="string">"#1EB287"</span>&gt;</span><br><span class="line">    &lt;animate </span><br><span class="line">             attributeName=<span class="string">"d"</span> </span><br><span class="line">             dur=<span class="string">"1440ms"</span> </span><br><span class="line">             repeatCount=<span class="string">"indefinite"</span></span><br><span class="line">             keyTimes=<span class="string">"0;</span></span><br><span class="line"><span class="string">                       .0625;</span></span><br><span class="line"><span class="string">                       .208333333;</span></span><br><span class="line"><span class="string">                       .3125;</span></span><br><span class="line"><span class="string">                       .395833333;</span></span><br><span class="line"><span class="string">                       .645833333;</span></span><br><span class="line"><span class="string">                       .833333333;</span></span><br><span class="line"><span class="string">                       1"</span></span><br><span class="line">             calcMode=<span class="string">"spline"</span> </span><br><span class="line">             keySplines=<span class="string">"0,0,1,1;</span></span><br><span class="line"><span class="string">                         .42,0,.58,1;</span></span><br><span class="line"><span class="string">                         .42,0,1,1;</span></span><br><span class="line"><span class="string">                         0,0,.58,1;</span></span><br><span class="line"><span class="string">                         .42,0,.58,1;</span></span><br><span class="line"><span class="string">                         .42,0,.58,1;</span></span><br><span class="line"><span class="string">                         .42,0,.58,1"</span></span><br><span class="line">             values=<span class="string">"M 0,0 </span></span><br><span class="line"><span class="string">                     C 50,0 50,0 100,0</span></span><br><span class="line"><span class="string">                     100,50 100,50 100,100</span></span><br><span class="line"><span class="string">                     50,100 50,100 0,100</span></span><br><span class="line"><span class="string">                     0,50 0,50 0,0</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                     M 0,0 </span></span><br><span class="line"><span class="string">                     C 50,0 50,0 100,0</span></span><br><span class="line"><span class="string">                     100,50 100,50 100,100</span></span><br><span class="line"><span class="string">                     50,100 50,100 0,100</span></span><br><span class="line"><span class="string">                     0,50 0,50 0,0</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                     M 50,0 </span></span><br><span class="line"><span class="string">                     C 75,25 75,25 100,50 </span></span><br><span class="line"><span class="string">                     75,75 75,75 50,100</span></span><br><span class="line"><span class="string">                     25,75 25,75 0,50</span></span><br><span class="line"><span class="string">                     25,25 25,25 50,0</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                     M 25,50 </span></span><br><span class="line"><span class="string">                     C 37.5,25 37.5,25 50,0 </span></span><br><span class="line"><span class="string">                     75,50 75,50 100,100</span></span><br><span class="line"><span class="string">                     50,100 50,100 0,100</span></span><br><span class="line"><span class="string">                     12.5,75 12.5,75 25,50</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                     M 25,50 </span></span><br><span class="line"><span class="string">                     C 37.5,25 37.5,25 50,0 </span></span><br><span class="line"><span class="string">                     75,50 75,50 100,100</span></span><br><span class="line"><span class="string">                     50,100 50,100 0,100</span></span><br><span class="line"><span class="string">                     12.5,75 12.5,75 25,50</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                     M 50,0</span></span><br><span class="line"><span class="string">                     C 77.6,0 100,22.4 100,50 </span></span><br><span class="line"><span class="string">                     100,77.6 77.6,100 50,100</span></span><br><span class="line"><span class="string">                     22.4,100, 0,77.6, 0,50</span></span><br><span class="line"><span class="string">                     0,22.4, 22.4,0, 50,0</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string">                     </span></span><br><span class="line"><span class="string">                     M 50,0</span></span><br><span class="line"><span class="string">                     C 77.6,0 100,22.4 100,50 </span></span><br><span class="line"><span class="string">                     100,77.6 77.6,100 50,100</span></span><br><span class="line"><span class="string">                     22.4,100, 0,77.6, 0,50</span></span><br><span class="line"><span class="string">                     0,22.4, 22.4,0, 50,0</span></span><br><span class="line"><span class="string">                     Z;</span></span><br><span class="line"><span class="string">                     </span></span><br><span class="line"><span class="string">                     M 100,0 </span></span><br><span class="line"><span class="string">                     C 100,50 100,50 100,100</span></span><br><span class="line"><span class="string">                     50,100 50,100 0,100</span></span><br><span class="line"><span class="string">                     0,50 0,50 0,0</span></span><br><span class="line"><span class="string">                     50,0 50,0 100,0</span></span><br><span class="line"><span class="string">                     Z;"</span>/&gt;</span><br><span class="line">  &lt;<span class="regexp">/path&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这么多，是不是感觉有点懵逼。不过，我们细分来看一下其实很简单。里面主要是利用 animate 中的 keyTimes，calcMode，keySplines，以及 values 这几个属性。不急，我们一个一个来解释一下。</li>
+<li>keyTimes: 这其实和 CSS 中定义的 @keyframes 一样。通过 0-1 之间的值，定义每段动画完成的时间。格式为：value;value…。例如 0;.0625;.208333333;.3125;.395833333;.645833333;.833333333;1。从第一个动画，到第二个动画经历的时间比例为 6.25%。并且，keyTimes 需要和 values 里面定义的帧数一致。</li>
+<li>calcMode: 用来定义动画具体的插值模型。取值有: discrete | linear[default] | paced | spline。具体可以参考 MDN。这里我们主要介绍一下 spline。该值表示每个动画间使用自定的贝塞尔变换曲线。如果没有特殊要求，使用 linear 其实已经足够了，这样就不用麻烦去定义下面的 keySplines 属性。</li>
+<li>keySplines：该值用来具体定义动画执行时的 贝塞尔曲线。使用格式是通过 ; 来分隔每一个值。即，cubic-bezier(.31,.57,.93,.46) 为一组。使用 keySplines 表达，则为：keySplines = “.31,.57,.93,.46;”。当然，里面的贝塞尔曲线组数为 整个动画帧数 - 1。</li>
+</ul>
+<p>而 values 就很简单了。它是直接结合 attributeName 属性，来设置具体的值，每个值之间使用 ; 进行分隔。<br>像上面那样，可以在指定元素里面嵌套多个 animate，既实现了形状的改变，又实现了颜色的改变。Morph 比较常用于数字的更迭，比如，<a href="https://codepen.io/felixhornoiu/pen/dovub" target="_blank" rel="noopener">倒数 10s 的相关动画</a>。到这里，Morpah 相关的知识点就结束了。</p>
+<p>接着，让我们来看一下 SVG 中，另外一非常重要的标签 – animateMotion。<br>该标签可以让指定的元素，绕着指定的路径进行运动。所以这对于复杂的路径来说非常有用，因为我们很难使用 transform 去模拟复杂的变换路径。看一个 DEMO<br><img src="/2019/09/30/SVG动画介绍/1.gif" alt="img"></p>
+<h3 id="animateMotion"><a href="#animateMotion" class="headerlink" title="animateMotion"></a>animateMotion</h3><p>animateMotion 大致的属性和 animate 差不多，不过，它还拥有自己特有的属性，比如 keyPoints、rotate、path 等。不过，calcMode 在 AM(animateMotion) 中的默认属性由，linear 变为 paced。<br>这些属性，我们慢慢介绍，先从最简单的开始吧。首先，我们来看一个 DEMO：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;g&gt;</span><br><span class="line">  &lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"30"</span> height=<span class="string">"30"</span> style=<span class="string">"fill: #ccc;"</span>/&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">"30"</span> cy=<span class="string">"30"</span> r=<span class="string">"15"</span> style=<span class="string">"fill: #cfc; stroke: green;"</span>/&gt;</span><br><span class="line">  &lt;animateMotion <span class="keyword">from</span>=<span class="string">"0,0"</span> to=<span class="string">"60,30"</span> dur=<span class="string">"4s"</span> fill=<span class="string">"freeze"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/g&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>from，to：指定两点的位置，位置参数是以元素的坐标为原点的。</li>
+<li>dur：执行渲染时间</li>
+<li>fill：指定动画结束后停留的装填。有 freeze 和 remove 效果。remove 表示回到动画开始的位置，freeze 表示停留在动画结束的位置。</li>
+</ul>
+<p>如果，你想要更复杂的路径，可以直接使用 path 属性来指定路径。用法和 path 标签中 d 属性是一样的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;rect x=<span class="string">"0"</span> y=<span class="string">"0"</span> width=<span class="string">"30"</span> height=<span class="string">"30"</span> style=<span class="string">"fill: #ccc;"</span>&gt;</span><br><span class="line">    &lt;animateMotion</span><br><span class="line">    path=<span class="string">"M50,125 C 100,25 150,225, 200, 125"</span></span><br><span class="line">    dur=<span class="string">"6s"</span> fill=<span class="string">"freeze"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/rect&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>或者使用 mpath 标签，引用外部的 path。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=<span class="string">"M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"</span></span><br><span class="line">      stroke=<span class="string">"lightgrey"</span> stroke-width=<span class="string">"2"</span> </span><br><span class="line">      fill=<span class="string">"none"</span> id=<span class="string">"theMotionPath"</span>/&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">"10"</span> cy=<span class="string">"110"</span> r=<span class="string">"3"</span> fill=<span class="string">"lightgrey"</span>  /&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">"110"</span> cy=<span class="string">"10"</span> r=<span class="string">"3"</span> fill=<span class="string">"lightgrey"</span>  /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- Red circle which will be moved along the motion path. --&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">""</span> cy=<span class="string">""</span> r=<span class="string">"5"</span> fill=<span class="string">"red"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Define the motion path animation --&gt;</span><br><span class="line">    &lt;animateMotion dur=<span class="string">"6s"</span> repeatCount=<span class="string">"indefinite"</span>&gt;</span><br><span class="line">      &lt;mpath xlink:href=<span class="string">"#theMotionPath"</span>/&gt;</span><br><span class="line">    &lt;<span class="regexp">/animateMotion&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>circle&gt;</span><br></pre></td></tr></table></figure></p>
+<p>动画效果为：<br><img src="/2019/09/30/SVG动画介绍/6.gif" alt="img"><br>所以，一般而言我们在定义 AM 的路径的时候，只用一种方式定义即可，否则会发生相应的覆盖：mpath&gt;path&gt;values&gt;from/to。<br>在 AM 运动中，还有一个很重要的概念就是旋转角。默认情况下，运动物体的角度是按照它和坐标轴的初始角度确定的。例如：<br><img src="/2019/09/30/SVG动画介绍/7.gif" alt="img"><br>这样看起来确实有些别扭，那能不能让物体垂直于路径进行运动呢？<br>有的，根据 rotate 属性值，一共有 3 个值可供选择。</p>
+<ul>
+<li>auto：让物体垂直于路径的切线方向运动。不过，如果你的路径是闭合曲线的话，需要注意起始点的位置。</li>
+</ul>
+<p>例如：<br><img src="/2019/09/30/SVG动画介绍/8.gif" alt="img"></p>
+<ul>
+<li>auto-reverse：让物体垂直于路径的切线方向并 + 180°。也就是和 auto 运动关于切线对称。<br><img src="/2019/09/30/SVG动画介绍/9.gif" alt="img"></li>
+<li>Number：让物体以固定的旋转角度运动。这个就相当于使用 transform:rotate(deg) 进行控制。</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>该标签也是用来模拟 transition 效果的。它和 animate 的主要区别是，它仅仅需要 to 的指定属性，而不需要其他的参考属性，比如 from，by 等。那它有啥特别的存在意义吗？<br>有的，因为 set 针对于所有属性，甚至包括 style 里面的相关 CSS 属性。所以，可以靠它来很好描述一些非 number 的属性值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;text text-anchor=<span class="string">"middle"</span> x=<span class="string">"60"</span> y=<span class="string">"60"</span> style=<span class="string">"visibility: hidden;"</span>&gt;</span><br><span class="line">  &lt;set attributeName=<span class="string">"visibility"</span> attributeType=<span class="string">"CSS"</span></span><br><span class="line">    to=<span class="string">"visible"</span> begin=<span class="string">"4.5s"</span> dur=<span class="string">"1s"</span> fill=<span class="string">"freeze"</span>/&gt;</span><br><span class="line">  All gone!</span><br><span class="line">&lt;<span class="regexp">/text&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="矩阵动画"><a href="#矩阵动画" class="headerlink" title="矩阵动画"></a>矩阵动画</h2><p>上面差不多简单阐述了关于 SVG 一些比较有特点的动画。当然，还有比较重要的线条动画，这个我们放到后面进行讲解。这里先来看一下所有动画中，非常重要的矩阵原理。线性代数应该是大学里面来说，最容易学的一门科目，MD。。。还记得，大学线代期末考试的时候，100 分的同学应该说是如韭菜地般，一抓一大片（对不起，我没能和他们同流合污。）<br>那矩阵是如何在动画中使用的呢？<br>简单的说，矩阵中的每个元素其实可以等价代换为每个因式里面的系数：<br><img src="/2019/09/30/SVG动画介绍/27.png" alt="img"><br>上面也叫作 三维矩阵。即，它涉及到 x,y,z 轴的计算。那对于我们平面 2D 变换来说，那么此时矩阵又是哪种形式呢？<br>很简单，只要将 z 轴永远置为一个常数就 OK。这里，惯例上是直接取 0 0 1 来设置。<br><img src="/2019/09/30/SVG动画介绍/10.png" alt="img"><br>不信的话，大家只要代进去乘以乘，应该就可以得到结果了。所以，在二维中，具体变换方式为：<br><img src="/2019/09/30/SVG动画介绍/4.png" alt="img"><br>后面，我们也会依据这个公式进行相关的变形操作。那矩阵变换是怎么运用到 CSS/SVG 当中呢？<br>在 CSS 中，是直接使用 transform 中的属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: matrix(a,b,c,d,e,f);</span><br></pre></td></tr></table></figure></p>
+<p>当然，在 SVG 中也是一样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;g transform=<span class="string">"matrix(1,2,3,4,5,6)"</span>&gt;</span><br><span class="line">    &lt;line x1=<span class="string">"10"</span> y1=<span class="string">"20"</span> x2=<span class="string">"30"</span> y2=<span class="string">"40"</span> style=<span class="string">"stroke-width: 10px; stroke: blue;"</span>/&gt;</span><br><span class="line">  &lt;<span class="regexp">/g&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>所以，我们主要的重点就是讲解一下 matrix 这个属性。它的格式为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matrix(a,b,c,d,e,f);</span><br></pre></td></tr></table></figure></p>
+<p>对应于我们上面的公式有：<br><img src="/2019/09/30/SVG动画介绍/10.png" alt="img"><br>在接触 transform 的时候，大家应该了解到 transform 里面有很多固定的动画属性：</p>
+<ul>
+<li>translate()</li>
+<li>rotate()</li>
+<li>scale()</li>
+<li>skew()<br>实际上，在底层还是使用 matrix 实现的变换。就拿 translate 举个例子吧。<br>translate 的格式为：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">translate(dx,dy)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>相当于参考当前原点，在 x/y 轴上移动 dx/dy 的距离。那么映射到矩阵，应该如何表示呢？<br>很简单，它等同于：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matrix(<span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> dx dy);</span><br></pre></td></tr></table></figure></p>
+<p>使用代数证明一下：<br>假设有 matrix(1 0 0 1 20 30)<br>变为矩阵为：<br><img src="/2019/09/30/SVG动画介绍/11.png" alt="img"><br>根据，上面的表达式有：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = x<span class="string">'*1 + y'</span>*<span class="number">0</span> + <span class="number">20</span> = x<span class="string">' + 20</span></span><br><span class="line"><span class="string">Y = x'</span>*<span class="number">0</span> + y<span class="string">'*1 + 30 = y'</span> + <span class="number">30</span></span><br></pre></td></tr></table></figure></p>
+<p>所以，就是 X 在原有 X 轴坐标上向右移动 20 的距离，Y 相对于原有移动 30 的距离。<br>那么其他几个属性呢？也是怎么变化的吗？<br>恩，类似。只是里面取值不一样：</p>
+<ul>
+<li>scale(x,y): 放大 X/Y 轴，矩阵的表达为 matrix(x 0 0 y 0 0)。</li>
+<li>rotate(θ): 坐标旋转，矩阵的表达为 matrix(cosθ sinθ -sinθ cosθ 0 0)。</li>
+<li>skew(θx,θy): X/Y 轴拉伸，矩阵的表达为 matrix(1 tanθx tanθy 1 0 0)。</li>
+</ul>
+<p>注意，上面三个都会改变原有物体的坐标系！！！ 这点很重要，换句话说，后面每次变换都是基于前面一个的变换结果的。<br>详情看图：<br><img src="/2019/09/30/SVG动画介绍/12.png" alt="img"><br>详情可以参考：<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform" target="_blank" rel="noopener">MDN matrix</a><br>不过，这并不是我们使用 matrix 的重点，也不是它的优势。它的优势在于可计算，即，能够将复杂的动画集合到一个表达式中，并且，后续的变换可以直接基于当前的 matrix。<br>我们先来了解一下，如果多个变换动画一起使用，matrix 应该如何表达呢？<br><strong>只需要找到我们变换动画对应的矩阵，然后相乘即可。</strong>例如，先旋转 45°，然后放大 1.5 倍，则有变换动画为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: rotate(<span class="number">45</span>deg) scale(<span class="number">1.5</span>,<span class="number">1.5</span>);</span><br></pre></td></tr></table></figure></p>
+<p>注意，虽然，你定义动画是分开的，但此时的动画是同时进行的。为啥？因为，这两个动画实际上可以整合成为一个变换矩阵：<br><img src="/2019/09/30/SVG动画介绍/13.png" alt="img"><br>并且，位置是不可以调换的。比如，transform: scale(2,2) translate(20px,30px)。即，你先放大两倍，然后移动 20,30 的距离。注意，这里移动的 20,30 相对的是已经放大过后的坐标，相对于原坐标而言就是 40,60 了。 如果，你调换位置，即 transform: translate(20px,30px) scale(2,2)。就变成现在原坐标移动 20,30，然后再放大两倍。<br>而上面强调的顺序关系，实际上就可以理解为矩阵不满足交换律的原则。因为一旦交换，结果很可能不一样。</p>
+<h3 id="矩阵高级用法"><a href="#矩阵高级用法" class="headerlink" title="矩阵高级用法"></a>矩阵高级用法</h3><p>上面的内容只是简单的描述了关于矩阵的概念。在实际中，矩阵可以说是真正利器。<br>假设现在有一个动画，要求你将一个物体从一个点通过抛物线的方式移动到另外一个点，那么此时要求 JS/CSS 随你挑。此时，你会不会感觉，呼吸急促，头脑发热呢？<br>恩，matrix 可以治，而且包治百病。不过，matrix 有一个限制点，它只能用于一次线性动画表达式。即，针对于抛物线，椭圆曲线这类复杂曲线来说，不太合适。那么有什么办法吗？<br>有的，微分思想。每一段动画其实都可以通过一定范围内的直线拼接而成，那么这样，我们就可以将一段抛物线拆分为由几段线段构成的曲线。当然，如果你分的越细，拟合度就越高。这里我们不打算过度你和，我们简单的将一段抛物线分为 5段。<br>如图：<br><img src="/2019/09/30/SVG动画介绍/14.png" alt="img"><br>那么接下来就是抠细节。这里，依次取倾角为 45°，30°，0°，-45°，-30° 这 5 段直线。每段分配的时间比例为 20%、25%、10%、25%、20% 这主要是用于 keyframe 的设定。现在，用数学来分析一下，这个动画到底该怎么弄。<br>现在，已知两点之间的距离为 100px。那么我们同样根据上述比例分，则有 20px, 25px, 10px, 25px, 20px。<br>这里我们以 45° 倾角为参考点，则终点坐标为 (20,20); 。那么，该段的矩阵为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意 Y 轴需要取负值！</span></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span> <span class="number">0</span> <span class="number">20</span></span><br><span class="line"> <span class="number">0</span> <span class="number">1</span> <span class="number">-20</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>CSS 中的变形动画为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: matrix(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">20</span>,<span class="number">-20</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然后，第二段就为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">25</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">-14.4</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>使用矩阵的乘法法，则有：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">45</span></span><br><span class="line"> <span class="number">0</span> <span class="number">1</span> <span class="number">-34.4</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p> 变形动画为：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: matrix(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">-34.4</span>);</span><br></pre></td></tr></table></figure></p>
+<p>剩余几段也是这样的做法。最终，整个 keyframe 就应该表示为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@keyframe Parabola&#123;</span><br><span class="line">    <span class="number">20</span>%&#123;</span><br><span class="line">        transform: matrix(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">20</span>,<span class="number">-20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">45</span>%&#123;</span><br><span class="line">        transform: matrix(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">-34.4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>整个动画过程差不多都是这样。当然，矩阵也不仅仅局限于这几个动画，凭借着高度定制化和灵活性的特点，这它还常常用于进行回弹，弹跳等动画中。如果大家有兴趣，后期也可以对这类动画进行简单的讲解。<br>后面，我们最后来了解一下 SVG 中很重要的线条动画。</p>
+<h2 id="线条动画"><a href="#线条动画" class="headerlink" title="线条动画"></a>线条动画</h2><p>SVG 中的线条动画常常用作过渡屏（splash screen）中。例如：</p>
+<p><img src="/2019/09/30/SVG动画介绍/15.gif" alt="img"></p>
+<p>或者，一些比较炫酷的 LOGO 中，比如 AllowTeam 的：</p>
+<p><img src="/2019/09/30/SVG动画介绍/16.gif" alt="img"><br>看到这些炫酷的效果，大家有没有动心想学一学，看看自己到底能否做的这么好呢？<br>OK，我们现在来正式介绍一下线条动画。在 SVG 中，最长用到的线条标签就是 Path。这里我前面一篇文章已经做了介绍，我这里就不赘述了。<br>而在具体变化当中用到的是关于 stroke 的相关属性：（下面的属性都可以直接用在 CSS 当中！）</p>
+<ul>
+<li>stroke：定义笔触的颜色。例如：stroke=”green”</li>
+<li>stroke-dasharray：定义 dash 和 gap 的长度。它主要是通过使用 , 来分隔 实线 和 间隔 的值。例如：stroke-dasharray=”5, 5” 表示，按照 实线为 5，间隔为 5 的排布重复下去。如下图：<br><img src="/2019/09/30/SVG动画介绍/28.png" alt="img"><br>放大看有：<br><img src="/2019/09/30/SVG动画介绍/17.png" alt="img"><br>另外，stroke-dasharray 并不局限于只能设置两个值，要知道，它本身的含义是设置最小重复单元，即，dash,gap,dash,gap…。比如，我定义 stroke-dasharray=”15, 10, 5” 则相当于，[15,10,5] 为一段。则有：<br><img src="/2019/09/30/SVG动画介绍/18.png" alt="img"><br>放大看则有：<br><img src="/2019/09/30/SVG动画介绍/19.png" alt="img"></li>
+<li>stroke-dashoffset: 用来设置 dasharray 定义其实 dash 线条开始的位置。值可以为 number || percentage。百分数是相对于 SVG 的 viewport。通常结合 dasharray 可以实现线条的运动。</li>
+<li>stroke-linecap: 线条的端点样式。</li>
+<li>stroke-linejoin: 线条连接的样式</li>
+<li>stroke-miterlimit: 一个比较复杂的概念，如果我们只是画一些一般的线段，使用上面 linejoin 即可。如果涉及对边角要求比较高的，则可以使用该属性进行定义。它的值，其实就是角长度比上线宽：<br><img src="/2019/09/30/SVG动画介绍/20.png" alt="img"><br>而实际理解的话，就是假设当 width 为 1。此时比例为 2。那么 miter = 2。那么超过 2 的 miter 部分则会被 cut 掉。可以参照：<br><img src="/2019/09/30/SVG动画介绍/21.png" alt="img"><br>他主要是配合 linejoin 一起使用。因为 linejoin 默认取值就是 miter。所以，默认情况下就可以使用该标签属性。它默认值为 4。其余的大家下去实践一下即可。详细可以参考: <a href="https://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html" target="_blank" rel="noopener">miter</a></li>
+<li>stroke-opacity：线段的透明度</li>
+<li>stroke-width：线的粗细。</li>
+</ul>
+<p>OK，介绍完关于 path 的所有 stroke 属性之后，我们就要开始动手写一下让线条动起来的代码。简单来说，就是通过 stroke-dashoffset 和 stroke-dasharray 来做。整个动画可以分为两个过程：</p>
+<ul>
+<li>通过 dasharray 将实线部分隐藏，空余为全线段长。然后，将实线部分增加至全长。比如：dasharray: 0,1000 变为 dasharray: 1000,1000。</li>
+<li>同时，通过 dashoffset 来移动新增的实线部分，造成线段移动的效果。有: dashoffset:0，变为 dashoffset:1000。</li>
+</ul>
+<p>不过，这里我们不打算使用 Path 来做啥复杂的动画，这主要考虑到手头没有一些 SVG 生成工具。所以，这里我们就以 Text 来做吧（因为做起来真的简单）。<br>这里，先以 IV-WEB 这段文字来做动画。<br>先给大家看一下最终结果：<br><img src="/2019/09/30/SVG动画介绍/3.gif" alt="img"><br>那么这种动画是怎么做的呢？<br>这里，我主要介绍一下关于 CSS 相关，SVG 就一个 Text 我直接贴代码了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg viewBox=<span class="string">"0 0 1320 300"</span>&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- <span class="built_in">Symbol</span> --&gt;</span><br><span class="line">  &lt;symbol id=<span class="string">"s-text"</span>&gt;</span><br><span class="line">    &lt;text text-anchor=<span class="string">"middle"</span></span><br><span class="line">          x=<span class="string">"50%"</span> y=<span class="string">"50%"</span> dy=<span class="string">".35em"</span>&gt;</span><br><span class="line">      IV-WEB</span><br><span class="line">    &lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>symbol&gt;  </span><br><span class="line"></span><br><span class="line">  &lt;!-- Duplicate symbols --&gt;</span><br><span class="line">  &lt;use xlink:href=<span class="string">"#s-text"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span></span><br><span class="line">       &gt;&lt;/use&gt;</span><br><span class="line">  &lt;use xlink:href=<span class="string">"#s-text"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span></span><br><span class="line">       &gt;&lt;/use&gt;</span><br><span class="line">  &lt;use xlink:href=<span class="string">"#s-text"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span></span><br><span class="line">       &gt;&lt;/use&gt;</span><br><span class="line">&lt;<span class="regexp">/svg&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>上面是通过创建一个居中定位的字体，然后使用 3 个 text 重叠。具体 CSS 我们下面来说一下。首先，我们营造的效果是从无到有，就需要使用 dasharray 将 gap 设置的足够大。这里我取 300 即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stroke-dasharray: <span class="number">0</span> <span class="number">300</span>;</span><br></pre></td></tr></table></figure></p>
+<p>然后，通过 nth-child 选择器，给每一个文字使用不同的颜色值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.text:nth-child(<span class="number">3</span>n + <span class="number">1</span>) &#123;</span><br><span class="line">  stroke: #F60A0A;</span><br><span class="line">&#125;</span><br><span class="line">.text:nth-child(<span class="number">3</span>n + <span class="number">2</span>) &#123;</span><br><span class="line">  stroke: #F2FF14;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.text:nth-child(<span class="number">3</span>n + <span class="number">3</span>) &#123;</span><br><span class="line">  stroke: #FB9505;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面才是重点内容。此时，这 3 个 text 的起始点重合。我现在既要他们在运行时不完全重合，又要他们的线条能进行滚动。不啰嗦了，直接看代码吧：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@keyframes stroke &#123;</span><br><span class="line">  <span class="number">100</span>% &#123;</span><br><span class="line">    stroke-dashoffset: <span class="number">1000</span>;</span><br><span class="line">    stroke-dasharray: <span class="number">80</span> <span class="number">160</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@keyframes stroke1 &#123;</span><br><span class="line">  <span class="number">100</span>% &#123;</span><br><span class="line">    stroke-dashoffset: <span class="number">1080</span>;</span><br><span class="line">    stroke-dasharray: <span class="number">80</span> <span class="number">160</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@keyframes stroke2 &#123;</span><br><span class="line">  <span class="number">100</span>% &#123;</span><br><span class="line">    stroke-dashoffset: <span class="number">1160</span>;</span><br><span class="line">    stroke-dasharray: <span class="number">80</span> <span class="number">160</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这就是上面 3 个不同的 text 运用的动画。dashoffet 由 0 到 1000。这完成了滚动的目的。同时，为了让字体不重合，我还需要在对应字体的 dashoffset 上，加上不同的间隔距离。比如，第一个字体 offset 为 1000。那么第二个字体，我需要加上前一个字体 dash 的长度，即，80。所以，第二个字体就变为 1080。那么第三个就是加上前两个的 dash 长度，即 1160。<br>大致过程就是这样，详情可以查看： <a href="https://codepen.io/JimmyVV/pen/oWWzdB" target="_blank" rel="noopener">IVWEB 线条动画</a>。</p>
+<h2 id="SVG-中使用-transition"><a href="#SVG-中使用-transition" class="headerlink" title="SVG 中使用 transition"></a>SVG 中使用 transition</h2><p>在 SVG 中，本来就存在相关的动画 Tag，不过里面用起来比较复杂，最常用的还是直接利用 CSS 里面相关的属性标签来做。其中，transition 是最常用的。比如，想做一下颜色的渐变等等。这里可以直接利用 transition 修饰指定的 SVG 属性即可。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># fill 是 SVG 中，专有属性</span><br><span class="line">path &#123; <span class="attr">transition</span>: fill <span class="number">.4</span>s ease; &#125;</span><br><span class="line">#europe       path &#123; fill: red; &#125;</span><br><span class="line">#europe:hover path &#123; fill: white; &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="SVG-文字"><a href="#SVG-文字" class="headerlink" title="SVG 文字"></a>SVG 文字</h2><p>在 SVG 中定义文字直接使用 text 标签即可。关于文字来说，一般而言需要注意的点就那么即可，文字的排列，间距等等。这些都可以直接使用 CSS 进行控制。不过，有几个属性比较特殊，这里需要额外提一下。</p>
+<h3 id="text-anchor"><a href="#text-anchor" class="headerlink" title="text-anchor"></a>text-anchor</h3><p>用来定义参考点和实际字符之间的定位关系。格式为：</p>
+<ul>
+<li>text-anchor: start | middle | end | inherit<br>直接看代码解释吧：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Anchors <span class="keyword">in</span> action --&gt;</span><br><span class="line">    &lt;text text-anchor=<span class="string">"start"</span></span><br><span class="line">          x=<span class="string">"60"</span> y=<span class="string">"40"</span>&gt;A&lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;text text-anchor="middle"</span></span><br><span class="line"><span class="regexp">          x="60" y="75"&gt;A&lt;/</span>text&gt;</span><br><span class="line"></span><br><span class="line">    &lt;text text-anchor=<span class="string">"end"</span></span><br><span class="line">          x=<span class="string">"60"</span> y=<span class="string">"110"</span>&gt;A&lt;<span class="regexp">/text&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第一个 A，参考的是 (60,40) 的点，定义为 start ，那么参考点应该在字符的前面。<br><img src="/2019/09/30/SVG动画介绍/22.png" alt="img"><br>而剩下两个也是同样的道理：<br><img src="/2019/09/30/SVG动画介绍/23.png" alt="img"></p>
+<h3 id="tspan"><a href="#tspan" class="headerlink" title="tspan"></a>tspan</h3><p>现在，假如我们想在 text 里面添加一些特殊的字符效果，比如斜体，加粗等。由于，text 标签不能实现嵌套，所以，为了解决这个痛点，提出了 tspan 的标签。它其实就是一个可以嵌套的 text 标签。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;text x=<span class="string">"10"</span> y=<span class="string">"30"</span> style=<span class="string">"font-size:12pt;"</span>&gt;</span><br><span class="line">  Switch among</span><br><span class="line">  &lt;tspan style=<span class="string">"font-style:italic"</span>&gt;italic&lt;<span class="regexp">/tspan&gt;, normal,</span></span><br><span class="line"><span class="regexp">  and &lt;tspan style="font-weight:bold"&gt;bold&lt;/</span>tspan&gt; text.</span><br><span class="line">&lt;<span class="regexp">/text&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>tspan 里面同样可以自定义相关的自身属性。详细的可以参考 <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan" target="_blank" rel="noopener">tspan</a> 我这里就不详述了。</p>
+<h3 id="在-Path-展示-text"><a href="#在-Path-展示-text" class="headerlink" title="在 Path 展示 text"></a>在 Path 展示 text</h3><p>Text 一般可以横放，竖放。那有没有啥办法让文字可以按照一定的路径任意排放呢？<br>有的，这里可以使用 textPath 标签，来定义具体参考路径。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;path id=<span class="string">"sharp-corner"</span></span><br><span class="line">    d=<span class="string">"M 30 110 100 110 100 160"</span></span><br><span class="line">    style=<span class="string">"stroke: gray; fill: none;"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;text&gt;</span><br><span class="line">    &lt;textPath xlink:href=<span class="string">"#sharp-corner"</span>&gt;</span><br><span class="line">    Making a quick turn</span><br><span class="line">    &lt;<span class="regexp">/textPath&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>text&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如图：<br><img src="/2019/09/30/SVG动画介绍/24.png" alt="img"></p>
+<h2 id="Clip"><a href="#Clip" class="headerlink" title="Clip"></a>Clip</h2><p>在 DOM 中如果想展示一个图片的部分，或者以某种形状展示图片的部分，一般是通过一个 cover div 来实现的。不过，如果涉及到不规则图形的话，那么 DOM 就有天生缺陷了（当然使用 CSS 里的 clip-path 可以完成，不过兼容性不太好）。而在 SVG 中，提供了 clipPath 标签，能够让我们自定义裁剪图片的范围和形状。<br>clipPath 里面可以接任何图形，比如，path,rect 甚至是 text。使用的时候，直接在 style 中，指定 clip-path 即可，或者直接使用 clip-path 属性指定。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">  &lt;clipPath id=<span class="string">"textClip"</span>&gt;</span><br><span class="line">    &lt;text id=<span class="string">"text1"</span> x=<span class="string">"20"</span> y=<span class="string">"20"</span> transform=<span class="string">"rotate(60)"</span></span><br><span class="line">      style=<span class="string">"font-family: 'Liberation Sans';</span></span><br><span class="line"><span class="string">        font-size: 48pt; stroke: black; fill: none;"</span>&gt;</span><br><span class="line">CLIP</span><br><span class="line">    &lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>clipPath&gt;</span><br><span class="line"> &lt;<span class="regexp">/defs&gt;</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp"> &lt;use transform="translate(100, 0)"</span></span><br><span class="line"><span class="regexp">  xlink:href="#shapes" style="clip-path: url(#textClip);"/</span>&gt;</span><br><span class="line">  </span><br><span class="line">   &lt;use transform=<span class="string">"translate(100, 0)"</span></span><br><span class="line">  xlink:href=<span class="string">"#shapes"</span> clip-path=<span class="string">"url(#textClip);"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/09/30/SVG动画介绍/25.png" alt="img"><br>或者说，如果我们想画一个圆的裁剪区域的话：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">     &lt;clipPath id=<span class="string">"circularPath"</span> clipPathUnits=<span class="string">"objectBoundingBox"</span>&gt;</span><br><span class="line">     &lt;circle cx=<span class="string">"0.5"</span> cy=<span class="string">"0.5"</span> r=<span class="string">"0.5"</span>/&gt;</span><br><span class="line">    &lt;<span class="regexp">/clipPath&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>defs&gt;</span><br><span class="line"></span><br><span class="line">&lt;use xlink:href=<span class="string">"#shapes"</span> style=<span class="string">"clip-path: url(#circularPath);"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Appendix-参考标签"><a href="#Appendix-参考标签" class="headerlink" title="Appendix 参考标签"></a>Appendix 参考标签</h2><h3 id="g"><a href="#g" class="headerlink" title="g"></a>g</h3><p>分组标签应该毫无意外排第一，因为其实作为绘制图形中最常和最基本的标签。前面一篇文章也主要介绍过了，这里做点补充。<br>每一个分组标签都带有 id 属性，唯一标识该分组，为什么呢？<br>因为，后面我们可以使用该 id 标签添加动画，重用该分组等。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;g id=<span class="string">"demo"</span> stroke=<span class="string">"green"</span> fill=<span class="string">"white"</span> stroke-width=<span class="string">"5"</span>&gt;</span><br><span class="line">   &lt;circle cx=<span class="string">"25"</span> cy=<span class="string">"25"</span> r=<span class="string">"15"</span>/&gt;</span><br><span class="line">   &lt;circle cx=<span class="string">"40"</span> cy=<span class="string">"25"</span> r=<span class="string">"15"</span>/&gt;</span><br><span class="line">   &lt;circle cx=<span class="string">"55"</span> cy=<span class="string">"25"</span> r=<span class="string">"15"</span>/&gt;</span><br><span class="line">   &lt;circle cx=<span class="string">"70"</span> cy=<span class="string">"25"</span> r=<span class="string">"15"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/g&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>每个分组里面可以含有一些描述标签，比如 desc。 这些描述内容是不会被渲染的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;g id=<span class="string">"demo"</span> stroke=<span class="string">"green"</span> fill=<span class="string">"white"</span> stroke-width=<span class="string">"5"</span>&gt;</span><br><span class="line">  &lt;desc&gt;Just Demo&lt;<span class="regexp">/desc&gt;</span></span><br><span class="line"><span class="regexp">  &lt;circle cx="25" cy="25" r="15"/</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/g&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><p>该标签就是结合 g 标签一起使用，作用是可以复用 g 分组的样式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;g id=<span class="string">"Port"</span>&gt;</span><br><span class="line">      &lt;circle style=<span class="string">"fill: inherit;"</span> r=<span class="string">"10"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/g&gt;</span></span><br><span class="line"><span class="regexp">&lt;use x="50" y="30" xlink:href="#Port" class="classA"/</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>里面使用 xlink:href 加上指定 group 的 id，然后通过 x，y 属性指定副本放置的位置。不过，有一个限制，use 标签的 style 属性，并不能覆盖点原始的 group style 样式。而且，有时候，我们只是想使用一些模板，即，图形并未被解析，只有代码存在。这时候，就需要使用 defs 来包裹了。</p>
+<h3 id="defs"><a href="#defs" class="headerlink" title="defs"></a>defs</h3><p>用来保存一些代码，使其不会被浏览器解析。并且里面的分组可以被 use 属性的 style 样式所覆盖。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> &lt;defs&gt;</span><br><span class="line">   &lt;g id=<span class="string">"Port"</span>&gt;</span><br><span class="line">     &lt;circle style=<span class="string">"fill: inherit;"</span> r=<span class="string">"10"</span>/&gt;</span><br><span class="line">   &lt;<span class="regexp">/g&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>defs&gt;</span><br><span class="line"></span><br><span class="line">&lt;use x=<span class="string">"50"</span> y=<span class="string">"50"</span> xlink:href=<span class="string">"#Port"</span> style=<span class="string">"fill: blue;"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>该标签和 g 标签类似，也是用来进行分组。不过，它有个特点，即，不会被浏览器所渲染。那它不和 defs 差不多吗？<br>恩，确实。不过，defs 是官方推荐，用来包裹一些模板 svg 代码而创造出来，用来增加可读性的标签。而 symbol 是存粹的作为一个模板。它可以独立于 svg 的 viewbox 来自定义子 viewbox 和 preserveAspectRatio。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;symbol id=<span class="string">"sym01"</span> viewBox=<span class="string">"0 0 150 110"</span>&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">"50"</span> cy=<span class="string">"50"</span> r=<span class="string">"40"</span> stroke-width=<span class="string">"8"</span></span><br><span class="line">      stroke=<span class="string">"red"</span> fill=<span class="string">"red"</span>/&gt;</span><br><span class="line">  &lt;circle cx=<span class="string">"90"</span> cy=<span class="string">"60"</span> r=<span class="string">"40"</span> stroke-width=<span class="string">"8"</span></span><br><span class="line">      stroke=<span class="string">"green"</span> fill=<span class="string">"white"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/symbol&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;use href="#sym01"</span></span><br><span class="line"><span class="regexp">     x="0" y="0" width="100" height="50"/</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>同样使用该模板，也是使用 use 标签来完成。</p>
+<h3 id="image"><a href="#image" class="headerlink" title="image"></a>image</h3><p>既然 use 可以重用 SVG 代码，那么 SVG 里面能不能重用已经画好的 png/jpg 的图片呢？<br>这时候，就需要用到 image 标签。其可以用来加载外部的 PNG, JPEG 图片，注意，官方规定是前两种，其它图片支持不支持官方没做答复。即，如果你使用 GIF 图片，并不能保证所有的浏览器都能正常显示。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;image xlink:href=<span class="string">"kwanghwamun.jpg"</span></span><br><span class="line">  x=<span class="string">"72"</span> y=<span class="string">"92"</span></span><br><span class="line">  width=<span class="string">"160"</span> height=<span class="string">"120"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/svg&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>同样，该 image 标签也具有自定义 preserveAspectRatio 的效果。</p>
+<ul>
+<li>x: 定义水平位置</li>
+<li>y: 定义垂直位置</li>
+<li>width: 图片渲染的宽度，必须有。</li>
+<li>height: 图片渲染的高度，必须有。</li>
+<li>preserveAspectRatio: 控制图片的缩放</li>
+</ul>
+<h3 id="marker"><a href="#marker" class="headerlink" title="marker"></a>marker</h3><p>marker 一般是用来画箭头或者线段始末的标识图形。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">    &lt;marker id=<span class="string">"Triangle"</span> viewBox=<span class="string">"0 0 10 10"</span> refX=<span class="string">"1"</span> refY=<span class="string">"5"</span></span><br><span class="line">        markerWidth=<span class="string">"6"</span> markerHeight=<span class="string">"6"</span> orient=<span class="string">"auto"</span>&gt;</span><br><span class="line">      &lt;path d=<span class="string">"M 0 0 L 10 5 L 0 10 z"</span> /&gt;</span><br><span class="line">    &lt;<span class="regexp">/marker&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>defs&gt;</span><br><span class="line"></span><br><span class="line">  &lt;polyline points=<span class="string">"10,90 50,80 90,20"</span> fill=<span class="string">"none"</span> stroke=<span class="string">"black"</span> </span><br><span class="line">      stroke-width=<span class="string">"2"</span> marker-end=<span class="string">"url(#Triangle)"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如图:<br><img src="/2019/09/30/SVG动画介绍/26.png" alt="img"><br>这里我们只需要里了解即可，因为在实际画的时候，直接使用相关工具生成更加方便。</p>
+<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>这里的 a 标签和我们直接在 HTML 使用的超链接 a 标签类似。也是用来定义一个外链的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;a xlink:href=<span class="string">"https://developer.mozilla.org/en-US/docs/SVG"</span></span><br><span class="line">    target=<span class="string">"_blank"</span>&gt;</span><br><span class="line">  &lt;rect height=<span class="string">"30"</span> width=<span class="string">"120"</span> y=<span class="string">"0"</span> x=<span class="string">"0"</span> rx=<span class="string">"15"</span>/&gt;</span><br><span class="line">  &lt;text fill=<span class="string">"white"</span> text-anchor=<span class="string">"middle"</span> </span><br><span class="line">        y=<span class="string">"21"</span> x=<span class="string">"60"</span>&gt;SVG on MDN&lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>a&gt;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/web图形/"><i class="fa fa-tag"></i>&nbsp;&nbsp;web图形</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/09/29/SVG入门教程/" rel="next" title="SVG入门教程">
+                            SVG入门教程
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'SVG动画介绍',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>81</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>5</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 18.29px; color: #7c7c7c">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 15.43px; color: #8f8f8f">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/jquery/" style="font-size: 16.86px; color: #868686">jquery</a> <a href="/tags/js工具库/" style="font-size: 16.86px; color: #868686">js工具库</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 19.71px; color: #727272">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.29px; color: #7c7c7c">webpack</a> <a href="/tags/web图形/" style="font-size: 15.43px; color: #8f8f8f">web图形</a> <a href="/tags/web安全/" style="font-size: 16.86px; color: #868686">web安全</a> <a href="/tags/web性能/" style="font-size: 15.43px; color: #8f8f8f">web性能</a> <a href="/tags/兼容性/" style="font-size: 14px; color: #999">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 16.86px; color: #868686">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/工具库/" style="font-size: 22.57px; color: #5f5f5f">工具库</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 14px; color: #999">样式</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 22.57px; color: #5f5f5f">移动端</a> <a href="/tags/网络基础/" style="font-size: 21.14px; color: #686868">网络基础</a> <a href="/tags/面试题/" style="font-size: 21.14px; color: #686868">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
