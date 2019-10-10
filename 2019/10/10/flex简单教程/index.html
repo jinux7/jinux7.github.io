@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: vue | jinux</title>
+  <title>flex简单教程 | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/tags/vue/index.html">
+  <meta name="description" content="flex语法的简单记录">
+<meta name="keywords" content="样式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex简单教程">
+<meta property="og:url" content="/2019/10/10/flex简单教程/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="flex语法的简单记录">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-10T06:00:49.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="flex简单教程">
+<meta name="twitter:description" content="flex语法的简单记录">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -148,227 +150,82 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-    <script>
-        window.subData= { title:'tag : vue'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/06/13/vue-react中百度地图的使用/">
-                
-                    vue,react中百度地图的使用
-                
-            </a>
-        </h2>
+        <article id="post-flex简单教程" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                flex简单教程
+            
+        </h1>
         <time>
-            2019-06-13 Thursday
+            2019-10-10 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
+        <a href="/categories/css/">css</a>
     </div>
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#flex简单教程"><span class="toc-number">1.</span> <span class="toc-text">flex简单教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器指定为flex容器"><span class="toc-number">1.1.</span> <span class="toc-text">容器指定为flex容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex容器的属性"><span class="toc-number">1.2.</span> <span class="toc-text">flex容器的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex容器里项目的属性"><span class="toc-number">1.3.</span> <span class="toc-text">flex容器里项目的属性</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>vue,react等框架，百度地图的最优使用方式<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/06/13/vue-react中百度地图的使用/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>flex语法的简单记录<br><a id="more"></a></p>
+<h1 id="flex简单教程"><a href="#flex简单教程" class="headerlink" title="flex简单教程"></a>flex简单教程</h1><p>flex在项目中经常使用，但是语法还是经常忘，这里简单的记录下基本语法，以便方便查看，如果想系统学习，请阅读阮一峰老师的两篇文章<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程：语法篇</a> 和 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">Flex 布局教程：实例篇</a></p>
+<h2 id="容器指定为flex容器"><a href="#容器指定为flex容器" class="headerlink" title="容器指定为flex容器"></a>容器指定为flex容器</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex; <span class="comment">// 块元素flex布局 </span></span><br><span class="line">  display: inline-flex; <span class="comment">// 行间元素flex布局</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="flex容器的属性"><a href="#flex容器的属性" class="headerlink" title="flex容器的属性"></a>flex容器的属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  <span class="comment">// 属性决定主轴的方向（即项目的排列方向）。</span></span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// flex-wrap属性定义，如果一条轴线排不下，如何换行。</span></span><br><span class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</span></span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line"></span><br><span class="line">  // justify-content属性定义了项目在主轴上的对齐方式。</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line"></span><br><span class="line">  // align-items属性定义项目在交叉轴上如何对齐。</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line"></span><br><span class="line">  // align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="flex容器里项目的属性"><a href="#flex容器里项目的属性" class="headerlink" title="flex容器里项目的属性"></a>flex容器里项目的属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  <span class="comment">// order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span></span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line"></span><br><span class="line">  // flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line"></span><br><span class="line">  // flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line"></span><br><span class="line">  // flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line"></span><br><span class="line">  // flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</span><br><span class="line">  flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ] // 例：auto (1 1 auto) 和 none (0 0 auto)</span><br><span class="line"></span><br><span class="line">  // align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/03/01/vue自定义指令之输入框限制字数/">
+
+        
+            <div class="article-tags tags">
                 
-                    vue自定义指令之输入框限制字数
-                
-            </a>
-        </h2>
-        <time>
-            2019-03-01 Friday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>input输入框限制字数的指令制作<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/03/01/vue自定义指令之输入框限制字数/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
+                    <a href="/tags/样式/"><i class="fa fa-tag"></i>&nbsp;&nbsp;样式</a>
                 
             </div>
         
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/10/09/简单快速理解web缓存/" rel="next" title="简单快速理解web缓存">
+                            简单快速理解web缓存
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
     </section>
+
 </article>
 
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/04/vue-iview-Modal组件简单分析/">
-                
-                    vue-iview Modal组件简单分析
-                
-            </a>
-        </h2>
-        <time>
-            2018-12-04 Tuesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
+<br>
+
+<!-- 显示推荐文章和评论 -->
 
 
-    </section>
-
-    <section class="article typo">
-        <p>vue-iview Modal组件简单分析<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/12/04/vue-iview-Modal组件简单分析/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/10/08/vue不同路由使用同一个组件重新加载这个组件/">
-                
-                    vue不同路由使用同一个组件重新加载这个组件
-                
-            </a>
-        </h2>
-        <time>
-            2018-10-08 Monday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>vue不同路由使用同一个组件重新加载这个组件<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/10/08/vue不同路由使用同一个组件重新加载这个组件/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/08/30/vue双向绑定的简单实现/">
-                
-                    vue双向绑定的简单实现
-                
-            </a>
-        </h2>
-        <time>
-            2018-08-30 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>参考网上vue实现教程简单整理<br></p>
-        
-            <div class="readmore">
-                <a href="/2018/08/30/vue双向绑定的简单实现/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-</section>
-
+<script>
+    window.subData = {
+        title: 'flex简单教程',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -458,6 +315,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
