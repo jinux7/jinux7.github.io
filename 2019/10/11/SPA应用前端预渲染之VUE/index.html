@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>实现call函数 | jinux</title>
+  <title>SPA应用前端预渲染之VUE | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自己实现call函数">
-<meta name="keywords" content="基础知识">
+  <meta name="description" content="vue中如何实现预渲染">
+<meta name="keywords" content="webpack,vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实现call函数">
-<meta property="og:url" content="/2018/10/19/实现call函数/index.html">
+<meta property="og:title" content="SPA应用前端预渲染之VUE">
+<meta property="og:url" content="/2019/10/11/SPA应用前端预渲染之VUE/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="自己实现call函数">
+<meta property="og:description" content="vue中如何实现预渲染">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T06:03:10.245Z">
+<meta property="og:updated_time" content="2019-10-12T06:22:35.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实现call函数">
-<meta name="twitter:description" content="自己实现call函数">
+<meta name="twitter:title" content="SPA应用前端预渲染之VUE">
+<meta name="twitter:description" content="vue中如何实现预渲染">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -150,15 +150,15 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-实现call函数" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-SPA应用前端预渲染之VUE" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                实现call函数
+                SPA应用前端预渲染之VUE
             
         </h1>
         <time>
-            2018-10-19 Friday&nbsp;&nbsp;
+            2019-10-11 Friday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现call函数"><span class="toc-number">1.</span> <span class="toc-text">实现call函数</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SPA应用前端预渲染之VUE"><span class="toc-number">1.</span> <span class="toc-text">SPA应用前端预渲染之VUE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#prerender-spa-plugin的使用"><span class="toc-number">1.1.</span> <span class="toc-text">prerender-spa-plugin的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-config-js中增加"><span class="toc-number">1.1.2.</span> <span class="toc-text">vue-config.js中增加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在main-js中增加"><span class="toc-number">1.1.3.</span> <span class="toc-text">在main.js中增加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由设置"><span class="toc-number">1.1.4.</span> <span class="toc-text">路由设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包"><span class="toc-number">1.1.5.</span> <span class="toc-text">打包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
             </div>
         </section>
     
@@ -181,15 +181,23 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>自己实现call函数<br><a id="more"></a></p>
-<h2 id="实现call函数"><a href="#实现call函数" class="headerlink" title="实现call函数"></a>实现call函数</h2><p>实现代码很简单，直接贴出来<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">arguments</span>, str=<span class="string">''</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;args.length; i++) &#123;</span><br><span class="line">    str += (args[i]+<span class="string">','</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> newStr = str.slice(<span class="number">0</span>,(str.length<span class="number">-1</span>));</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+newStr+<span class="string">')'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+a+b);</span><br><span class="line">&#125;</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'join'</span></span><br><span class="line">&#125;,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">abc.myCall(&#123;</span><br><span class="line">  name: <span class="string">'mike'</span></span><br><span class="line">&#125;,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+            <p>vue中如何实现预渲染<br><a id="more"></a></p>
+<h1 id="SPA应用前端预渲染之VUE"><a href="#SPA应用前端预渲染之VUE" class="headerlink" title="SPA应用前端预渲染之VUE"></a>SPA应用前端预渲染之VUE</h1><p>SPA应用的缺点是第一次打开缓慢，再有就是SEO不友好，优化有两种方式，一种是前端预渲染，另一种是后端渲染ssr,今天我们只说前端预渲染。<br>前端预渲染必须在webpack的基础上来做，用到的插件是prerender-spa-plugin。<br>我们在创建vue项目的时候现在都是用vue-cli，这里我只举例3.0版本。</p>
+<h2 id="prerender-spa-plugin的使用"><a href="#prerender-spa-plugin的使用" class="headerlink" title="prerender-spa-plugin的使用"></a>prerender-spa-plugin的使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install prerender-spa-plugin --save</span><br></pre></td></tr></table></figure>
+<h3 id="vue-config-js中增加"><a href="#vue-config-js中增加" class="headerlink" title="vue-config.js中增加"></a>vue-config.js中增加</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer;</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            plugins: [</span><br><span class="line">                <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">                    <span class="comment">// 生成文件的路径，也可以与webpakc打包的一致。</span></span><br><span class="line">                    <span class="comment">// 下面这句话非常重要！！！</span></span><br><span class="line">                    <span class="comment">// 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。</span></span><br><span class="line">                    staticDir: path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">                    <span class="comment">// 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。</span></span><br><span class="line">                    routes: [<span class="string">'/'</span>, <span class="string">'/product'</span>,<span class="string">'/about'</span>],</span><br><span class="line">                    <span class="comment">// 这个很重要，如果没有配置这段，也不会进行预编译</span></span><br><span class="line">                    renderer: <span class="keyword">new</span> Renderer(&#123;</span><br><span class="line">                        inject: &#123;</span><br><span class="line">                            foo: <span class="string">'bar'</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        headless: <span class="literal">false</span>,</span><br><span class="line">                        <span class="comment">// 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。</span></span><br><span class="line">                        renderAfterDocumentEvent: <span class="string">'render-event'</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;),</span><br><span class="line">            ],</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在main-js中增加"><a href="#在main-js中增加" class="headerlink" title="在main.js中增加"></a>在main.js中增加</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="built_in">document</span>.dispatchEvent(<span class="keyword">new</span> Event(<span class="string">'render-event'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="路由设置"><a href="#路由设置" class="headerlink" title="路由设置"></a>路由设置</h3><p>router.js 中设置mode: “history”</p>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><p>运行npm run build，之后在dist文件夹下可以看到跟预渲染路由名字一样文件夹，里边有一个index.html的文件，这就是预渲染页面。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在现实中，这种需求还是很多的，我现在做的项目领导对首页加载一直不满意，首页是一个登录页面，现在的做法我把登录页的内容直接写死到dom里了，当js文件加载好了之后再覆盖掉，这种方式也可以，我看掘金的首页就是这么干的。<br>我来说一下我理解的预渲染，比如想把about页面预渲染出来，打包之后发现有两个html文件，正常的首页index.html页和about文件夹下的index.html页，仔细观察about预渲染页面，引入的js，css文件是一样的，只是显示的dom内容已经写死在dom里了，当然，也可以把首页的html文件预渲染，其实也是静态化，这样SEO就可以抓到里边的内容。预渲染的页面刚访问的时候里边内容是写死的，当点击路由后又切回到vue自己的路由模式来加载页面，当然，我猜在vue的路由里边已经删除了预渲染页面的路由，访问这些页面的时候只能去服务器端去下载静态的预渲染页面了。</p>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                    <a href="/tags/webpack/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webpack</a>
+                
+                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
                 
             </div>
         
@@ -197,17 +205,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2018/10/23/js类的继承-ES5写法/" rel="prev" title="js类的继承(ES5写法)">
-                            js类的继承(ES5写法)
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2018/10/16/ajax跨域请求自定义header字段问题/" rel="next" title="ajax跨域请求自定义header字段问题">
-                            ajax跨域请求自定义header字段问题
+                        <a href="/2019/10/10/flex简单教程/" rel="next" title="flex简单教程">
+                            flex简单教程
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -226,7 +227,7 @@
 
 <script>
     window.subData = {
-        title: '实现call函数',
+        title: 'SPA应用前端预渲染之VUE',
         tools: true
     }
 </script>
