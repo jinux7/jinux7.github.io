@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>常用数据结构的JavaScript实现</title>
+      <link href="/2019/11/28/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84JavaScript%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2019/11/28/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84JavaScript%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<p>一些传统的数据结构,如栈,队列,链表,哈希表,树在js中如何的实现<br><a id="more"></a></p><h1 id="常用数据结构的JavaScript实现"><a href="#常用数据结构的JavaScript实现" class="headerlink" title="常用数据结构的JavaScript实现"></a>常用数据结构的JavaScript实现</h1><p>觉得这篇文章很不错，收藏下来，感谢作者。<br><a href="https://mp.weixin.qq.com/s/04PFD6dHhUjdh7wpT33UMQ" target="_blank" rel="noopener">这里是连接哦</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>linux的常用操作</title>
+      <link href="/2019/11/28/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
+      <url>/2019/11/28/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<p>linux的一些基础常用操作<br><a id="more"></a></p><h1 id="linux的常用操作"><a href="#linux的常用操作" class="headerlink" title="linux的常用操作"></a>linux的常用操作</h1><h2 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h2><p>在linux下安装应用的方法有很多，我也尝试了好几种，最后感觉还是用yum安装方便。<br>在使用yum安装应用的时候需要配置一下yum源，这里写出两条命令，常用的应用软件都已经有了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">curl -O http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure></p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &lt;filename&gt;</span><br></pre></td></tr></table></figure><h3 id="文件的移动"><a href="#文件的移动" class="headerlink" title="文件的移动"></a>文件的移动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将repo结尾的文件移动到当前目录的back文件夹下</span><br><span class="line">mv *.repo ./back</span><br></pre></td></tr></table></figure><h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、删除文件命令</span><br><span class="line">rm -f 文件名</span><br><span class="line">将会强行删除文件，且无提示</span><br><span class="line">需要注意：</span><br><span class="line">使用rm -rf要格外注意，linux中没有回收站，慎重删除</span><br><span class="line">2、删除文件夹以及文件夹中的所有文件命令：</span><br><span class="line">rm -rf 目录名字</span><br><span class="line">其中：</span><br><span class="line">-r：向下递归删除</span><br><span class="line">-f：直接强行删除，且没有任何提示</span><br></pre></td></tr></table></figure><h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep node</span><br></pre></td></tr></table></figure><h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><h3 id="开启nginx服务"><a href="#开启nginx服务" class="headerlink" title="开启nginx服务"></a>开启nginx服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 服务器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>chrome浏览器设置可跨域</title>
       <link href="/2019/11/20/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E5%8F%AF%E8%B7%A8%E5%9F%9F/"/>
       <url>/2019/11/20/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E5%8F%AF%E8%B7%A8%E5%9F%9F/</url>
@@ -1053,7 +1099,7 @@
       
       <categories>
           
-          <category> javascript </category>
+          <category> 服务器 </category>
           
       </categories>
       
@@ -2210,7 +2256,7 @@
       <link href="/2018/09/28/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%9A%84%E6%96%87%E7%AB%A0%E6%94%B6%E9%9B%86/"/>
       <url>/2018/09/28/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%9A%84%E6%96%87%E7%AB%A0%E6%94%B6%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[<p>网上看到的好文章，总结收集。<br><a id="more"></a></p><h2 id="一些好的文章收集"><a href="#一些好的文章收集" class="headerlink" title="一些好的文章收集"></a>一些好的文章收集</h2><p>自己写博客文章真的是一件耗时的事儿，写文章需要把各个方面的知识都整理好，有时候我都是在网上看到一篇不错的文章，想记录下来，就照猫画虎的copy，但是，copy下拉也需要时间啊，没办法，现在我只能把连接记录下来，等有时间再好好地记录一下。</p><ul><li><a href="https://feclub.cn/post/content/dom" target="_blank" rel="noopener">高频dom操作和页面性能优化探索</a></li><li><a href="https://mp.weixin.qq.com/s/zO3W6WBt-mVW7j5iPYzSTQ" target="_blank" rel="noopener">送你43道JS面试题</a></li><li><a href="https://www.villainhr.com/page/2017/04/17/SVG%20快速入门" target="_blank" rel="noopener">SVG快速入门</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>网上看到的好文章，总结收集。<br><a id="more"></a></p><h2 id="一些好的文章收集"><a href="#一些好的文章收集" class="headerlink" title="一些好的文章收集"></a>一些好的文章收集</h2><p>自己写博客文章真的是一件耗时的事儿，写文章需要把各个方面的知识都整理好，有时候我都是在网上看到一篇不错的文章，想记录下来，就照猫画虎的copy，但是，copy下拉也需要时间啊，没办法，现在我只能把连接记录下来，等有时间再好好地记录一下。</p><ul><li><a href="https://feclub.cn/post/content/dom" target="_blank" rel="noopener">高频dom操作和页面性能优化探索</a></li><li><a href="https://mp.weixin.qq.com/s/zO3W6WBt-mVW7j5iPYzSTQ" target="_blank" rel="noopener">送你43道JS面试题</a></li><li><a href="https://www.villainhr.com/page/2017/04/17/SVG%20快速入门" target="_blank" rel="noopener">SVG快速入门</a></li><li><a href="https://www.oschina.net/news/96039/after-chrome66-ban-play-sound-auto" target="_blank" rel="noopener">浏览器audio自动播放解决方式</a></li></ul>]]></content>
       
       
       <categories>
