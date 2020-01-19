@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-11-28T08:16:47.245Z</updated>
+  <updated>2020-01-19T06:41:47.197Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单的聊聊iframe</title>
+    <link href="/2020/01/19/%E7%AE%80%E5%8D%95%E7%9A%84%E8%81%8A%E8%81%8Aiframe/"/>
+    <id>/2020/01/19/简单的聊聊iframe/</id>
+    <published>2020-01-19T06:11:04.000Z</published>
+    <updated>2020-01-19T06:41:47.197Z</updated>
+    
+    <content type="html"><![CDATA[<p>iframe在html中的简单使用<br><a id="more"></a></p><h1 id="简单的聊聊iframe"><a href="#简单的聊聊iframe" class="headerlink" title="简单的聊聊iframe"></a>简单的聊聊iframe</h1><p>我们在前端开发中，iframe的使用场景很多，即便是vue，react时代，我还是乐此不疲的在项目中使用iframe，因为它会隔离页面彼此的环境，避免造成一些不必要的干扰。</p><h2 id="在同域下使用iframe"><a href="#在同域下使用iframe" class="headerlink" title="在同域下使用iframe"></a>在同域下使用iframe</h2><p>在同域下使用iframe,父级页面可以获取iframe页面里的信息，还可以操作iframe页面中的内容。<br><a href="https://github.com/jinux7/study-collections/tree/master/iframe/same-origin" target="_blank" rel="noopener">案例</a><br>在同域下没什么好说的，父页面可以随意控制子页面。</p><h2 id="跨域下使用iframe"><a href="#跨域下使用iframe" class="headerlink" title="跨域下使用iframe"></a>跨域下使用iframe</h2><p>跨域下使用iframe,父页面是不能操作子页面的，但是子页面可以操作父页面。<br>而且，后台返回的头信息，还能够更加严格的控制iframe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(&apos;X-Frame-Options&apos;, &apos;DENY&apos;); // 不允许此页面被iframe加载</span><br><span class="line">res.setHeader(&apos;X-Frame-Options&apos;, &apos;SAMEORIGIN&apos;); // 只可以在相同域名下加载</span><br><span class="line">res.setHeader(&apos;X-Frame-Options&apos;, &apos;allow-from http://baidu.com/&apos;); // 允许指定的url加载iframe,但是这个属性在chrome,firefox,opera并不好使,只在edge中兼容</span><br></pre></td></tr></table></figure></p><p><a href="https://github.com/jinux7/study-collections/tree/master/iframe/cross-origin" target="_blank" rel="noopener">案例</a><br>目前为止，没有找到跨域控制iframe页面内容的方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iframe在html中的简单使用&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="html" scheme="/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>常用数据结构的JavaScript实现</title>
@@ -430,28 +452,6 @@
     <summary type="html">
     
       &lt;p&gt;解决iscroll在移动端卡顿&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="工具库" scheme="/tags/%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Puppeteer</title>
-    <link href="/2019/09/10/Puppeteer/"/>
-    <id>/2019/09/10/Puppeteer/</id>
-    <published>2019-09-10T06:50:51.000Z</published>
-    <updated>2019-09-10T07:02:46.923Z</updated>
-    
-    <content type="html"><![CDATA[<p>Puppeteer工具<br><a id="more"></a></p><h1 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h1><p>Puppeteer是谷歌官方出品的一个通过DevTools协议控制headless Chrome的Node库。可以通过Puppeteer的提供的api直接控制Chrome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据。<br>这里不做太多的介绍，贴出官方网址链接自行查看</p><ul><li><a href="https://www.npmjs.com/package/puppeteer" target="_blank" rel="noopener">npm-puppeteer</a></li><li><a href="https://www.findbestopensource.com/product/zhaoqize-puppeteer-api-zh-cn" target="_blank" rel="noopener">findbestopensource</a></li><li><a href="https://github.com/zhaoqize/puppeteer-api-zh_CN#readme" target="_blank" rel="noopener">Puppeteer 中文文档</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Puppeteer工具&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
