@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>wireshark抓包工具</title>
+      <link href="/2020/03/09/wireshark%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/"/>
+      <url>/2020/03/09/wireshark%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<p>wireshark是一款非常厉害的网络抓包工具<br><a id="more"></a></p><h1 id="wireshark抓包工具"><a href="#wireshark抓包工具" class="headerlink" title="wireshark抓包工具"></a>wireshark抓包工具</h1><p>作为一个前端开发，讨论网络抓包有点不务正业，但是知道点还是有好处的。<br>我平时用到的抓包工具有wireshark和charles，charles使用起来简单些，抓取http请求比较直观，wireshark的功能就强大得多，各种网络协议都可以解析，具体的使用细节就不说了，简单的说一下tcp协议的三次握手和四次挥手在wireshark中被抓取的数据。<br>首先看一下tcp的三次握手和四次挥手图解过程<br>1.三次握手：<br><img src="/2020/03/09/wireshark抓包工具/1.png" alt="img"><br>2.四次挥手：<br><img src="/2020/03/09/wireshark抓包工具/2.png" alt="img"><br>3.最后，wireshark抓取的数据：<br><img src="/2020/03/09/wireshark抓包工具/3.png" alt="img"><br>可以看到，前3个tcp是握手过程，最后4个tcp是挥手过程，中间的TLS协议是加密协议，因为我抓取的是https协议，所以会有加密协议。<br>本想再贴一个http协议的抓取截屏，抓了几次太乱了，还有好多失败的包，不贴了，大同小异，大概了解过程就行了，有精力的话，继续深入研究。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络基础 </tag>
+            
+            <tag> 面试题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>javascript严格模式</title>
       <link href="/2020/02/28/javascript%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"/>
       <url>/2020/02/28/javascript%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/</url>
@@ -2513,7 +2538,7 @@
       <link href="/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/"/>
       <url>/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li><li><a href="https://itxiaohao.github.io" target="_blank" rel="noopener">webpack4教程挺好</a></li><li><a href="https://juejin.im/post/5d23e750f265da1b855c7bbe" target="_blank" rel="noopener">前端面试100问</a></li><li><a href="https://www.cnblogs.com/xuanhun/category/568577.html" target="_blank" rel="noopener">玄魂工作室-nw.js教程</a></li><li><a href="http://www.yanhuangxueyuan.com" target="_blank" rel="noopener">WebGL教程-郭隆邦_技术博客</a></li><li><a href="https://github.com/scofieldfan/turtle-rock/blob/master/README.md" target="_blank" rel="noopener">一些算法的经典面试题</a></li><li><a href="https://github.com/ljianshu/Blog" target="_blank" rel="noopener">前端工匠</a></li><li><a href="https://github.com/jobbole/awesome-javascript-cn" target="_blank" rel="noopener">JavaScript 资源大全中文版</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li><li><a href="https://itxiaohao.github.io" target="_blank" rel="noopener">webpack4教程挺好</a></li><li><a href="https://juejin.im/post/5d23e750f265da1b855c7bbe" target="_blank" rel="noopener">前端面试100问</a></li><li><a href="https://www.cnblogs.com/xuanhun/category/568577.html" target="_blank" rel="noopener">玄魂工作室-nw.js教程</a></li><li><a href="http://www.yanhuangxueyuan.com" target="_blank" rel="noopener">WebGL教程-郭隆邦_技术博客</a></li><li><a href="https://github.com/scofieldfan/turtle-rock/blob/master/README.md" target="_blank" rel="noopener">一些算法的经典面试题</a></li><li><a href="https://github.com/ljianshu/Blog" target="_blank" rel="noopener">前端工匠</a></li><li><a href="https://github.com/jobbole/awesome-javascript-cn" target="_blank" rel="noopener">JavaScript 资源大全中文版</a></li><li><a href="https://www.alienzhou.com/" target="_blank" rel="noopener">AlienZHOU</a></li></ul>]]></content>
       
       
       

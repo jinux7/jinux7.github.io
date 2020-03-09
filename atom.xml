@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-03-01T08:45:34.425Z</updated>
+  <updated>2020-03-09T08:11:46.624Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wireshark抓包工具</title>
+    <link href="/2020/03/09/wireshark%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/"/>
+    <id>/2020/03/09/wireshark抓包工具/</id>
+    <published>2020-03-09T07:18:21.000Z</published>
+    <updated>2020-03-09T08:11:46.624Z</updated>
+    
+    <content type="html"><![CDATA[<p>wireshark是一款非常厉害的网络抓包工具<br><a id="more"></a></p><h1 id="wireshark抓包工具"><a href="#wireshark抓包工具" class="headerlink" title="wireshark抓包工具"></a>wireshark抓包工具</h1><p>作为一个前端开发，讨论网络抓包有点不务正业，但是知道点还是有好处的。<br>我平时用到的抓包工具有wireshark和charles，charles使用起来简单些，抓取http请求比较直观，wireshark的功能就强大得多，各种网络协议都可以解析，具体的使用细节就不说了，简单的说一下tcp协议的三次握手和四次挥手在wireshark中被抓取的数据。<br>首先看一下tcp的三次握手和四次挥手图解过程<br>1.三次握手：<br><img src="/2020/03/09/wireshark抓包工具/1.png" alt="img"><br>2.四次挥手：<br><img src="/2020/03/09/wireshark抓包工具/2.png" alt="img"><br>3.最后，wireshark抓取的数据：<br><img src="/2020/03/09/wireshark抓包工具/3.png" alt="img"><br>可以看到，前3个tcp是握手过程，最后4个tcp是挥手过程，中间的TLS协议是加密协议，因为我抓取的是https协议，所以会有加密协议。<br>本想再贴一个http协议的抓取截屏，抓了几次太乱了，还有好多失败的包，不贴了，大同小异，大概了解过程就行了，有精力的话，继续深入研究。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;wireshark是一款非常厉害的网络抓包工具&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="面试题" scheme="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript严格模式</title>
@@ -439,28 +463,6 @@
       <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
     
       <category term="面试题" scheme="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PWA应用</title>
-    <link href="/2019/10/09/PWA%E5%BA%94%E7%94%A8/"/>
-    <id>/2019/10/09/PWA应用/</id>
-    <published>2019-10-09T05:21:24.000Z</published>
-    <updated>2019-10-09T05:30:13.844Z</updated>
-    
-    <content type="html"><![CDATA[<p>PWA应用教程<br><a id="more"></a></p><h1 id="PWA应用"><a href="#PWA应用" class="headerlink" title="PWA应用"></a>PWA应用</h1><p>PWA是Progressive Web App的英文缩写， 翻译过来就是渐进式增强WEB应用， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式网页应用。<br>我也是正要准备学习，<a href="https://pwa.alienzhou.com" target="_blank" rel="noopener">点这里学习</a><br>在这里要感谢<strong>PWA学习手册</strong>的作者。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PWA应用教程&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="移动端" scheme="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
     
   </entry>
   
