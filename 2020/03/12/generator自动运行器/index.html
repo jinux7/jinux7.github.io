@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>generator自动运行器 | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="手写一个generator自动运行器">
+<meta name="keywords" content="工具库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="generator自动运行器">
+<meta property="og:url" content="/2020/03/12/generator自动运行器/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="手写一个generator自动运行器">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-12T07:34:13.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="generator自动运行器">
+<meta name="twitter:description" content="手写一个generator自动运行器">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-generator自动运行器" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                generator自动运行器
+            
+        </h1>
+        <time>
+            2020-03-12 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#generator自动运行器"><span class="toc-number">1.</span> <span class="toc-text">generator自动运行器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#generator手动next代码"><span class="toc-number">1.1.</span> <span class="toc-text">generator手动next代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#generator自动运行代码"><span class="toc-number">1.2.</span> <span class="toc-text">generator自动运行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>手写一个generator自动运行器<br><a id="more"></a></p>
+<h1 id="generator自动运行器"><a href="#generator自动运行器" class="headerlink" title="generator自动运行器"></a>generator自动运行器</h1><p>generator函数是es6新出的功能，之后又推出了async函数，操作异步真的是超级简单。我觉得我们在实际项目中使用generator的机会非常少，即使使用，一般也会依赖co这样的库来方便的使用generator。<br>但是我却想研究一下generator，所以写了一个generator不用手动的调用next函数，而是自动的调用。</p>
+<h2 id="generator手动next代码"><a href="#generator手动next代码" class="headerlink" title="generator手动next代码"></a>generator手动next代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">var p1 = function() &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(1);</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  var p2 = function(val) &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(val+2);</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  var p3 = function(val) &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(val+3);</span><br><span class="line">      &#125;, 1500);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  var p1callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第1个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line">  var p2callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第2个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line">  var p3callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第3个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function *gen() &#123;</span><br><span class="line">    var val_1 = yield p1();</span><br><span class="line">    var val_2 = yield p2(val_1);</span><br><span class="line">    var val_3 = yield p3(val_2);</span><br><span class="line">  &#125; </span><br><span class="line">  var g = gen();</span><br><span class="line">  window.gObj = null;</span><br><span class="line">  window.gObj_index = 0;</span><br><span class="line">  gObj = g.next();</span><br><span class="line">  gObj.value.then(function(res) &#123;</span><br><span class="line">    console.log(&apos;第1个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">    gObj = g.next(res);</span><br><span class="line">    gObj.value.then(function(res) &#123;</span><br><span class="line">      console.log(&apos;第2个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">      gObj = g.next(res);</span><br><span class="line">      gObj.value.then(function(res) &#123;</span><br><span class="line">        console.log(&apos;第3个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>上面的代码，需要在generator函数里手动定义yield的表达式，之后在执行的时候需要手动的调用next函数，但是可以看出来，还是有嵌套的情况。</p>
+<h2 id="generator自动运行代码"><a href="#generator自动运行代码" class="headerlink" title="generator自动运行代码"></a>generator自动运行代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">// p1,p2,p3是3个Promise的执行函数</span><br><span class="line">  var p1 = function() &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(1);</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  var p2 = function(val) &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(val+2);</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  var p3 = function(val) &#123;</span><br><span class="line">    return new Promise(function(resolve, reject) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        resolve(val+3);</span><br><span class="line">      &#125;, 1500);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  // p1callback,p2callback,p3callback对应着p1,p2,p3的回调</span><br><span class="line">  var p1callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第1个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line">  var p2callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第2个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line">  var p3callback = function(res) &#123;</span><br><span class="line">    console.log(&apos;第3个yield的callback啊-&gt;&apos;, res);</span><br><span class="line">  &#125;</span><br><span class="line">  /**</span><br><span class="line">   * @desc generator的生成函数</span><br><span class="line">   * @param &#123; Array &#125; Promise的函数数组</span><br><span class="line">   * @retuen &#123; Function &#125; generator函数</span><br><span class="line">  */</span><br><span class="line">  function gen(arr) &#123;</span><br><span class="line">    var valArr = [];</span><br><span class="line">    return function *() &#123;</span><br><span class="line">      for(var i=0; i&lt;arr.length; i++) &#123;</span><br><span class="line">        valArr[i] = yield arr[i](valArr[i-1]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">  /**</span><br><span class="line">   * @desc 自动执行generator的next()的函数</span><br><span class="line">   * @param &#123; Function &#125; gen函数</span><br><span class="line">   * @param &#123; Array &#125; Promise函数对应的回调函数数组</span><br><span class="line">   * @param &#123; Any &#125; 向generator的next中传入的值</span><br><span class="line">  */</span><br><span class="line">  function co(gen, arr, res) &#123;</span><br><span class="line">    var g = gen();</span><br><span class="line">    var gObj = null;</span><br><span class="line">    var gObj_index = 0;</span><br><span class="line">    function innerCo(g, arr, res) &#123;</span><br><span class="line">      gObj = g.next(res);</span><br><span class="line">      if(gObj.done) return void 0;</span><br><span class="line">      gObj.value.then(function(res) &#123;</span><br><span class="line">        arr[gObj_index++](res);  </span><br><span class="line">        if(!gObj.done) &#123;</span><br><span class="line">          innerCo(g, arr, res);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    innerCo(g, arr, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  // 执行co函数</span><br><span class="line">  co(gen([p1,p2,p3]), [p1callback, p2callback, p3callback], 0);</span><br></pre></td></tr></table></figure>
+<p>可以看出来，最后只需要<code>co(gen([p1,p2,p3]), [p1callback, p2callback, p3callback], 0);</code>这样一行代码，省去了定义yield，省去了调用next。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>首先，我并没有去参考co这样的库的使用方法，如何使用都是自己想出来的。</li>
+<li>目前代码只是超级简化版，我也是想验证一下我的想法而已，只有resolve的回调，并没写reject的回调。</li>
+</ul>
+<p>最后，<a href="https://github.com/jinux7/study-collections/tree/master/generator-co" target="_blank" rel="noopener">代码在这里</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2020/03/12/前端性能优化之时间切片/" rel="next" title="前端性能优化之时间切片">
+                            前端性能优化之时间切片
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'generator自动运行器',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>97</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>6</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 19.56px; color: #737373">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 16.22px; color: #8a8a8a">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 15.11px; color: #919191">html</a> <a href="/tags/jquery/" style="font-size: 16.22px; color: #8a8a8a">jquery</a> <a href="/tags/js工具库/" style="font-size: 16.22px; color: #8a8a8a">js工具库</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 20.67px; color: #6c6c6c">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.44px; color: #7b7b7b">webpack</a> <a href="/tags/web图形/" style="font-size: 15.11px; color: #919191">web图形</a> <a href="/tags/web安全/" style="font-size: 16.22px; color: #8a8a8a">web安全</a> <a href="/tags/web性能/" style="font-size: 19.56px; color: #737373">web性能</a> <a href="/tags/兼容性/" style="font-size: 14px; color: #999">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.33px; color: #828282">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/工具库/" style="font-size: 22.89px; color: #5d5d5d">工具库</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 16.22px; color: #8a8a8a">样式</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.78px; color: #646464">移动端</a> <a href="/tags/网络基础/" style="font-size: 22.89px; color: #5d5d5d">网络基础</a> <a href="/tags/面试题/" style="font-size: 21.78px; color: #646464">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

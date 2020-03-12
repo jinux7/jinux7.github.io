@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>前端性能优化之时间切片 | jinux</title>
+  <meta name="description" content="前端 学习 javascript" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端性能优化之时间切片">
+<meta name="keywords" content="web性能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端性能优化之时间切片">
+<meta property="og:url" content="/2020/03/12/前端性能优化之时间切片/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="前端性能优化之时间切片">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2020/03/12/前端性能优化之时间切片/1.png">
+<meta property="og:image" content="/2020/03/12/前端性能优化之时间切片/2.png">
+<meta property="og:image" content="/2020/03/12/前端性能优化之时间切片/3.png">
+<meta property="og:updated_time" content="2020-03-12T07:00:54.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端性能优化之时间切片">
+<meta name="twitter:description" content="前端性能优化之时间切片">
+<meta name="twitter:image" content="/2020/03/12/前端性能优化之时间切片/1.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-前端性能优化之时间切片" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                前端性能优化之时间切片
+            
+        </h1>
+        <time>
+            2020-03-12 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前端性能优化之时间切片"><span class="toc-number">1.</span> <span class="toc-text">前端性能优化之时间切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是时间切片"><span class="toc-number">1.1.</span> <span class="toc-text">什么是时间切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用时间切片"><span class="toc-number">1.2.</span> <span class="toc-text">如何使用时间切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于生成器的-ts-实现原理"><span class="toc-number">1.3.</span> <span class="toc-text">基于生成器的 ts 实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免把任务分解的过于零碎"><span class="toc-number">1.4.</span> <span class="toc-text">避免把任务分解的过于零碎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>前端性能优化之时间切片<br><a id="more"></a></p>
+<h1 id="前端性能优化之时间切片"><a href="#前端性能优化之时间切片" class="headerlink" title="前端性能优化之时间切片"></a>前端性能优化之时间切片</h1><p>从用户的输入，再到显示器在视觉上给用户的输出，这一过程如果超过 100ms，那么用户会察觉到网页的卡顿，所以为了解决这个问题，每个任务不能超过 50ms，W3C 性能工作组在 LongTask 规范中也将超过 50ms 的任务定义为长任务。<br>所以为了避免长任务，一种方案是使用 Web Worker，将长任务放在 Worker 线程中执行，缺点是无法访问 DOM，而另一种方案是使用时间切片。</p>
+<h2 id="什么是时间切片"><a href="#什么是时间切片" class="headerlink" title="什么是时间切片"></a>什么是时间切片</h2><p>时间切片的核心思想是：如果任务不能在 50 毫秒内执行完，那么为了不阻塞主线程，这个任务应该让出主线程的控制权，使浏览器可以处理其他任务。让出控制权意味着停止执行当前任务，让浏览器去执行其他任务，随后再回来继续执行没有执行完的任务。<br>所以时间切片的目的是不阻塞主线程，而实现目的的技术手段是将一个长任务拆分成很多个不超过 50ms 的小任务分散在宏任务队列中执行。<br><img src="/2020/03/12/前端性能优化之时间切片/1.png" alt="img"><br>上图可以看到主线程中有一个长任务，这个任务会阻塞主线程。使用时间切片将它切割成很多个小任务后，如下图所示。<br><img src="/2020/03/12/前端性能优化之时间切片/2.png" alt="img"><br>可以看到现在的主线程有很多密密麻麻的小任务，我们将它放大后如下图所示。<br><img src="/2020/03/12/前端性能优化之时间切片/3.png" alt="img"><br>可以看到每个小任务中间是有空隙的，代表着任务执行了一小段时间后，将让出主线程的控制权，让浏览器执行其他的任务。</p>
+<blockquote>
+<p>使用时间切片的缺点是，任务运行的总时间变长了，这是因为它每处理完一个小任务后，主线程会空闲出来，并且在下一个小任务开始处理之前有一小段延迟。但是为了避免卡死浏览器，这种取舍是很有必要的。</p>
+</blockquote>
+<h2 id="如何使用时间切片"><a href="#如何使用时间切片" class="headerlink" title="如何使用时间切片"></a>如何使用时间切片</h2><p>时间切片是一种概念，也可以理解为一种技术方案，它不是某个 API 的名字，也不是某个工具的名字。<br>事实上，时间切片充分利用了“异步”，在早期，可以使用定时器来实现，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = function() &#123;</span><br><span class="line">    someThing() // 执行了50毫秒</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        otherThing() // 执行了50毫秒</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码当按钮被点击时，本应执行 100 毫秒的任务现在被拆分成了两个 50 毫秒的任务。<br>在实际应用中，我们可以进行一些封装，封装后的使用效果类似下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = ts([someThing, otherThing], function() &#123;</span><br><span class="line">    console.log(&apos;done~&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>当然，关于ts这个函数的 API 的设计并不是本文的重点，这里想说明的是，在早期可以利用定时器来实现“时间切片”。<br>ES6 带来了迭代器的概念，并提供了生成器 Generator 函数用来生成迭代器对象，虽然 Generator 函数最正统的用法是生成迭代器对象，但这不妨我们利用它的特性做一些其他的事情。<br>Generator 函数提供了yield关键字，这个关键字可以让函数暂停执行。然后通过迭代器对象的next方法让函数继续执行。</p>
+<blockquote>
+<p>对 Generator 函数不熟悉的同学，需要先学习 Generator 函数的用法。<br>利用这个特性，我们可以设计出更方便使用的时间切片，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = ts(function*() &#123;</span><br><span class="line">    someThing() // 执行了50毫秒</span><br><span class="line">    yield</span><br><span class="line">    otherThing() // 执行了50毫秒</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>可以看到，我们只需要使用yield这个关键字就可以将本应执行 100 毫秒的任务拆分成了两个 50 毫秒的任务。<br>我们甚至可以将 yield 关键字放在循环里：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = ts(function*() &#123;</span><br><span class="line">    while (true) &#123;</span><br><span class="line">        someThing() // 执行了50毫秒</span><br><span class="line">        yield</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面代码我们写了一个死循环，但依然不会阻塞主线程，浏览器也不会卡死。</p>
+<h2 id="基于生成器的-ts-实现原理"><a href="#基于生成器的-ts-实现原理" class="headerlink" title="基于生成器的 ts 实现原理"></a>基于生成器的 ts 实现原理</h2><p>通过前面的例子，我们会发现基于 Generator 的时间切片非常好用，但其实 ts 函数的实现原理非常简单，一个最简单的 ts 函数只需要九行代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function ts(gen) &#123;</span><br><span class="line">    if (typeof gen === &apos;function&apos;) gen = gen()</span><br><span class="line">    if (!gen || typeof gen.next !== &apos;function&apos;) return</span><br><span class="line">    return function next() &#123;</span><br><span class="line">        const res = gen.next()</span><br><span class="line">        if (res.done) return</span><br><span class="line">        setTimeout(next)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码虽然全部只有 9 行，关键代码只有 3、4 行，但这几行代码充分利用了事件循环机制以及 Generator 函数的特性。</p>
+<blockquote>
+<p>创造出这样的代码我还是很开心的。</p>
+</blockquote>
+<p>上面代码核心思想是：通过yield关键字可以将任务暂停执行，从而让出主线程的控制权；通过定时器可以将“未完成的任务”重新放在任务队列中继续执行。</p>
+<h2 id="避免把任务分解的过于零碎"><a href="#避免把任务分解的过于零碎" class="headerlink" title="避免把任务分解的过于零碎"></a>避免把任务分解的过于零碎</h2><p>使用yield来切割任务非常方便，但如果切割的粒度特别细，反而效率不高。假设我们的任务执行100ms，最好的方式是切割成两个执行50ms的任务，而不是切割成 100 个执行1ms的任务。假设被切割的任务之间的间隔为4ms，那么切割成 100 个执行1ms的任务的总执行时间为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1 + 4) * 100 = 500ms</span><br></pre></td></tr></table></figure></p>
+<p>如果切割成两个执行时间为50ms的任务，那么总执行时间为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(50 + 4) * 2 = 108ms</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，在不影响用户体验的情况下，下面的总执行时间要比前面的少了 4.6 倍。<br>保证切割的任务刚好接近50ms，可以在用户使用yield时自行评估，也可以在ts函数中根据任务的执行时间判断是否应该一次性执行多个任务。<br>我们将ts函数稍微改进一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function ts(gen) &#123;</span><br><span class="line">    if (typeof gen === &apos;function&apos;) gen = gen()</span><br><span class="line">    if (!gen || typeof gen.next !== &apos;function&apos;) return</span><br><span class="line">    return function next() &#123;</span><br><span class="line">        const start = performance.now()</span><br><span class="line">        let res = null</span><br><span class="line">        do &#123;</span><br><span class="line">            res = gen.next()</span><br><span class="line">        &#125; while (!res.done &amp;&amp; performance.now() - start &lt; 25)</span><br><span class="line"></span><br><span class="line">        if (res.done) return</span><br><span class="line">        setTimeout(next)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在我们测试下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ts(function*() &#123;</span><br><span class="line">    const start = performance.now()</span><br><span class="line">    while (performance.now() - start &lt; 1000) &#123;</span><br><span class="line">        console.log(11)</span><br><span class="line">        yield</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;done!&apos;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+<p>这段代码在之前的版本中，在我的电脑上可以打印出 215 次 11，在后面的版本中可以打印出 6300 次 11，说明在总时间相同的情况下，可以执行更多的任务。<br>再看另一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ts(function*() &#123;</span><br><span class="line">    for (let i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">        console.log(11)</span><br><span class="line">        yield</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;done!&apos;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+<p>在我的电脑上，这段代码在之前的版本中，被切割成一万个小任务，总执行时间为 46秒，在之后的版本中，被切割成 52 个小任务，总执行时间为 1.5秒。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上代码出自于网络，这里感谢作者的付出，同时贴出作者的原创地址:<br><a href="https://ppt.baomitu.com/d/b267a4a3" target="_blank" rel="noopener">《让你的网页更丝滑》</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/web性能/"><i class="fa fa-tag"></i>&nbsp;&nbsp;web性能</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2020/03/12/generator自动运行器/" rel="prev" title="generator自动运行器">
+                            generator自动运行器
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2020/03/10/手写mockjs/" rel="next" title="手写mockjs">
+                            手写mockjs
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '前端性能优化之时间切片',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=e9a3c572a08b87d65042ac193f334f05/bd315c6034a85edfd70e896048540923dc5475f6.jpg' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>97</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>6</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/ajax/" style="font-size: 19.56px; color: #737373">ajax</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 16.22px; color: #8a8a8a">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 15.11px; color: #919191">html</a> <a href="/tags/jquery/" style="font-size: 16.22px; color: #8a8a8a">jquery</a> <a href="/tags/js工具库/" style="font-size: 16.22px; color: #8a8a8a">js工具库</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/vue/" style="font-size: 20.67px; color: #6c6c6c">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.44px; color: #7b7b7b">webpack</a> <a href="/tags/web图形/" style="font-size: 15.11px; color: #919191">web图形</a> <a href="/tags/web安全/" style="font-size: 16.22px; color: #8a8a8a">web安全</a> <a href="/tags/web性能/" style="font-size: 19.56px; color: #737373">web性能</a> <a href="/tags/兼容性/" style="font-size: 14px; color: #999">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.33px; color: #828282">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/大牛分享/" style="font-size: 14px; color: #999">大牛分享</a> <a href="/tags/工具库/" style="font-size: 22.89px; color: #5d5d5d">工具库</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 16.22px; color: #8a8a8a">样式</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.78px; color: #646464">移动端</a> <a href="/tags/网络基础/" style="font-size: 22.89px; color: #5d5d5d">网络基础</a> <a href="/tags/面试题/" style="font-size: 21.78px; color: #646464">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
