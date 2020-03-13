@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-03-12T07:34:13.762Z</updated>
+  <updated>2020-03-13T06:44:07.611Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iPhoneX适配</title>
+    <link href="/2020/03/13/iPhoneX%E9%80%82%E9%85%8D/"/>
+    <id>/2020/03/13/iPhoneX适配/</id>
+    <published>2020-03-13T06:24:28.000Z</published>
+    <updated>2020-03-13T06:44:07.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>h5在iPhoneX中的页面兼容处理<br><a id="more"></a></p><h1 id="iPhoneX适配"><a href="#iPhoneX适配" class="headerlink" title="iPhoneX适配"></a>iPhoneX适配</h1><h2 id="基础设备信息"><a href="#基础设备信息" class="headerlink" title="基础设备信息"></a>基础设备信息</h2><p>首先在了解iPhoneX适配之前，需要了解关于iPhone设备的一些基础</p><h3 id="关于iPhone的一些基础参数"><a href="#关于iPhone的一些基础参数" class="headerlink" title="关于iPhone的一些基础参数"></a>关于iPhone的一些基础参数</h3><p><img src="/2020/03/13/iPhoneX适配/1.webp" alt="img"></p><h3 id="iPhoneX设备信息"><a href="#iPhoneX设备信息" class="headerlink" title="iPhoneX设备信息"></a>iPhoneX设备信息</h3><p>iPhoneX屏幕组成：上部齐刘海sensor housing（44pt） + 安全区域safe area + 底部手势区域Home Indicator（34pt）<br>safe area（安全区域）<br><img src="/2020/03/13/iPhoneX适配/2.webp" alt="img"><br>安全区域以外的是上部“齐刘海” 和 下部“手势区域”，一般情况下，我们都会在安全区域（safe area）中进行页面的编写；</p><h2 id="iPhoneX适配-1"><a href="#iPhoneX适配-1" class="headerlink" title="iPhoneX适配"></a>iPhoneX适配</h2><h3 id="适配方案viewport-fit"><a href="#适配方案viewport-fit" class="headerlink" title="适配方案viewport-fit"></a>适配方案viewport-fit</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover&quot;&gt;</span><br></pre></td></tr></table></figure><p>viewport-fit有两个值，contain和 cover<br>默认是contain，页面内容显示在safe area中（不包括上部的齐刘海和下部的手势区域）<br>cover值：页面内容充满屏幕</p><h3 id="适配方案css-constant"><a href="#适配方案css-constant" class="headerlink" title="适配方案css constant()"></a>适配方案css constant()</h3><p>css constant()<br>有四个值：<code>safe-area-inset-top , safe-area-inset-left , safe-area-inset-right , safe-area-inset-bottom</code><br>1)当viewport-fit:contain，上面这个四个值无效<br>2)当viewport-fit:cover，这四个值需要设置，页面才会显示在安全区域中，设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    padding-top: constant(safe-area-inset-top);   //为导航栏+状态栏的高度 88px            </span><br><span class="line">    padding-left: constant(safe-area-inset-left);   //如果未竖屏时为0                </span><br><span class="line">    padding-right: constant(safe-area-inset-right); //如果未竖屏时为0                </span><br><span class="line">    padding-bottom: constant(safe-area-inset-bottom);//为底下圆弧的高度 34px       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="适配方案媒体查询"><a href="#适配方案媒体查询" class="headerlink" title="适配方案媒体查询"></a>适配方案媒体查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@media only screen and (device-width: 385px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)&#123;</span><br><span class="line">  // iphoneX css部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="viewport-fit-contain"><a href="#viewport-fit-contain" class="headerlink" title="viewport-fit:contain"></a>viewport-fit:contain</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=contain&quot;&gt;</span><br></pre></td></tr></table></figure><h3 id="viewpoer-fit-cover-css-canstant"><a href="#viewpoer-fit-cover-css-canstant" class="headerlink" title="viewpoer-fit: cover + css canstant()"></a>viewpoer-fit: cover + css canstant()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover&quot;&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  padding-top: constant(safe-area-inset-top);   //为导航栏+状态栏的高度 88px            </span><br><span class="line">  padding-left: constant(safe-area-inset-left);   //如果未竖屏时为0                </span><br><span class="line">  padding-right: constant(safe-area-inset-right); //如果未竖屏时为0                </span><br><span class="line">  padding-bottom: constant(safe-area-inset-bottom);//为底下圆弧的高度 34px       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="css的媒体查询"><a href="#css的媒体查询" class="headerlink" title="css的媒体查询"></a>css的媒体查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@media only screen and (device-width: 385px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)&#123;</span><br><span class="line">  // iphoneX css部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;h5在iPhoneX中的页面兼容处理&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="移动端" scheme="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+      <category term="兼容性" scheme="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>generator自动运行器</title>
@@ -436,28 +460,6 @@
     </summary>
     
       <category term="计算机原理" scheme="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>带标签的模板字符串</title>
-    <link href="/2019/10/12/%E5%B8%A6%E6%A0%87%E7%AD%BE%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <id>/2019/10/12/带标签的模板字符串/</id>
-    <published>2019-10-12T07:01:55.000Z</published>
-    <updated>2019-10-12T07:14:01.991Z</updated>
-    
-    <content type="html"><![CDATA[<p>模板字符串的特殊用法<br><a id="more"></a></p><h1 id="带标签的模板字符串"><a href="#带标签的模板字符串" class="headerlink" title="带标签的模板字符串"></a>带标签的模板字符串</h1><p>模板字符串中我们使用 ${exporession} 作为占位符，而作为字符串连接的语法糖是其最基本的用法，而带标签的模板字符串则是一种函数调用，这能够让模板字符串更加强大，拥有真正模板引擎的功能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params">strs, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(strs)</span><br><span class="line">  <span class="built_in">console</span>.log(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name =<span class="string">'jinux'</span></span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">a <span class="string">`name: <span class="subst">$&#123;name&#125;</span>, age: <span class="subst">$&#123;age&#125;</span>`</span></span><br></pre></td></tr></table></figure></p><p>在浏览器的console面板打印一下。<br>可以看到，标签模板字符串的标签函数的第一个参数是由原始的字符串由占位字符串分割而成的字符串组成的数组，剩下的参数则是对应占位符的值。<br>利用这个特性常被提到的是避免XSS攻击：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">htmlEscape</span>(<span class="params">literals, ...placeholders</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> placeholders.reduce(<span class="function">(<span class="params">pre, val, i</span>) =&gt;</span> pre + literals[i] + val</span><br><span class="line">    .replace(<span class="regexp">/&amp;/g</span>, <span class="string">'&amp;amp;'</span>)</span><br><span class="line">    .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>)</span><br><span class="line">    .replace(<span class="regexp">/'/g</span>, <span class="string">'&amp;#39'</span>)</span><br><span class="line">    .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</span><br><span class="line">    .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>), <span class="string">''</span>) + literals[literals.length - <span class="number">1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;模板字符串的特殊用法&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
     
     
       <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
