@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>webpack打包多页面项目 | jinux</title>
+  <title>nodejs环境变量NODE_ENV | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="webpack打包多页面项目">
-<meta name="keywords" content="webpack">
+  <meta name="description" content="nodejs环境变量NODE_ENV的设置和获取">
+<meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack打包多页面项目">
-<meta property="og:url" content="/2019/05/20/webpack打包多页面项目/index.html">
+<meta property="og:title" content="nodejs环境变量NODE_ENV">
+<meta property="og:url" content="/2020/03/17/nodejs环境变量NODE-ENV/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="webpack打包多页面项目">
+<meta property="og:description" content="nodejs环境变量NODE_ENV的设置和获取">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T02:46:28.390Z">
+<meta property="og:updated_time" content="2020-03-17T08:14:52.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack打包多页面项目">
-<meta name="twitter:description" content="webpack打包多页面项目">
+<meta name="twitter:title" content="nodejs环境变量NODE_ENV">
+<meta name="twitter:description" content="nodejs环境变量NODE_ENV的设置和获取">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -150,21 +150,21 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-webpack打包多页面项目" class="post white-box article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nodejs环境变量NODE-ENV" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                webpack打包多页面项目
+                nodejs环境变量NODE_ENV
             
         </h1>
         <time>
-            2019-05-20 Monday&nbsp;&nbsp;
+            2020-03-17 Tuesday&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
+        <a href="/categories/nodejs/">nodejs</a>
     </div>
 
 
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack打包多页面项目"><span class="toc-number">1.</span> <span class="toc-text">webpack打包多页面项目</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs环境变量NODE-ENV"><span class="toc-number">1.</span> <span class="toc-text">nodejs环境变量NODE_ENV</span></a></li></ol>
             </div>
         </section>
     
@@ -181,15 +181,24 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>webpack打包多页面项目<br><a id="more"></a></p>
-<h2 id="webpack打包多页面项目"><a href="#webpack打包多页面项目" class="headerlink" title="webpack打包多页面项目"></a>webpack打包多页面项目</h2><p>平时我们在工作中，使用webpack来打包单页面应用的项目很多，多页面应用之前我都是使用gulp来做，今天我在github发现一个不错的demo，我就不写具体的分析步骤了，代码里边写的很清楚，直接贴地址喽。<br><a href="https://github.com/jixoba/webpack-dev" target="_blank" rel="noopener">点击这里看项目</a></p>
+            <p>nodejs环境变量NODE_ENV的设置和获取<br><a id="more"></a></p>
+<h1 id="nodejs环境变量NODE-ENV"><a href="#nodejs环境变量NODE-ENV" class="headerlink" title="nodejs环境变量NODE_ENV"></a>nodejs环境变量NODE_ENV</h1><p>我们在使用webpack打包的时候，会根据环境变量的不同做各种操作，那么，环境变量是如何设置和获取的呢？<br>首先说一下，在命令行中设置的环境变量是临时的，当命令行关闭后就没有了，要想持久化的设置环境变量，只能到我的电脑，属性，高级，环境变量里设置。</p>
+<p>首先，创建一个app.js的文件，内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(process.env.NODE_ENV);</span><br></pre></td></tr></table></figure></p>
+<p>我们把环境变量打印出来看看。<br>在命令行下(window系统的cmd可以，powershell和git bash不行)，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set NODE_ENV=pro &amp;&amp; node app.js</span><br></pre></td></tr></table></figure></p>
+<p>打印出<code>pro</code><br>如果想在powershell和git bash都可以使用，那就得利用npm，在package.json中的scripts里：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;pro&quot;: &quot;set NODE_ENV=pro &amp;&amp; node app.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>利用npm可以获取NODE_ENV的值。<br>这种方法的不足是，<code>set NODE_ENV=pro</code>是window的方式，而linux和ios是<code>export NODE_ENV=&#39;pro&#39;</code>,为了一套命令的兼容性，<br>我们可以使用<code>cross-env</code>这个nodejs模块，使用方法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;main&quot;: &quot;app.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;cross-env NODE_ENV=dev node app.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>好了，我们已经可以获取NODE_ENV环境变量了。<br>再介绍一个可以获取命令行参数的方便方法，<code>process.env.npm_config_argv</code><br>看名字就知道，只能在npm命令下使用，我们来看看具体使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(process.env.npm_config_argv);</span><br></pre></td></tr></table></figure></p>
+<p>当我们执行<code>npm run dev</code><br>打印出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;remain&quot;:[],&quot;cooked&quot;:[&quot;run&quot;,&quot;dev&quot;],&quot;original&quot;:[&quot;run&quot;,&quot;dev&quot;]&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以分析是dev还是pro来处理不同操作。<br>其实，我们想做的莫非就是利用命令行中不同的参数做不同的操作而已，nodejs有一个<code>process.argv</code>属性，可以获取命令行下的参数，来看一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(process.argv);</span><br></pre></td></tr></table></figure></p>
+<p>我们在命令行下执行：<code>node app.js dev pro</code>。<br>打印出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[ &apos;C:\\Program Files\\nodejs\\node.exe&apos;,</span><br><span class="line">  &apos;C:\\Jinux\\test\\nodejs-env\\app.js&apos;,</span><br><span class="line">  &apos;dev&apos;,</span><br><span class="line">  &apos;pro&apos; ]</span><br></pre></td></tr></table></figure></p>
+<p>我们还是可以根据命令行下的参数做不同的操作。</p>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/webpack/"><i class="fa fa-tag"></i>&nbsp;&nbsp;webpack</a>
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
                 
             </div>
         
@@ -197,17 +206,10 @@
         
             <div class="art-item-footer">
                 
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
-                        <a href="/2019/05/20/多个ajax请求-页面渲染顺序问题/" rel="prev" title="多个ajax请求,页面渲染顺序问题">
-                            多个ajax请求,页面渲染顺序问题
-                        </a>
-                    </span>
-                
                 
                     <span class="art-item-right">
-                        <a href="/2019/05/09/import和require的本质区别/" rel="next" title="import和require的本质区别">
-                            import和require的本质区别
+                        <a href="/2020/03/13/iPhoneX适配/" rel="next" title="iPhoneX适配">
+                            iPhoneX适配
                         </a>&nbsp;
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -226,7 +228,7 @@
 
 <script>
     window.subData = {
-        title: 'webpack打包多页面项目',
+        title: 'nodejs环境变量NODE_ENV',
         tools: true
     }
 </script>
