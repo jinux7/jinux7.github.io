@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2019/8 | jinux</title>
+  <title>移动端适配rem&amp;scale | jinux</title>
   <meta name="description" content="前端 学习 javascript" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/archives/2019/08/index.html">
+  <meta name="description" content="移动端设置html元素的font-size代码，scale代码">
+<meta name="keywords" content="移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端适配rem&amp;scale">
+<meta property="og:url" content="/2019/08/18/移动端适配rem&scale/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="移动端设置html元素的font-size代码，scale代码">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-09T03:41:07.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="移动端适配rem&amp;scale">
+<meta name="twitter:description" content="移动端设置html元素的font-size代码，scale代码">
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
@@ -148,28 +150,16 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-	
-    <script>
-        window.subData= { title:'year : 2019.8'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/26/window下flutter环境搭建/">
-                
-                    window下flutter环境搭建
-                
-            </a>
-        </h2>
+        <article id="post-移动端适配rem&amp;scale" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                移动端适配rem&amp;scale
+            
+        </h1>
         <time>
-            2019-08-26 Monday
+            2019-08-18 Sunday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -179,241 +169,69 @@
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#移动端适配rem-amp-scale"><span class="toc-number">1.</span> <span class="toc-text">移动端适配rem&amp;scale</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rem方式"><span class="toc-number">1.1.</span> <span class="toc-text">rem方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scale方式"><span class="toc-number">1.2.</span> <span class="toc-text">scale方式</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>flutter在window 10下的环境搭建<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/26/window下flutter环境搭建/" class="flat-box">READ MORE</a>
-            </div>
-        
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>移动端设置html元素的font-size代码，scale代码<br><a id="more"></a></p>
+<h1 id="移动端适配rem-amp-scale"><a href="#移动端适配rem-amp-scale" class="headerlink" title="移动端适配rem&amp;scale"></a>移动端适配rem&amp;scale</h1><h2 id="rem方式"><a href="#rem方式" class="headerlink" title="rem方式"></a>rem方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">doc, win</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> docEl = doc.documentElement,</span><br><span class="line">	resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>,</span><br><span class="line">	recalc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	  <span class="keyword">var</span> clientWidth = docEl.clientWidth;</span><br><span class="line">	  <span class="keyword">if</span> (!clientWidth) <span class="keyword">return</span>;</span><br><span class="line">	  docEl.style.fontSize = clientWidth/<span class="number">20</span> + <span class="string">'px'</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">if</span> (!doc.addEventListener) <span class="keyword">return</span>;</span><br><span class="line">	win.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">	doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line">&#125;)(<span class="built_in">document</span>, <span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="scale方式"><a href="#scale方式" class="headerlink" title="scale方式"></a>scale方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> curWidth = <span class="built_in">window</span>.screen.width; <span class="comment">//iphone 6plus为414px</span></span><br><span class="line"><span class="keyword">var</span> targetWidth = <span class="number">750</span>; <span class="comment">// 设计稿宽度</span></span><br><span class="line"><span class="keyword">var</span> scale = curWidth/targetWidth;</span><br><span class="line"><span class="keyword">var</span> meta = <span class="built_in">document</span>.createElement(<span class="string">"meta"</span>);</span><br><span class="line">meta.name = <span class="string">"viewport"</span>;</span><br><span class="line">meta.content = <span class="string">'initial-scale='</span>+scale+<span class="string">',minimum-scale='</span>+scale+<span class="string">',maximum-scale='</span>+scale+<span class="string">''</span>; <span class="comment">// 注意，没有width=device-width</span></span><br></pre></td></tr></table></figure>
+<p>scale方式就是把你按照设计稿宽度做的页面缩放到当前手机屏幕宽度。<br>scale = 屏幕视口宽度/设计稿宽度(实际制作的页面宽度)</p>
+
+        </div>
 
         
-            <div class="full-width auto-padding tags">
+            <div class="article-tags tags">
                 
                     <a href="/tags/移动端/"><i class="fa fa-tag"></i>&nbsp;&nbsp;移动端</a>
                 
             </div>
         
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/08/22/前端静态资源服务器都用到了啥？/" rel="prev" title="前端静态资源服务器都用到了啥？">
+                            前端静态资源服务器都用到了啥？
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/08/18/一个页面loading小插件/" rel="next" title="一个页面loading小插件">
+                            一个页面loading小插件
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
     </section>
+
 </article>
 
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/22/nw-js入门小结/">
-                
-                    nw.js入门小结
-                
-            </a>
-        </h2>
-        <time>
-            2019-08-22 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
+<br>
+
+<!-- 显示推荐文章和评论 -->
 
 
-    </section>
-
-    <section class="article typo">
-        <p>nw.js方便简单的pc端app开发工具<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/22/nw-js入门小结/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/22/前端静态资源服务器都用到了啥？/">
-                
-                    前端静态资源服务器都用到了啥？
-                
-            </a>
-        </h2>
-        <time>
-            2019-08-22 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>前端都用到了哪些技术实现静态资源服务器<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/22/前端静态资源服务器都用到了啥？/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/网络基础/"><i class="fa fa-tag"></i>&nbsp;&nbsp;网络基础</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/18/移动端适配rem&scale/">
-                
-                    移动端适配rem&amp;scale
-                
-            </a>
-        </h2>
-        <time>
-            2019-08-18 Sunday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>移动端设置html元素的font-size代码，scale代码<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/18/移动端适配rem&scale/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/移动端/"><i class="fa fa-tag"></i>&nbsp;&nbsp;移动端</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/18/一个页面loading小插件/">
-                
-                    一个页面loading小插件
-                
-            </a>
-        </h2>
-        <time>
-            2019-08-18 Sunday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>移动端的loading小插件<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/18/一个页面loading小插件/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/移动端/"><i class="fa fa-tag"></i>&nbsp;&nbsp;移动端</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/08/02/js中的valueOf和toString/">
-                
-                    js中的valueOf和toString
-                
-            </a>
-        </h2>
-        <time>
-            2019-08-02 Friday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>js中的valueOf和toString<br></p>
-        
-            <div class="readmore">
-                <a href="/2019/08/02/js中的valueOf和toString/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-</section>
-
-
-
+<script>
+    window.subData = {
+        title: '移动端适配rem&amp;scale',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -505,6 +323,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
