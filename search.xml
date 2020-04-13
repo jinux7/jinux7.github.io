@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>点击或触摸事件中的相关X,Y介绍</title>
+      <link href="/2020/04/13/%E7%82%B9%E5%87%BB%E6%88%96%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3X-Y%E4%BB%8B%E7%BB%8D/"/>
+      <url>/2020/04/13/%E7%82%B9%E5%87%BB%E6%88%96%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3X-Y%E4%BB%8B%E7%BB%8D/</url>
+      
+        <content type="html"><![CDATA[<p>点击或触摸事件中，事件对象的clientX,pageX,screenX,offsetX,x介绍<br><a id="more"></a></p><h1 id="点击或触摸事件中的相关X-Y介绍"><a href="#点击或触摸事件中的相关X-Y介绍" class="headerlink" title="点击或触摸事件中的相关X,Y介绍"></a>点击或触摸事件中的相关X,Y介绍</h1><h2 id="位置属性"><a href="#位置属性" class="headerlink" title="位置属性"></a>位置属性</h2><p>我们在使用点击事件时，想获取当前鼠标在页面中的位置，可以把事件对象打印出来，看到了下图中的一些相关于x，y的属性。<br><img src="/2020/04/13/点击或触摸事件中的相关X-Y介绍/1.png" alt="img"></p><h2 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h2><h3 id="clientX、clientY"><a href="#clientX、clientY" class="headerlink" title="clientX、clientY"></a>clientX、clientY</h3><p>点击位置距离当前body可视区域的x，y坐标</p><h3 id="pageX、pageY"><a href="#pageX、pageY" class="headerlink" title="pageX、pageY"></a>pageX、pageY</h3><p>对于整个页面来说，包括了被卷去的body部分的长度</p><h3 id="screenX、screenY"><a href="#screenX、screenY" class="headerlink" title="screenX、screenY"></a>screenX、screenY</h3><p>点击位置距离当前电脑屏幕的x，y坐标</p><h3 id="offsetX、offsetY"><a href="#offsetX、offsetY" class="headerlink" title="offsetX、offsetY"></a>offsetX、offsetY</h3><p>相对于带有定位的父盒子的x，y坐标</p><h3 id="x、y"><a href="#x、y" class="headerlink" title="x、y"></a>x、y</h3><p>和screenX、screenY一样</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2020/04/13/点击或触摸事件中的相关X-Y介绍/2.png" alt="img"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>web全景图之pannellum</title>
       <link href="/2020/04/09/web%E5%85%A8%E6%99%AF%E5%9B%BE%E4%B9%8Bpannellum/"/>
       <url>/2020/04/09/web%E5%85%A8%E6%99%AF%E5%9B%BE%E4%B9%8Bpannellum/</url>
@@ -90,9 +113,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 工具库 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       

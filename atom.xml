@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-04-09T07:12:53.174Z</updated>
+  <updated>2020-04-13T01:54:39.236Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>点击或触摸事件中的相关X,Y介绍</title>
+    <link href="/2020/04/13/%E7%82%B9%E5%87%BB%E6%88%96%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3X-Y%E4%BB%8B%E7%BB%8D/"/>
+    <id>/2020/04/13/点击或触摸事件中的相关X-Y介绍/</id>
+    <published>2020-04-13T01:30:07.000Z</published>
+    <updated>2020-04-13T01:54:39.236Z</updated>
+    
+    <content type="html"><![CDATA[<p>点击或触摸事件中，事件对象的clientX,pageX,screenX,offsetX,x介绍<br><a id="more"></a></p><h1 id="点击或触摸事件中的相关X-Y介绍"><a href="#点击或触摸事件中的相关X-Y介绍" class="headerlink" title="点击或触摸事件中的相关X,Y介绍"></a>点击或触摸事件中的相关X,Y介绍</h1><h2 id="位置属性"><a href="#位置属性" class="headerlink" title="位置属性"></a>位置属性</h2><p>我们在使用点击事件时，想获取当前鼠标在页面中的位置，可以把事件对象打印出来，看到了下图中的一些相关于x，y的属性。<br><img src="/2020/04/13/点击或触摸事件中的相关X-Y介绍/1.png" alt="img"></p><h2 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h2><h3 id="clientX、clientY"><a href="#clientX、clientY" class="headerlink" title="clientX、clientY"></a>clientX、clientY</h3><p>点击位置距离当前body可视区域的x，y坐标</p><h3 id="pageX、pageY"><a href="#pageX、pageY" class="headerlink" title="pageX、pageY"></a>pageX、pageY</h3><p>对于整个页面来说，包括了被卷去的body部分的长度</p><h3 id="screenX、screenY"><a href="#screenX、screenY" class="headerlink" title="screenX、screenY"></a>screenX、screenY</h3><p>点击位置距离当前电脑屏幕的x，y坐标</p><h3 id="offsetX、offsetY"><a href="#offsetX、offsetY" class="headerlink" title="offsetX、offsetY"></a>offsetX、offsetY</h3><p>相对于带有定位的父盒子的x，y坐标</p><h3 id="x、y"><a href="#x、y" class="headerlink" title="x、y"></a>x、y</h3><p>和screenX、screenY一样</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2020/04/13/点击或触摸事件中的相关X-Y介绍/2.png" alt="img"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;点击或触摸事件中，事件对象的clientX,pageX,screenX,offsetX,x介绍&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>web全景图之pannellum</title>
@@ -102,9 +124,9 @@
       <category term="javascript" scheme="/categories/javascript/"/>
     
     
-      <category term="面试题" scheme="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
       <category term="工具库" scheme="/tags/%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+      <category term="面试题" scheme="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
@@ -443,30 +465,6 @@
     
     
       <category term="linux" scheme="/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chrome浏览器设置可跨域</title>
-    <link href="/2019/11/20/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E5%8F%AF%E8%B7%A8%E5%9F%9F/"/>
-    <id>/2019/11/20/chrome浏览器设置可跨域/</id>
-    <published>2019-11-20T07:39:35.000Z</published>
-    <updated>2019-11-20T08:02:01.960Z</updated>
-    
-    <content type="html"><![CDATA[<p>chrome浏览器设置可跨域<br><a id="more"></a></p><h1 id="chrome浏览器设置可跨域"><a href="#chrome浏览器设置可跨域" class="headerlink" title="chrome浏览器设置可跨域"></a>chrome浏览器设置可跨域</h1><p>跨域方法很多种，我比较喜欢简单粗暴的修改chrome配置<br>1.先chrome鼠标右键打开下，点击打开属性，出现下面这幅图<br><img src="/2019/11/20/chrome浏览器设置可跨域/1.png" alt="img"><br>2.将下面的这段粘贴在目标的字符串的后面，注意要隔着一个空格<br>chrome版本49之前：–disable-web-security<br>chrome版本49之后：open -a Google\ Chrome –args –disable-web-security –user-data-dir</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;chrome浏览器设置可跨域&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="ajax" scheme="/tags/ajax/"/>
     
   </entry>
   
