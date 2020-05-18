@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>hash&amp;history单页面路由框架</title>
+      <link href="/2020/05/18/hash-history%E5%8D%95%E9%A1%B5%E9%9D%A2%E8%B7%AF%E7%94%B1%E6%A1%86%E6%9E%B6/"/>
+      <url>/2020/05/18/hash-history%E5%8D%95%E9%A1%B5%E9%9D%A2%E8%B7%AF%E7%94%B1%E6%A1%86%E6%9E%B6/</url>
+      
+        <content type="html"><![CDATA[<p>hash和history路由形式的单页面框架<br><a id="more"></a></p><h1 id="hash-amp-history单页面路由框架"><a href="#hash-amp-history单页面路由框架" class="headerlink" title="hash&amp;history单页面路由框架"></a>hash&amp;history单页面路由框架</h1><p>现在vue,react,angular三大框架已经垄断了前端的单页面应用，用起来很方便，今天笔者写两个hash和history路由的小框架，有时候小项目可能也能用到，相比其它框架可能会配置灵活些。在使用vue等框架之前的单页面应用都是这样做的。<br>细节不写了，附上demo代码：<br><a href="https://github.com/jinux7/study-collections/tree/master/hash%26history%E7%9A%84%E8%B7%AF%E7%94%B1%E6%A1%86%E6%9E%B6" target="_blank" rel="noopener">点这里</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>手写vue</title>
       <link href="/2020/04/27/%E6%89%8B%E5%86%99vue/"/>
       <url>/2020/04/27/%E6%89%8B%E5%86%99vue/</url>
