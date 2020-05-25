@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-05-18T05:20:29.624Z</updated>
+  <updated>2020-05-25T07:53:46.365Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微前端</title>
+    <link href="/2020/05/25/%E5%BE%AE%E5%89%8D%E7%AB%AF/"/>
+    <id>/2020/05/25/微前端/</id>
+    <published>2020-05-25T07:11:09.000Z</published>
+    <updated>2020-05-25T07:53:46.365Z</updated>
+    
+    <content type="html"><![CDATA[<p>初探微前端<br><a id="more"></a></p><h1 id="微前端"><a href="#微前端" class="headerlink" title="微前端"></a>微前端</h1><p>微前端最近火了起来，作为紧跟技术潮流的笔者来说，当然要了解一下。<br>贴出一篇笔者觉得不错的文章，<a href="https://www.lizenghai.com/archives/40308.html#i-17" target="_blank" rel="noopener">Single-Spa + Vue Cli 微前端落地指南</a>。这篇文章写得很不错，笔者就是按照他的思路一步一步的完成了一个微前端的demo。但是，笔者的demo只包含vue，父项目和子项目都是用的vue搭建的，相对来说比较简单些，而且，在实际开发的项目中都是一样的框架也是最好的选择。<br>最后，自己用vue写的一个demo，完成了主框架引入了两个子框架。<br><a href="https://github.com/jinux7/study-collections/tree/master/%E5%BE%AE%E5%89%8D%E7%AB%AF" target="_blank" rel="noopener">demo</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;初探微前端&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="工具库" scheme="/tags/%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+      <category term="vue" scheme="/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>hash&amp;history单页面路由框架</title>
@@ -443,28 +467,6 @@
     
     
       <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图片裁剪插件</title>
-    <link href="/2020/02/16/%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E6%8F%92%E4%BB%B6/"/>
-    <id>/2020/02/16/图片裁剪插件/</id>
-    <published>2020-02-16T07:51:13.000Z</published>
-    <updated>2020-02-17T01:33:58.172Z</updated>
-    
-    <content type="html"><![CDATA[<p>一个图片裁剪插件，并穿给后端<br><a id="more"></a></p><h1 id="图片裁剪插件"><a href="#图片裁剪插件" class="headerlink" title="图片裁剪插件"></a>图片裁剪插件</h1><p>我们在日常开发中，裁剪图片并上传，是经常出现的需求。前几天，就有一个这样的需求，但是要求比较特殊，于是自己写了一个图片裁剪插件，因为自己写的改起来比较灵活。</p><h2 id="其实裁剪图片无非就是"><a href="#其实裁剪图片无非就是" class="headerlink" title="其实裁剪图片无非就是:"></a>其实裁剪图片无非就是:</h2><ul><li>文件选择图片，利用FileReader将文件格式的图片转成base64格式。</li><li>把这个base64格式显示在页面上，作为原图。</li><li>可以在原图的上面弄一个剪裁的方框，可以用鼠标来控制大小并移动，我觉得这里是最难的，需要很强的逻辑能力。</li><li>再利用canvas，以原图为基准，进行画图的裁剪，最后通过canvas方法得到裁剪后的base64格式图片。</li><li>最后把base64格式的图片转成Blob对象，利用ajax传送给后端。</li></ul><h2 id="关键方法"><a href="#关键方法" class="headerlink" title="关键方法"></a>关键方法</h2><h3 id="选择图片文件转base64"><a href="#选择图片文件转base64" class="headerlink" title="选择图片文件转base64"></a>选择图片文件转base64</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function file2base64(imgFile, callBack) &#123;</span><br><span class="line">  var fr = new FileReader();</span><br><span class="line">  fr.onload = function() &#123;</span><br><span class="line">    // fr.result就是base64格式数据</span><br><span class="line">    callBack(fr.result);</span><br><span class="line">  &#125;</span><br><span class="line">  fr.readAsDataURL(imgFile);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="将base64图片转化blob"><a href="#将base64图片转化blob" class="headerlink" title="将base64图片转化blob"></a>将base64图片转化blob</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function base64url2blob(base64url) &#123;</span><br><span class="line">  var binaryString = atob(base64url.split(&apos;,&apos;)[1]),</span><br><span class="line">        mimeType = base64url.split(&apos;,&apos;)[0].match(/:(.*?);/)[1],</span><br><span class="line">        length = binaryString.length,</span><br><span class="line">        u8arr = new Uint8Array(length),</span><br><span class="line">        blob;</span><br><span class="line">    while(length--) &#123;</span><br><span class="line">      u8arr[length] = binaryString.charCodeAt(length);</span><br><span class="line">    &#125;</span><br><span class="line">    blob = new Blob([u8arr.buffer], &#123;type: mimeType&#125;);</span><br><span class="line">    return blob;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="将图片转化为blob"><a href="#将图片转化为blob" class="headerlink" title="将图片转化为blob"></a>将图片转化为blob</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function img2blob(nImg, compressVal) &#123;</span><br><span class="line">  // 获取图片原始宽高</span><br><span class="line">  var cloneImg = nImg.cloneNode(true);</span><br><span class="line">  var nCanvas = document.createElement(&apos;canvas&apos;);</span><br><span class="line">  nCanvas.style.display = &apos;none&apos;;</span><br><span class="line">  document.body.appendChild(nCanvas);</span><br><span class="line">  nCanvas.width = cloneImg.width;</span><br><span class="line">  nCanvas.height = cloneImg.height;</span><br><span class="line">  var ctx = nCanvas.getContext(&quot;2d&quot;);</span><br><span class="line">  ctx.drawImage(nImg,0,0,cloneImg.width,cloneImg.height);</span><br><span class="line">  var base64Data = nCanvas.toDataURL(&quot;image/jpeg&quot;, compressVal);</span><br><span class="line">  var blob = this.base64url2blob(base64Data);</span><br><span class="line">  return blob;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上就是几个重要的格式转换方法。<br>最后，贴出源码demo，里边包含后端接收的nodejs代码。<br><a href="https://github.com/jinux7/study-collections/tree/master/image-clipper-upload" target="_blank" rel="noopener">点这里</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一个图片裁剪插件，并穿给后端&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="图片处理" scheme="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
