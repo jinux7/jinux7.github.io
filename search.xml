@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>前端埋点</title>
+      <link href="/2020/05/29/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/"/>
+      <url>/2020/05/29/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/</url>
+      
+        <content type="html"><![CDATA[<p>全面的介绍前端埋点知识<br><a id="more"></a></p><h1 id="前端埋点"><a href="#前端埋点" class="headerlink" title="前端埋点"></a>前端埋点</h1><p>所谓「埋点」，就是在正常的功能逻辑中添加统计逻辑。拿统计微信右上角「+」的点击次数为例，上报的数据可以采用KEY-VALUE形式，我们定义KEY为「CLICK_ADD_BTN」，VALUE的值为点击的次数。当用户点击「+」时，展示菜单的代码会通过按钮的「回调」来触发执行，程序猿在业务代码执行完后，又加上了统计代码，把「CLICK_ADD_BTN」对应的VALUE加1，「+」被统计到了一次使用。<br>目前常见的前端埋点技术有3类：代码埋点、可视化埋点、无埋点（无埋点属于埋点的一个子集）。</p><h2 id="代码埋点："><a href="#代码埋点：" class="headerlink" title="代码埋点："></a>代码埋点：</h2><p>控件操作发生时通过预先写好的代码来发送数据。<br>优点：</p><ul><li>控制发送数据时间，事件自定义属性详细记录</li></ul><p>缺点：</p><ul><li>时间、人力成本大，数据传输的时效性。</li></ul><h2 id="可视化埋点："><a href="#可视化埋点：" class="headerlink" title="可视化埋点："></a>可视化埋点：</h2><p>利用可视化交互手段，通过可视化界面配置控件操作与事件操作发生关系。通过后台截屏的方式采集数据。<br>优点：</p><ul><li>成本低，速度快</li></ul><p>缺点：</p><ul><li>行为记录信息少，支持的分析方式少</li></ul><h2 id="无埋点："><a href="#无埋点：" class="headerlink" title="无埋点："></a>无埋点：</h2><p>Growing IO和Heap analytics，这2家是国内与国外的无埋点技术公司代表。用户展现界面元素时，通过控件绑定触发事件，事件被触发的时候系统会有相应的接口让开发者处理这些行为。现在市面上主流无埋点做法有两种，一种是预先跟踪所有的渲染信息，一种是滞后跟踪的渲染信息。<br>优点：</p><ul><li>无需埋点，方便快捷</li></ul><p>缺点：</p><ul><li>行为记录信息少，传输压力大</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后，关于埋点有无问题，可视化埋点和代码优劣问题，不管选择哪个都要从自身情况去考虑，自身分析场景来体验和对比，选择最适合自己的。适合自己的才是最好的。<br>这里推荐两篇介绍比较详细的前端埋点博文:<br><a href="http://www.imooc.com/article/27151" target="_blank" rel="noopener">第一篇</a><br><a href="https://blog.csdn.net/ywl570717586/article/details/89852222" target="_blank" rel="noopener">第二篇</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>微前端</title>
       <link href="/2020/05/25/%E5%BE%AE%E5%89%8D%E7%AB%AF/"/>
       <url>/2020/05/25/%E5%BE%AE%E5%89%8D%E7%AB%AF/</url>

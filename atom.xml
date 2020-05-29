@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-05-25T07:53:46.365Z</updated>
+  <updated>2020-05-29T06:16:56.139Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端埋点</title>
+    <link href="/2020/05/29/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/"/>
+    <id>/2020/05/29/前端埋点/</id>
+    <published>2020-05-29T03:13:42.000Z</published>
+    <updated>2020-05-29T06:16:56.139Z</updated>
+    
+    <content type="html"><![CDATA[<p>全面的介绍前端埋点知识<br><a id="more"></a></p><h1 id="前端埋点"><a href="#前端埋点" class="headerlink" title="前端埋点"></a>前端埋点</h1><p>所谓「埋点」，就是在正常的功能逻辑中添加统计逻辑。拿统计微信右上角「+」的点击次数为例，上报的数据可以采用KEY-VALUE形式，我们定义KEY为「CLICK_ADD_BTN」，VALUE的值为点击的次数。当用户点击「+」时，展示菜单的代码会通过按钮的「回调」来触发执行，程序猿在业务代码执行完后，又加上了统计代码，把「CLICK_ADD_BTN」对应的VALUE加1，「+」被统计到了一次使用。<br>目前常见的前端埋点技术有3类：代码埋点、可视化埋点、无埋点（无埋点属于埋点的一个子集）。</p><h2 id="代码埋点："><a href="#代码埋点：" class="headerlink" title="代码埋点："></a>代码埋点：</h2><p>控件操作发生时通过预先写好的代码来发送数据。<br>优点：</p><ul><li>控制发送数据时间，事件自定义属性详细记录</li></ul><p>缺点：</p><ul><li>时间、人力成本大，数据传输的时效性。</li></ul><h2 id="可视化埋点："><a href="#可视化埋点：" class="headerlink" title="可视化埋点："></a>可视化埋点：</h2><p>利用可视化交互手段，通过可视化界面配置控件操作与事件操作发生关系。通过后台截屏的方式采集数据。<br>优点：</p><ul><li>成本低，速度快</li></ul><p>缺点：</p><ul><li>行为记录信息少，支持的分析方式少</li></ul><h2 id="无埋点："><a href="#无埋点：" class="headerlink" title="无埋点："></a>无埋点：</h2><p>Growing IO和Heap analytics，这2家是国内与国外的无埋点技术公司代表。用户展现界面元素时，通过控件绑定触发事件，事件被触发的时候系统会有相应的接口让开发者处理这些行为。现在市面上主流无埋点做法有两种，一种是预先跟踪所有的渲染信息，一种是滞后跟踪的渲染信息。<br>优点：</p><ul><li>无需埋点，方便快捷</li></ul><p>缺点：</p><ul><li>行为记录信息少，传输压力大</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后，关于埋点有无问题，可视化埋点和代码优劣问题，不管选择哪个都要从自身情况去考虑，自身分析场景来体验和对比，选择最适合自己的。适合自己的才是最好的。<br>这里推荐两篇介绍比较详细的前端埋点博文:<br><a href="http://www.imooc.com/article/27151" target="_blank" rel="noopener">第一篇</a><br><a href="https://blog.csdn.net/ywl570717586/article/details/89852222" target="_blank" rel="noopener">第二篇</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;全面的介绍前端埋点知识&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="/categories/javascript/"/>
+    
+    
+      <category term="基础知识" scheme="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>微前端</title>
@@ -445,28 +467,6 @@
     
     
       <category term="html" scheme="/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http请求头的安全策略</title>
-    <link href="/2020/02/18/http%E8%AF%B7%E6%B1%82%E5%A4%B4%E7%9A%84%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5/"/>
-    <id>/2020/02/18/http请求头的安全策略/</id>
-    <published>2020-02-18T07:51:36.000Z</published>
-    <updated>2020-02-18T08:56:33.335Z</updated>
-    
-    <content type="html"><![CDATA[<p>http请求头中相关安全的头字段<br><a id="more"></a></p><h1 id="http请求头的安全策略"><a href="#http请求头的安全策略" class="headerlink" title="http请求头的安全策略"></a>http请求头的安全策略</h1><p>我们的项目在经过开发，测试之后，还得经过安全小组的安全漏斗扫描，经常会暴漏一些返回头缺少安全字段的漏洞，今天我稍加整理常用的几个。<br>如果想了解更多的请求头和响应头的字段信息，可以看本站另一篇文章，<a href="/2019/04/15/http请求头响应头字段详解/">这里</a></p><h2 id="1-X-Frame-Options"><a href="#1-X-Frame-Options" class="headerlink" title="1.X-Frame-Options"></a>1.X-Frame-Options</h2><p>如果网站可以嵌入到IFRAME元素中，则攻击者可以在社交场合设计一种情况，即受害者被指向攻击者控制的网站，该网站构成目标网站的框架。然后攻击者可以操纵受害者在目标网站上不知不觉地执行操作。即使有跨站点请求伪造保护，这种攻击也是可能的，并且被称为“clickjacking”，有关更多信息，<a href="https://www.owasp.org/index.php/Clickjacking" target="_blank" rel="noopener">请参阅</a>。为了避免这种情况，创建了“X-Frame-Options”标题。此标题允许网站所有者决定允许哪些网站构建其网站。<br>通常的建议是将此标头设置为“SAMEORIGIN”，它只允许属于同源策略的资源构成受保护资源的框架，或者设置为“DENY”，它拒绝任何资源（本地或远程）尝试框架也提供“X-Frame-Options”标头的资源。如下所示：<br>X-Frame-Options：SAMEORIGIN<br>请注意，“X-Frame-Options”标题已被弃用，将由内容安全策略中的Frame-Options指令替换，该指令仍处于活动开发阶段。但是，“X-Frame-Options”标题目前具有更广泛的支持，因此仍应实施安全措施。<br>说白了呢，就是让你的网站禁止被嵌套。<br>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;httpProtocol&gt;</span><br><span class="line">  &lt;customHeaders&gt;</span><br><span class="line">    &lt;add name=&quot;X-Frame-Options&quot; value=&quot;SAMEORIGIN&quot; /&gt;</span><br><span class="line">  &lt;/customHeaders&gt;</span><br><span class="line">&lt;/httpProtocol&gt;</span><br></pre></td></tr></table></figure></p><h2 id="2-Content-Security-Policy"><a href="#2-Content-Security-Policy" class="headerlink" title="2.Content-Security-Policy"></a>2.Content-Security-Policy</h2><p>内容安全策略（CSP）旨在允许Web应用程序的所有者通知客户端浏览器有关应用程序的预期行为（包括内容源，脚本源，插件类型和其他远程资源），这允许浏览器更多智能地执行安全约束。虽然CSP本质上是复杂的，如果没有适当部署它可能会变得混乱，一个应用良好的CSP可以大大降低利用大多数形式的跨站点脚本攻击的机会。<br>需要整个帖子来深入了解CSP允许的功能和不同设置，因此建议进一步阅读。以下是Mozilla开发者网络对CSP的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP" target="_blank" rel="noopener">精彩介绍性帖子</a><br>下面的简要示例显示了如何使用CSP指定您的网站希望从任何URI加载图像，从受信任的媒体提供商（包括内容分发网络）列表中插入插件内容，以及仅从您控制的服务器加载脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy：default-src&apos;self&apos;; img-src *; object-src media1.example.com media2.example.com * .cdn.example.com; script-src trustedscripts.example.com</span><br></pre></td></tr></table></figure></p><p>请注意，使用CSP的主要问题涉及策略错误配置（即使用“不安全内联”），或使用过于宽松的策略，因此在实施CSP时应特别注意。<br>这个呢，是将你引入的一切，加一个限制，这样如果别人想通过一些手段在你的网站加一些不好的东西，我们就可以有效地防止了。<br>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;httpProtocol&gt;</span><br><span class="line">  &lt;customHeaders&gt;</span><br><span class="line">    &lt;add name=&quot;Content-Security-Policy&quot; value=&quot;script-src &apos;unsafe-inline&apos; http://localhost:56504; object-src &apos;none&apos;; style-src &apos;unsafe-inline&apos; http://localhost:56504;&quot; /&gt;</span><br><span class="line">    &lt;/customHeaders&gt;</span><br><span class="line">  &lt;/httpProtocol&gt;</span><br></pre></td></tr></table></figure></p><p>其中预设值有以下这些：</p><ul><li>none 不匹配任何东西。</li><li>self 匹配当前域，但不包括子域。比如 example.com 可以，api.example.com 则会匹配失败。</li><li>unsafe-inline 允许内嵌的脚本及样式。是的，没看错，对于页面中内嵌的内容也是有相应限制规则的。</li><li>unsafe-eval 允许通过字符串动态创建的脚本执行，比如 eval，setTimeout 等。</li></ul><h1 id="3-X-Content-Type-Options"><a href="#3-X-Content-Type-Options" class="headerlink" title="3.X-Content-Type-Options"></a>3.X-Content-Type-Options</h1><p>互联网上的资源有各种类型，通常浏览器会根据响应头的Content-Type字段来分辨它们的类型。例如：”text/html”代表html文档，”image/png”是PNG图片，”text/css”是CSS样式文档。然而，有些资源的Content-Type是错的或者未定义。这时，某些浏览器会启用MIME-sniffing来猜测该资源的类型，解析内容并执行。<br>例如，我们即使给一个html文档指定Content-Type为”text/plain”，在IE8-中这个文档依然会被当做html来解析。利用浏览器的这个特性，攻击者甚至可以让原本应该解析为图片的请求被解析为JavaScript。通过下面这个响应头可以禁用浏览器的类型猜测行为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Content-Type-Options: nosniff</span><br></pre></td></tr></table></figure></p><p>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// php</span><br><span class="line">header(&quot;X-Content-Type-Options:nosniff&quot;);</span><br></pre></td></tr></table></figure></p><h2 id="4-X-XSS-Protection"><a href="#4-X-XSS-Protection" class="headerlink" title="4.X-XSS-Protection"></a>4.X-XSS-Protection</h2><p>顾名思义，这个响应头是用来防范XSS的。最早我是在介绍IE8的文章里看到这个，现在主流浏览器都支持，并且默认都开启了XSS保护，用这个header可以关闭它。它有几种配置：</p><ul><li>0：禁用XSS保护；</li><li>1：启用XSS保护；</li><li>1; mode=block：启用XSS保护，并在检查到XSS攻击时，停止渲染页面（例如IE8中，检查到攻击时，整个页面会被一个#替换）；<br>浏览器提供的XSS保护机制并不完美，但是开启后仍然可以提升攻击难度，总之没有特别的理由，不要关闭它。<br>demo:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// php</span><br><span class="line">header(&quot;X-XSS-Protection: 1&quot;);</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;http请求头中相关安全的头字段&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="网络基础" scheme="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
