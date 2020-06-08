@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Nodejs常驻后台运行</title>
+      <link href="/2020/06/05/Nodejs%E5%B8%B8%E9%A9%BB%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/"/>
+      <url>/2020/06/05/Nodejs%E5%B8%B8%E9%A9%BB%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/</url>
+      
+        <content type="html"><![CDATA[<p>nodejs程序在后台运行<br><a id="more"></a></p><h1 id="Nodejs常驻后台运行"><a href="#Nodejs常驻后台运行" class="headerlink" title="Nodejs常驻后台运行"></a>Nodejs常驻后台运行</h1><p>nodejs是通过命令行方式执行，当用户的xshell断开时Nodejs也就停止运行了。下面介绍几种办法让Nodejs常驻在后台运行</p><h2 id="pm2-推荐"><a href="#pm2-推荐" class="headerlink" title="pm2(推荐)"></a>pm2(推荐)</h2><p><a href="http://pm2.io/" target="_blank" rel="noopener">官网地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start app.js        <span class="comment">// 启动</span></span><br><span class="line">pm2 start app.js -i max <span class="comment">//启动 使用所有CPU核心的集群</span></span><br><span class="line">pm2 stop app.js         <span class="comment">// 停止</span></span><br><span class="line">pm2 stop all            <span class="comment">// 停止所有</span></span><br><span class="line">pm2 restart app.js      <span class="comment">// 重启</span></span><br><span class="line">pm2 restart all         <span class="comment">// 重启所有</span></span><br><span class="line">pm2 <span class="keyword">delete</span>  app.js      <span class="comment">// 关闭</span></span><br></pre></td></tr></table></figure></p><h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup node app.js &amp;</span><br></pre></td></tr></table></figure><h2 id="forever"><a href="#forever" class="headerlink" title="forever"></a>forever</h2><p><a href="https://github.com/nodejitsu/forever" target="_blank" rel="noopener">github地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install forever -g</span><br><span class="line">forever start app.js    <span class="comment">//启动</span></span><br><span class="line">forever stop app.js     <span class="comment">//关闭</span></span><br><span class="line">forever stopall         <span class="comment">//关闭全部</span></span><br><span class="line">forever restart app.js  <span class="comment">//重启</span></span><br><span class="line">forever restartall      <span class="comment">//重启全部</span></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> nodejs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>前端埋点</title>
       <link href="/2020/05/29/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/"/>
       <url>/2020/05/29/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/</url>
@@ -2916,7 +2939,7 @@
       <link href="/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/"/>
       <url>/2018/09/06/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li><li><a href="https://itxiaohao.github.io" target="_blank" rel="noopener">webpack4教程挺好</a></li><li><a href="https://juejin.im/post/5d23e750f265da1b855c7bbe" target="_blank" rel="noopener">前端面试100问</a></li><li><a href="https://www.cnblogs.com/xuanhun/category/568577.html" target="_blank" rel="noopener">玄魂工作室-nw.js教程</a></li><li><a href="http://www.yanhuangxueyuan.com" target="_blank" rel="noopener">WebGL教程-郭隆邦_技术博客</a></li><li><a href="https://github.com/scofieldfan/turtle-rock/blob/master/README.md" target="_blank" rel="noopener">一些算法的经典面试题</a></li><li><a href="https://github.com/ljianshu/Blog" target="_blank" rel="noopener">前端工匠</a></li><li><a href="https://github.com/jobbole/awesome-javascript-cn" target="_blank" rel="noopener">JavaScript 资源大全中文版</a></li><li><a href="https://www.alienzhou.com/" target="_blank" rel="noopener">AlienZHOU</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>对一些大牛的blog或者github的收集。<br><a id="more"></a></p><h2 id="技术博客列表"><a href="#技术博客列表" class="headerlink" title="技术博客列表"></a>技术博客列表</h2><ul><li><a href="https://github.com/chokcoco" target="_blank" rel="noopener">coco大神的github</a></li><li><a href="https://github.com/youngwind/blog/issues/99" target="_blank" rel="noopener">大神写webpack</a></li><li><a href="https://www.bougieblog.cn/article/Qk9VMTlHSUU.html" target="_blank" rel="noopener">比较不错的面试题收集</a></li><li><a href="https://feclub.cn/home" target="_blank" rel="noopener">前端俱乐部</a></li><li><a href="https://github.com/huruji" target="_blank" rel="noopener">灰风GreyWind的github,有面试题整理</a></li><li><a href="https://itxiaohao.github.io" target="_blank" rel="noopener">webpack4教程挺好</a></li><li><a href="https://juejin.im/post/5d23e750f265da1b855c7bbe" target="_blank" rel="noopener">前端面试100问</a></li><li><a href="https://www.cnblogs.com/xuanhun/category/568577.html" target="_blank" rel="noopener">玄魂工作室-nw.js教程</a></li><li><a href="http://www.yanhuangxueyuan.com" target="_blank" rel="noopener">WebGL教程-郭隆邦_技术博客</a></li><li><a href="https://github.com/scofieldfan/turtle-rock/blob/master/README.md" target="_blank" rel="noopener">一些算法的经典面试题</a></li><li><a href="https://github.com/ljianshu/Blog" target="_blank" rel="noopener">前端工匠</a></li><li><a href="https://github.com/jobbole/awesome-javascript-cn" target="_blank" rel="noopener">JavaScript 资源大全中文版</a></li><li><a href="https://www.alienzhou.com/" target="_blank" rel="noopener">AlienZHOU</a></li><li><a href="https://www.josephxia.com/" target="_blank" rel="noopener">开课吧夏老师blog</a></li></ul>]]></content>
       
       
       
