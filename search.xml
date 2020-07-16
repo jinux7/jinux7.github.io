@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>h5横屏适配</title>
+      <link href="/2020/07/16/h5%E6%A8%AA%E5%B1%8F%E9%80%82%E9%85%8D/"/>
+      <url>/2020/07/16/h5%E6%A8%AA%E5%B1%8F%E9%80%82%E9%85%8D/</url>
+      
+        <content type="html"><![CDATA[<p>h5移动端横屏适配<br><a id="more"></a></p><h1 id="h5横屏适配"><a href="#h5横屏适配" class="headerlink" title="h5横屏适配"></a>h5横屏适配</h1><p>我们平时在移动端开发时，特别是一些互动小游戏，需要只能在竖屏或者横屏的状态下展示。<br>比如，我们现在有一个需求，要求只能横屏展示，无论用户的手机处于竖屏还是横屏状态，都展示横屏效果。<br>最常用的方式是利用css3的transform rotate,将页面旋转90度。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用 CSS3 旋转 对根容器逆时针旋转 90 度</span></span><br><span class="line"><span class="keyword">var</span> detectOrient = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> width = <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">      height =  <span class="built_in">document</span>.documentElement.clientHeight,</span><br><span class="line">      $wrapper =  <span class="built_in">document</span>.getElementById(<span class="string">"J_wrapper"</span>),</span><br><span class="line">      style = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>( width &gt;= height )&#123; <span class="comment">// 横屏</span></span><br><span class="line">      style += <span class="string">"width:"</span> + width + <span class="string">"px;"</span>;  <span class="comment">// 注意旋转后的宽高切换</span></span><br><span class="line">      style += <span class="string">"height:"</span> + height + <span class="string">"px;"</span>;</span><br><span class="line">      style += <span class="string">"-webkit-transform: rotate(0); transform: rotate(0);"</span>;</span><br><span class="line">      style += <span class="string">"-webkit-transform-origin: 0 0;"</span>;</span><br><span class="line">      style += <span class="string">"transform-origin: 0 0;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123; <span class="comment">// 竖屏</span></span><br><span class="line">      style += <span class="string">"width:"</span> + height + <span class="string">"px;"</span>;</span><br><span class="line">      style += <span class="string">"height:"</span> + width + <span class="string">"px;"</span>;</span><br><span class="line">      style += <span class="string">"-webkit-transform: rotate(90deg); transform: rotate(90deg);"</span>;</span><br><span class="line">      <span class="comment">// 注意旋转中点的处理</span></span><br><span class="line">      style += <span class="string">"-webkit-transform-origin: "</span> + width / <span class="number">2</span> + <span class="string">"px "</span> + width / <span class="number">2</span> + <span class="string">"px;"</span>;</span><br><span class="line">      style += <span class="string">"transform-origin: "</span> + width / <span class="number">2</span> + <span class="string">"px "</span> + width / <span class="number">2</span> + <span class="string">"px;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  $wrapper.style.cssText = style;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onresize = detectOrient;</span><br><span class="line">detectOrient();</span><br></pre></td></tr></table></figure></p><p>以上这段代码可以解决一些常见场景，如果场景更复杂，<a href="https://aotu.io/notes/2017/10/18/landscape_mode_in_html5_game/" target="_blank" rel="noopener">详见此文</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 移动端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>常见的web攻击方式</title>
       <link href="/2020/06/24/%E5%B8%B8%E8%A7%81%E7%9A%84web%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/"/>
       <url>/2020/06/24/%E5%B8%B8%E8%A7%81%E7%9A%84web%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/</url>
