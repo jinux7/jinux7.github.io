@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>import和require的本质区别 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单的说一下import和require的本质区别">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="import和require的本质区别">
+<meta property="og:url" content="/2019/05/09/import和require的本质区别/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="简单的说一下import和require的本质区别">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-03-02T01:18:03.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="import和require的本质区别">
+<meta name="twitter:description" content="简单的说一下import和require的本质区别">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-import和require的本质区别" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                import和require的本质区别
+            
+        </h1>
+        <time>
+            2019-05-09 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#import和require的本质区别"><span class="toc-number">1.</span> <span class="toc-text">import和require的本质区别</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>简单的说一下import和require的本质区别<br><a id="more"></a></p>
+<h2 id="import和require的本质区别"><a href="#import和require的本质区别" class="headerlink" title="import和require的本质区别"></a>import和require的本质区别</h2><p>import是ES6的模块规范，require是commonjs的模块规范，详细的用法我不介绍，我只想说一下他们最基本的区别，import是静态加载模块，require是动态加载，那么静态加载和动态加载的区别是什么呢？<br>静态加载时代码在编译的时候已经执行了，动态加载是编译后在代码运行的时候再执行，那么具体点是什么呢？<br>先说说import，如下代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">'name.js'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// name.js文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name = <span class="string">'jinux'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> age = <span class="number">20</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的代码表示main.js文件里引入了name.js文件导出的变量，在代码编译阶段执行后的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'jinux'</span></span><br></pre></td></tr></table></figure></p>
+<p>这个是我自己理解的，其实就是直接把name.js里的代码放到了main.js文件里，好比是在main.js文件中声明一样。<br>再来看看require<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js文件</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="built_in">require</span>(<span class="string">'obj.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// obj.js文件</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'jinux'</span>,</span><br><span class="line">  age: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.export obj;</span><br></pre></td></tr></table></figure></p>
+<p>require是在运行阶段，需要把obj对象整个加载进内存，之后用到哪个变量就用哪个，这里再对比一下import，import是静态加载，如果只引入了name，age是不会引入的，所以是按需引入，性能更高。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/05/20/webpack打包多页面项目/" rel="prev" title="webpack打包多页面项目">
+                            webpack打包多页面项目
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/05/06/http常用状态码/" rel="next" title="http常用状态码">
+                            http常用状态码
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'import和require的本质区别',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>10</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>156</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>14</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/少儿编程/"><div class='name'>少儿编程</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>9</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.91px; color: #939393">3D</a> <a href="/tags/ajax/" style="font-size: 17.64px; color: #808080">ajax</a> <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 17.64px; color: #808080">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 15.82px; color: #8d8d8d">html</a> <a href="/tags/jquery/" style="font-size: 15.82px; color: #8d8d8d">jquery</a> <a href="/tags/js工具库/" style="font-size: 18.55px; color: #7a7a7a">js工具库</a> <a href="/tags/linux/" style="font-size: 14.91px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.82px; color: #8d8d8d">nodejs</a> <a href="/tags/scratch/" style="font-size: 14px; color: #999">scratch</a> <a href="/tags/threejs/" style="font-size: 14px; color: #999">threejs</a> <a href="/tags/vue/" style="font-size: 20.36px; color: #6e6e6e">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.64px; color: #808080">webpack</a> <a href="/tags/web图形/" style="font-size: 16.73px; color: #868686">web图形</a> <a href="/tags/web安全/" style="font-size: 17.64px; color: #808080">web安全</a> <a href="/tags/web性能/" style="font-size: 19.45px; color: #747474">web性能</a> <a href="/tags/worker/" style="font-size: 14.91px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.82px; color: #8d8d8d">兼容性</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.64px; color: #808080">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/工具库/" style="font-size: 23.09px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.91px; color: #939393">微信</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/服务器/" style="font-size: 14px; color: #999">服务器</a> <a href="/tags/样式/" style="font-size: 17.64px; color: #808080">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.73px; color: #868686">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.27px; color: #686868">移动端</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/网络基础/" style="font-size: 20.36px; color: #6e6e6e">网络基础</a> <a href="/tags/调试/" style="font-size: 14px; color: #999">调试</a> <a href="/tags/资源导航/" style="font-size: 14px; color: #999">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.18px; color: #616161">面试题</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
