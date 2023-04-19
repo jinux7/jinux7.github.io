@@ -20,10 +20,12 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="mysql学习笔记整理-锁机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-04-06T08:26:54.558Z">
+<meta property="og:image" content="/2023/04/06/MYSQL-九/1.png">
+<meta property="og:updated_time" content="2023-04-17T08:50:55.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL(九)">
 <meta name="twitter:description" content="mysql学习笔记整理-锁机制">
+<meta name="twitter:image" content="/2023/04/06/MYSQL-九/1.png">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -170,11 +172,55 @@
 
     </section>
     
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#锁机制"><span class="toc-number">1.</span> <span class="toc-text">锁机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#储存引擎"><span class="toc-number">1.1.</span> <span class="toc-text">储存引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务处理"><span class="toc-number">1.2.</span> <span class="toc-text">事务处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#非索引阻塞"><span class="toc-number">1.2.1.</span> <span class="toc-text">非索引阻塞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#范围锁"><span class="toc-number">1.2.2.</span> <span class="toc-text">范围锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#悲观锁"><span class="toc-number">1.3.</span> <span class="toc-text">悲观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁"><span class="toc-number">1.4.</span> <span class="toc-text">乐观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表锁机制"><span class="toc-number">1.5.</span> <span class="toc-text">表锁机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读锁"><span class="toc-number">1.5.1.</span> <span class="toc-text">读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写锁"><span class="toc-number">1.5.2.</span> <span class="toc-text">写锁</span></a></li></ol></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
             <p>mysql学习笔记整理-锁机制<br><a id="more"></a></p>
+<h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><p>因为 Mysql 支持多线程方式，所以可以同时处理多个客户端请求。有时为了防止客户端同时修改数据，我们使用锁操作完成。</p>
+<p>比如一个用户在修改数据，另一个用户也要修改该条数据，我们可以让第一个用户独占这个表记录，等他操作完再让第二个用户操作。</p>
+<p>下面是典型的商城应用，多用户购买商品时可以使用锁机制保障库存的准确性。<br><img src="/2023/04/06/MYSQL-九/1.png" alt="img"></p>
+<h3 id="储存引擎"><a href="#储存引擎" class="headerlink" title="储存引擎"></a>储存引擎</h3><p><code>InnoDB</code> 是主流储存引擎并支持行级锁的，有更高的并发处理性能，下面来演示行锁的运行过程。<code>MyIsam</code>引擎在最新版本的 MYSQL 中已经废弃所以不过多讨论了。</p>
+<ul>
+<li>行锁开销大，锁表慢</li>
+<li>行锁高并发下可并行处理，性能更高</li>
+<li>行锁是针对索引加的锁，在通过索引检索时才会应用行锁，否则使用表锁</li>
+<li>在事务执行过程中，随时都可以执行锁定，锁在执行 <code>COMMIT</code> 或者 <code>ROLLBACK</code> 的时候释放</li>
+</ul>
+<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><p>1.A 事务执行以下代码但不提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">UPDATE stu SET sname = &apos;hdcms&apos; WHERE id=1;</span><br></pre></td></tr></table></figure></p>
+<p>2.B 事务执行以下代码，可以正常执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">update stu set sname = &apos;后盾人&apos; where id=3</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure></p>
+<p>3.但 B 事务更新与 A 事务相同的记录则无法操作，执行过程发生阻塞<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">UPDATE stu SET sname = &apos;hdcms&apos; WHERE id=1;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>4.当 A 执行执行COMMIT 提交后，解锁记录行这时 B 事务继续执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">COMMIT;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h4 id="非索引阻塞"><a href="#非索引阻塞" class="headerlink" title="非索引阻塞"></a>非索引阻塞</h4><p>使用非索引字段筛选时，将造成全表锁定即表级锁，应该避免这种情况发生，提升数据库的并发性能。<br>1.事务 A 执行以下代码，因为sname字段没有添加索引，造成锁定整个表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">UPDATE stu SET sname = &apos;hdcms&apos; WHERE sname =&apos;后盾人&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>2.现在事务 B 更新任何一条记录都会造成阻塞，因为现在是表锁状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">update stu set sname = &apos;小明&apos; where id=1</span><br><span class="line">-- 阻塞中...</span><br></pre></td></tr></table></figure></p>
+<p>3.将 sname字段添加索引后，行锁功能就又有效了</p>
+<h4 id="范围锁"><a href="#范围锁" class="headerlink" title="范围锁"></a>范围锁</h4><p>查询没有指定明确范围时也会造成大量记录的锁定<br>1.事务 A 筛选时使用了范围区间，将会造成表锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">UPDATE goods SET num=200 WHERE id&gt;1 AND id&lt;3;</span><br></pre></td></tr></table></figure></p>
+<p>2.事务 B 将不能修改表中的 ID 大于 2 的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">update goods set num =1 where id=2;</span><br><span class="line">-- 阻塞中...</span><br></pre></td></tr></table></figure></p>
+<p>但可以更改 ID 为 1 的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update goods set num =1 where id=1;</span><br></pre></td></tr></table></figure></p>
+<p>3.执行添加时因为不在 id 为 1~3 的范围内所以可以添加，但如果添加时指定 ID 为 2 将会阻塞。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into goods (name,num) values(&apos;西瓜&apos;,200);</span><br></pre></td></tr></table></figure></p>
+<h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>非观锁指对数据被外界修改持保守态度，在整个数据处理过程中，将数据处于锁定状态，可以很好地解决并发事务的更新丢失问题。</p>
+<p>下面演示商城下单情况，要用户购买商品后我们要减少库存，如果在高并发情况下多个用户同时修改库存表，会造成库存数据异常，使用悲观锁可以解决这个问题。<br>1.事务 A 执行悲观锁操作后，其他事务执行同一代码时将阻塞<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">SELECT * FROM goods WHERE id=1 FOR UPDATE;</span><br><span class="line">UPDATE goods SET num=num-2 WHERE id=1;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>2.事务 B 执行以下代码将不能查询库存，必须等事务 A 提交或回滚事务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">## B事务中查询中也要使用 FOR UPDATE 悲观锁</span><br><span class="line">SELECT * FROM goods WHERE id=1 FOR UPDATE;</span><br><span class="line">-- 阻塞中...</span><br></pre></td></tr></table></figure></p>
+<p>3.事务 A 提交后，事务 B 会得到事务 A 操作后的结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">COMMIT;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>在每次去拿数据的时候认为别人不会修改，不对数据上锁，但是在提交更新的时候会判断在此期间数据是否被更改，如果被更改则提交失败。</p>
+<p>下面使用版本字段来实现乐观锁操作，并实现更改商品库存的案例。<br>1.事务 A 查询商品库存，获取了商品记录，记录中有 VERSION 字段用于记录版本号（目前为 0）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">SELECT * FROM goods WHERE id = 1;</span><br></pre></td></tr></table></figure></p>
+<p>2.事务 B 同时查询，也获取了版本号为 0 的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">SELECT * FROM goods WHERE id = 1;</span><br></pre></td></tr></table></figure></p>
+<p>3.事务 A 更改库存，并增加版本号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE goods SET num=num-10,VERSION =VERSION+1 WHERE VERSION=0;</span><br></pre></td></tr></table></figure></p>
+<p>4.事务 B 更改数据，但使用的是事务 B 查询到的 0 号版本，因为事务 A 已经提交版本号为 1，造成事务 B 修改失败，保证了数据的完整性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE goods SET num=num-10,VERSION =VERSION+1 WHERE VERSION=0;</span><br></pre></td></tr></table></figure></p>
+<h3 id="表锁机制"><a href="#表锁机制" class="headerlink" title="表锁机制"></a>表锁机制</h3><p>针对一些不支持事务的处理引擎可以使用锁表的方式控制业务。</p>
+<h4 id="读锁"><a href="#读锁" class="headerlink" title="读锁"></a>读锁</h4><p>为表设置读锁后，当前会话和其他会话都不可以修改数据，但可以读取表数据。<br>1.会话 A 对表 goods 设置了读锁，将不能修改该表，也不能操作其他表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE goods READ;</span><br><span class="line">UPDATE goods SET num=300 WHERE id=1;</span><br><span class="line">SELECT * FROM stu;</span><br></pre></td></tr></table></figure></p>
+<p>2.因为会话 A 对表goods设置了读锁，所以会话 B 也不能修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update goods set num=200 where id=1;</span><br><span class="line">-- 阻塞</span><br></pre></td></tr></table></figure></p>
+<p>3.会话 A 解锁表后，其他会话又可以继续操作表了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure></p>
+<h4 id="写锁"><a href="#写锁" class="headerlink" title="写锁"></a>写锁</h4><p>为表设置了写锁后，当前会话可以修改，查询表，其他会话将无法操作。<br>1.会话 A 对表 goods 和 stu 设置写锁，本会话可以正常操作表， 并不能操作其他表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE goods WRITE，stu WRITE;</span><br><span class="line">INSERT INTO goods (name,num )VALUES(&apos;后盾人教程&apos;,300);</span><br></pre></td></tr></table></figure></p>
+<p>2.会话 B 读取/写入表数据都将阻塞<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from goods</span><br></pre></td></tr></table></figure></p>
+<p>3.会话 A 解锁表数据后，其他会话都可以正常操作了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure></p>
 
         </div>
 

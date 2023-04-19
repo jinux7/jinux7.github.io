@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="mysql学习笔记整理-账号管理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-04-06T08:28:27.433Z">
+<meta property="og:updated_time" content="2023-04-19T02:08:46.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL(十二)">
 <meta name="twitter:description" content="mysql学习笔记整理-账号管理">
@@ -170,11 +170,29 @@
 
     </section>
     
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#账号管理"><span class="toc-number">1.</span> <span class="toc-text">账号管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加帐号"><span class="toc-number">1.1.</span> <span class="toc-text">添加帐号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改密码"><span class="toc-number">1.2.</span> <span class="toc-text">修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置权限"><span class="toc-number">1.3.</span> <span class="toc-text">设置权限</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
             <p>mysql学习笔记整理-账号管理<br><a id="more"></a></p>
+<h2 id="账号管理"><a href="#账号管理" class="headerlink" title="账号管理"></a>账号管理</h2><p>MYSQL 新版本需要将创建用户与权限配置分配操作</p>
+<h3 id="添加帐号"><a href="#添加帐号" class="headerlink" title="添加帐号"></a>添加帐号</h3><p>添加用户 houdunren 并设置密码为 admin888<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER houdunren IDENTIFIED BY &apos;admin888&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>刷新帐表使设置立刻生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><p>下面是设置 root 帐号的密码为 admin888<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;admin888&apos;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h3><p>下面来学习设置权限，修改权限后需要用户重新登录生效。<br>查看当前用户权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW grants;</span><br></pre></td></tr></table></figure></p>
+<p>查看指定用户权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW GRANTS FOR &apos;houdunren&apos;@&apos;%&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>移除用户权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE ALL ON *.* FROM houdunren@&apos;%&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>用户可以为 code 库中的所有表执行 SELECT 与 INSERT 操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT SELECT ,INSERT ON code.* TO houdunren@&apos;%&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>可以从任何电脑登录服务器并管理所有库和表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL ON *.* TO houdunren@&apos;%&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>用户可以管理 code 库中的所有表，来源以 192.168.0 开始的 IP 地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL ON code.* TO houdunren@&apos;192.168.0.%&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>用户 houdunren 可以对 code 库中的所有表执行 ALTER ,CREATE ,DROP 指令，并且来源不受限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALTER ,CREATE ,DROP ON code.* TO houdunren@&apos;%&apos;;</span><br></pre></td></tr></table></figure></p>
 
         </div>
 
