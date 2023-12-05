@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="初探vue服务器端渲染">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-03-31T08:22:34.194Z">
+<meta property="og:updated_time" content="2023-10-27T03:12:55.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue ssr 初探">
 <meta name="twitter:description" content="初探vue服务器端渲染">
@@ -177,6 +177,13 @@
             <p>初探vue服务器端渲染<br><a id="more"></a><br>目前，使用vue的单页面应用，在开发中使用频繁，但是，vue ssr后端渲染一直没有应用过，好处不用说，解决了vue的spa应用很多不利之处。今天，笔者不想写太多，只是把这两天的学习感悟总结下。<br>【<a href="https://ssr.vuejs.org/zh/" target="_blank" rel="noopener">Vue SSR 指南</a>】,这个指南是vue ssr的官网，内容很全，但是只有部分代码示例，不是一个完整项目的代码，所以笔者在网上找了两个简单，容易入门的代码示例。【<a href="https://github.com/jinux7/study-collections/tree/master/vue-ssr/" target="_blank" rel="noopener">代码示例</a>】<br>上面的vue ssr官网和代码示例，是基于vue-server-renderer这个插件完成的，需要从零开始搭建，还是相当麻烦的，这种方式笔者认为适合学习vue ssr的原理，或者是简单的小型项目中，如果是大型项目，可以使用现有的vue ssr框架Nuxt,因为后端渲染相对spa来说还是相对复杂的，多了一个服务器的技术场景，而且好多业务也是两者都有交集，各种坑会很多。所以建议大型项目使用成熟的Nuxt来做。【<a href="https://www.nuxtjs.cn/" target="_blank" rel="noopener">Nuxt官网</a>】<br>最后，总结下笔者理解的服务端渲染:</p>
 <blockquote>
 <p>首先在服务器端要准备好客户端渲染代码（spa）和服务器端代码（ssr），浏览器发起页面的请求（比如首页，也可以是其它页），服务端直接返回带有内容的页面，这样在浏览器可以马上看到渲染后的内容，而且体积还小。在页面的尾部，请求客户端的js等文件，当客户端的js文件加载完成后，会偷偷的执行，等用户再想浏览其它页面的时候，客户端的spa代码已经接管完成，不会再向服务器端发起请求，这时就是一个单纯的spa应用了。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2023/10/27追加<br>【<a href="https://www.nowcoder.com/discuss/517860335466840064" target="_blank" rel="noopener">SSR服务器渲染的具体实现</a>】</p>
+</blockquote>
+</blockquote>
 </blockquote>
 
         </div>
