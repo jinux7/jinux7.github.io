@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>浅析npm参数init,create,exec | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="npm [init,create,exec,innit],npx的使用">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析npm参数init,create,exec">
+<meta property="og:url" content="/2024/01/17/浅析npm参数init-create-exec/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="npm [init,create,exec,innit],npx的使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-17T06:07:51.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅析npm参数init,create,exec">
+<meta name="twitter:description" content="npm [init,create,exec,innit],npx的使用">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-浅析npm参数init-create-exec" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                浅析npm参数init,create,exec
+            
+        </h1>
+        <time>
+            2024-01-17 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-exec"><span class="toc-number">1.</span> <span class="toc-text">npm exec</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-exec-lt-pkg-gt-的执行流程"><span class="toc-number">1.1.</span> <span class="toc-text">npm exec &lt;pkg&gt;的执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-exec-lt-pkg-gt-的执行案例"><span class="toc-number">1.2.</span> <span class="toc-text">npm exec &lt;pkg&gt;的执行案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npx"><span class="toc-number">2.</span> <span class="toc-text">npx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-init"><span class="toc-number">3.</span> <span class="toc-text">npm init</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#无initializer"><span class="toc-number">3.1.</span> <span class="toc-text">无initializer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有initializer"><span class="toc-number">3.2.</span> <span class="toc-text">有initializer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-create-npm-innit"><span class="toc-number">4.</span> <span class="toc-text">npm create,npm innit</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>npm [init,create,exec,innit],npx的使用<br><a id="more"></a></p>
+<h2 id="npm-exec"><a href="#npm-exec" class="headerlink" title="npm exec"></a>npm exec</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// pkg是包名</span><br><span class="line">npm exec &lt;pkg&gt;</span><br><span class="line">// 还有一种简写形式</span><br><span class="line">// npm官方文档中指出x,其实就是exec的别名,npm exec、npm x,两个命令是完全等价的。</span><br><span class="line">npm x &lt;pkg&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="npm-exec-lt-pkg-gt-的执行流程"><a href="#npm-exec-lt-pkg-gt-的执行流程" class="headerlink" title="npm exec &lt;pkg&gt;的执行流程"></a><code>npm exec &lt;pkg&gt;</code>的执行流程</h3><ul>
+<li>在本地查找是否有<code>&lt;pkg&gt;</code>对应的<code>npm</code>包,若找到,则运行这个包的<code>package.json</code>中<code>bin</code>字段对应的可执行文件,若未找到,在远程<code>npm</code>仓库查找是否有<code>&lt;pkg&gt;</code>对应的<code>npm</code>包,若找到,则下载到本地,下载完成后运行这个包<code>package.json</code>中<code>bin</code>字段对应的可执行文件。</li>
+<li>在执行<code>bin</code>字段有几点注意的,如果<code>bin</code>只有一个入口,那么可以执行,如果<code>bin</code>有多个入口,则寻找和包名一样的那个入口,如果没找到,则<code>npm exec &lt;pkg&gt;</code>报错。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create-vite这个npm包的package.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;create-vite&quot;</span><br><span class="line">  &quot;bin&quot;: &#123;</span><br><span class="line">      &quot;create-vite&quot;: &quot;index.js&quot;,</span><br><span class="line">      &quot;cva&quot;: &quot;index.js&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="npm-exec-lt-pkg-gt-的执行案例"><a href="#npm-exec-lt-pkg-gt-的执行案例" class="headerlink" title="npm exec &lt;pkg&gt;的执行案例"></a><code>npm exec &lt;pkg&gt;</code>的执行案例</h3><p>以<code>create-vite</code>这个包为例子<br>执行<code>npm exec crate-vite</code>这条命令后,首先本地查找是否有<code>create-vite</code>这个<code>npm</code>包,找到,则运行<code>create-vite</code>这个<code>npm</code>包中的<code>package.json</code>中<code>bin</code>字段对应的可执行文件,即<code>index.js</code>这个文件。若未找到,在远程<code>npm</code>仓库查找是否有<code>create-vite</code>这个包,如果有,则下载到本地,并执行<code>package.json</code>中<code>bin</code>字段对应的可执行文件。</p>
+<h2 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h2><p><code>npm</code>文档中提到：<code>npx</code>的二进制文件在<code>npm v7.0.0</code>中被重写,而独立的<code>npx</code>包在当时已弃用。<code>npx</code>使用<code>npm exec</code>命令,而不是单独的参数解析器和安装过程。并提供了一些支持,以保持与它在以前版本中接受的参数的向后兼容性。<br>因此:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx = npm exec</span><br><span class="line">npx = npm x</span><br></pre></td></tr></table></figure></p>
+<p>所以上面的<code>npm exec create-vite</code>也可以使用<code>npx create-vite</code>去执行</p>
+<h2 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line">npm init &lt;initializer&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="无initializer"><a href="#无initializer" class="headerlink" title="无initializer"></a>无initializer</h3><p>后面没有<code>&lt;initializer&gt;</code>是用来创建package.json文件</p>
+<h3 id="有initializer"><a href="#有initializer" class="headerlink" title="有initializer"></a>有initializer</h3><p>这里的<code>npm init &lt;initializer&gt;</code>实际会调用<code>npm exec create-&lt;initializer&gt;</code>, 也相当于<code>npx create-&lt;initializer&gt;</code>。<br>比如在使用vite时,<code>npm init vite</code>,实际是执行<code>npm exec create-vite</code></p>
+<h2 id="npm-create-npm-innit"><a href="#npm-create-npm-innit" class="headerlink" title="npm create,npm innit"></a>npm create,npm innit</h2><p><code>npm</code>官方文档中指出<code>create,innit</code>其实就是<code>init</code>的别名,也就是说<code>npm init,npm create,npm innit</code>三个命令是完全等价的。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/nodejs/"><i class="fa fa-tag"></i>&nbsp;&nbsp;nodejs</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2024/01/02/软件工程中的版本管理/" rel="next" title="软件工程中的版本管理">
+                            软件工程中的版本管理
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '浅析npm参数init,create,exec',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>170</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>14</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>15</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 16.5px; color: #888">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/js工具库/" style="font-size: 19px; color: #777">js工具库</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/threejs/" style="font-size: 14px; color: #999">threejs</a> <a href="/tags/typescript/" style="font-size: 14px; color: #999">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 17.33px; color: #828282">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19.83px; color: #717171">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 14.83px; color: #939393">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 22.33px; color: #606060">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14px; color: #999">调试</a> <a href="/tags/资源导航/" style="font-size: 14px; color: #999">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 23.17px; color: #5b5b5b">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
