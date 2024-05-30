@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2024-04-22T01:16:01.429Z</updated>
+  <updated>2024-05-30T08:27:27.803Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>windows系统安装Redis</title>
+    <link href="/2024/05/30/windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85redis/"/>
+    <id>/2024/05/30/windows系统安装redis/</id>
+    <published>2024-05-30T08:06:09.000Z</published>
+    <updated>2024-05-30T08:27:27.803Z</updated>
+    
+    <content type="html"><![CDATA[<p>windows系统下如何安装Redis<br><a id="more"></a></p><h2 id="Redis简介"><a href="#Redis简介" class="headerlink" title="Redis简介"></a>Redis简介</h2><p>Redis（Remote Dictionary Server）是一个开源的内存数据结构存储系统，它提供了一个高效的键值存储解决方案，并支持多种数据结构，如字符串（Strings）、哈希（Hashes）、列表（Lists）、集合（Sets）和有序集合（Sorted Sets）等。它被广泛应用于缓存、消息队列、实时统计等场景。</p><h2 id="安装（windows）"><a href="#安装（windows）" class="headerlink" title="安装（windows）"></a>安装（windows）</h2><p><a href="https://github.com/zkteco-home/redis-windows" target="_blank" rel="noopener">Redis安装文件下载</a><br>将这个库clone到本地，之后以管理员身份执行<code>install_redis.cmd</code>这个文件后，就安装好了。<br><img src="/2024/05/30/windows系统安装redis/1.png" alt="img"></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p><code>redis-cli.exe</code>是客户端，可以连接redis服务进行操作<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SET mykey &quot;Hello, World!&quot;</span><br><span class="line">GET mykey</span><br></pre></td></tr></table></figure></p><h3 id="卸载服务"><a href="#卸载服务" class="headerlink" title="卸载服务"></a>卸载服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --service-uninstall</span><br></pre></td></tr></table></figure><h3 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --service-stop</span><br></pre></td></tr></table></figure><h3 id="开始服务"><a href="#开始服务" class="headerlink" title="开始服务"></a>开始服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --service-start</span><br></pre></td></tr></table></figure><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>还有一个安装地址，<a href="https://github.com/microsoftarchive/redis" target="_blank" rel="noopener">Redis安装文件下载</a><br>但是这个库维护的Redis版本较低。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;windows系统下如何安装Redis&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后端" scheme="/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>web视频播放浅析</title>
@@ -430,28 +452,6 @@
     <summary type="html">
     
       &lt;p&gt;mysql学习笔记整理-索引优化&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="服务器" scheme="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="MYSQL笔记" scheme="/tags/MYSQL%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MYSQL(十)</title>
-    <link href="/2023/04/06/MYSQL-%E5%8D%81/"/>
-    <id>/2023/04/06/MYSQL-十/</id>
-    <published>2023-04-06T08:14:07.000Z</published>
-    <updated>2024-01-11T07:00:59.135Z</updated>
-    
-    <content type="html"><![CDATA[<p>mysql学习笔记整理-外键约束<br><a id="more"></a></p><h2 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h2><p>外键表示一个表中的字段被另一个表中的一个字段引用。外键对相关表中的数据造成了限制，使 MySQL 能够保持数据完整性。<br>比如学生和班级表，学生表完全依赖班级表，我们可以通过外键约束让学生表与班级表产生关联，当班级表数据变化时影响学生表。</p><ul><li>父表和子表储存引擎要一致</li><li>使用 InnoDB 引擎支持外键约束</li><li>外键要与主表列类型一致</li><li>外键列使用索引（有些版本的 mysql 会自动帮助为外键设置索引)</li></ul><h3 id="创建外键"><a href="#创建外键" class="headerlink" title="创建外键"></a>创建外键</h3><p>下面我们先创建表关联后，再详细解释里面的参数选项。</p><h4 id="新建表"><a href="#新建表" class="headerlink" title="新建表"></a>新建表</h4><p>下面创建班级表与学生表，并定义学生表与班级表建立外键约束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 班级表</span><br><span class="line">CREATE TABLE class (id int PRIMARY KEY AUTO_INCREMENT,name varchar(50));</span><br><span class="line"></span><br><span class="line">-- 学生表</span><br><span class="line">CREATE TABLE stu (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">  `sname` varchar(30) DEFAULT NULL,</span><br><span class="line">  `class_id` int(11) DEFAULT NULL,</span><br><span class="line">  CONSTRAINT `stu_class`</span><br><span class="line">  FOREIGN KEY (`class_id`)</span><br><span class="line">  REFERENCES `class` (`id`)</span><br><span class="line">  ON DELETE CASCADE</span><br><span class="line">  ON UPDATE CASCADE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure></p><h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><p>下面是对学生表添加班级表的外键约束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE stu ADD</span><br><span class="line">CONSTRAINT stu_class</span><br><span class="line">FOREIGN KEY (class_id)</span><br><span class="line">REFERENCES class(id)</span><br><span class="line">ON DELETE SET NULL</span><br><span class="line">ON UPDATE CASCADE;</span><br></pre></td></tr></table></figure></p><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE stu DROP FOREIGN KEY stu_class;</span><br></pre></td></tr></table></figure><h3 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h3><p>下面列出外键关联用到的关键词。</p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>CONSTRAINT</td><td>为外键约束定义名称</td></tr><tr><td>FOREIGN KEY</td><td>子表与父表关联的列</td></tr><tr><td>REFERENCES</td><td>子表关联的父表字段</td></tr><tr><td>ON DELETE</td><td>父表删除时的处理方式</td></tr><tr><td>ON UPDATE</td><td>父表更新时的处理方式</td></tr></tbody></table><h3 id="处理动作"><a href="#处理动作" class="headerlink" title="处理动作"></a>处理动作</h3><h4 id="ON-DELETE"><a href="#ON-DELETE" class="headerlink" title="ON DELETE"></a>ON DELETE</h4><p>ON DELETE 指在删除时的处理方式，常用的处理方式包括以下几种。</p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>ON DELETE CASCADE</td><td>删除父表记录时，子表记录同时删除</td></tr><tr><td>ON DELETE SET NULL</td><td>删除父表记录时，子表记录设置为 NULL（子表字段要允许 NULL）</td></tr><tr><td>ON DELETE NO ACTION <br> ON DELETE RESTRICT</td><td>删除父表记录时，子表不做任何处理，必须把子表处理完才可以删除主表</td></tr></tbody></table><h4 id="ON-UPDATE"><a href="#ON-UPDATE" class="headerlink" title="ON UPDATE"></a>ON UPDATE</h4><p>ON UPDATE 指在更新时的处理方式，常用的处理方式包括以下几种。</p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>ON UPDATE CASCADE</td><td>更新父表记录时，比如更改主表的主键时，子表记录同时更新</td></tr><tr><td>ON UPDATE SET NULL</td><td>更新父表记录时，比如更改主表的主键时，子表记录设置为 NULL</td></tr><tr><td>ON UPDATE NO ACTION <br> ON UPDATE RESTRICT</td><td>更新父表记录时，子表不做任何处理，必须把子表处理完才可以更新主表</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;mysql学习笔记整理-外键约束&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
