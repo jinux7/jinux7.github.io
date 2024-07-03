@@ -38,7 +38,7 @@
 <meta property="og:image" content="/2024/06/21/《Vue-js-设计与实现》速读/image-20230209113241592.png">
 <meta property="og:image" content="/2024/06/21/《Vue-js-设计与实现》速读/image-20230209113421705.png">
 <meta property="og:image" content="/2024/06/21/《Vue-js-设计与实现》速读/image-20230209121227934.png">
-<meta property="og:updated_time" content="2024-06-21T02:49:54.777Z">
+<meta property="og:updated_time" content="2024-06-21T05:46:30.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Vue.js 设计与实现》速读">
 <meta name="twitter:description" content="《Vue.js 设计与实现》概要总结">
@@ -353,8 +353,7 @@
 <p>那么此时因为 <code>obj.text</code> 的值发生了变化，所以 <code>effect</code> 被执行时 <code>document.body.innerText</code> 会被赋上新的值。从而导致视图发生变化。</p>
 </blockquote>
 <p>这是一套构建响应式系统的基础逻辑。这一套逻辑足够应对大家在日常的 <strong>面试</strong> 或者 <strong>工作</strong> 中的基本需求。</p>
-<p>而这套逻辑说起来简单，做起来还是有一些难度的。如果想要构建出一套完善的响应式系统，那么需要做非常多的工作，篇幅也会非常长。这就不是咱们这一个分享会的长度可以解决的了。</p>
-<p>所以后面有时间可以在github源码里面也详细的讲解并且实现了响应性模块。</p>
+<p>而这套逻辑说起来简单，做起来还是有一些难度的。</p>
 <h4 id="调度系统（scheduler）"><a href="#调度系统（scheduler）" class="headerlink" title="调度系统（scheduler）"></a>调度系统（scheduler）</h4><p>那么说完了基本的响应性之后，接下来咱们来看 <strong>调度系统（<code>scheduler</code>）</strong></p>
 <p>所谓调度系统，指的就是 <strong>响应性的可调度性</strong>。</p>
 <p>而所谓的可调度，指的就是 <strong>当数据更新的动作，触发副作用函数重新执行时，有能力决定：副作用函数（effect）执行的时机、次数以及方式</strong></p>
@@ -641,6 +640,13 @@
         
             <div class="art-item-footer">
                 
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2024/07/03/从零打造一个Web地图引擎/" rel="prev" title="从零打造一个Web地图引擎">
+                            从零打造一个Web地图引擎
+                        </a>
+                    </span>
+                
                 
                     <span class="art-item-right">
                         <a href="/2024/06/11/日语-N2文法/" rel="next" title="日语-N2文法">
@@ -687,7 +693,7 @@
     
         <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
     
-        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>175</div></a></li>
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>176</div></a></li>
     
         <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>19</div></a></li>
     
@@ -705,7 +711,7 @@
 <div class="m_widget tagcloud">
     <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
     <div class='content'>
-        <a href="/tags/3D/" style="font-size: 14.77px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.15px; color: #6f6f6f">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.54px; color: #8f8f8f">Threejs</a> <a href="/tags/ajax/" style="font-size: 17.85px; color: #7f7f7f">ajax</a> <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 17.85px; color: #7f7f7f">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.08px; color: #848484">html</a> <a href="/tags/jquery/" style="font-size: 15.54px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.77px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.54px; color: #8f8f8f">nodejs</a> <a href="/tags/typescript/" style="font-size: 14px; color: #999">typescript</a> <a href="/tags/vue/" style="font-size: 20.92px; color: #6a6a6a">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.85px; color: #7f7f7f">webpack</a> <a href="/tags/web图形/" style="font-size: 17.08px; color: #848484">web图形</a> <a href="/tags/web安全/" style="font-size: 17.85px; color: #7f7f7f">web安全</a> <a href="/tags/web性能/" style="font-size: 18.62px; color: #7a7a7a">web性能</a> <a href="/tags/worker/" style="font-size: 14.77px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.54px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 15.54px; color: #8f8f8f">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.85px; color: #7f7f7f">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.23px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.77px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 19.38px; color: #747474">手写</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.85px; color: #7f7f7f">日语</a> <a href="/tags/样式/" style="font-size: 17.85px; color: #7f7f7f">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.31px; color: #898989">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.69px; color: #656565">移动端</a> <a href="/tags/算法/" style="font-size: 15.54px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 17.08px; color: #848484">编译</a> <a href="/tags/网络基础/" style="font-size: 20.15px; color: #6f6f6f">网络基础</a> <a href="/tags/调试/" style="font-size: 14.77px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.77px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.46px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.85px; color: #7f7f7f">面试题系列</a>
+        <a href="/tags/3D/" style="font-size: 14.77px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.15px; color: #6f6f6f">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.54px; color: #8f8f8f">Threejs</a> <a href="/tags/ajax/" style="font-size: 17.85px; color: #7f7f7f">ajax</a> <a href="/tags/canvas/" style="font-size: 14.77px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/github/" style="font-size: 17.85px; color: #7f7f7f">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.08px; color: #848484">html</a> <a href="/tags/jquery/" style="font-size: 15.54px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.77px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.54px; color: #8f8f8f">nodejs</a> <a href="/tags/typescript/" style="font-size: 14px; color: #999">typescript</a> <a href="/tags/vue/" style="font-size: 20.92px; color: #6a6a6a">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.85px; color: #7f7f7f">webpack</a> <a href="/tags/web图形/" style="font-size: 17.85px; color: #7f7f7f">web图形</a> <a href="/tags/web安全/" style="font-size: 17.85px; color: #7f7f7f">web安全</a> <a href="/tags/web性能/" style="font-size: 18.62px; color: #7a7a7a">web性能</a> <a href="/tags/worker/" style="font-size: 14.77px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.54px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 15.54px; color: #8f8f8f">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.85px; color: #7f7f7f">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.23px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.77px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 19.38px; color: #747474">手写</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.85px; color: #7f7f7f">日语</a> <a href="/tags/样式/" style="font-size: 17.85px; color: #7f7f7f">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.31px; color: #898989">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.69px; color: #656565">移动端</a> <a href="/tags/算法/" style="font-size: 15.54px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 17.08px; color: #848484">编译</a> <a href="/tags/网络基础/" style="font-size: 20.15px; color: #6f6f6f">网络基础</a> <a href="/tags/调试/" style="font-size: 14.77px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.77px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.46px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.85px; color: #7f7f7f">面试题系列</a>
     </div>
 </div>
 
