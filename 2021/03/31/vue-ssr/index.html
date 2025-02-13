@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>jinux</title>
+  <title>vue ssr | jinux</title>
   <meta name="description" content="前端 学习 javascript">
   <meta name="keywords" content>
   <meta name="HandheldFriendly" content="True">
@@ -12,16 +12,18 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端 学习 javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jinux">
-<meta property="og:url" content="/page/10/index.html">
+  <meta name="description" content="vue服务端渲染ssr">
+<meta name="keywords" content="vue,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue ssr">
+<meta property="og:url" content="/2021/03/31/vue-ssr/index.html">
 <meta property="og:site_name" content="jinux">
-<meta property="og:description" content="前端 学习 javascript">
+<meta property="og:description" content="vue服务端渲染ssr">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2025-02-13T05:34:39.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jinux">
-<meta name="twitter:description" content="前端 学习 javascript">
+<meta name="twitter:title" content="vue ssr">
+<meta name="twitter:description" content="vue服务端渲染ssr">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -148,23 +150,16 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/06/22/前端音视频，多媒体领域主流框架/">
-                
-                    前端音视频，多媒体领域主流框架
-                
-            </a>
-        </h2>
+        <article id="post-vue-ssr" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                vue ssr
+            
+        </h1>
         <time>
-            2021-06-22 Tuesday
+            2021-03-31 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
@@ -174,315 +169,31 @@
 
 
     </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2-ssr"><span class="toc-number">2.</span> <span class="toc-text">vue2 ssr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue3-ssr"><span class="toc-number">3.</span> <span class="toc-text">vue3 ssr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+            </div>
+        </section>
+    
 
     <section class="article typo">
-        <p>前端音视频，多媒体领域主流框架介绍<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/06/22/前端音视频，多媒体领域主流框架/" class="flat-box">READ MORE</a>
-            </div>
-        
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-            </div>
-        
-    </section>
-</article>
+        <div class="article-entry" itemprop="articleBody">
+            <p>vue服务端渲染ssr<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>SSR 是 Server-Side Rendering，<br>【<a href="https://ssr.vuejs.org/zh/" target="_blank" rel="noopener">Vue SSR 指南</a>】,vue ssr的官网。</p>
+<blockquote>
+<p>SSR的原理：<br>首先在服务器端要准备好客户端渲染代码（spa）和服务器端代码（ssr），浏览器发起页面的请求（比如首页，也可以是其它页），服务端直接返回带有内容的页面，这样在浏览器可以马上看到渲染后的内容，而且体积还小。在页面的尾部，请求客户端的js等文件，当客户端的js文件加载完成后，会偷偷的执行，等用户再想浏览其它页面的时候，客户端的spa代码已经接管完成，不会再向服务器端发起请求，这时已经是一个spa应用了。</p>
+</blockquote>
+<h2 id="vue2-ssr"><a href="#vue2-ssr" class="headerlink" title="vue2 ssr"></a>vue2 ssr</h2><p>此项目是参考开课吧的一个教程，使用了vue2版本。<br><a href="https://github.com/jinux7/study-collections/tree/master/vue-ssr/kaikeba" target="_blank" rel="noopener">源码</a></p>
+<h2 id="vue3-ssr"><a href="#vue3-ssr" class="headerlink" title="vue3 ssr"></a>vue3 ssr</h2><p>此项目使用vue3+webpack开发的ssr框架。<br><a href="https://github.com/jinux7/study-collections/tree/master/vue-ssr/vue3%2Bwebpack" target="_blank" rel="noopener">源码</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上边两个项目实现的ssr框架可以学习其原理性知识，但是在实际的项目开发中最好使用成熟的ssr框架.<br><a href="https://nuxtjs.org/" target="_blank" rel="noopener">Nuxt英文</a><br><a href="https://www.nuxtjs.cn/" target="_blank" rel="noopener">Nuxt中文</a></p>
 
         </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/06/08/h5移动端判断宿主平台/">
-                
-                    h5移动端判断宿主平台
-                
-            </a>
-        </h2>
-        <time>
-            2021-06-08 Tuesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>h5移动端判断宿主平台<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/06/08/h5移动端判断宿主平台/" class="flat-box">READ MORE</a>
-            </div>
-        
 
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/移动端/"><i class="fa fa-tag"></i>&nbsp;&nbsp;移动端</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/05/28/html页面可见性监测/">
-                
-                    html页面可见性监测
-                
-            </a>
-        </h2>
-        <time>
-            2021-05-28 Friday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>html页面可见性监测处理<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/05/28/html页面可见性监测/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/浏览器/"><i class="fa fa-tag"></i>&nbsp;&nbsp;浏览器</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/05/25/无所不能的Array-reduce/">
-                
-                    无所不能的Array reduce
-                
-            </a>
-        </h2>
-        <time>
-            2021-05-25 Tuesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>Array的reduce方法分析<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/05/25/无所不能的Array-reduce/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/05/08/js-animate/">
-                
-                    js-animate
-                
-            </a>
-        </h2>
-        <time>
-            2021-05-08 Saturday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/css/">css</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>js控制css animate动画<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/05/08/js-animate/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/04/08/判断上传图片格式类型/">
-                
-                    判断上传图片格式类型
-                
-            </a>
-        </h2>
-        <time>
-            2021-04-08 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>判断图片的具体格式类型<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/04/08/判断上传图片格式类型/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-                    <a href="/tags/图片处理/"><i class="fa fa-tag"></i>&nbsp;&nbsp;图片处理</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/04/01/浏览器F12调试工具监测/">
-                
-                    浏览器F12调试工具监测
-                
-            </a>
-        </h2>
-        <time>
-            2021-04-01 Thursday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>浏览器F12调试工具弹出时的监测<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/04/01/浏览器F12调试工具监测/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/浏览器/"><i class="fa fa-tag"></i>&nbsp;&nbsp;浏览器</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/03/31/vue-ssr/">
-                
-                    vue ssr
-                
-            </a>
-        </h2>
-        <time>
-            2021-03-31 Wednesday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>vue服务端渲染ssr<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/03/31/vue-ssr/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
+            <div class="article-tags tags">
                 
                     <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
                 
@@ -490,112 +201,43 @@
                 
             </div>
         
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2021/04/01/浏览器F12调试工具监测/" rel="prev" title="浏览器F12调试工具监测">
+                            浏览器F12调试工具监测
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2021/03/29/理解BFC-IFC-GFC和FFC/" rel="next" title="理解BFC,IFC,GFC和FFC">
+                            理解BFC,IFC,GFC和FFC
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
     </section>
+
 </article>
 
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/03/29/理解BFC-IFC-GFC和FFC/">
-                
-                    理解BFC,IFC,GFC和FFC
-                
-            </a>
-        </h2>
-        <time>
-            2021-03-29 Monday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/css/">css</a>
-    </div>
+<br>
+
+<!-- 显示推荐文章和评论 -->
 
 
-    </section>
-
-    <section class="article typo">
-        <p>BFC,IFC,IFC,FFF是什么<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/03/29/理解BFC-IFC-GFC和FFC/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/样式/"><i class="fa fa-tag"></i>&nbsp;&nbsp;样式</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-    <article class="post reveal">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2021/02/20/canvas事件处理/">
-                
-                    canvas事件处理
-                
-            </a>
-        </h2>
-        <time>
-            2021-02-20 Saturday
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/javascript/">javascript</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>canvas中的图形添加事件<br></p>
-        
-            <div class="readmore">
-                <a href="/2021/02/20/canvas事件处理/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-</section>
-
-
-    <nav id="page-nav">
-        
-            <a class="prev" rel="prev" href="/page/9/">
-                <span class="icon icon-chevron-left"></span>
-                <span class="text">PREVIOUS</span>
-            </a>
-        
-        
-            <a class="next" rel="next" href="/page/11/">
-                <span class="text">NEXT</span>
-                <span class="icon icon-chevron-right"></span>
-            </a>
-        
-    </nav>
+<script>
+    window.subData = {
+        title: 'vue ssr',
+        tools: true
+    }
+</script>
 
 
       </div>
@@ -688,6 +330,10 @@ if(!ROOT.endsWith('/'))ROOT += '/';
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
   <script>setLoadingBarProgress(100);</script>
