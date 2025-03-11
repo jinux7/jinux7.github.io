@@ -20,22 +20,22 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="使用vue开发以太坊钱包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/202301022004191.png">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/202301022022983.png">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE4ff7e6f4bea9bf9f9da2e73a6f445493?ynotemdtimestamp=1670039920387">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE6fa3540c0b9ba25155d7623334aa6f65?ynotemdtimestamp=1670039920387">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE5b903d967930a3608c68015ee659c790?ynotemdtimestamp=1670039920387">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/202301022153807.png">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE5c5831294cda6ac00753bd5c0f1130f2?ynotemdtimestamp=1670039920387">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/22208307/1668518245248-4c524198-7a6a-482e-802c-d36d31220b06.png">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/image-20221208222354836.png">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/image-20221209110335777.png">
-<meta property="og:image" content="https://gitee.com/fcjun/image/raw/master/img/202301022022983.png">
-<meta property="og:updated_time" content="2025-03-11T02:03:02.316Z">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/1.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/2.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/3.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/4.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/5.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/6.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/7.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/8.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/9.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/10.png">
+<meta property="og:image" content="/2025/03/10/以太坊钱包开发/11.png">
+<meta property="og:updated_time" content="2025-03-11T04:12:09.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊钱包开发">
 <meta name="twitter:description" content="使用vue开发以太坊钱包">
-<meta name="twitter:image" content="https://gitee.com/fcjun/image/raw/master/img/202301022004191.png">
+<meta name="twitter:image" content="/2025/03/10/以太坊钱包开发/1.png">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -215,7 +215,7 @@
 <p>安装成功后 运行测试</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> 项目名称</span><br><span class="line">$ npm run serve</span><br></pre></td></tr></table></figure>
 <p>成功界面 </p>
-<p><img src="https://gitee.com/fcjun/image/raw/master/img/202301022004191.png" alt="image-20230102200435157"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/1.png" alt="image-20230102200435157"></p>
 <h2 id="第三方包安装"><a href="#第三方包安装" class="headerlink" title="第三方包安装"></a>第三方包安装</h2><h3 id="web3相关第三方包"><a href="#web3相关第三方包" class="headerlink" title="web3相关第三方包"></a>web3相关第三方包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install web3 bip39 ethereumjs-tx@1.3.7 ethereumjs-util ethereumjs-wallet</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注： ethereumjs-tx 使用1.3.7 版本</p>
@@ -241,7 +241,7 @@
 <li>测试 在app.vue文件添加代码</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;van-button type=&quot;primary&quot;&gt;test&lt;/van-button&gt;</span><br><span class="line"> &lt;van-button type=&quot;success&quot;&gt;test&lt;/van-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/fcjun/image/raw/master/img/202301022022983.png" alt="image-20230102202255947"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/2.png" alt="image-20230102202255947"></p>
 <h3 id="通过vw配置响应式"><a href="#通过vw配置响应式" class="headerlink" title="通过vw配置响应式"></a>通过vw配置响应式</h3><p><a href="https://www.cnblogs.com/hongrun/p/16130707.html" target="_blank" rel="noopener">https://www.cnblogs.com/hongrun/p/16130707.html</a></p>
 <ol>
 <li>安装</li>
@@ -271,23 +271,23 @@
 </ol>
 <p>第一步：打开 infura网站地址：<a href="https://infura.io/dashboard，使用邮箱注册后登陆" target="_blank" rel="noopener">https://infura.io/dashboard，使用邮箱注册后登陆</a></p>
 <p>第二步：点击上图标记的“create new project”按钮创建一个新项目。然后弹出如下弹框，在输入框输入项目名，如”MyEtherWallet“，然后点击“create project”按钮创建。</p>
-<p><img src="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE4ff7e6f4bea9bf9f9da2e73a6f445493?ynotemdtimestamp=1670039920387" alt></p>
+<p><img src="/2025/03/10/以太坊钱包开发/3.png" alt></p>
 <p>第三步：然后会显示如下界面，点击下图中的选择框，可以看到提供主网、Kovan测试网络、Ropsten测试网络、GoerLi测试网络的节点地址。</p>
-<p><img src="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE6fa3540c0b9ba25155d7623334aa6f65?ynotemdtimestamp=1670039920387" alt="image.png"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/4.png" alt="image.png"></p>
 <p>第四步：选择GoerLi测试网络，然后复制地址，将获取到类似这样的地址：<a href="https://kovan.infura.io/v3/d93f......cd67，如下。" target="_blank" rel="noopener">https://kovan.infura.io/v3/d93f......cd67，如下。</a></p>
-<p><img src="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE5b903d967930a3608c68015ee659c790?ynotemdtimestamp=1670039920387" alt="image.png"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/5.png" alt="image.png"></p>
 <ol start="4">
 <li>连接到以太坊GoerLi测试网络<br>现在将复制的地址替换掉实例化web对象的地址，如下</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Web3 = <span class="built_in">require</span>(<span class="string">"web3"</span>)</span><br><span class="line"><span class="keyword">var</span> web3 = <span class="keyword">new</span> Web3(Web3.givenProvider || <span class="string">'wss://goerli.infura.io/ws/v3/cb7e63cf28244e4499b4b6fb6162e746'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Web3:"</span>, web3)</span><br></pre></td></tr></table></figure>
 <p>连接到以太坊主网与GoerLi测试网络一样的，只需复制主网节点的地址去实例化web3即可。由于在主网上交易需要花费gas，因此我们基于GoerLi测试网络进行开发，后续开发完成后可再切换到主网。</p>
-<p><img src="https://gitee.com/fcjun/image/raw/master/img/202301022153807.png" alt="image-20230102215334761"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/6.png" alt="image-20230102215334761"></p>
 <h1 id="Web3js-高频-Api"><a href="#Web3js-高频-Api" class="headerlink" title="Web3js 高频 Api"></a>Web3js 高频 Api</h1><h2 id="账号创建"><a href="#账号创建" class="headerlink" title="账号创建"></a>账号创建</h2><ol>
 <li>创建账号需要使用web3.js的如下API</li>
 </ol>
 <p>API</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.accounts.create([entropy]);</span><br></pre></td></tr></table></figure>
-<p><img src="https://note.youdao.com/yws/public/resource/1ec02f1c3de5c9debaa6d4652bd7cb6d/WEBRESOURCE5c5831294cda6ac00753bd5c0f1130f2?ynotemdtimestamp=1670039920387" alt="image.png"><br>参数：</p>
+<p><img src="/2025/03/10/以太坊钱包开发/7.png" alt="image.png"><br>参数：</p>
 <p>entropy - String (可选): 它是一个可选项，是一个随机字符串，将作为解锁账号的密码。如果没有传递字符串，则使用random生成随机字符串。</p>
 <p>返回值：</p>
 <p>Object：包含以下字段的一个帐户对象：</p>
@@ -405,7 +405,7 @@
 <p>BIP44的规则使得 HD钱包非常强大，用户只需要保存一个种子，就能控制所有币种，所有账户的钱包，因此由BIP39 生成的助记词非常重要，所以一定安全妥善保管，那么会不会被破解呢？如果一个 HD 钱包助记词是 12 个单词，一共有 2048 个单词可能性，那么随机的生成的助记词所有可能性大概是<code>5e+39</code>，因此几乎不可能被破解。</p>
 <p><code>HD钱包</code></p>
 <p>通过BIP协议生成账号的钱包叫做HD钱包。这个HD钱包，并不是Hardware Wallet硬件钱包，这里的 HD 是<code>Hierarchical Deterministic</code>的缩写，意思是分层确定性，所以HD钱包的全称为比特币分成确定性钱包 。</p>
-<h2 id="密码、私钥、keystore与助记词的关系"><a href="#密码、私钥、keystore与助记词的关系" class="headerlink" title="密码、私钥、keystore与助记词的关系"></a>密码、私钥、keystore与助记词的关系</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/22208307/1668518245248-4c524198-7a6a-482e-802c-d36d31220b06.png" alt="img"></p>
+<h2 id="密码、私钥、keystore与助记词的关系"><a href="#密码、私钥、keystore与助记词的关系" class="headerlink" title="密码、私钥、keystore与助记词的关系"></a>密码、私钥、keystore与助记词的关系</h2><p><img src="/2025/03/10/以太坊钱包开发/8.png" alt="img"></p>
 <h2 id="钱包的核心：私钥"><a href="#钱包的核心：私钥" class="headerlink" title="钱包的核心：私钥"></a>钱包的核心：私钥</h2><p>基于以上的分析，我们对以太坊钱包的账号系统有了一个很好的认识，那么我们在使用钱包的过程中，该如何保管自己的钱包呢？主要包含以下几种方式：</p>
 <ul>
 <li>私钥（Private Key）</li>
@@ -443,7 +443,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">// 导入分层钱包模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; hdkey &#125; <span class="keyword">from</span> <span class="string">"ethereumjs-wallet"</span>;</span><br><span class="line">      <span class="comment">//1.将助记词转成seed</span></span><br><span class="line">      <span class="keyword">let</span> seed = <span class="keyword">await</span> bip39.mnemonicToSeed(<span class="string">"12位助记词"</span>);</span><br><span class="line">      <span class="comment">//3.通过hdkey将seed生成HD Wallet</span></span><br><span class="line">      <span class="keyword">let</span> hdWallet = hdkey.fromMasterSeed(seed);</span><br><span class="line">      <span class="comment">//4.生成钱包中在m/44'/60'/0'/0/i路径的keypair</span></span><br><span class="line">      <span class="keyword">let</span> keypair = hdWallet.derivePath(<span class="string">"m/44'/60'/0'/0/0"</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(keypair);</span><br></pre></td></tr></table></figure>
 <p>keypair 密钥对</p>
-<p><img src="https://gitee.com/fcjun/image/raw/master/img/image-20221208222354836.png" alt="image-20221208222354836"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/9.png" alt="image-20221208222354836"></p>
 <h4 id="3-由keypair-获取钱包地址和私钥"><a href="#3-由keypair-获取钱包地址和私钥" class="headerlink" title="3. 由keypair 获取钱包地址和私钥"></a>3. 由keypair 获取钱包地址和私钥</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取钱包对象</span></span><br><span class="line"><span class="keyword">let</span> wallet = keypair.getWallet();</span><br><span class="line"><span class="comment">// 获取钱包地址</span></span><br><span class="line"><span class="keyword">let</span> lowerCaseAddress = wallet.getAddressString();</span><br><span class="line"><span class="comment">// 获取钱包校验地址</span></span><br><span class="line"><span class="keyword">let</span> CheckSumAddress = wallet.getChecksumAddressString();</span><br><span class="line"><span class="comment">// 获取私钥</span></span><br><span class="line"><span class="keyword">let</span> prikey = wallet.getPrivateKey().toString(<span class="string">"hex"</span>);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"lowerCaseAddress"</span>, lowerCaseAddress);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"CheckSumAddress"</span>, CheckSumAddress);</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"prikey"</span>, prikey);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">lowerCaseAddress 0xd9fc0fd4412616c7075e68b151ab3a7bcb9a3f54</span></span><br><span class="line"><span class="comment">CheckSumAddress 0xd9fC0FD4412616c7075E68b151ab3A7bcB9A3f54</span></span><br><span class="line"><span class="comment">prikey 3fc11495517f1f015bbcb6c311da66e3b26b23e4c91c1285ccc4b69d9d274002</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <h2 id="导出账户"><a href="#导出账户" class="headerlink" title="导出账户"></a>导出账户</h2><blockquote>
 <p>一个已经存在的账户导出 私钥 和 keystore</p>
@@ -477,7 +477,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ethwallet <span class="keyword">from</span> <span class="string">"ethereumjs-wallet"</span>;     </span><br><span class="line"><span class="keyword">let</span> privatekey=<span class="keyword">new</span> Buffer( prompt(<span class="string">"请输入私钥"</span>), <span class="string">'hex'</span> )</span><br><span class="line"><span class="keyword">let</span> wallet = ethwallet.fromPrivateKey(privatekey)</span><br><span class="line"><span class="comment">// 获取钱包地址</span></span><br><span class="line"><span class="keyword">let</span> lowerCaseAddress = wallet.getAddressString();</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="区块链钱包项目流程"><a href="#区块链钱包项目流程" class="headerlink" title="区块链钱包项目流程"></a>区块链钱包项目流程</h1><p><img src="https://gitee.com/fcjun/image/raw/master/img/image-20221209110335777.png" alt="image-20221209110335777"></p>
+<h1 id="区块链钱包项目流程"><a href="#区块链钱包项目流程" class="headerlink" title="区块链钱包项目流程"></a>区块链钱包项目流程</h1><p><img src="/2025/03/10/以太坊钱包开发/10.png" alt="image-20221209110335777"></p>
 <h3 id="1-项目准备"><a href="#1-项目准备" class="headerlink" title="1.项目准备"></a>1.项目准备</h3><p>​         直接采用随堂demo创建的项目 不需要重新创建</p>
 <h4 id="web3相关第三方包-1"><a href="#web3相关第三方包-1" class="headerlink" title="web3相关第三方包"></a>web3相关第三方包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install web3 bip39 ethereumjs-tx@1.3.7 ethereumjs-util ethereumjs-wallet</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -504,7 +504,7 @@
 <li>测试 在app.vue文件添加代码</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;van-button type=&quot;primary&quot;&gt;test&lt;/van-button&gt;</span><br><span class="line"> &lt;van-button type=&quot;success&quot;&gt;test&lt;/van-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/fcjun/image/raw/master/img/202301022022983.png" alt="image-20230102202255947"></p>
+<p><img src="/2025/03/10/以太坊钱包开发/11.png" alt="image-20230102202255947"></p>
 <h4 id="通过vw配置响应式-1"><a href="#通过vw配置响应式-1" class="headerlink" title="通过vw配置响应式"></a>通过vw配置响应式</h4><p><a href="https://www.cnblogs.com/hongrun/p/16130707.html" target="_blank" rel="noopener">https://www.cnblogs.com/hongrun/p/16130707.html</a></p>
 <ol>
 <li>安装</li>
