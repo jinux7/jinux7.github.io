@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>HTTP1,HTTP2,http3的区别 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单的说一下HTTP1,HTTP2,http3的区别">
+<meta name="keywords" content="网络基础,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP1,HTTP2,http3的区别">
+<meta property="og:url" content="/2020/06/18/HTTP1和HTTP2的区别/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="简单的说一下HTTP1,HTTP2,http3的区别">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP1,HTTP2,http3的区别">
+<meta name="twitter:description" content="简单的说一下HTTP1,HTTP2,http3的区别">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-HTTP1和HTTP2的区别" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                HTTP1,HTTP2,http3的区别
+            
+        </h1>
+        <time>
+            2020-06-18 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP1"><span class="toc-number">1.</span> <span class="toc-text">HTTP1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-1-0和HTTP-1-1的区别"><span class="toc-number">1.1.</span> <span class="toc-text">HTTP/1.0和HTTP/1.1的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#长连接"><span class="toc-number">1.1.1.</span> <span class="toc-text">长连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Host域"><span class="toc-number">1.1.2.</span> <span class="toc-text">Host域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息传递"><span class="toc-number">1.1.3.</span> <span class="toc-text">消息传递</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP1的缺陷"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP1的缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#高延迟–带来页面加载速度的降低"><span class="toc-number">1.2.1.</span> <span class="toc-text">高延迟–带来页面加载速度的降低</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#明文传输–带来的不安全性"><span class="toc-number">1.2.2.</span> <span class="toc-text">明文传输–带来的不安全性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP2"><span class="toc-number">2.</span> <span class="toc-text">HTTP2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SPDY协议"><span class="toc-number">2.1.</span> <span class="toc-text">SPDY协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-2-新特性（即HTTP-2-0和HTTP-1-x的区别）"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP/2 新特性（即HTTP/2.0和HTTP/1.x的区别）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制传输"><span class="toc-number">2.2.1.</span> <span class="toc-text">二进制传输</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Header-压缩"><span class="toc-number">2.2.2.</span> <span class="toc-text">Header 压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户和网站间只用一个连接"><span class="toc-number">2.2.3.</span> <span class="toc-text">用户和网站间只用一个连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务器推送"><span class="toc-number">2.2.4.</span> <span class="toc-text">服务器推送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-2-的缺点"><span class="toc-number">2.3.</span> <span class="toc-text">HTTP/2 的缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP3"><span class="toc-number">3.</span> <span class="toc-text">HTTP3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#QUIC协议"><span class="toc-number">3.1.</span> <span class="toc-text">QUIC协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-3-新特性（HTTP-3与HTTP-2、HTTP-1的区别）"><span class="toc-number">3.2.</span> <span class="toc-text">HTTP/3 新特性（HTTP/3与HTTP/2、HTTP/1的区别）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实现了类似TCP的流量控制、传输可靠性的功能"><span class="toc-number">3.2.1.</span> <span class="toc-text">实现了类似TCP的流量控制、传输可靠性的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现了快速握手功能"><span class="toc-number">3.2.2.</span> <span class="toc-text">实现了快速握手功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集成了TLS加密功能"><span class="toc-number">3.2.3.</span> <span class="toc-text">集成了TLS加密功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多路复用，彻底解决TCP中队头阻塞的问题"><span class="toc-number">3.2.4.</span> <span class="toc-text">多路复用，彻底解决TCP中队头阻塞的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于QUIC的0RTT是如何实现的"><span class="toc-number">3.3.</span> <span class="toc-text">基于QUIC的0RTT是如何实现的</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>简单的说一下HTTP1,HTTP2,http3的区别<br><a id="more"></a></p>
+<h2 id="HTTP1"><a href="#HTTP1" class="headerlink" title="HTTP1"></a>HTTP1</h2><h3 id="HTTP-1-0和HTTP-1-1的区别"><a href="#HTTP-1-0和HTTP-1-1的区别" class="headerlink" title="HTTP/1.0和HTTP/1.1的区别"></a>HTTP/1.0和HTTP/1.1的区别</h3><h4 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h4><p>HTTP1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理，并且默认使用长连接，如果加入”Connection: close “，才关闭。</p>
+<blockquote>
+<p>短连接是指SOCKET连接后,发送接收完数据后马上断开连接。 因为连接后接收了数据就断开了,所以每次数据接受处理不会有联系。 这也是HTTP协议无状态的原因之一。</p>
+</blockquote>
+<h4 id="Host域"><a href="#Host域" class="headerlink" title="Host域"></a>Host域</h4><p>HTTP1.1在Request消息头里头多了一个Host（主机名）域，而且是必传的，HTTP1.0则没有这个域。</p>
+<h4 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h4><p>HTTP1.1增加了OPTIONS,PUT, DELETE, TRACE, CONNECT这些Request方法。</p>
+<h3 id="HTTP1的缺陷"><a href="#HTTP1的缺陷" class="headerlink" title="HTTP1的缺陷"></a>HTTP1的缺陷</h3><p>HTTP1主要有以下几个缺陷：</p>
+<h4 id="高延迟–带来页面加载速度的降低"><a href="#高延迟–带来页面加载速度的降低" class="headerlink" title="高延迟–带来页面加载速度的降低"></a>高延迟–带来页面加载速度的降低</h4><p>虽然近几年来网络带宽增长非常快，然而我们却并没有看到网络延迟有对应程度的降低。网络延迟问题主要由于队头阻塞(Head-Of-Line Blocking),导致带宽无法被充分利用。队头阻塞是指当顺序发送的请求序列中的一个请求因为某种原因被阻塞时，在后面排队的所有请求也一并被阻塞，会导致客户端迟迟收不到数据。</p>
+<h4 id="明文传输–带来的不安全性"><a href="#明文传输–带来的不安全性" class="headerlink" title="明文传输–带来的不安全性"></a>明文传输–带来的不安全性</h4><p>HTTP/1.1在传输数据时，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份，这在一定程度上无法保证数据的安全性。</p>
+<h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><p>HTTP/2是现行HTTP协议（HTTP/1.x）的替代，但它不是重写，HTTP方法/状态码/语义都与HTTP/1.x一样。HTTP/2基于SPDY，专注于性能，最大的一个目标是在用户和网站间只用一个连接（connection），该连接可以承载任意数量的双向数据流。每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装。</p>
+<h3 id="SPDY协议"><a href="#SPDY协议" class="headerlink" title="SPDY协议"></a>SPDY协议</h3><p>HTTP/1.1有两个主要的缺点：安全不足和性能不高，由于背负着 HTTP/1.x 庞大的历史包袱,所以协议的修改,兼容性是首要考虑的目标，否则就会破坏互联网上无数现有的资产。谷歌公开了自行研发的 SPDY 协议，主要解决HTTP/1.1效率不高的问题。谷歌推出SPDY，才算是正式改造HTTP协议本身。降低延迟，压缩header等等，SPDY的实践证明了这些优化的效果，也最终带来HTTP/2的诞生。<br>│  ┌──────────┴────────────┐<br>│  │        HTTP<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>│  │        SPDY<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>│  │        SSL<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>│  │        TCP<br>│  └──────────┬────────────┘<br>如上图所示,SPDY位于HTTP之下，TCP和SSL之上，这样可以轻松兼容老版本的HTTP协议(将HTTP1.x的内容封装成一种新的frame格式)，同时可以使用已有的SSL功能。SPDY 协议在Chrome浏览器上证明可行以后，就被当作 HTTP/2 的基础，主要特性都在 HTTP/2 之中得到继承。</p>
+<h3 id="HTTP-2-新特性（即HTTP-2-0和HTTP-1-x的区别）"><a href="#HTTP-2-新特性（即HTTP-2-0和HTTP-1-x的区别）" class="headerlink" title="HTTP/2 新特性（即HTTP/2.0和HTTP/1.x的区别）"></a>HTTP/2 新特性（即HTTP/2.0和HTTP/1.x的区别）</h3><h4 id="二进制传输"><a href="#二进制传输" class="headerlink" title="二进制传输"></a>二进制传输</h4><p>HTTP/2 采用二进制格式传输数据，而非HTTP/1.x 里纯文本形式的报文 ，二进制协议解析起来更高效。</p>
+<h4 id="Header-压缩"><a href="#Header-压缩" class="headerlink" title="Header 压缩"></a>Header 压缩</h4><p>HTTP/2 在客户端和服务器两端建立“字典”，用索引号表示重复的字符串，可以达到50%~90%的高压缩率。</p>
+<h4 id="用户和网站间只用一个连接"><a href="#用户和网站间只用一个连接" class="headerlink" title="用户和网站间只用一个连接"></a>用户和网站间只用一个连接</h4><p>HTTP/2基于SPDY，专注于性能，最大的一个目标是在用户和网站间只用一个连接（connection），该连接可以承载任意数量的双向数据流。实现细节：每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装。</p>
+<h4 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h4><p>服务器推送（server push）指的是，还没有收到浏览器的请求，服务器就把各种资源推送给浏览器。比如，浏览器只请求了index.html，但是服务器把index.html、style.css、example.png全部发送给浏览器。这样的话，只需要一轮 HTTP 通信，浏览器就得到了全部资源，提高了性能。</p>
+<h3 id="HTTP-2-的缺点"><a href="#HTTP-2-的缺点" class="headerlink" title="HTTP/2 的缺点"></a>HTTP/2 的缺点</h3><p>TCP的队头阻塞并没有彻底解决：在HTTP/2中，多个请求是跑在一个TCP管道中的。但当出现了丢包时，HTTP/2 的表现反倒不如 HTTP/1 了。因为TCP为了保证可靠传输，有个特别的丢包重传机制，丢失的包必须要等待重新传输确认，HTTP/2出现丢包时，整个 TCP 都要开始等待重传，那么就会阻塞该TCP连接中的所有请求。而对于 HTTP/1.1 来说，可以开启多个 TCP 连接，出现这种情况反到只会影响其中一个连接，剩余的 TCP 连接还可以正常传输数据。</p>
+<h2 id="HTTP3"><a href="#HTTP3" class="headerlink" title="HTTP3"></a>HTTP3</h2><h3 id="QUIC协议"><a href="#QUIC协议" class="headerlink" title="QUIC协议"></a>QUIC协议</h3><p>Google 在推SPDY的时候就已经意识到了这些问题，于是就另起炉灶搞了一个基于 UDP 协议的“QUIC”协议，让HTTP跑在QUIC上而不是TCP上。而这个“HTTP over QUIC”就是HTTP协议的下一个大版本，HTTP/3。它在HTTP/2的基础上又实现了质的飞跃，真正“完美”地解决了“队头阻塞”问题。</p>
+<h3 id="HTTP-3-新特性（HTTP-3与HTTP-2、HTTP-1的区别）"><a href="#HTTP-3-新特性（HTTP-3与HTTP-2、HTTP-1的区别）" class="headerlink" title="HTTP/3 新特性（HTTP/3与HTTP/2、HTTP/1的区别）"></a>HTTP/3 新特性（HTTP/3与HTTP/2、HTTP/1的区别）</h3><p>QUIC基于UDP，而UDP是无连接的，根本就不需要握手和挥手，所以就比TCP来得快。此外QUIC也实现了可靠传输，保证数据一定能够抵达目的地。它还引入了多路复用机制，单个“流”是有序的，可能会因为丢包而阻塞，但其他“流”不会受到影响。<br>具体来说QUIC协议有以下特点：</p>
+<h4 id="实现了类似TCP的流量控制、传输可靠性的功能"><a href="#实现了类似TCP的流量控制、传输可靠性的功能" class="headerlink" title="实现了类似TCP的流量控制、传输可靠性的功能"></a>实现了类似TCP的流量控制、传输可靠性的功能</h4><p>虽然UDP不提供可靠性的传输，但QUIC在UDP的基础之上增加了一层来保证数据可靠性传输。它提供了数据包重传、拥塞控制以及其他一些TCP中存在的特性。</p>
+<h4 id="实现了快速握手功能"><a href="#实现了快速握手功能" class="headerlink" title="实现了快速握手功能"></a>实现了快速握手功能</h4><p>由于QUIC是基于UDP的，这意味着QUIC可以用最快的速度来发送和接收数据，这样可以大大提升首次打开页面的速度。</p>
+<h4 id="集成了TLS加密功能"><a href="#集成了TLS加密功能" class="headerlink" title="集成了TLS加密功能"></a>集成了TLS加密功能</h4><p>类似于HTTPS。</p>
+<h4 id="多路复用，彻底解决TCP中队头阻塞的问题"><a href="#多路复用，彻底解决TCP中队头阻塞的问题" class="headerlink" title="多路复用，彻底解决TCP中队头阻塞的问题"></a>多路复用，彻底解决TCP中队头阻塞的问题</h4><p>和TCP不同，QUIC实现了在同一物理连接上可以有多个独立的逻辑数据流。实现了数据流的单独传输，就解决了TCP中队头阻塞的问题。</p>
+<h3 id="基于QUIC的0RTT是如何实现的"><a href="#基于QUIC的0RTT是如何实现的" class="headerlink" title="基于QUIC的0RTT是如何实现的"></a>基于QUIC的0RTT是如何实现的</h3><p>QUIC协议依赖于合并加密和数据传输过程中的握手来创建一个安全的连接。 在连接建立成功后， 客户端会缓存起来原始的连接信息等。 在接下来与相同的服务器建立连接的过程中， 客户端能够在不增加额外RTT的情况下建立一个加密的连接，数据要发送的数据可以在握手的包中捎带着发送过去，而不用等待服务器的回复，从而实现0RTT。<br>所以，所谓QUIC的0RTT是指在建立连接之后，后续发送数据都不需要增加额外的RTT时间，最开始的握手还是需要1RTT的时间消耗的。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/网络基础/"><i class="fa fa-tag"></i>&nbsp;&nbsp;网络基础</a>
+                
+                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2020/06/19/jwt、session、oauth简单介绍/" rel="prev" title="jwt、session、oauth简单介绍">
+                            jwt、session、oauth简单介绍
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2020/06/05/Nodejs常驻后台运行/" rel="next" title="Nodejs常驻后台运行">
+                            Nodejs常驻后台运行
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'HTTP1,HTTP2,http3的区别',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

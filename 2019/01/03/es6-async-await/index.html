@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>es6-async-await | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="es6中async-await的demo">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6-async-await">
+<meta property="og:url" content="/2019/01/03/es6-async-await/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="es6中async-await的demo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6-async-await">
+<meta name="twitter:description" content="es6中async-await的demo">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-es6-async-await" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                es6-async-await
+            
+        </h1>
+        <time>
+            2019-01-03 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#es6-async-await"><span class="toc-number">1.</span> <span class="toc-text">es6-async-await</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>es6中async-await的demo<br><a id="more"></a></p>
+<h2 id="es6-async-await"><a href="#es6-async-await" class="headerlink" title="es6-async-await"></a>es6-async-await</h2><p>es6现在已经在项目中使用了，async偶尔用，所以要用的时候总是忘记，写个小demo，用的时候看一眼，哈哈<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;es7-<span class="keyword">async</span>-<span class="keyword">await</span>&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h1&gt;es7-<span class="keyword">async</span>-<span class="keyword">await</span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="comment">//写一个返回Promise的异步函数</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">asyncTime</span>(<span class="params">val, ms</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">			setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				resolve(val);</span><br><span class="line">			&#125;,ms);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="comment">//async函数</span></span><br><span class="line">	<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">let</span> a = <span class="keyword">await</span> asyncTime(<span class="number">1</span>, <span class="number">1000</span>); <span class="comment">//a的值就是Promise函数里面resolve的参数值</span></span><br><span class="line">		<span class="built_in">console</span>.log(a);</span><br><span class="line">		<span class="keyword">let</span> b = <span class="keyword">await</span> asyncTime(a+<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(b);</span><br><span class="line">		<span class="keyword">let</span> c = <span class="keyword">await</span> asyncTime(b+<span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(c);</span><br><span class="line">		<span class="keyword">let</span> d = <span class="keyword">await</span> <span class="number">123</span>; <span class="comment">//await后面可以不是Promise函数，但是会自动包装成一个Promise函数并且立即向后执行</span></span><br><span class="line">		<span class="built_in">console</span>.log(d);</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	testAsync().then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'async函数的then函数-&gt;'</span>,res);</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">//async函数</span></span><br><span class="line">	<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync_2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">let</span> a = <span class="keyword">await</span> testAsync(); <span class="comment">//因为async本身执行后会返回一个Promise函数(async函数内部return的值只作为async返回的Promise函数的then里的参数传入)，所以此处也可以在await后边写async函数。</span></span><br><span class="line">		<span class="built_in">console</span>.log(a);</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	testAsync_2().then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'async函数2的then函数-&gt;'</span>,res);</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">//再来一个多个异步函数执行的例子</span></span><br><span class="line">	<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync_3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">let</span> a = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([asyncTime(<span class="string">'all1'</span>,<span class="number">2000</span>),asyncTime(<span class="string">'all2'</span>,<span class="number">2000</span>),asyncTime(<span class="string">'all3'</span>,<span class="number">2000</span>)]);</span><br><span class="line">		<span class="built_in">console</span>.log(a);</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	testAsync_3().then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">		alert(res);</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/01/14/谷歌黑语法/" rel="prev" title="谷歌黑语法">
+                            谷歌黑语法
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/01/02/github预览静态库页面/" rel="next" title="github预览静态库页面">
+                            github预览静态库页面
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'es6-async-await',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

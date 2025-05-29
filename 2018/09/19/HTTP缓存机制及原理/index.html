@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>HTTP缓存机制及原理 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTTP缓存机制及原理的一些小总结">
+<meta name="keywords" content="网络基础,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP缓存机制及原理">
+<meta property="og:url" content="/2018/09/19/HTTP缓存机制及原理/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="HTTP缓存机制及原理的一些小总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141639213-1923993391.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210135521072-1812985836.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141716838-764535017.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141755072-1978466289.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141836104-1513192908.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141911682-1756976419.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141921697-379821074.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210142249541-789089587.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210142307166-135607673.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210142054182-1766818273.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210142115479-1921175758.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210142134291-1976923079.png">
+<meta property="og:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141453338-1263276228.png">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP缓存机制及原理">
+<meta name="twitter:description" content="HTTP缓存机制及原理的一些小总结">
+<meta name="twitter:image" content="/2018/09/19/HTTP缓存机制及原理/632130-20170210141639213-1923993391.png">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-HTTP缓存机制及原理" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                HTTP缓存机制及原理
+            
+        </h1>
+        <time>
+            2018-09-19 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP缓存机制及原理"><span class="toc-number">1.</span> <span class="toc-text">HTTP缓存机制及原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文"><span class="toc-number">1.2.</span> <span class="toc-text">在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存规则解析"><span class="toc-number">1.3.</span> <span class="toc-text">缓存规则解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制缓存"><span class="toc-number">1.4.</span> <span class="toc-text">强制缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Expires"><span class="toc-number">1.5.</span> <span class="toc-text">Expires</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control"><span class="toc-number">1.6.</span> <span class="toc-text">Cache-Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比缓存"><span class="toc-number">1.7.</span> <span class="toc-text">对比缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Last-Modified-If-Modified-Since"><span class="toc-number">1.8.</span> <span class="toc-text">Last-Modified  /  If-Modified-Since</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Last-Modified："><span class="toc-number">1.8.1.</span> <span class="toc-text">Last-Modified：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#If-Modified-Since："><span class="toc-number">1.8.2.</span> <span class="toc-text">If-Modified-Since：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）"><span class="toc-number">1.9.</span> <span class="toc-text">Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Etag："><span class="toc-number">1.9.1.</span> <span class="toc-text">Etag：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#If-None-Match："><span class="toc-number">1.9.2.</span> <span class="toc-text">If-None-Match：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.10.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>HTTP缓存机制及原理的一些小总结<br><a id="more"></a></p>
+<h2 id="HTTP缓存机制及原理"><a href="#HTTP缓存机制及原理" class="headerlink" title="HTTP缓存机制及原理"></a>HTTP缓存机制及原理</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Http 缓存机制作为 web 性能优化的重要手段，对于从事 Web 开发的同学们来说，应该是知识体系库中的一个基础环节，同时对于有志成为前端架构师的同学来说是必备的知识技能。<br><br>但是对于很多前端同学来说，仅仅只是知道浏览器会对请求的静态文件进行缓存，但是为什么被缓存，缓存是怎样生效的，却并不是很清楚。<br><br>在此，我会尝试用简单明了的文字，像大家系统的介绍HTTP缓存机制，期望对各位正确的理解前端缓存有所帮助。<br></p>
+<h3 id="在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文"><a href="#在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文" class="headerlink" title="在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文"></a>在介绍HTTP缓存之前，作为知识铺垫，先简单介绍一下HTTP报文</h3><p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。<br><br>浏览器向服务器请求数据，发送请求(request)报文；服务器向浏览器返回数据，返回响应(response)报文。<br><br>报文信息主要分为两部分<br><br>1.包含属性的首部(header)————————–附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中<br><br>2.包含数据的主体部分(body)———————–HTTP请求真正想要传输的部分<br></p>
+<h3 id="缓存规则解析"><a href="#缓存规则解析" class="headerlink" title="缓存规则解析"></a>缓存规则解析</h3><p>为方便大家理解，我们认为浏览器存在一个缓存数据库,用于存储缓存信息。<br><br>在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141639213-1923993391.png" alt="img"><br>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(强制缓存，对比缓存)<br>在详细介绍这两种规则之前，先通过时序图的方式，让大家对这两种规则有个简单了解。<br><br>已存在缓存数据时，仅基于强制缓存，请求数据的流程如下<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210135521072-1812985836.png" alt="img"><br>已存在缓存数据时，仅基于对比缓存，请求数据的流程如<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141716838-764535017.png" alt="img"><br>对缓存机制不太了解的同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？<br><br>这个问题，我们暂且放下，后文在详细介绍每种缓存规则的时候，会带给大家答案。<br><br>我们可以看到两类缓存规则的不同，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br><br>两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。<br></p>
+<h3 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h3><p>从上文我们得知，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br><br>我们知道，在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，缓存规则信息包含在响应header中。<br><br>对于强制缓存来说，响应header中会有两个字段来标明失效规则（Expires/Cache-Control）<br><br>使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141755072-1978466289.png" alt="img"></p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。<br><br>不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。<br><br>另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。<br><br>所以HTTP 1.1 的版本，使用Cache-Control替代。<br></p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。<br><br>private:             客户端可以缓存<br><br>public:              客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）<br><br>max-age=xxx:   缓存的内容将在 xxx 秒后失效<br><br>no-cache:          需要使用对比缓存来验证缓存数据（后面介绍）<br><br>no-store:           所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so…基本上和它说886）<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141836104-1513192908.png" alt="img"><br>图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）<br><br>也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。<br></p>
+<h3 id="对比缓存"><a href="#对比缓存" class="headerlink" title="对比缓存"></a>对比缓存</h3><p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br><br>浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br><br>再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据。<br><br>第一次访问：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141911682-1756976419.png" alt="img"><br>再次访问：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141921697-379821074.png" alt="img"><br>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为304，并且报文大小和请求时间大大减少。<br><br>原因是，服务端在进行标识比较后，只返回header部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。<br><br>对于对比缓存来说，缓存标识的传递是我们着重需要理解的，它在请求header和响应header间进行传递，一共分为两种标识传递，接下来，我们分开介绍。<br></p>
+<h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified  /  If-Modified-Since"></a>Last-Modified  /  If-Modified-Since</h3><h4 id="Last-Modified："><a href="#Last-Modified：" class="headerlink" title="Last-Modified："></a>Last-Modified：</h4><p>服务器在响应请求时，告诉浏览器资源的最后修改时间。<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142249541-789089587.png" alt="img"></p>
+<h4 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a>If-Modified-Since：</h4><p>再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br><br>服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br><br>若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br><br>若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142307166-135607673.png" alt="img"></p>
+<h3 id="Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）"><a href="#Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）" class="headerlink" title="Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）"></a>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</h3><h4 id="Etag："><a href="#Etag：" class="headerlink" title="Etag："></a>Etag：</h4><p>服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142054182-1766818273.png" alt="img"></p>
+<h4 id="If-None-Match："><a href="#If-None-Match：" class="headerlink" title="If-None-Match："></a>If-None-Match：</h4><p>再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br><br>服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br><br>相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br><br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142115479-1921175758.png" alt="img"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br><br>对于比较缓存，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。<br><br>浏览器第一次请求：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210142134291-1976923079.png" alt="img"><br>浏览器再次请求时：<br><img src="/2018/09/19/HTTP缓存机制及原理/632130-20170210141453338-1263276228.png" alt="img"></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/网络基础/"><i class="fa fa-tag"></i>&nbsp;&nbsp;网络基础</a>
+                
+                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/09/21/hexo中使用hexo-asset-image插件来加载本地图片/" rel="prev" title="hexo中使用hexo-asset-image插件来加载本地图片">
+                            hexo中使用hexo-asset-image插件来加载本地图片
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/09/14/css省略号/" rel="next" title="css省略号">
+                            css省略号
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'HTTP缓存机制及原理',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

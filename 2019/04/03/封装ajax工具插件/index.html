@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>封装ajax工具插件 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="封装一个自己的ajax工具插件">
+<meta name="keywords" content="ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="封装ajax工具插件">
+<meta property="og:url" content="/2019/04/03/封装ajax工具插件/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="封装一个自己的ajax工具插件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="封装ajax工具插件">
+<meta name="twitter:description" content="封装一个自己的ajax工具插件">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-封装ajax工具插件" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                封装ajax工具插件
+            
+        </h1>
+        <time>
+            2019-04-03 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#封装ajax工具插件"><span class="toc-number">1.</span> <span class="toc-text">封装ajax工具插件</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>封装一个自己的ajax工具插件<br><a id="more"></a></p>
+<h2 id="封装ajax工具插件"><a href="#封装ajax工具插件" class="headerlink" title="封装ajax工具插件"></a>封装ajax工具插件</h2><p>我们在平时开发的时候，ajax请求都会用到现有库，用的比较多的如jquery，axios等，偶尔自己写个原生ajax请求的情况也有，这些库是怎么写的呢，我们自己封装一个库，来学习学习ajax的一些基础知识。<br>在写这篇文章的时候，是因为头两天同事问我一个ajax问题，关于请求参数的，我突然回答不出来，忘记了，于是翻出来2年前自己封的ajax工具看了一眼，知道了怎么回事，决定把代码写到博客里，忘了的时候方便看一下。<br>下面我只贴出了核心代码，其他部分我会提供github的地址：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">window,undefined</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// jinuxAjax挂载到window上</span></span><br><span class="line">	<span class="built_in">window</span>.jinuxAjax = <span class="function"><span class="keyword">function</span>(<span class="params">opt</span>)</span>&#123;</span><br><span class="line">		ieAjaxInit();</span><br><span class="line">		<span class="comment">//默认参数配置</span></span><br><span class="line">		<span class="keyword">var</span> defaultOpt = &#123;</span><br><span class="line">			url:<span class="string">''</span>,</span><br><span class="line">			type: <span class="string">'GET'</span>,</span><br><span class="line">			data: <span class="literal">null</span>,</span><br><span class="line">			contentType: <span class="string">'application/x-www-form-urlencoded'</span>,<span class="comment">//'text/plain;charset=UTF-8','application/json','multipart/form-data'</span></span><br><span class="line">			timeOut: <span class="number">5000</span>,</span><br><span class="line">			files:[],</span><br><span class="line">			progress: <span class="literal">null</span>,</span><br><span class="line">			before: fn,</span><br><span class="line">			success: fn,</span><br><span class="line">			error: fn,</span><br><span class="line">			complete: fn</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//参数对象继承获取新参数对象</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">Object</span>.assign)&#123;</span><br><span class="line">			<span class="keyword">var</span> opt = <span class="built_in">Object</span>.assign(&#123;&#125;, defaultOpt, opt);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> defaultOpt)&#123;</span><br><span class="line">				defaultOpt[name] = opt[name] || defaultOpt[name];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">var</span> opt = defaultOpt;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		requestData(opt);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将json格式数据转成application/x-www-form-urlencoded格式数据</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">encodeFormData</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!data) <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">		<span class="keyword">var</span> pairs = [];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> data)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!data.hasOwnProperty(name)) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="keyword">typeof</span> data[name] === <span class="string">'function'</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">var</span> value = data[name].toString();</span><br><span class="line">			name = <span class="built_in">encodeURIComponent</span>(name.replace(<span class="string">'%20'</span>,<span class="string">'+'</span>));</span><br><span class="line">			value = <span class="built_in">encodeURIComponent</span>(value.replace(<span class="string">'%20'</span>,<span class="string">'+'</span>));</span><br><span class="line">			pairs.push(name + <span class="string">'='</span> + value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> pairs.join(<span class="string">'&amp;'</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//ajax的get请求函数</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">opt</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">		<span class="keyword">var</span> timeoutFlag = <span class="literal">false</span>; <span class="comment">//是否超时</span></span><br><span class="line">		<span class="comment">//启动计时器，做超时处理</span></span><br><span class="line">		<span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			timeoutFlag = <span class="literal">true</span>;</span><br><span class="line">			request.abort();</span><br><span class="line">		&#125;,opt.timeOut);</span><br><span class="line"></span><br><span class="line">		request.open(<span class="string">'GET'</span>,opt.url +<span class="string">'?'</span>+ encodeFormData(opt.data));</span><br><span class="line">		opt.before(); <span class="comment">//请求之前执行before函数</span></span><br><span class="line">		request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(request.readyState === <span class="number">4</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(timeoutFlag) <span class="keyword">return</span>;</span><br><span class="line">				clearTimeout(timer);</span><br><span class="line">				<span class="keyword">if</span>(request.status === <span class="number">200</span>)&#123;</span><br><span class="line">					<span class="keyword">var</span> type = request.getResponseHeader(<span class="string">'Content-Type'</span>);</span><br><span class="line">					<span class="comment">//检查type类型做相应的解析处理</span></span><br><span class="line">					<span class="keyword">if</span>(type.indexOf(<span class="string">'xml'</span>) !== <span class="number">-1</span> &amp;&amp; request.responseXML)&#123; <span class="comment">//xml相应</span></span><br><span class="line">						opt.success(request.responseXML);</span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.indexOf(<span class="string">'application/json'</span>) !== <span class="number">-1</span>) &#123; <span class="comment">//json相应</span></span><br><span class="line">						opt.success(<span class="built_in">JSON</span>.parse(request.responseText));</span><br><span class="line">					&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">						opt.success(request.responseText);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					opt.error(request);</span><br><span class="line">				&#125;</span><br><span class="line">				opt.complete();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		request.send(<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//ajax的post请求函数</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">postData</span>(<span class="params">opt</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(), sendData=<span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">var</span> timeoutFlag = <span class="literal">false</span>; <span class="comment">//是否超时</span></span><br><span class="line">		<span class="comment">//启动计时器，做超时处理</span></span><br><span class="line">		<span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			timeoutFlag = <span class="literal">true</span>;</span><br><span class="line">			request.abort();</span><br><span class="line">		&#125;,opt.timeOut);</span><br><span class="line"></span><br><span class="line">		request.open(<span class="string">'POST'</span>,opt.url);</span><br><span class="line">		request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(request.readyState === <span class="number">4</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(timeoutFlag) <span class="keyword">return</span>;</span><br><span class="line">				clearTimeout(timer);</span><br><span class="line">				<span class="keyword">if</span>(request.status === <span class="number">200</span>)&#123;</span><br><span class="line">					<span class="keyword">var</span> type = request.getResponseHeader(<span class="string">'Content-Type'</span>);</span><br><span class="line">					<span class="comment">//检查type类型做相应的解析处理</span></span><br><span class="line">					<span class="keyword">if</span>(type.indexOf(<span class="string">'xml'</span>) !== <span class="number">-1</span> &amp;&amp; request.responseXML)&#123; <span class="comment">//xml相应</span></span><br><span class="line">						opt.success(request.responseXML);</span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.indexOf(<span class="string">'application/json'</span>) !== <span class="number">-1</span>) &#123; <span class="comment">//json相应</span></span><br><span class="line">						opt.success(<span class="built_in">JSON</span>.parse(request.responseText));</span><br><span class="line">					&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">						opt.success(request.responseText);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					opt.error(request);</span><br><span class="line">				&#125;</span><br><span class="line">				opt.complete();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//处理接收进度事件</span></span><br><span class="line">		<span class="keyword">if</span>(opt.progress.enable &amp;&amp; request.upload)&#123;</span><br><span class="line">			request.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(ev.lengthComputable)&#123;</span><br><span class="line">					opt.progress.receiveHandle(ev);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			request.upload.onload = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">				opt.progress.successHandle(ev);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(opt.contentType === <span class="string">'application/x-www-form-urlencoded'</span>)&#123;</span><br><span class="line">			request.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded; charset=UTF-8'</span>);</span><br><span class="line">			sendData = encodeFormData(opt.data);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.contentType === <span class="string">'application/json'</span>) &#123;</span><br><span class="line">			request.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/json; charset=utf-8'</span>);</span><br><span class="line">			sendData = <span class="built_in">JSON</span>.stringify(opt.data);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.contentType === <span class="string">'multipart/form-data'</span>) &#123;</span><br><span class="line">			<span class="keyword">var</span> fd = <span class="keyword">new</span> FormData();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> opt.data)&#123;</span><br><span class="line">				<span class="keyword">if</span>( !opt.data.hasOwnProperty(name) ) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span>( <span class="keyword">typeof</span> opt.data[name] === <span class="string">'function'</span> ) <span class="keyword">continue</span>; </span><br><span class="line">				fd.append(name,opt.data[name]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;opt.files.length; i++)&#123;</span><br><span class="line">				fd.append(<span class="string">'file'</span>+i,opt.files[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			sendData = fd;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		request.send(sendData);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//ajax请求函数，在函数内再调用get或者post</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">requestData</span>(<span class="params">opt</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(opt.type === <span class="string">'GET'</span>)&#123;</span><br><span class="line">			getData(opt);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			postData(opt);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 定义一个空函数</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果是ie6，创建XMLHttpRequest对象</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">ieAjaxInit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest === <span class="literal">undefined</span>)&#123;</span><br><span class="line">			<span class="built_in">window</span>.XMLHttpRequest = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">'Msxml2.XMLHTTP.6.0'</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (e1) &#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">'Msxml2.XMLHTTP.3.0'</span>);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">catch</span> (e2) &#123;</span><br><span class="line">						<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'不支持XMLHttpRequest'</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
+<p>详细代码请<a href="https://github.com/jinux7/jinux-ajax" target="_blank" rel="noopener">点击这里看源码</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/ajax/"><i class="fa fa-tag"></i>&nbsp;&nbsp;ajax</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2019/04/10/let存在变量提升吗/" rel="prev" title="let存在变量提升吗?">
+                            let存在变量提升吗?
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2019/04/03/防抖与节流/" rel="next" title="防抖与节流">
+                            防抖与节流
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '封装ajax工具插件',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

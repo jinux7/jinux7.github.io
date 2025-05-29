@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>移动端webview模板 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="移动端的页面平时偶尔会有需求需要做，特别是webview嵌入的页面居多，由于是有时候做，有时候不做，所以，需求来的时候从新写页面还是有点麻烦，所以把之前写的记录一下，下次直接copy就好了。">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端webview模板">
+<meta property="og:url" content="/2018/10/30/移动端webview模板/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="移动端的页面平时偶尔会有需求需要做，特别是webview嵌入的页面居多，由于是有时候做，有时候不做，所以，需求来的时候从新写页面还是有点麻烦，所以把之前写的记录一下，下次直接copy就好了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端webview模板">
+<meta name="twitter:description" content="移动端的页面平时偶尔会有需求需要做，特别是webview嵌入的页面居多，由于是有时候做，有时候不做，所以，需求来的时候从新写页面还是有点麻烦，所以把之前写的记录一下，下次直接copy就好了。">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-移动端webview模板" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                移动端webview模板
+            
+        </h1>
+        <time>
+            2018-10-30 Tuesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端webview模板"><span class="toc-number">1.</span> <span class="toc-text">移动端webview模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css"><span class="toc-number">1.1.</span> <span class="toc-text">css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js来控制rem大小代码"><span class="toc-number">1.2.</span> <span class="toc-text">js来控制rem大小代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html页面内容"><span class="toc-number">1.3.</span> <span class="toc-text">html页面内容</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>移动端的页面平时偶尔会有需求需要做，特别是webview嵌入的页面居多，由于是有时候做，有时候不做，所以，需求来的时候从新写页面还是有点麻烦，所以把之前写的记录一下，下次直接copy就好了。<br><a id="more"></a></p>
+<h2 id="移动端webview模板"><a href="#移动端webview模板" class="headerlink" title="移动端webview模板"></a>移动端webview模板</h2><h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><p>一些css初始化的内容<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@charset</span> <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="comment">/* CSS Document */</span></span><br><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">p</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">dl</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">form</span>,<span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>,</span><br><span class="line"><span class="selector-tag">td</span>,<span class="selector-tag">th</span>,<span class="selector-tag">button</span>,<span class="selector-tag">strong</span>,<span class="selector-tag">em</span>,<span class="selector-tag">select</span>,<span class="selector-tag">video</span>,<span class="selector-tag">canvas</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>&#123; <span class="attribute">font-weight</span>:normal;&#125;</span><br><span class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">list-style</span>:none;<span class="attribute">vertical-align</span>:top;&#125;</span><br><span class="line"><span class="selector-tag">table</span>&#123; <span class="attribute">border-collapse</span>:collapse;&#125;</span><br><span class="line"><span class="selector-tag">textarea</span>&#123;<span class="attribute">resize</span>:none;<span class="attribute">overflow</span>:auto;&#125;</span><br><span class="line"><span class="selector-tag">img</span>&#123; <span class="attribute">border</span>:none; <span class="attribute">vertical-align</span>:middle; <span class="attribute">width</span>:<span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-tag">em</span>,<span class="selector-tag">i</span>&#123; <span class="attribute">font-style</span>:normal;&#125;</span><br><span class="line"><span class="selector-tag">a</span>&#123; <span class="attribute">text-decoration</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">a</span>,<span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-appearance</span>: none;<span class="comment">/*屏蔽阴影*/</span></span><br><span class="line">    <span class="attribute">-webkit-tap-highlight-color</span>:<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="comment">/*ios android去除自带阴影的样式*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="comment">/* 禁止长按链接与图片弹出菜单 */</span></span><br><span class="line">    <span class="attribute">-webkit-touch-callout</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="comment">/* 禁止选中文本(如无文本选中需求,此为必选项) */</span></span><br><span class="line">    <span class="attribute">-webkit-user-select</span>: none;  </span><br><span class="line">    <span class="attribute">user-select</span>: none;</span><br><span class="line">	 <span class="attribute">background</span>:<span class="number">#f5f5f5</span>;</span><br><span class="line">	 <span class="attribute">overflow-x</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="js来控制rem大小代码"><a href="#js来控制rem大小代码" class="headerlink" title="js来控制rem大小代码"></a>js来控制rem大小代码</h3><p>js来修改html的font-size大小<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">doc, win</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> docEl = doc.documentElement,</span><br><span class="line">	resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>,</span><br><span class="line">	recalc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	  <span class="keyword">var</span> clientWidth = docEl.clientWidth;</span><br><span class="line">	  <span class="keyword">if</span> (!clientWidth) <span class="keyword">return</span>;</span><br><span class="line">	  docEl.style.fontSize = clientWidth/<span class="number">20</span> + <span class="string">'px'</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">if</span> (!doc.addEventListener) <span class="keyword">return</span>;</span><br><span class="line">	win.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">	doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line">&#125;)(<span class="built_in">document</span>, <span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="html页面内容"><a href="#html页面内容" class="headerlink" title="html页面内容"></a>html页面内容</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"email=no"</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-status-bar-style"</span> <span class="attr">content</span>=<span class="string">"black"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../js/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../js/config.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 判断ios android</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> u = navigator.userAgent;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Adr'</span>) &gt; <span class="number">-1</span>; <span class="comment">//android终端</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> isiOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>); <span class="comment">//ios终端</span></span></span><br><span class="line">    </span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> goodsId = <span class="built_in">window</span>.location.search.split(<span class="string">'='</span>)[<span class="number">1</span>] </span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> reqUrl = BASEURL +<span class="string">'/goods/shopProduct/findSpuDescsBySpuId/'</span> + goodsId;</span></span><br><span class="line"><span class="javascript">    $.ajax(&#123;</span></span><br><span class="line"><span class="javascript">        method: <span class="string">'POST'</span>,</span></span><br><span class="line">        url: reqUrl,</span><br><span class="line">        headers: &#123;</span><br><span class="line"><span class="javascript">              <span class="string">'client-token'</span>: <span class="string">'eyJhbGciOiJIUzUxMiJ9.eyJ1aWQiOiIxMjMiLCJjZXJ0Tm8iOiI0NTYifQ.xTR4SG0z3Nuf-siW34XtVgqNPr9PRpPb8XFKY6Hrj_Qg8kl9C0AeVFcQ8NnguQ-SrlHHcv5M16SkjVYX3PKweg'</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        data: &#123;goodsId: goodsId&#125;,</span><br><span class="line"><span class="javascript">        dataType: <span class="string">'json'</span>,</span></span><br><span class="line"><span class="javascript">        success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(res.code === <span class="string">'0000'</span>) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> innerContent = res.data;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> bodyContent = $.parseHTML(innerContent);</span></span><br><span class="line"><span class="javascript">                $(<span class="string">'.content'</span>).append(bodyContent);</span></span><br><span class="line">                if(isiOS) &#123;</span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> imgNum = $(<span class="string">'img'</span>).size(), loadCount=<span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">                    $(<span class="string">'img'</span>).on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line">                        loadCount++;</span><br><span class="line">                        if(loadCount === imgNum)&#123;</span><br><span class="line"><span class="javascript">                            <span class="comment">// 获取到页面高度返给ios端</span></span></span><br><span class="line"><span class="javascript">                            <span class="keyword">var</span> bodyHeight = $(<span class="string">'body'</span>).height() + <span class="number">25</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="comment">// 调取ios注入的方法</span></span></span><br><span class="line"><span class="javascript">                            <span class="built_in">window</span>.webkit.messageHandlers.jsCallNative.postMessage(&#123;<span class="attr">height</span>: bodyHeight&#125;);</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span></span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个webview页面相对麻烦些，需求是在ios页面的固定位置显示webview内容，并不是新开一个新页面来整个显示webview内容，这样ios需要获取h5页面的高，而页面的内容又是h5页面通过ajax获取回来的，所以，ajax请求成功后，将内容插入到页面中，如果有图片的话，等待图片全部加载之后再计算页面的高，返给ios。这时，ios提供了一个函数注入到h5页面里了，我们直接调用就可以，代码中就是这个函数window.webkit.messageHandlers.jsCallNative.postMessage();</p>
+<ul>
+<li>补充点这方面的知识2019/2/2<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(isiOS) &#123; // 如果是ios的话</span><br><span class="line">	window.webkit.messageHandlers.iosCallback.postMessage(null); // 我告诉ios端可以调我提供的callAppFnInfo函数，它会把值给我传过来。</span><br><span class="line">	function callAppFnInfo(info) &#123;</span><br><span class="line">        alert(info);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;else &#123; // android环境</span><br><span class="line">	var da = window.WebViewInterface.getId(); // 直接调取android提供的方法，它可以直接返回值</span><br><span class="line">	alert(da);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/11/01/webpack打包bundle-js文件代码分析/" rel="prev" title="webpack打包bundle.js文件代码分析">
+                            webpack打包bundle.js文件代码分析
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/10/29/js基础知识思维导图/" rel="next" title="js基础知识思维导图">
+                            js基础知识思维导图
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '移动端webview模板',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

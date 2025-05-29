@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>javascript提高性能 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="javascript提高性能的方式总结">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript提高性能">
+<meta property="og:url" content="/2018/09/01/javascript提高性能/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="javascript提高性能的方式总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/861963/201603/861963-20160324125541214-276062560.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/861963/201603/861963-20160306142846424-1341096196.png">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.195Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript提高性能">
+<meta name="twitter:description" content="javascript提高性能的方式总结">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/861963/201603/861963-20160324125541214-276062560.png">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-javascript提高性能" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                javascript提高性能
+            
+        </h1>
+        <time>
+            2018-09-01 Saturday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript提高性能"><span class="toc-number">1.</span> <span class="toc-text">javascript提高性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4种内存泄漏"><span class="toc-number">1.1.</span> <span class="toc-text">4种内存泄漏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-意外的全局变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.意外的全局变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-被遗忘的计时器或回调"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.被遗忘的计时器或回调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-超出DOM引用"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 超出DOM引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-闭包"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#垃圾回收的直观行为"><span class="toc-number">1.1.5.</span> <span class="toc-text">垃圾回收的直观行为</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写javascript代码时的优化"><span class="toc-number">1.2.</span> <span class="toc-text">编写javascript代码时的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从JavaScript的作用域谈起"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.从JavaScript的作用域谈起</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-使用局部变量"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.使用局部变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-避免增长作用域链"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.避免增长作用域链</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-字符串链接优化"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.字符串链接优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-条件判断"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.条件判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-快速循环"><span class="toc-number">1.2.6.</span> <span class="toc-text">6.快速循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-展开循环"><span class="toc-number">1.2.7.</span> <span class="toc-text">7.展开循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-高效存取数据"><span class="toc-number">1.2.8.</span> <span class="toc-text">8.高效存取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-事件委托"><span class="toc-number">1.2.9.</span> <span class="toc-text">9.事件委托</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用typescript"><span class="toc-number">1.3.</span> <span class="toc-text">使用typescript</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>javascript提高性能的方式总结<br><a id="more"></a></p>
+<h2 id="javascript提高性能"><a href="#javascript提高性能" class="headerlink" title="javascript提高性能"></a>javascript提高性能</h2><p>&emsp;&emsp;javascript如何提高性能，这个在面试中被问到的几率也是蛮高的，之前我也就是想到哪里说到哪里，面试官估计也都是菜鸟（我面的也都是小公司），也觉得我说的对，但是，有空冷静下来，觉得自己说的每次都不是很全面，所以，我想把平时能想到的记录下来，这样再去面试的时候，呵呵，一定把面试官说蒙。</p>
+<h3 id="4种内存泄漏"><a href="#4种内存泄漏" class="headerlink" title="4种内存泄漏"></a>4种内存泄漏</h3><p>&emsp;&emsp;提高JavaScript性能，首先就是避免4种内存泄漏,这里只是简单列出。<br></p>
+<h4 id="1-意外的全局变量"><a href="#1-意外的全局变量" class="headerlink" title="1.意外的全局变量"></a>1.意外的全局变量</h4><p>JavaScript的目标是开发一种看起来像Java但足够自由的被初学者使用的语言。JavaScript自由的其中一种方式是它可以处理没有声明的变量：一个未声明的变量的引用在全局对象中创建了一个新变量。在浏览器的环境中，全局对象是window。也就是说：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">    bar = <span class="string">"this is a hidden global variable"</span>;</span><br><span class="line">&#125;</span><br><span class="line">实际上是：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.bar = <span class="string">"this is an explicit global variable"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果bar是仅在foo函数作用域内承载引用，并且你忘记用var来声明的变量，一个意外的全局变量就被创建了。在这个例子中，泄漏一个单一字符串不会有太大害处，但这的确是不好的。<br><br>另一种意外全局变量被创建的方式是通过this：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.variable = <span class="string">"potential accidental global"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Foo called on its own, this points to the global object (window)</span></span><br><span class="line"><span class="comment">// rather than being undefined.</span></span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>为了阻止这种错误发生，在你的Javascript文件最前面添加’use strict;’。这开启了解析JavaScript的阻止意外全局的更严格的模式。<br><br>全局变量的一个注意事项：<br><br>即使我们谈了不明的全局变量，仍然存在很多代码被显式的全局变量填充的情况。这是通过定义不可收集的情况（除非清零或重新赋值）。特别的，用来临时存储和处理大量信息的全局变量会引起关注。如果必须用全局变量来存储很多数据，在处理完之后，确保对其清零或重新赋值。 一个在与全局连接上增加内存消耗常见的原因是缓存)。 缓存存储重复被使用的数据。为此，为了有效，缓存必须有其大小的上限。飙出限制的缓存可能会因为内容不可被回收，导致高内存消耗。</p>
+<h4 id="2-被遗忘的计时器或回调"><a href="#2-被遗忘的计时器或回调" class="headerlink" title="2.被遗忘的计时器或回调"></a>2.被遗忘的计时器或回调</h4><p>在JavaScript中setInterval的使用相当常见。其他库提供观察者和其他工具以回调。这些库中大多数，在引用的实例变成不可访问之后，负责让回调的任何引用也不可访问。在setInterval的情况下，这样的代码很常见：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someResource = getData();</span><br><span class="line">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> node = <span class="built_in">document</span>.getElementById(<span class="string">'Node'</span>);</span><br><span class="line">    <span class="keyword">if</span>(node) &#123;</span><br><span class="line">    <span class="comment">// Do stuff with node and someResource.</span></span><br><span class="line">    node.innerHTML = <span class="built_in">JSON</span>.stringify(someResource));</span><br><span class="line">&#125;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这个例子表明了跳动的计时器可能发生什么：计时器使得节点或数据的引用不再被需要了。代表node的对象将来可能被移除，使得整个块在间隔中的处理不必要。然而，处理函数，由于间隔仍然是活跃的，不能被回收（间隔需要被停掉才能回收）。如果间隔处理不能被回收，它的依赖也不能被回收。那意味着可能存储着大量数据的someResource，也不能被回收。<br><br>观察者情况下，一旦不被需要（或相关的对象快要访问不到）就创建明确移除他们的函数很重要。在过去，这由于特定浏览器（IE6）不能很好的管理循环引用（下面有更多相关信息），曾经尤为重要。现如今，一旦观察对象变成不可访问的，即使收听者没有明确的被移除，多数浏览器可以并会回收观察者处理函数。然而，它保持了在对象被处理前明确的移除这些观察者的好实践。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  element.innerHtml = <span class="string">'text'</span>;</span><br><span class="line">&#125;</span><br><span class="line">element.addEventListener(<span class="string">'click'</span>, onClick);</span><br><span class="line"><span class="comment">// Do stuff</span></span><br><span class="line">element.removeEventListener(<span class="string">'click'</span>, onClick);</span><br><span class="line">element.parentNode.removeChild(element);</span><br><span class="line"><span class="comment">// Now when element goes out of scope,</span></span><br><span class="line"><span class="comment">// both element and onClick will be collected even in old browsers that don't</span></span><br><span class="line"><span class="comment">// handle cycles well.</span></span><br></pre></td></tr></table></figure></p>
+<p>一条关于对象观察者及循环引用的笔记<br><br>观察者和循环引用曾经是JavaScript开发者的祸患。这是由于IE垃圾回收的一个bug(或者设计决议)出现的情况。IE的老版本不能检测到DOM节点和JavaScript代码间的循环引用。 这是一个通常为观察到的保留引用（如同上面的例子）的观察者的典型。 也就是说，每次在IE中对一个节点添加观察者的时候，会导致泄漏。这是开发者在节点或空引用之前开始明确的移除处理函数的原因。 现在，现代浏览器（包括IE和MS Edge）使用可以剪裁这些循环和正确处理的现代垃圾回收算法。换言之，在使一个节点不可访问前，调用removeEventLister不是严格意义上必须的。<br><br>像Jquery一样的框架和库做了在处置一个节点前（当为其使用特定的API的时候）移除监听者的工作。这被在库内部处理，即使在像老版本IE一样有问题的浏览器里面跑，也会确保没有泄漏产生。</p>
+<h4 id="3-超出DOM引用"><a href="#3-超出DOM引用" class="headerlink" title="3. 超出DOM引用"></a>3. 超出DOM引用</h4><p>有时存储DOM节点到数据结构中可能有用。假设你想要迅速的更新一个表格几行内容。存储每个DOM行节点的引用到一个字典或数组会起作用。当这发生是，两个对于同个DOM元素的引用被留存：一个在DOM树中，另外一个在字典中。如果在将来的某些点你决定要移除这些行，需要让两个引用都不可用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = &#123;</span><br><span class="line">    button: <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>),</span><br><span class="line">    image: <span class="built_in">document</span>.getElementById(<span class="string">'image'</span>),</span><br><span class="line">    text: <span class="built_in">document</span>.getElementById(<span class="string">'text'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doStuff</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">image.src = <span class="string">'http://some.url/image'</span>;</span><br><span class="line">button.click();</span><br><span class="line"><span class="built_in">console</span>.log(text.innerHTML);</span><br><span class="line"><span class="comment">// Much more logic</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeButton</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// The button is a direct child of body.</span></span><br><span class="line"><span class="built_in">document</span>.body.removeChild(<span class="built_in">document</span>.getElementById(<span class="string">'button'</span>));</span><br><span class="line"><span class="comment">// At this point, we still have a reference to #button in the global</span></span><br><span class="line"><span class="comment">// elements dictionary. In other words, the button element is still in</span></span><br><span class="line"><span class="comment">// memory and cannot be collected by the GC.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对此的额外考虑，必须处理DOM树内的内部节点或叶子节点。假设你在JavaScript代码中保留了一个对于特定的表格内节点（一个td标签）的引用。在将来的某个点决定从DOM中移除这个表格，但是保留对于那个节点的引用。直观的，会假设GC会回收除那个节点之外的每个节点。在实践中，这不会发生的：这个单节点是那个表格的子节点，子节点保留对父节点引用。换句话说，来自JavaScript代码的表格元素的引用会引起在内存里存整个表格。当保留DOM元素的引用的时候，仔细考虑下。</p>
+<h4 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4.闭包"></a>4.闭包</h4><p>一个JavaScript开发的关键点是闭包：从父级作用域捕获变量的匿名函数。很多开发者发现，由于JavaScript runtime的实现细节，有以一种微妙的方式泄漏的可能，这种特殊的情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> theThing = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> replaceThing = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> originalThing = theThing;</span><br><span class="line">    <span class="keyword">var</span> unused = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (originalThing)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"hi"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    theThing = &#123;</span><br><span class="line">        longStr: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1000000</span>).join(<span class="string">'*'</span>),</span><br><span class="line">        someMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(someMessage);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(replaceThing, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这个代码片段做了一件事：每次replaceThing被调用的时候，theThing获取到一个包括一个大数组和新闭包(somMethod)的新对象。同时，变量unused保留了一个有originalThing（theThing从之前的对replaceThing的调用）引用的闭包。已经有点疑惑了，哈？重要的是一旦一个作用域被在同个父作用域下的闭包创建，那个作用域是共享的。这种情况下，为闭包somMethod创建的作用域被unused共享了。unused有一个对originalThing的引用。即使unused从来没被用过，someMethod可以通过theTing被使用。由于someMethod和unused共享了闭包作用域，即使unused从来没被用过，它对originalThing的引用迫使它停留在活跃状态（不能回收）。当这个代码片段重复运行的时候，可以看到内存使用稳步的增长。GC运行的时候，这并不会减轻。本质上，一组关联的闭包被创建（同unused变量在表单中的根节点一起），这些闭包作用域中每个带了大数组一个非直接的引用，导致了大型的泄漏。</p>
+<h4 id="垃圾回收的直观行为"><a href="#垃圾回收的直观行为" class="headerlink" title="垃圾回收的直观行为"></a>垃圾回收的直观行为</h4><p>即使垃圾回收很方便，他们有自己的一套权衡方法。其中一个权衡是nondeterminism。也就是说，GC是不可预期的。通常不能确定什么时候回收器被执行。这意味着在一些情况下，需要比程序正在使用的更多的内存。其他情况下，短的暂停在特别敏感的应用中很明显。即使不确定性意味着不能确定回收什么时候执行，大多数GC实现共享在分配期间，普通的回收通行证模式。如果没有执行分配，大多数CG停留在休息状态。考虑下面的方案：<br><br>1.执行一组大型的分配。<br><br>2.多数元素（或所有）被标记为不可访问（假设我们置空了一个指向不再需要的缓存的引用）。<br><br>3.没有进一步的分配执行了。<br><br>在这个方案中，大多GC不会运行任何进一步的回收通行了。换言之，即使有可用于回收的，不可访问的引用，回收器不会要求他了。这不是严格的泄漏，但是也会导致比平常更高的内存使用率。<br><br>Google在 JavaScript Memory Profiling docs, example #2.文章中，提供了一个优秀的例子。<br></p>
+<h3 id="编写javascript代码时的优化"><a href="#编写javascript代码时的优化" class="headerlink" title="编写javascript代码时的优化"></a>编写javascript代码时的优化</h3><h4 id="1-从JavaScript的作用域谈起"><a href="#1-从JavaScript的作用域谈起" class="headerlink" title="1.从JavaScript的作用域谈起"></a>1.从JavaScript的作用域谈起</h4><p>当JavaScript代码执行时，JavaScript引擎会创建一个执行环境，又叫执行上下文。执行环境定义了变量或函数有权访问的其他数据，决定了它们的行为，每个执行环境都有一个与它关联的变量对象，环境中定义的所有函数、变量都保存在这个对象中。在页面加载的时候，JavaScript引擎会创建一个全局的执行环境，所有全局变量和函数都是作为window对象（浏览器中）的属性和方法创建的。在此之后，每执行一个函数，JavaScript引擎都会创建一个对应的执行环境，并将该环境放入环境栈中，所以当前正在执行的函数的执行环境是在环境栈的最顶部的，当函数执行完毕之后，其执行环境会弹出栈，并被销毁，保存在其中的变量和函数定义也会被销毁。<br><br>当代码在一个执行环境中执行时，JavaScript引擎会创建变量对象的一个作用域链，它可以保证对执行环境有权访问的变量和函数的有序访问。作用域链的前端始终是当前执行的代码所在的环境的变量对象。全局环境的作用域链中只有一个变量对象，它定义了所有可用的全局变量和函数。当函数被创建时，JavaScript引擎会把创建时执行环境的作用域链赋给函数的内部属性[[scope]]；当函数被执行时，JavaScript引擎会创建一个活动对象，最开始时这个活动对象只有一个变量，即arguments对象。该活动对象会出现在执行环境作用域链的顶端，接下来是函数[[scope]]属性中的对象。<br><br>当需要查找某个变量或函数时，JavaScript引擎会通过执行环境的作用域链来查找变量和函数，从作用域链的顶端开始，如果没找到，则向下寻找直至找到为止。若一直到全局作用域都没有找到,则该变量或函数为undefined。<br><br>举个栗子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></p>
+<p>代码执行时，add函数有一个仅包含全局变量对象的[[scope]]属性，add函数执行时，JavaScript引擎创建新的执行环境以及一个包含this、arguments、a、b的活动对象，并将其添加到作用域链中。如下图所示：<br><img src="https://images2015.cnblogs.com/blog/861963/201603/861963-20160324125541214-276062560.png" alt="img"></p>
+<h4 id="2-使用局部变量"><a href="#2-使用局部变量" class="headerlink" title="2.使用局部变量"></a>2.使用局部变量</h4><p>了解了作用域链的概念，我们应该知道在查找变量会从作用域链的顶端开始一层一层的向下找。显然，查找的层数越多，花费的时间越多。所以为了提高查找的速度，我们应该尽量使用 局部变量（到目前为止，局部变量是JavaScript中读写最快的标识符）。<br><br>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createEle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createEle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> doc = <span class="built_in">document</span>;</span><br><span class="line">    doc.createElement(<span class="string">"div"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当document使用次数比较少时，可能无所谓，可是如果在一个函数的循环中大量使用document，我们可以提前将document变成局部变量。<br><br>来看看jquery怎么写的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">     <span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样写的优势：<br><br>1、window和undefined都是为了减少变量查找所经过的scope作用域。当window通过传递给闭包内部之后，在闭包内部使用它的时候，可以把它当成一个局部变量，显然比原先在window scope下查找的时候要快一些。（原来的window处于作用域链的最顶端，查找速度慢）<br><br>2、在jquery压缩版本jquery.min.js中可以将局部变量window替换成单个字母，减小文件大小，提高加载速度<br><br><img src="https://images2015.cnblogs.com/blog/861963/201603/861963-20160306142846424-1341096196.png" alt="img"><br>3、undefined也是JavaScript中的全局属性。将undefined作为参数传递给闭包，因为没给它传递值，它的值就是undefined，这样闭包内部在使用它的时候就可以把它当做局部变量使用，从而提高查找速度。undefined并不是JavaScript的保留字或者关键字。<br><br>4、undefined在某些低版本的浏览器（例如IE8、IE7）中值是可以被修改的（在ECMAScript3中，undefined是可读/写的变量，可以给它赋任意值，这个错误在ECMAScript5中做了修正），将undefined作为参数并且不给它传值可以防止因undefined的值被修改而产生的错误。</p>
+<h4 id="3-避免增长作用域链"><a href="#3-避免增长作用域链" class="headerlink" title="3.避免增长作用域链"></a>3.避免增长作用域链<br></h4><p>在JavaScript中，有两种语句可以临时增加作用域链：with、try-catch<br><br>with可以使对象的属性可以像全局变量来使用，它实际上是将一个新的变量对象添加到执行环境作用域的顶部，这个变量对象包含了指定对象的所有属性，因此可以直接访问。<br><br>这样看似很方便，但是增长了作用域链，原来函数中的局部变量不在处于作用域链的顶端，因此在访问这些变量的时候要查找到第二层才能找到它。当with语句块之行结束后，作用域链将回到原来的状态。鉴于with的这个缺点，所以不推荐使用。<br><br>try-catch中的catch从句和with类似，也是在作用域链的顶端增加了一个对象，该对象包含了由catch指定命名的异常对象。但是因为catch语句只有在放生错误的时候才执行，因此影响比较少。</p>
+<h4 id="4-字符串链接优化"><a href="#4-字符串链接优化" class="headerlink" title="4.字符串链接优化"></a>4.字符串链接优化</h4><p>由于字符串是不可变的，所以在进行字符串连接时，需要创建临时字符串。频繁创建、销毁临时字符串会导致性能低下。<br><br>当然，这个问题在新版本浏览器包括IE8+中都得到了优化，所以不需要担心<br><br>在低版本浏览器（IE6、IE7）中，我们可以种数组的join方法来代替。<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = [];</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">temp[i++] = <span class="string">"Hello"</span>;</span><br><span class="line">temp[i++] = <span class="string">" "</span>;</span><br><span class="line">temp[i++] =<span class="string">"everyone"</span>;</span><br><span class="line"><span class="keyword">var</span> outcome = temp.join(<span class="string">""</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-条件判断"><a href="#5-条件判断" class="headerlink" title="5.条件判断"></a>5.条件判断</h4><p>当出现条件判断时，我们采用什么样的结构才能使性能最优？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(val == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v0;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(val == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v1;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(val == <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(val == <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v3;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(val == <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当条件分支比较多时，我们可以斟酌哪种条件出现的概率比较大，并将对应的语句放在最上面，这样可以减少判断次数。<br><br>使用switch语句，新版的浏览器基本上都对switch做了优化，这样层数比较深时，性能比if会更好<br><br>使用数组：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> v = [v0,v1,v2,v3,v4];</span><br><span class="line"><span class="keyword">return</span> v[valeue];</span><br></pre></td></tr></table></figure></p>
+<p>要求：对应的结果是单一值，而不是一系列操作<br><br>另外，其他方面的优化，譬如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(condition1) &#123;</span><br><span class="line">    <span class="keyword">return</span> v1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> v2</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="keyword">if</span>(condition1) &#123;</span><br><span class="line">    <span class="keyword">return</span> v1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> v2;</span><br></pre></td></tr></table></figure></p>
+<h4 id="6-快速循环"><a href="#6-快速循环" class="headerlink" title="6.快速循环"></a>6.快速循环</h4><p>1、循环总次数使用局部变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="keyword">var</span> len = arr.length;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; len;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就避免了每次循环的属性查找。这点尤其重要，因为在进行dom操作时，很多人会这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> divList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"div"</span>);</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divList.length;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>查找DOM元素的属性是相对耗时的，所以应该避免这种写法。<br><br>2、如果可以，递减代替递增<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = arr.length - <span class="number">1</span>;i--;) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt; arr.length) &#123;</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="keyword">var</span> i = arr.length - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(i--) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>i=0的时候会直接跳出，循环次数比较多时还是很有用的。</p>
+<h4 id="7-展开循环"><a href="#7-展开循环" class="headerlink" title="7.展开循环"></a>7.展开循环</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = arr.length - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(i--) &#123;</span><br><span class="line">    dosomething(arr[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>遇到这样的情况时，执行一次循环的时候我们可以选择不止执行一次函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> interations = <span class="built_in">Math</span>.floor(arr.length / <span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> left = arr.length % <span class="number">8</span>;</span><br><span class="line"><span class="keyword">var</span>  i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(left) &#123;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        dosomething(arr[i++]);</span><br><span class="line">    &#125; <span class="keyword">while</span>(--left);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">    dosomething(arr[i++]);</span><br><span class="line">&#125; <span class="keyword">while</span>(--interations);</span><br></pre></td></tr></table></figure></p>
+<p>当遇到大数组，减少循环的开销，性能不就提上去了嘛。（至于为什么是每次循环，调8次函数，大牛测出来的，这样达到最佳）</p>
+<h4 id="8-高效存取数据"><a href="#8-高效存取数据" class="headerlink" title="8.高效存取数据"></a>8.高效存取数据</h4><p>JavaScript中4种地方可以存取数据：<br><br>字面量值；变量；数组元素；对象属性<br><br>字面量值和变量中存取数据是最快的，从数组元素和对象属性中存取数据相对较慢，并且随着深度增加，存取速度会越来越慢，譬如obj.item.value就比obj.item慢。<br><br>某些情况下我们可以将对象、数组属性存成局部变量来提高速度，譬如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="keyword">var</span> len = arr.length;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; len;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> divList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"div"</span>);</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divList.length;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改成</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">var</span> divList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"div"</span>);</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>,len = divList.length;i &lt; len;i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="9-事件委托"><a href="#9-事件委托" class="headerlink" title="9.事件委托"></a>9.事件委托</h4><p>事件委托就是利用冒泡的原理，将原本应该添加在某些元素身上的监听事件，添加到其父元素身上，来达到提高性能的效果。<br><br>举个栗子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">1</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;2&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">3</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;4&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">5</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;6&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">7</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;8&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">9</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;10&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> liList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = liList.length;i &lt; len;i++) &#123;</span><br><span class="line">        liList[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.innerHTML);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们就为每个li添加了监听事件了。<br><br>显然，我们通过循环为每个li添加监听事件是不优化的。这样不仅浪费了内存，在新的li加入的时候我们还要重新为它添加监听事件。<br><br>我们可以这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">1</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;2&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">3</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;4&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">5</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;6&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">7</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;8&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">9</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;10&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> liList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line">    ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event;</span><br><span class="line">        <span class="keyword">var</span> target = e.target || e.srcElement;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">"li"</span>) &#123;</span><br><span class="line">            alert(target.innerHTML);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样写的好处：<br><br>只添加一个监听事件，节省了内存；新加入li的时候我们也不用为它单独添加监听事件；在页面中添加事件处理程序所需的时候更少，因为我们只需要为一个DOM元素添加事件处理程序。</p>
+<h3 id="使用typescript"><a href="#使用typescript" class="headerlink" title="使用typescript"></a>使用typescript</h3><p>使用typescript来提高性能我实在一本关于nodejs的书里看到的，主要还是用在chrome的V8引擎上，这本书里写的比如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个数相加的函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">10000</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(add(i + i*<span class="number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>书里说，如果V8引擎发现一个函数使用频率很高，而且参数传入的都是同一种类型的，好像是在内存寻址的时候书都很快，因为引擎认为传入的参数就是int型。<br><br>再来看一个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个数相加的函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">10000</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i % <span class="number">8</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(add(i + i*<span class="number">0.3</span>)); <span class="comment">// 这里出现了浮点数</span></span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(add(i + i*<span class="number">3</span>)); <span class="comment">// 这里是整数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上边的代码可以看到，在使用整形参数的时候突然传入浮点数，V8引擎寻址机制突然变化，丢弃之前的函数，使用新的来计算，性能下降。<br><br>所以，如果使用typescript，类型固定，这样性能就会提高哦。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/面试题/"><i class="fa fa-tag"></i>&nbsp;&nbsp;面试题</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/09/03/jquery上传文件/" rel="prev" title="jquery上传文件">
+                            jquery上传文件
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/08/30/vue双向绑定的简单实现/" rel="next" title="vue双向绑定的简单实现">
+                            vue双向绑定的简单实现
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'javascript提高性能',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>http请求头的安全策略 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http请求头中相关安全的头字段">
+<meta name="keywords" content="网络基础,web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http请求头的安全策略">
+<meta property="og:url" content="/2020/02/18/http请求头的安全策略/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="http请求头中相关安全的头字段">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http请求头的安全策略">
+<meta name="twitter:description" content="http请求头中相关安全的头字段">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-http请求头的安全策略" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                http请求头的安全策略
+            
+        </h1>
+        <time>
+            2020-02-18 Tuesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http请求头的安全策略"><span class="toc-number">1.</span> <span class="toc-text">http请求头的安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-X-Frame-Options"><span class="toc-number">1.1.</span> <span class="toc-text">1.X-Frame-Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Content-Security-Policy"><span class="toc-number">1.2.</span> <span class="toc-text">2.Content-Security-Policy</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-X-Content-Type-Options"><span class="toc-number">2.</span> <span class="toc-text">3.X-Content-Type-Options</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-X-XSS-Protection"><span class="toc-number">2.1.</span> <span class="toc-text">4.X-XSS-Protection</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>http请求头中相关安全的头字段<br><a id="more"></a></p>
+<h1 id="http请求头的安全策略"><a href="#http请求头的安全策略" class="headerlink" title="http请求头的安全策略"></a>http请求头的安全策略</h1><p>我们的项目在经过开发，测试之后，还得经过安全小组的安全漏斗扫描，经常会暴漏一些返回头缺少安全字段的漏洞，今天我稍加整理常用的几个。<br>如果想了解更多的请求头和响应头的字段信息，可以看本站另一篇文章，<a href="/2019/04/15/http请求头响应头字段详解/">这里</a></p>
+<h2 id="1-X-Frame-Options"><a href="#1-X-Frame-Options" class="headerlink" title="1.X-Frame-Options"></a>1.X-Frame-Options</h2><p>如果网站可以嵌入到IFRAME元素中，则攻击者可以在社交场合设计一种情况，即受害者被指向攻击者控制的网站，该网站构成目标网站的框架。然后攻击者可以操纵受害者在目标网站上不知不觉地执行操作。即使有跨站点请求伪造保护，这种攻击也是可能的，并且被称为“clickjacking”，有关更多信息，<a href="https://www.owasp.org/index.php/Clickjacking" target="_blank" rel="noopener">请参阅</a>。为了避免这种情况，创建了“X-Frame-Options”标题。此标题允许网站所有者决定允许哪些网站构建其网站。<br>通常的建议是将此标头设置为“SAMEORIGIN”，它只允许属于同源策略的资源构成受保护资源的框架，或者设置为“DENY”，它拒绝任何资源（本地或远程）尝试框架也提供“X-Frame-Options”标头的资源。如下所示：<br>X-Frame-Options：SAMEORIGIN<br>请注意，“X-Frame-Options”标题已被弃用，将由内容安全策略中的Frame-Options指令替换，该指令仍处于活动开发阶段。但是，“X-Frame-Options”标题目前具有更广泛的支持，因此仍应实施安全措施。<br>说白了呢，就是让你的网站禁止被嵌套。<br>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;httpProtocol&gt;</span><br><span class="line">  &lt;customHeaders&gt;</span><br><span class="line">    &lt;add name=&quot;X-Frame-Options&quot; value=&quot;SAMEORIGIN&quot; /&gt;</span><br><span class="line">  &lt;/customHeaders&gt;</span><br><span class="line">&lt;/httpProtocol&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-Content-Security-Policy"><a href="#2-Content-Security-Policy" class="headerlink" title="2.Content-Security-Policy"></a>2.Content-Security-Policy</h2><p>内容安全策略（CSP）旨在允许Web应用程序的所有者通知客户端浏览器有关应用程序的预期行为（包括内容源，脚本源，插件类型和其他远程资源），这允许浏览器更多智能地执行安全约束。虽然CSP本质上是复杂的，如果没有适当部署它可能会变得混乱，一个应用良好的CSP可以大大降低利用大多数形式的跨站点脚本攻击的机会。<br>需要整个帖子来深入了解CSP允许的功能和不同设置，因此建议进一步阅读。以下是Mozilla开发者网络对CSP的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP" target="_blank" rel="noopener">精彩介绍性帖子</a><br>下面的简要示例显示了如何使用CSP指定您的网站希望从任何URI加载图像，从受信任的媒体提供商（包括内容分发网络）列表中插入插件内容，以及仅从您控制的服务器加载脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy：default-src&apos;self&apos;; img-src *; object-src media1.example.com media2.example.com * .cdn.example.com; script-src trustedscripts.example.com</span><br></pre></td></tr></table></figure></p>
+<p>请注意，使用CSP的主要问题涉及策略错误配置（即使用“不安全内联”），或使用过于宽松的策略，因此在实施CSP时应特别注意。<br>这个呢，是将你引入的一切，加一个限制，这样如果别人想通过一些手段在你的网站加一些不好的东西，我们就可以有效地防止了。<br>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;httpProtocol&gt;</span><br><span class="line">  &lt;customHeaders&gt;</span><br><span class="line">    &lt;add name=&quot;Content-Security-Policy&quot; value=&quot;script-src &apos;unsafe-inline&apos; http://localhost:56504; object-src &apos;none&apos;; style-src &apos;unsafe-inline&apos; http://localhost:56504;&quot; /&gt;</span><br><span class="line">    &lt;/customHeaders&gt;</span><br><span class="line">  &lt;/httpProtocol&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中预设值有以下这些：</p>
+<ul>
+<li>none 不匹配任何东西。</li>
+<li>self 匹配当前域，但不包括子域。比如 example.com 可以，api.example.com 则会匹配失败。</li>
+<li>unsafe-inline 允许内嵌的脚本及样式。是的，没看错，对于页面中内嵌的内容也是有相应限制规则的。</li>
+<li>unsafe-eval 允许通过字符串动态创建的脚本执行，比如 eval，setTimeout 等。</li>
+</ul>
+<h1 id="3-X-Content-Type-Options"><a href="#3-X-Content-Type-Options" class="headerlink" title="3.X-Content-Type-Options"></a>3.X-Content-Type-Options</h1><p>互联网上的资源有各种类型，通常浏览器会根据响应头的Content-Type字段来分辨它们的类型。例如：”text/html”代表html文档，”image/png”是PNG图片，”text/css”是CSS样式文档。然而，有些资源的Content-Type是错的或者未定义。这时，某些浏览器会启用MIME-sniffing来猜测该资源的类型，解析内容并执行。<br>例如，我们即使给一个html文档指定Content-Type为”text/plain”，在IE8-中这个文档依然会被当做html来解析。利用浏览器的这个特性，攻击者甚至可以让原本应该解析为图片的请求被解析为JavaScript。通过下面这个响应头可以禁用浏览器的类型猜测行为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Content-Type-Options: nosniff</span><br></pre></td></tr></table></figure></p>
+<p>demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// php</span><br><span class="line">header(&quot;X-Content-Type-Options:nosniff&quot;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-X-XSS-Protection"><a href="#4-X-XSS-Protection" class="headerlink" title="4.X-XSS-Protection"></a>4.X-XSS-Protection</h2><p>顾名思义，这个响应头是用来防范XSS的。最早我是在介绍IE8的文章里看到这个，现在主流浏览器都支持，并且默认都开启了XSS保护，用这个header可以关闭它。它有几种配置：</p>
+<ul>
+<li>0：禁用XSS保护；</li>
+<li>1：启用XSS保护；</li>
+<li>1; mode=block：启用XSS保护，并在检查到XSS攻击时，停止渲染页面（例如IE8中，检查到攻击时，整个页面会被一个#替换）；<br>浏览器提供的XSS保护机制并不完美，但是开启后仍然可以提升攻击难度，总之没有特别的理由，不要关闭它。<br>demo:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// php</span><br><span class="line">header(&quot;X-XSS-Protection: 1&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/网络基础/"><i class="fa fa-tag"></i>&nbsp;&nbsp;网络基础</a>
+                
+                    <a href="/tags/web安全/"><i class="fa fa-tag"></i>&nbsp;&nbsp;web安全</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2020/02/24/html元素节点的attribute-property/" rel="prev" title="html元素节点的attribute&amp;property">
+                            html元素节点的attribute&amp;property
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2020/02/16/图片裁剪插件/" rel="next" title="图片裁剪插件">
+                            图片裁剪插件
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'http请求头的安全策略',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

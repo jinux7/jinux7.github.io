@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>vue双向绑定的简单实现 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考网上vue实现教程简单整理">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue双向绑定的简单实现">
+<meta property="og:url" content="/2018/08/30/vue双向绑定的简单实现/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="参考网上vue实现教程简单整理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq7aw6sl3hg30go072qva.gif">
+<meta property="og:updated_time" content="2024-01-11T07:00:59.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue双向绑定的简单实现">
+<meta name="twitter:description" content="参考网上vue实现教程简单整理">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-vue双向绑定的简单实现" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                vue双向绑定的简单实现
+            
+        </h1>
+        <time>
+            2018-08-30 Thursday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue双向绑定的简单实现"><span class="toc-number">1.</span> <span class="toc-text">vue双向绑定的简单实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原理"><span class="toc-number">1.1.</span> <span class="toc-text">1.原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现"><span class="toc-number">1.2.</span> <span class="toc-text">2.实现</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>参考网上vue实现教程简单整理<br><a id="more"></a></p>
+<h2 id="vue双向绑定的简单实现"><a href="#vue双向绑定的简单实现" class="headerlink" title="vue双向绑定的简单实现"></a>vue双向绑定的简单实现</h2><p>&emsp;&emsp;首先，这篇文章并非我的原创，在网上看到了很多写vue原理的文章，感觉这篇写的层次结构清晰，容易理解，所以留作收藏。<br>废话不多说，开始。</p>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p>&emsp;&emsp;Vue的双向数据绑定的原理相信大家也都十分了解了，主要是通过 Object对象的defineProperty属性，重写data的set和get函数来实现的,这里对原理不做过多描述，主要还是来实现一个实例。为了使代码更加的清晰，这里只会实现最基本的内容，主要实现v-model，v-bind 和v-click三个命令，其他命令也可以自行补充。<br><br>添加网上的一张图<br><br><img src="https://mmbiz.qpic.cn/mmbiz_jpg/aVp1YC8UV0f0zE1BuK03NMJDibwUmypG8icoXmEwXflpO3TQh4CiaKx0VRTHWlyRQbmX5I3USiaHtSoibZ8yvX98jtg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h3><p>页面结构很简单，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"number"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">ype</span>=<span class="string">"button"</span> <span class="attr">v-click</span>=<span class="string">"increment"</span>&gt;</span>增加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-bind</span>=<span class="string">"number"</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>包含：<br><br>1.一个input，使用v-model指令<br><br>2.一个button，使用v-click指令<br><br>3.一个h3，使用v-bind指令。<br><br>我们最后会通过类似于vue的方式来使用我们的双向数据绑定，结合我们的数据结构添加注释：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> myVue(&#123;</span><br><span class="line">            el:<span class="string">'#app'</span>,</span><br><span class="line">            data:&#123;</span><br><span class="line">              number:<span class="number">0</span>    </span><br><span class="line">            &#125;,</span><br><span class="line">            methods:&#123;</span><br><span class="line">              increment:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.number++;</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>首先我们需要定义一个myVue构造函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myVue</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了初始化这个构造函数，给它添加一 个_init属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myVue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._init(options);</span><br><span class="line">&#125;</span><br><span class="line">myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.$options = options;  <span class="comment">// options 为上面使用时传入的结构体，包括el,data,methods</span></span><br><span class="line">    <span class="keyword">this</span>.$el = <span class="built_in">document</span>.querySelector(options.el); <span class="comment">// el是 #app, this.$el是id为app的Element元素</span></span><br><span class="line">    <span class="keyword">this</span>.$data = options.data; <span class="comment">// this.$data = &#123;number: 0&#125;</span></span><br><span class="line">    <span class="keyword">this</span>.$methods = options.methods;  <span class="comment">// this.$methods = &#123;increment: function()&#123;&#125;&#125;</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来实现_obverse函数，对data进行处理，重写data的set和get函数<br><br>并改造_init函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">myVue.prototype._obverse = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123; <span class="comment">// obj = &#123;number: 0&#125;</span></span><br><span class="line">   <span class="keyword">var</span> value;</span><br><span class="line">   <span class="keyword">for</span> (key <span class="keyword">in</span> obj) &#123;  <span class="comment">//遍历obj对象</span></span><br><span class="line">     <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">       value = obj[key]; </span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">'object'</span>) &#123;  <span class="comment">//如果值还是对象，则遍历处理</span></span><br><span class="line">         <span class="keyword">this</span>._obverse(value);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>.$data, key, &#123;  <span class="comment">//关键</span></span><br><span class="line">         enumerable: <span class="literal">true</span>,</span><br><span class="line">         configurable: <span class="literal">true</span>,</span><br><span class="line">         <span class="keyword">get</span>: function () &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">`获取<span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">           <span class="keyword">return</span> value;</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="keyword">set</span>: function (newVal) &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">`更新<span class="subst">$&#123;newVal&#125;</span>`</span>);</span><br><span class="line">           <span class="keyword">if</span> (value !== newVal) &#123;</span><br><span class="line">             value = newVal;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.$options = options;</span><br><span class="line">   <span class="keyword">this</span>.$el = <span class="built_in">document</span>.querySelector(options.el);</span><br><span class="line">   <span class="keyword">this</span>.$data = options.data;</span><br><span class="line">   <span class="keyword">this</span>.$methods = options.methods;</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">this</span>._obverse(<span class="keyword">this</span>.$data);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来我们写一个指令类Watcher，用来绑定更新函数，实现对DOM元素的更新<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">name, el, vm, exp, attr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;         <span class="comment">//指令名称，例如文本节点，该值设为"text"</span></span><br><span class="line">    <span class="keyword">this</span>.el = el;             <span class="comment">//指令对应的DOM元素</span></span><br><span class="line">    <span class="keyword">this</span>.vm = vm;             <span class="comment">//指令所属myVue实例</span></span><br><span class="line">    <span class="keyword">this</span>.exp = exp;           <span class="comment">//指令对应的值，本例如"number"</span></span><br><span class="line">    <span class="keyword">this</span>.attr = attr;         <span class="comment">//绑定的属性值，本例为"innerHTML"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Watcher.prototype.update = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.el[<span class="keyword">this</span>.attr] = <span class="keyword">this</span>.vm.$data[<span class="keyword">this</span>.exp]; <span class="comment">//比如 H3.innerHTML = this.data.number; 当number改变时，会触发这个update函数，保证对应的DOM内容进行了更新。</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>更新_init函数以及_obverse函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">this</span>._binding = &#123;&#125;;   <span class="comment">//_binding保存着model与view的映射关系，也就是我们前面定义的Watcher的实例。当model改变时，我们会触发其中的指令类更新，保证view也能实时更新</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  myVue.prototype._obverse = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">      <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        <span class="keyword">this</span>._binding[key] = &#123;    <span class="comment">// 按照前面的数据，_binding = &#123;number: _directives: []&#125;                                                                                                                                                  </span></span><br><span class="line">          _directives: []</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        <span class="keyword">var</span> binding = <span class="keyword">this</span>._binding[key];</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>.$data, key, &#123;</span><br><span class="line">          <span class="comment">//...</span></span><br><span class="line">          <span class="keyword">set</span>: function (newVal) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`更新<span class="subst">$&#123;newVal&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">if</span> (value !== newVal) &#123;</span><br><span class="line">              value = newVal;</span><br><span class="line">              binding._directives.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;  <span class="comment">// 当number改变时，触发_binding[number]._directives 中的绑定的Watcher类的更新</span></span><br><span class="line">                item.update();</span><br><span class="line">              &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>  那么如何将view与model进行绑定呢？接下来我们定义一个_compile函数，用来解析我们的指令（v-bind,v-model,v-clickde）等，并在这个过程中对view与model进行绑定。<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">   myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">   <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">this</span>._complie(<span class="keyword">this</span>.$el);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">myVue.prototype._complie = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123; root 为 id为app的Element元素，也就是我们的根元素</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> nodes = root.children;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> node = nodes[i];</span><br><span class="line">      <span class="keyword">if</span> (node.children.length) &#123;  <span class="comment">// 对所有元素进行遍历，并进行处理</span></span><br><span class="line">        <span class="keyword">this</span>._complie(node);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-click'</span>)) &#123;  <span class="comment">// 如果有v-click属性，我们监听它的onclick事件，触发increment事件，即number++</span></span><br><span class="line">        node.onclick = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> attrVal = nodes[i].getAttribute(<span class="string">'v-click'</span>);</span><br><span class="line">          <span class="keyword">return</span> _this.$methods[attrVal].bind(_this.$data);  <span class="comment">//bind是使data的作用域与method函数的作用域保持一致</span></span><br><span class="line">        &#125;)();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-model'</span>) &amp;&amp; (node.tagName == <span class="string">'INPUT'</span> || node.tagName == <span class="string">'TEXTAREA'</span>)) &#123; <span class="comment">// 如果有v-model属性，并且元素是INPUT或者TEXTAREA，我们监听它的input事件</span></span><br><span class="line">        node.addEventListener(<span class="string">'input'</span>, (<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;  </span><br><span class="line">          <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">'v-model'</span>);</span><br><span class="line">           <span class="comment">//_this._binding['number']._directives = [一个Watcher实例]</span></span><br><span class="line">           <span class="comment">// 其中Watcher.prototype.update = function () &#123;</span></span><br><span class="line">           <span class="comment">//    node['vaule'] = _this.$data['number'];  这就将node的值保持与number一致</span></span><br><span class="line">           <span class="comment">// &#125;</span></span><br><span class="line">          _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(  </span><br><span class="line">            <span class="string">'input'</span>,</span><br><span class="line">            node,</span><br><span class="line">            _this,</span><br><span class="line">            attrVal,</span><br><span class="line">            <span class="string">'value'</span></span><br><span class="line">          ))</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            _this.$data[attrVal] =  nodes[key].value; <span class="comment">// 使number 的值与 node的value保持一致，已经实现了双向绑定</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">      &#125; </span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-bind'</span>)) &#123; <span class="comment">// 如果有v-bind属性，我们只要使node的值及时更新为data中number的值即可</span></span><br><span class="line">        <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">'v-bind'</span>);</span><br><span class="line">        _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(</span><br><span class="line">          <span class="string">'text'</span>,</span><br><span class="line">          node,</span><br><span class="line">          _this,</span><br><span class="line">          attrVal,</span><br><span class="line">          <span class="string">'innerHTML'</span></span><br><span class="line">        ))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>  至此，我们已经实现了一个简单vue的双向绑定功能，包括v-bind, v-model, v-click三个指令。效果如下图<br>  <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq7aw6sl3hg30go072qva.gif" alt="img"><br>  附上全部代码，不到150行<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line">  &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;myVue&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  #app &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;form&gt;</span></span><br><span class="line"><span class="regexp">      &lt;input type="text"  v-model="number"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button type="button" v-click="increment"&gt;增加&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h3 v-bind="number"&gt;&lt;/</span>h3&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">myVue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>._init(options);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.$options = options;</span><br><span class="line">    <span class="keyword">this</span>.$el = <span class="built_in">document</span>.querySelector(options.el);</span><br><span class="line">    <span class="keyword">this</span>.$data = options.data;</span><br><span class="line">    <span class="keyword">this</span>.$methods = options.methods;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>._binding = &#123;&#125;;</span><br><span class="line">    <span class="keyword">this</span>._obverse(<span class="keyword">this</span>.$data);</span><br><span class="line">    <span class="keyword">this</span>._complie(<span class="keyword">this</span>.$el);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  myVue.prototype._obverse = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value;</span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        <span class="keyword">this</span>._binding[key] = &#123;                                                                                                                                                          </span><br><span class="line">          _directives: []</span><br><span class="line">        &#125;;</span><br><span class="line">        value = obj[key];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">'object'</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>._obverse(value);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> binding = <span class="keyword">this</span>._binding[key];</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>.$data, key, &#123;</span><br><span class="line">          enumerable: <span class="literal">true</span>,</span><br><span class="line">          configurable: <span class="literal">true</span>,</span><br><span class="line">          <span class="keyword">get</span>: function () &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`获取<span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="keyword">set</span>: function (newVal) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`更新<span class="subst">$&#123;newVal&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">if</span> (value !== newVal) &#123;</span><br><span class="line">              value = newVal;</span><br><span class="line">              binding._directives.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">                item.update();</span><br><span class="line">              &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myVue.prototype._complie = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> nodes = root.children;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> node = nodes[i];</span><br><span class="line">      <span class="keyword">if</span> (node.children.length) &#123;</span><br><span class="line">        <span class="keyword">this</span>._complie(node);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-click'</span>)) &#123;</span><br><span class="line">        node.onclick = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> attrVal = nodes[i].getAttribute(<span class="string">'v-click'</span>);</span><br><span class="line">          <span class="keyword">return</span> _this.$methods[attrVal].bind(_this.$data);</span><br><span class="line">        &#125;)();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-model'</span>) &amp;&amp; (node.tagName == <span class="string">'INPUT'</span> || node.tagName == <span class="string">'TEXTAREA'</span>)) &#123;</span><br><span class="line">        node.addEventListener(<span class="string">'input'</span>, (<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">'v-model'</span>);</span><br><span class="line">          _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(</span><br><span class="line">            <span class="string">'input'</span>,</span><br><span class="line">            node,</span><br><span class="line">            _this,</span><br><span class="line">            attrVal,</span><br><span class="line">            <span class="string">'value'</span></span><br><span class="line">          ))</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            _this.$data[attrVal] =  nodes[key].value;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">      &#125; </span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">'v-bind'</span>)) &#123;</span><br><span class="line">        <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">'v-bind'</span>);</span><br><span class="line">        _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(</span><br><span class="line">          <span class="string">'text'</span>,</span><br><span class="line">          node,</span><br><span class="line">          _this,</span><br><span class="line">          attrVal,</span><br><span class="line">          <span class="string">'innerHTML'</span></span><br><span class="line">        ))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">name, el, vm, exp, attr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;         <span class="comment">//指令名称，例如文本节点，该值设为"text"</span></span><br><span class="line">    <span class="keyword">this</span>.el = el;             <span class="comment">//指令对应的DOM元素</span></span><br><span class="line">    <span class="keyword">this</span>.vm = vm;             <span class="comment">//指令所属myVue实例</span></span><br><span class="line">    <span class="keyword">this</span>.exp = exp;           <span class="comment">//指令对应的值，本例如"number"</span></span><br><span class="line">    <span class="keyword">this</span>.attr = attr;         <span class="comment">//绑定的属性值，本例为"innerHTML"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Watcher.prototype.update = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.el[<span class="keyword">this</span>.attr] = <span class="keyword">this</span>.vm.$data[<span class="keyword">this</span>.exp];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> app = <span class="keyword">new</span> myVue(&#123;</span><br><span class="line">      el:<span class="string">'#app'</span>,</span><br><span class="line">      data: &#123;</span><br><span class="line">        number: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.number ++;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>以上就是所有内容，这个代码不是我创造的，我只是代码的搬运工。</p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/vue/"><i class="fa fa-tag"></i>&nbsp;&nbsp;vue</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2018/09/01/javascript提高性能/" rel="prev" title="javascript提高性能">
+                            javascript提高性能
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2018/08/29/webSocket项目中的使用/" rel="next" title="webSocket">
+                            webSocket
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'vue双向绑定的简单实现',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
