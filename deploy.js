@@ -1,25 +1,19 @@
 const simpleGit = require('simple-git')();
-
 const fs = require('fs-extra');
 const path = require('path');
-
+// 复制文件
 function copyFolderContentToCurrentDirSync(sourceFolderPath) {
     const currentDir = process.cwd();
-
     const items = fs.readdirSync(sourceFolderPath);
-
     for (const item of items) {
         const srcPath = path.join(sourceFolderPath, item);
         const destPath = path.join(currentDir, item);
-
         fs.copySync(srcPath, destPath);
         console.log(`已复制：${item}`);
     }
-
     console.log('✅ 文件夹内容已成功复制到当前目录');
 }
-
-// 调用
+// 复制源文件夹
 const sourceFolderPath = path.resolve('../', 'jinux-blog-source/public');
 copyFolderContentToCurrentDirSync(sourceFolderPath);
 
@@ -31,8 +25,6 @@ try {
 } catch (error) {
     console.log(error);
 }
-console.log(deleteFilePath)
-// return;
 
 simpleGit
   .add(['.']) // 添加当前目录下的所有文件到暂存区
@@ -45,7 +37,7 @@ simpleGit
 });
 
 simpleGit
-  .push('origin', 'master') // 将代码推送到远程仓库的 master 分支
+  .push('origin', 'master') // 将代码推送到远程仓库的master分支
   .then(() => {
     console.log('Push successful!');
   })
