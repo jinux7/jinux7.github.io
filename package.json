@@ -1,5 +1,6 @@
 {
 	"dependencies": {
+		"fs-extra": "^11.3.0",
 		"simple-git": "^3.27.0"
 	}
 }
