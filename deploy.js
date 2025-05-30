@@ -1,5 +1,4 @@
-const simpleGit = require('simple-git');
-const git = simpleGit();
+const simpleGit = require('simple-git')();
 
 const fs = require('fs-extra');
 const path = require('path');
@@ -29,21 +28,29 @@ const sourceFolderPath = path.resolve('../', 'jinux-blog-source/public');
 // 删除index.lock文件
 const deleteFilePath = path.resolve('./', '.git/index.lock');
 try {
-  // fs.removeSync(deleteFilePath);
+  fs.removeSync(deleteFilePath);
   console.log('删除成功');
 } catch (error) {
     console.log(error);
 }
 console.log(deleteFilePath)
 // return;
-git.add('.').then(()=> {
-  console.log('files added');
-})
 
-git.commit('update').then(()=> {
-  console.log('commit');
-})
+simpleGit
+  .add(['.']) // 添加当前目录下的所有文件到暂存区
+  .commit('update') // 提交暂存区的更改，并附带提交信息
+  .then(() => {
+    console.log('Commit successful!');
+  })
+  .catch((err) => {
+    console.error('Error during commit:', err);
+});
 
-git .push('origin', 'master').then(()=> {
-  console.log('push');
-})
+simpleGit
+  .push('origin', 'master') // 将代码推送到远程仓库的 master 分支
+  .then(() => {
+    console.log('Push successful!');
+  })
+  .catch((err) => {
+    console.error('Error during push:', err);
+});
