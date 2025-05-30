@@ -21,9 +21,7 @@ function copyFolderContentToCurrentDirSync(sourceFolderPath) {
 
 // 调用
 const sourceFolderPath = path.resolve('../', 'jinux-blog-source/public');
-// console.log(sourceFolderPath);
-// return ;
-// copyFolderContentToCurrentDirSync(sourceFolderPath);
+copyFolderContentToCurrentDirSync(sourceFolderPath);
 
 // 删除index.lock文件
 const deleteFilePath = path.resolve('./', '.git/index.lock');
