@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="flutter在window 10下的环境搭建">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-05-29T05:42:19.326Z">
+<meta property="og:updated_time" content="2025-05-29T07:59:22.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="window下flutter环境搭建">
 <meta name="twitter:description" content="flutter在window 10下的环境搭建">
@@ -173,7 +173,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#window下flutter环境搭建"><span class="toc-number">1.</span> <span class="toc-text">window下flutter环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装flutter"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装flutter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装JDK"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装vs-code以及flutter插件。"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装vs code以及flutter插件。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安装android-studio"><span class="toc-number">1.4.</span> <span class="toc-text">4.安装android studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-以上完成之后，打开命令行，运行flutter-doctor-会有一段"><span class="toc-number">1.5.</span> <span class="toc-text">5.以上完成之后，打开命令行，运行flutter doctor,会有一段</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#window下flutter环境搭建"><span class="toc-number">1.</span> <span class="toc-text">window下flutter环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装flutter"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装flutter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装JDK"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装vs-code以及flutter插件。"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装vs code以及flutter插件。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安装android-studio"><span class="toc-number">1.4.</span> <span class="toc-text">4.安装android studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-以上完成之后，打开命令行，运行flutter-doctor-会有一段"><span class="toc-number">1.5.</span> <span class="toc-text">5.以上完成之后，打开命令行，运行flutter doctor,会有一段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-05-29更新"><span class="toc-number">1.7.</span> <span class="toc-text">2025-05-29更新</span></a></li></ol></li></ol>
             </div>
         </section>
     
@@ -197,12 +197,15 @@
 <p>的提示，直接运行flutter doctor –android-licenses，一路y就可以。</p>
 <p>如果顺利的话，现在就可以运行你的flutter项目了，我在自己的电脑上安装的很顺利，但是在公司的电脑上安装的很是肯可啊。</p>
 <ul>
-<li><p>还需要注意下，有的电脑会让你升级android sdk，命令行会提示你具体的路径，里边是一个.bat的文件，不用担心，.bat和.exe一样的，在cmd下一样可以在后边传参数。如果你运行的是powerShell，注意一下，执行命令需要这样<figure class="highlight plain"><figcaption><span>```。再有，升级可能会删除tools文件夹再下载，不过win10不允许程序随意删除文件，这时候需要手动删除一下（改个名字更好）。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 总结</span><br><span class="line">以上就是我在搭建flutter环境的时候遇到的一些状况。</span><br><span class="line"></span><br><span class="line">## 2025-05-29更新</span><br><span class="line">&gt; 使用flutter开发Web，所以不需要安装Android和Desktop的sdk。</span><br><span class="line"></span><br><span class="line">1.[flutter_windows_3.32.0-stable.zip](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.32.0-stable.zip?_gl=1*11n1dz8*_ga*MTkwOTQ3MDA0My4xNzQ4NDg2MjE1*_ga_HPSFTRXK91*czE3NDg0OTQyOTYkbzIkZzEkdDE3NDg0OTY2OTgkajE0JGwwJGgw)</span><br><span class="line"></span><br><span class="line">2.下载后解压到任意目录下，然后配置环境变量。</span><br><span class="line">3.使用git bash打开，运行flutter doctor，检查。</span><br><span class="line">4.创建项目</span><br></pre></td></tr></table></figure></p>
-<p>flutter create projectName</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.运行项目</span><br></pre></td></tr></table></figure>
-</li>
+<li>还需要注意下，有的电脑会让你升级android sdk，命令行会提示你具体的路径，里边是一个.bat的文件，不用担心，.bat和.exe一样的，在cmd下一样可以在后边传参数。如果你运行的是powerShell，注意一下，执行命令需要这样<code>./manager.bat</code>。再有，升级可能会删除tools文件夹再下载，不过win10不允许程序随意删除文件，这时候需要手动删除一下（改个名字更好）。</li>
 </ul>
-<p>// 运行项目之前，配置一下<br>flutter config –enable-web<br>// 运行项目<br>flutter run -d chrome // 自动打开cheome浏览器<br>// 代码编辑后可以刷新浏览器<br>在当前的命令行下输入r后回车即可。<br><code>`</code></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是我在搭建flutter环境的时候遇到的一些状况。</p>
+<h2 id="2025-05-29更新"><a href="#2025-05-29更新" class="headerlink" title="2025-05-29更新"></a>2025-05-29更新</h2><blockquote>
+<p>使用flutter开发Web，所以不需要安装Android和Desktop的sdk。</p>
+</blockquote>
+<p>1.<a href="https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.32.0-stable.zip?_gl=1*11n1dz8*_ga*MTkwOTQ3MDA0My4xNzQ4NDg2MjE1*_ga_HPSFTRXK91*czE3NDg0OTQyOTYkbzIkZzEkdDE3NDg0OTY2OTgkajE0JGwwJGgw" target="_blank" rel="noopener">flutter_windows_3.32.0-stable.zip</a></p>
+<p>2.下载后解压到任意目录下，然后配置环境变量。<br>3.使用git bash打开，运行flutter doctor，检查。<br>4.创建项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create projectName</span><br></pre></td></tr></table></figure></p>
+<p>5.运行项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 运行项目之前，配置一下</span><br><span class="line">flutter config --enable-web</span><br><span class="line">// 运行项目</span><br><span class="line">flutter run -d chrome // 自动打开cheome浏览器</span><br><span class="line">// 代码编辑后可以刷新浏览器</span><br><span class="line">在当前的命令行下输入r后回车即可。</span><br></pre></td></tr></table></figure></p>
 
         </div>
 

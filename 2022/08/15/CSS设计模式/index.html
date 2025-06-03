@@ -13,21 +13,21 @@
   <link rel="alternate" href="/atom.xml" title="jinux">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="CSS设计模式">
-<meta name="keywords" content="基础知识,样式">
+<meta name="keywords" content="样式,基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS设计模式">
 <meta property="og:url" content="/2022/08/15/CSS设计模式/index.html">
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="CSS设计模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2022/08/15/CSS设计模式/1.jpg">
-<meta property="og:image" content="/2022/08/15/CSS设计模式/2.jpg">
-<meta property="og:image" content="/2022/08/15/CSS设计模式/3.jpg">
+<meta property="og:image" content="/15/CSS设计模式/1.jpg">
+<meta property="og:image" content="/15/CSS设计模式/2.jpg">
+<meta property="og:image" content="/15/CSS设计模式/3.jpg">
 <meta property="og:updated_time" content="2024-01-11T07:00:59.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS设计模式">
 <meta name="twitter:description" content="CSS设计模式">
-<meta name="twitter:image" content="/2022/08/15/CSS设计模式/1.jpg">
+<meta name="twitter:image" content="/15/CSS设计模式/1.jpg">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -194,8 +194,8 @@
 <h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><p>两个不同容器中的内容相同<br>先看样式的code 1，这样显然不好，容器和内容是嵌套依赖关系，并没有做到容器与内容分离。内容的样式无法复用。样式的code 2做到了容器与内容分离，内容在不同的容器中可以复用。</p>
 <h3 id="原则二-结构与皮肤分离"><a href="#原则二-结构与皮肤分离" class="headerlink" title="原则二:结构与皮肤分离"></a>原则二:结构与皮肤分离</h3><p>结构可以看做是一个基础对象,而皮肤可以看做是另外一个对象,也就是对象与对象要分离。基础对象不能改,不断的分离出皮肤对象达到对基础对象的修正和扩展。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;menu fix&quot;&gt;&lt;/div&gt;</span><br><span class="line">// 基础对象</span><br><span class="line">.menu &#123;</span><br><span class="line">  color: green;</span><br><span class="line">  font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">// 皮肤</span><br><span class="line">.fix &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="OOCSS与Vue的关系"><a href="#OOCSS与Vue的关系" class="headerlink" title="OOCSS与Vue的关系"></a>OOCSS与Vue的关系</h3><p>我们每天都在写OOCSS，Vue的组件就是OOCSS。我们下面一段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// -------------定义组件-----------------</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;menu&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &apos;MateData&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt; </span><br><span class="line">// 基础对象</span><br><span class="line">.menu &#123;</span><br><span class="line">   color: green;</span><br><span class="line">   font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">// -----------使用组件-------------------</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;mate-data class=&quot;fix1&quot;&gt;&lt;/mate-data&gt;</span><br><span class="line">  &lt;mate-data class=&quot;fix2&quot;&gt;&lt;/mate-data&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;style&gt; </span><br><span class="line">// 皮肤</span><br><span class="line">.fix1 &#123;</span><br><span class="line">   color: red;</span><br><span class="line">&#125;</span><br><span class="line">.fix2 &#123;</span><br><span class="line">   font-size: 20px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="设计模式-BEM"><a href="#设计模式-BEM" class="headerlink" title="设计模式:BEM"></a>设计模式:BEM</h2><h3 id="BEM是什么"><a href="#BEM是什么" class="headerlink" title="BEM是什么"></a>BEM是什么</h3><p>BEM即块(Block)、元素(Element)、修饰符(Modifier) 是由Yandex（俄罗斯最著名的互联网企业）的开发团队提出的前端开发理论。BEM通过Block、Element、Modifier来描述页面(关键就是为了解决多人协作的命名问题)。<br>Block是页面中独立存在的区块，可以在不同场合下使用。每个页面都可以看做是多个Block组成。<br>Element是构成Block的元素，只有在对应Block内部才具有意义，是依赖于Block的存在。<br>Modifier是描述Block或Element的属性或状态。同一Block或Element可以有多个Modifier，Modifier不可以单独存在。<br>在命名时，Block作为起始开头，不同 Block 和 Element 用 _ 两个底线区隔开来，不同的 Modifier 则用 – 区隔。<br><img src="/2022/08/15/CSS设计模式/1.jpg" alt="img"></p>
-<h3 id="进阶版的OOCSS"><a href="#进阶版的OOCSS" class="headerlink" title="进阶版的OOCSS"></a>进阶版的OOCSS</h3><p>BEM就是进阶版的OOCSS，我们看下图所示:<br><img src="/2022/08/15/CSS设计模式/2.jpg" alt="img"></p>
+<h2 id="设计模式-BEM"><a href="#设计模式-BEM" class="headerlink" title="设计模式:BEM"></a>设计模式:BEM</h2><h3 id="BEM是什么"><a href="#BEM是什么" class="headerlink" title="BEM是什么"></a>BEM是什么</h3><p>BEM即块(Block)、元素(Element)、修饰符(Modifier) 是由Yandex（俄罗斯最著名的互联网企业）的开发团队提出的前端开发理论。BEM通过Block、Element、Modifier来描述页面(关键就是为了解决多人协作的命名问题)。<br>Block是页面中独立存在的区块，可以在不同场合下使用。每个页面都可以看做是多个Block组成。<br>Element是构成Block的元素，只有在对应Block内部才具有意义，是依赖于Block的存在。<br>Modifier是描述Block或Element的属性或状态。同一Block或Element可以有多个Modifier，Modifier不可以单独存在。<br>在命名时，Block作为起始开头，不同 Block 和 Element 用 _ 两个底线区隔开来，不同的 Modifier 则用 – 区隔。<br><img src="/15/CSS设计模式/1.jpg" alt="img"></p>
+<h3 id="进阶版的OOCSS"><a href="#进阶版的OOCSS" class="headerlink" title="进阶版的OOCSS"></a>进阶版的OOCSS</h3><p>BEM就是进阶版的OOCSS，我们看下图所示:<br><img src="/15/CSS设计模式/2.jpg" alt="img"></p>
 <h3 id="场景-2"><a href="#场景-2" class="headerlink" title="场景"></a>场景</h3><p>页面两个tab栏，整体布局相似,只有细节部分不同<br>那么使用BEM写样式时，就会定义一个块menu，下面包含元素menu_tab，完成整体布局，细微部分使用修饰符menu_tab-style1进行微调。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- BEM --&gt;</span><br><span class="line">&lt;div class=&quot;menu menu-style1&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style1&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;menu&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;menu_tab menu_tab-style2&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>通过上面代码可以看出BEM就是OOCSS。<br>对BEM感兴趣的话，可以访问<a href="https://en.bem.info/methodology/css/" target="_blank" rel="noopener">BEM的官网</a></p>
 <h2 id="设计模式-SMACSS"><a href="#设计模式-SMACSS" class="headerlink" title="设计模式:SMACSS"></a>设计模式:SMACSS</h2><p>SMACSS is a way to examine your design process and as a way to fit those rigid frameworks into a flexible thought process. (SMACSS通过一个灵活的思维过程来检查你的设计过程和方式是否符合你的架构，更像一种规范~)</p>
@@ -255,7 +255,7 @@
 </tr>
 </tbody>
 </table>
-<p>下面就是ITCSS的架构模型:<br><img src="/2022/08/15/CSS设计模式/3.jpg" alt="img"><br>从这个模型可以看出来，越往下就越具体，越局限于使用在某个具体的东西。另外它的下一层永远继承上一层的所有样式。</p>
+<p>下面就是ITCSS的架构模型:<br><img src="/15/CSS设计模式/3.jpg" alt="img"><br>从这个模型可以看出来，越往下就越具体，越局限于使用在某个具体的东西。另外它的下一层永远继承上一层的所有样式。</p>
 <h3 id="各个分层例子"><a href="#各个分层例子" class="headerlink" title="各个分层例子"></a>各个分层例子</h3><h4 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h4><p>全局变量，比如颜色，字体大小等等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$yellow: #FAAF00;</span><br><span class="line">$yellow-bright: #FAF7F0;</span><br></pre></td></tr></table></figure></p>
 <h4 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h4><p>mixin，function 等等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@mixin sample-mixin () &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>到 Tools 为止，不会生成具体的 css</p>
@@ -346,9 +346,9 @@
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
-                
                     <a href="/tags/样式/"><i class="fa fa-tag"></i>&nbsp;&nbsp;样式</a>
+                
+                    <a href="/tags/基础知识/"><i class="fa fa-tag"></i>&nbsp;&nbsp;基础知识</a>
                 
             </div>
         
