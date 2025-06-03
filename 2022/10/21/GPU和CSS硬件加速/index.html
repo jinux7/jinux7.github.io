@@ -20,17 +20,17 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="彻底搞懂GPU和CSS硬件加速">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/1.webp">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/2.webp">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/3.webp">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/4.webp">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/5.webp">
-<meta property="og:image" content="/21/GPU和CSS硬件加速/6.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/1.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/2.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/3.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/4.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/5.webp">
+<meta property="og:image" content="/2022/10/21/GPU和CSS硬件加速/6.webp">
 <meta property="og:updated_time" content="2024-01-11T07:00:59.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GPU和CSS硬件加速">
 <meta name="twitter:description" content="彻底搞懂GPU和CSS硬件加速">
-<meta name="twitter:image" content="/21/GPU和CSS硬件加速/1.webp">
+<meta name="twitter:image" content="/2022/10/21/GPU和CSS硬件加速/1.webp">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -191,18 +191,18 @@
             <p>彻底搞懂GPU和CSS硬件加速<br><a id="more"></a></p>
 <h2 id="从-cpu-聊起"><a href="#从-cpu-聊起" class="headerlink" title="从 cpu 聊起"></a>从 cpu 聊起</h2><p>cpu (central process) 是计算机的大脑，它提供了一套指令集，我们写的程序最终会通过 cpu 指令来控制的计算机的运行。</p>
 <p>cpu 会对指令进行译码，然后通过逻辑电路执行该指令。整个执行的流程分为了多个阶段，叫做流水线。指令流水线包括取指令、译码、执行、取数、写回五步，这是一个指令周期。cpu 会不断的执行指令周期来完成各种任务。</p>
-<p>指令和数据都会首先加载到内存中，在程序运行时依次取到 cpu 里。cpu 访问内存虽然比较快，但比起 cpu 执行速度来说还是比较慢的，为了缓解这种速度矛盾，cpu 设计了 3 级缓存，也就是 L1、L2、L3 的缓存。<br><img src="/21/GPU和CSS硬件加速/1.webp" alt="img"><br>如图，多核 cpu 各核心都有自有独立的 L1、L2 缓存，然后共享 L3 缓存，这 3 级缓存容量是逐渐递增的，但是速度是逐渐下降的，但是也会比访问内存快一些。</p>
+<p>指令和数据都会首先加载到内存中，在程序运行时依次取到 cpu 里。cpu 访问内存虽然比较快，但比起 cpu 执行速度来说还是比较慢的，为了缓解这种速度矛盾，cpu 设计了 3 级缓存，也就是 L1、L2、L3 的缓存。<br><img src="/2022/10/21/GPU和CSS硬件加速/1.webp" alt="img"><br>如图，多核 cpu 各核心都有自有独立的 L1、L2 缓存，然后共享 L3 缓存，这 3 级缓存容量是逐渐递增的，但是速度是逐渐下降的，但是也会比访问内存快一些。</p>
 <p>有了这 3 级缓存以后，cpu 执行速度和访问内存速度的矛盾就可以得到缓解，不需要一直访问内存，cpu 每次会加载一个缓存行，也就是 64 字节大小的数据到缓存中。这样访问临近的数据的时候就可以直接访问缓存。</p>
 <p>从内存中把数据和指令加载到 cpu 的缓存中，然后通过控制器控制指令的译码、执行，通过运算器进行运算，之后把结果写回内存。这就是 cpu 的工作流程。</p>
 <p>cpu 每个核只有一个线程，也就是单控制流、单数据流。这样的架构导致 cpu 在一些场景下效率是不高的，比如 3d 渲染的场景。</p>
-<h2 id="3d-渲染流程"><a href="#3d-渲染流程" class="headerlink" title="3d 渲染流程"></a>3d 渲染流程</h2><p>3d 的渲染首先是建立 3d 的模型，它由一系列三维空间中的顶点构成，3 个顶点构成一个三角形，然后所有的顶点构成的三角形拼接起来就是 3d 模型。<br><img src="/21/GPU和CSS硬件加速/2.webp" alt="img"><br>顶点、三角形，这是 3d 的基础。3d 引擎首先要计算顶点数据，确定 3d 图形的形状。之后还要对每个面进行贴图，可以在每个三角形画上不同的纹理。</p>
-<p>3d 图形要显示在二维的屏幕上就要做投影，这个投影的过程叫做光栅化。（光栅是一种光学仪器，在这里就代表 3d 投影到 2d 屏幕的过程）<br><img src="/21/GPU和CSS硬件加速/3.webp" alt="img"><br>光栅化要计算 3d 图形投影到屏幕的每一个像素的颜色，计算完所有的像素之后会写到显存的帧缓冲区，完成了一帧的渲染，之后会继续这样计算下一帧。</p>
+<h2 id="3d-渲染流程"><a href="#3d-渲染流程" class="headerlink" title="3d 渲染流程"></a>3d 渲染流程</h2><p>3d 的渲染首先是建立 3d 的模型，它由一系列三维空间中的顶点构成，3 个顶点构成一个三角形，然后所有的顶点构成的三角形拼接起来就是 3d 模型。<br><img src="/2022/10/21/GPU和CSS硬件加速/2.webp" alt="img"><br>顶点、三角形，这是 3d 的基础。3d 引擎首先要计算顶点数据，确定 3d 图形的形状。之后还要对每个面进行贴图，可以在每个三角形画上不同的纹理。</p>
+<p>3d 图形要显示在二维的屏幕上就要做投影，这个投影的过程叫做光栅化。（光栅是一种光学仪器，在这里就代表 3d 投影到 2d 屏幕的过程）<br><img src="/2022/10/21/GPU和CSS硬件加速/3.webp" alt="img"><br>光栅化要计算 3d 图形投影到屏幕的每一个像素的颜色，计算完所有的像素之后会写到显存的帧缓冲区，完成了一帧的渲染，之后会继续这样计算下一帧。</p>
 <p>也就是说，3d 渲染的流程是：</p>
 <blockquote>
 <p>计算顶点数据，构成 3d 的图形<br>给每个三角形贴图，画上纹理<br>投影到二维的屏幕，计算每个像素的颜色（光栅化）<br>把一帧的数据写入显存的帧缓冲区</p>
 </blockquote>
 <p>顶点的数量是非常庞大的，而 cpu 只能顺序的一个个计算，所以处理这种 3d 渲染会特别费劲，于是就出现了专门用于这种 3d 数据的并行计算的硬件，也就是 GPU。</p>
-<h2 id="GPU-的构成"><a href="#GPU-的构成" class="headerlink" title="GPU 的构成"></a>GPU 的构成</h2><p>和 cpu 的一个一个数据计算不同，gpu 是并行的，有成百上千个核心用于并行计算。<br><img src="/21/GPU和CSS硬件加速/4.webp" alt="img"><br>gpu 也是有着指令、译码、执行的流程，只不过，每个指令会并行执行 n 个计算，是单控制流多数据流的，而 cpu 是单控制流单数据流。</p>
+<h2 id="GPU-的构成"><a href="#GPU-的构成" class="headerlink" title="GPU 的构成"></a>GPU 的构成</h2><p>和 cpu 的一个一个数据计算不同，gpu 是并行的，有成百上千个核心用于并行计算。<br><img src="/2022/10/21/GPU和CSS硬件加速/4.webp" alt="img"><br>gpu 也是有着指令、译码、执行的流程，只不过，每个指令会并行执行 n 个计算，是单控制流多数据流的，而 cpu 是单控制流单数据流。</p>
 <p>所以，对于 3d 渲染这种要计算成万个顶点数据和像素点的场景，GPU 会比 CPU 高效很多。</p>
 <p>但是，gpu 全是优点么？也不是。</p>
 <h2 id="cpu-和-gpu-的区别"><a href="#cpu-和-gpu-的区别" class="headerlink" title="cpu 和 gpu 的区别"></a>cpu 和 gpu 的区别</h2><p>cpu 是通用的，能够执行各种逻辑和运算，而 gpu 则是主要是用于并行计算大批量的重复任务，不能处理复杂逻辑。</p>
@@ -223,7 +223,7 @@
 <p>当然，有的时候我们想强制触发硬件渲染，就可以通过上面的属性，比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">will-change: transform;</span><br></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform:translate3d(0, 0, 0);</span><br></pre></td></tr></table></figure></p>
 <p>chrome devtools 可以看到是 cpu 渲染还是 gpu 渲染，打开 rendering 面板，勾选 layer borders，会发现蓝色和黄色的框。蓝色的是 cpu 渲染的，而黄色的是 gpu 渲染的。</p>
-<p>比如这段文字，现在没有单独一个图层：<br><img src="/21/GPU和CSS硬件加速/5.webp" alt="img"><br>添加一个 will-change: transform 的属性，浏览器会新建图层来渲染该元素，然后使用 gpu 渲染：<br><img src="/21/GPU和CSS硬件加速/6.webp" alt="img"><br>gpu 硬件加速能减轻 cpu 压力，使得渲染更流畅，但是也会增加内存的占用，对于 transform、opacity、filter 默认会开启硬件加速。其余情况，建议只在必要的时候用。</p>
+<p>比如这段文字，现在没有单独一个图层：<br><img src="/2022/10/21/GPU和CSS硬件加速/5.webp" alt="img"><br>添加一个 will-change: transform 的属性，浏览器会新建图层来渲染该元素，然后使用 gpu 渲染：<br><img src="/2022/10/21/GPU和CSS硬件加速/6.webp" alt="img"><br>gpu 硬件加速能减轻 cpu 压力，使得渲染更流畅，但是也会增加内存的占用，对于 transform、opacity、filter 默认会开启硬件加速。其余情况，建议只在必要的时候用。</p>
 <h2 id="opencl-和神经网络"><a href="#opencl-和神经网络" class="headerlink" title="opencl 和神经网络"></a>opencl 和神经网络</h2><p>重复且大量的计算任务只有 3d 渲染一种场景么？</p>
 <p>不是的，AI 领域的机器学习也很典型，它的特点是大量的神经元需要计算，但是每个计算都比较简单，也很适合用 gpu 来跑。</p>
 <p>现在的 gpu 不只是能跑图形渲染，也提供了一些编程能力，这部分 api 有 opencl 标准。可以通过 gpu 的并行计算能力来跑一些有大量计算但是没有很多逻辑的的任务，会比 cpu 效率更高。</p>
@@ -308,7 +308,7 @@
     
         <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>182</div></a></li>
     
-        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>21</div></a></li>
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>22</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
     
@@ -326,7 +326,7 @@
 <div class="m_widget tagcloud">
     <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
     <div class='content'>
-        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 14.83px; color: #939393">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
     </div>
 </div>
 
