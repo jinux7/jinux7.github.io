@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Tensorflow.js入门 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Tensorflow.js简单入门教程">
+<meta name="keywords" content="AI,Tensorflow.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow.js入门">
+<meta property="og:url" content="/2025/06/04/Tensorflow-js入门/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="Tensorflow.js简单入门教程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2025/06/04/Tensorflow-js入门/1.png">
+<meta property="og:image" content="/2025/06/04/Tensorflow-js入门/2.png">
+<meta property="og:image" content="/2025/06/04/Tensorflow-js入门/3.png">
+<meta property="og:updated_time" content="2025-06-04T06:50:06.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow.js入门">
+<meta name="twitter:description" content="Tensorflow.js简单入门教程">
+<meta name="twitter:image" content="/2025/06/04/Tensorflow-js入门/1.png">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-Tensorflow-js入门" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                Tensorflow.js入门
+            
+        </h1>
+        <time>
+            2025-06-04 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习基础"><span class="toc-number">1.</span> <span class="toc-text">机器学习基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是机器学习？"><span class="toc-number">1.1.</span> <span class="toc-text">什么是机器学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习如何运作？"><span class="toc-number">1.2.</span> <span class="toc-text">机器学习如何运作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是神经网络？"><span class="toc-number">1.3.</span> <span class="toc-text">什么是神经网络？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#神经网络的训练"><span class="toc-number">1.4.</span> <span class="toc-text">神经网络的训练</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概括"><span class="toc-number">1.4.1.</span> <span class="toc-text">概括</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#细节"><span class="toc-number">1.4.2.</span> <span class="toc-text">细节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算损失"><span class="toc-number">1.4.3.</span> <span class="toc-text">计算损失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优化"><span class="toc-number">1.4.4.</span> <span class="toc-text">优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-js基础"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow.js基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tensorflow-js是什么？"><span class="toc-number">2.1.</span> <span class="toc-text">Tensorflow.js是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体功能"><span class="toc-number">2.2.</span> <span class="toc-text">具体功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在浏览器中安装"><span class="toc-number">2.3.1.</span> <span class="toc-text">在浏览器中安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Node-js中安装"><span class="toc-number">2.3.2.</span> <span class="toc-text">在Node.js中安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#张量-Tensor"><span class="toc-number">2.4.</span> <span class="toc-text">张量(Tensor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量-variables"><span class="toc-number">2.5.</span> <span class="toc-text">变量(variables)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作-operations"><span class="toc-number">2.6.</span> <span class="toc-text">操作(operations)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#operations-提供了类似-square-等一元运算"><span class="toc-number">2.6.1.</span> <span class="toc-text">operations 提供了类似 square 等一元运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#operations-提供了类似-add、sub-等二元运算"><span class="toc-number">2.6.2.</span> <span class="toc-text">operations 提供了类似 add、sub 等二元运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#支持链式操作"><span class="toc-number">2.6.3.</span> <span class="toc-text">支持链式操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型-model"><span class="toc-number">2.7.</span> <span class="toc-text">模型(model)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用Layers-API创建模型"><span class="toc-number">2.7.1.</span> <span class="toc-text">用Layers API创建模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用sequential-model"><span class="toc-number">2.7.1.1.</span> <span class="toc-text">使用sequential model</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用functional-model"><span class="toc-number">2.7.1.2.</span> <span class="toc-text">使用functional model</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#验证"><span class="toc-number">2.7.2.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型总览"><span class="toc-number">2.7.3.</span> <span class="toc-text">模型总览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#序列化"><span class="toc-number">2.7.4.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义层"><span class="toc-number">2.7.5.</span> <span class="toc-text">自定义层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用Core-API创建模型"><span class="toc-number">2.7.6.</span> <span class="toc-text">用Core API创建模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存管理-dispose-amp-tidy"><span class="toc-number">2.8.</span> <span class="toc-text">内存管理(dispose&amp;tidy)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dispose"><span class="toc-number">2.8.1.</span> <span class="toc-text">dispose</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-tidy"><span class="toc-number">2.8.2.</span> <span class="toc-text">tf.tidy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两个重要的注意事项"><span class="toc-number">2.8.3.</span> <span class="toc-text">两个重要的注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-js实战例子"><span class="toc-number">3.</span> <span class="toc-text">Tensorflow.js实战例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Define"><span class="toc-number">3.1.</span> <span class="toc-text">Define</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compile"><span class="toc-number">3.2.</span> <span class="toc-text">Compile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fit"><span class="toc-number">3.3.</span> <span class="toc-text">Fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Evaluate"><span class="toc-number">3.4.</span> <span class="toc-text">Evaluate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Predict"><span class="toc-number">3.5.</span> <span class="toc-text">Predict</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>Tensorflow.js简单入门教程<br><a id="more"></a></p>
+<h2 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h2><h3 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h3><ul>
+<li>机器学习是对能通过经验自动改进的计算机算法的研究。</li>
+<li>机器学习是用数据或以往的经验，以此优化计算机程序的性能标准。</li>
+</ul>
+<h3 id="机器学习如何运作？"><a href="#机器学习如何运作？" class="headerlink" title="机器学习如何运作？"></a>机器学习如何运作？</h3><ul>
+<li>神经网络。</li>
+<li>决策树，支持向量机，贝叶斯分类器，强化学习等。</li>
+</ul>
+<h3 id="什么是神经网络？"><a href="#什么是神经网络？" class="headerlink" title="什么是神经网络？"></a>什么是神经网络？</h3><ul>
+<li>神经网络指的是人工神经网络</li>
+<li>人工神经网络是一种运算模型（就是输入输出的映射），由大量的节点（或称神经元）之间相互联接构成。</li>
+</ul>
+<h3 id="神经网络的训练"><a href="#神经网络的训练" class="headerlink" title="神经网络的训练"></a>神经网络的训练</h3><h4 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h4><ul>
+<li>给大量输入和输出，算出神经网络里所有神经元的权重，偏置，然后给定新的输入，可以算出新的输出。</li>
+<li>在机器学习里输入输出被称为特征和标签，大量输入输出被称为训练集。</li>
+</ul>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>初始化：随机生成一些权重和偏置。</li>
+<li>计算损失：给定特征，计算出标签，得到它与真实标签差得多远。</li>
+<li>优化：微调权重和偏置，使损失变小。</li>
+</ul>
+<h4 id="计算损失"><a href="#计算损失" class="headerlink" title="计算损失"></a>计算损失</h4><ul>
+<li>使用损失函数</li>
+<li>损失函数有均方误差，对数损失，交叉熵等。</li>
+</ul>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><ul>
+<li>使用优化器</li>
+<li>优化器有随机梯度下降（SGD），Adam等。</li>
+</ul>
+<h2 id="Tensorflow-js基础"><a href="#Tensorflow-js基础" class="headerlink" title="Tensorflow.js基础"></a>Tensorflow.js基础</h2><h3 id="Tensorflow-js是什么？"><a href="#Tensorflow-js是什么？" class="headerlink" title="Tensorflow.js是什么？"></a>Tensorflow.js是什么？</h3><ul>
+<li>一个用javascript实现的机器学习库。</li>
+<li>可以直接在浏览器和Node.js中使用机器学习技术。</li>
+</ul>
+<h3 id="具体功能"><a href="#具体功能" class="headerlink" title="具体功能"></a>具体功能</h3><ul>
+<li>运行现有模型。</li>
+<li>重新训练现有模型。</li>
+<li>使用javascript从0开发机器学习模型。</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="在浏览器中安装"><a href="#在浏览器中安装" class="headerlink" title="在浏览器中安装"></a>在浏览器中安装</h4><p>使用script标签引入TensorFlow.js。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;!-- Load TensorFlow.js --&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.0.0/dist/tf.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Place your code in the script tag below. You can also use an external .js file --&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      // Notice there is no &apos;import&apos; statement. &apos;tf&apos; is available on the index-page</span><br><span class="line">      // because of the script tag above.</span><br><span class="line"></span><br><span class="line">      // Define a model for linear regression.</span><br><span class="line">      const model = tf.sequential();</span><br><span class="line">      model.add(tf.layers.dense(&#123;units: 1, inputShape: [1]&#125;));</span><br><span class="line"></span><br><span class="line">      // Prepare the model for training: Specify the loss and the optimizer.</span><br><span class="line">      model.compile(&#123;loss: &apos;meanSquaredError&apos;, optimizer: &apos;sgd&apos;&#125;);</span><br><span class="line"></span><br><span class="line">      // Generate some synthetic data for training.</span><br><span class="line">      const xs = tf.tensor2d([1, 2, 3, 4], [4, 1]);</span><br><span class="line">      const ys = tf.tensor2d([1, 3, 5, 7], [4, 1]);</span><br><span class="line"></span><br><span class="line">      // Train the model using the data.</span><br><span class="line">      model.fit(xs, ys).then(() =&gt; &#123;</span><br><span class="line">        // Use the model to do inference on a data point the model hasn&apos;t seen before:</span><br><span class="line">        // Open the browser devtools to see the output</span><br><span class="line">        model.predict(tf.tensor2d([5], [1, 1])).print();</span><br><span class="line">      &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用NPM包安装，并使用Parcel，Webpack，vite等构建工具。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @tensorflow/tfjs</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import * as tf from &apos;@tensorflow/tfjs&apos;;</span><br><span class="line"></span><br><span class="line">//定义一个线性回归模型。</span><br><span class="line">const model = tf.sequential();</span><br><span class="line">model.add(tf.layers.dense(&#123;units: 1, inputShape: [1]&#125;));</span><br><span class="line"></span><br><span class="line">model.compile(&#123;loss: &apos;meanSquaredError&apos;, optimizer: &apos;sgd&apos;&#125;);</span><br><span class="line"></span><br><span class="line">// 为训练生成一些合成数据</span><br><span class="line">const xs = tf.tensor2d([1, 2, 3, 4], [4, 1]);</span><br><span class="line">const ys = tf.tensor2d([1, 3, 5, 7], [4, 1]);</span><br><span class="line"></span><br><span class="line">// 使用数据训练模型</span><br><span class="line">model.fit(xs, ys, &#123;epochs: 10&#125;).then(() =&gt; &#123;</span><br><span class="line">  // 在该模型从未看到过的数据点上使用模型进行推理</span><br><span class="line">  model.predict(tf.tensor2d([5], [1, 1])).print();</span><br><span class="line">  //  打开浏览器开发工具查看输出</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="在Node-js中安装"><a href="#在Node-js中安装" class="headerlink" title="在Node.js中安装"></a>在Node.js中安装</h4><p>安装带有原生C++绑定的TensorFlow.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install @tensorflow/tfjs-node</span><br><span class="line">或</span><br><span class="line">npm install @tensorflow/tfjs-node-gpu</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>安装纯javascript版本，这个性能比较慢。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @tensorflow/tfjs</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="张量-Tensor"><a href="#张量-Tensor" class="headerlink" title="张量(Tensor)"></a>张量(Tensor)</h3><p>TensorFlow.js中数据的中心单位是张量：一组数值形成一个或多个维度的数组。 张量实例具有定义数组形状的形状属性。<br>Tensorflow.js中数据的主要表现形式就是tensor（张量）：由 一组数值形成一维或多维数组。一个Tensor实例有一个shape属性来定义这一组数值如何组成张量,而最主要的Tensor实例的构造函数就是 tf.tensor 函数，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 2x3 Tensor</span><br><span class="line">const shape = [2, 3]; // 2 行, 3 列</span><br><span class="line">const a = tf.tensor([1.0, 2.0, 3.0, 10.0, 20.0, 30.0], shape);</span><br><span class="line">a.print(); // 打印张量值</span><br><span class="line">// 输出:    [[1 , 2 , 3 ],</span><br><span class="line">//          [10, 20, 30]]</span><br><span class="line"></span><br><span class="line">// shape也可以用下面的方式实现:</span><br><span class="line">const b = tf.tensor([[1.0, 2.0, 3.0], [10.0, 20.0, 30.0]]);</span><br><span class="line">b.print();</span><br><span class="line">// 输出:    [[1 , 2 , 3 ],</span><br><span class="line">//          [10, 20, 30]]</span><br></pre></td></tr></table></figure></p>
+<p>但是，为了构造低秩张量，我们推荐使用下面的函数来增强代码的可读性：tf.scalar（零维）, tf.tensor1d（一维）, tf.tensor2d（二维）, tf.tensor3d（三维）、tf.tensor4d（四维）以及 tf.ones（值全是1）或者tf.zeros（值全是0） ，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const a = tf.scalar(3.14);</span><br><span class="line">a.print(); // 输出零维张量</span><br><span class="line"></span><br><span class="line">const b = tf.tensor2d([[2, 3, 4], [5, 6, 7]]);</span><br><span class="line">b.print(); // 输出二维张量</span><br><span class="line"></span><br><span class="line">const c = tf.zeros([2, 3]);</span><br><span class="line">c.print(); // 输出2行3列的值全是0的张量</span><br><span class="line"></span><br><span class="line">const d = tf.ones([3, 5]);</span><br><span class="line">d.print(); // 输出3行5列的值全是1的张量</span><br></pre></td></tr></table></figure></p>
+<p>在TensorFlow.js中，张量是不变的; 一旦创建你就不能改变它们的值。 但是，您可以对它们执行操作来生成新的张量。</p>
+<h3 id="变量-variables"><a href="#变量-variables" class="headerlink" title="变量(variables)"></a>变量(variables)</h3><p>Variables变量是通过张量进行初始化得到的。不像Tensor的值不可变，变量的值是可变的。你可以使用变量的assign方法分配一个新的tensor到这个变量上，这是变量就会改变：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const initialValues = tf.zeros([5]);</span><br><span class="line">const biases = tf.variable(initialValues); // 初始化biases</span><br><span class="line">biases.print(); // 输出: [0, 0, 0, 0, 0]</span><br><span class="line"></span><br><span class="line">const updatedValues = tf.tensor1d([0, 1, 0, 1, 0]);</span><br><span class="line">biases.assign(updatedValues); // 更新 biases的值</span><br><span class="line">biases.print(); // 输出: [0, 1, 0, 1, 0]</span><br></pre></td></tr></table></figure></p>
+<p>如上所示，首先使用tf.zeros得到一个张量，然后利用这个张量初始化得到一个变量，接着我们就可以打印这个变量，并且通Object.prototype.toString.call(biases)方法可以判断变量也是一个对象，接着，我们再生成一个张量，然后变量调用assign方法传入这个张量，就可以得到一个新的变量了，如下：<br><img src="/2025/06/04/Tensorflow-js入门/1.png" alt="img"><br>由此我们可以得出一个结论：变量由张量生成，且张量不可变而变量可变。<br>以上就是Tensorflow.js 张量和变量的相关介绍，希望对大家有所帮助。</p>
+<h3 id="操作-operations"><a href="#操作-operations" class="headerlink" title="操作(operations)"></a>操作(operations)</h3><p>ensors 可以用保存数据，而 operations 可以操作数据。TensorFlow.js 提供了多种适用于张量的线性代数和机器学习的运算的 operations。由于张量是不可改变的，所以 operations 操作并不会改变 tensors 的值，而是返回新的张量。</p>
+<h4 id="operations-提供了类似-square-等一元运算"><a href="#operations-提供了类似-square-等一元运算" class="headerlink" title="operations 提供了类似 square 等一元运算"></a>operations 提供了类似 square 等一元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const x = tf.tensor1d([1, 2, Math.sqrt(2), -1]);</span><br><span class="line">x.square().print();  // or tf.square(x)</span><br><span class="line">// [1, 4, 1.9999999, 1]</span><br><span class="line"></span><br><span class="line">const x = tf.tensor1d([1, 2, 4, -1]);</span><br><span class="line">x.sqrt().print();  // or tf.sqrt(x)</span><br><span class="line">// [1, 1.4142135, 2, NaN]</span><br></pre></td></tr></table></figure>
+<h4 id="operations-提供了类似-add、sub-等二元运算"><a href="#operations-提供了类似-add、sub-等二元运算" class="headerlink" title="operations 提供了类似 add、sub 等二元运算"></a>operations 提供了类似 add、sub 等二元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = tf.tensor1d([1, 2, 3, 4]);</span><br><span class="line">const b = tf.tensor1d([10, 20, 30, 40]);</span><br><span class="line"></span><br><span class="line">a.add(b).print();  // or tf.add(a, b)</span><br><span class="line">// [11, 22, 33, 44]</span><br></pre></td></tr></table></figure>
+<h4 id="支持链式操作"><a href="#支持链式操作" class="headerlink" title="支持链式操作"></a>支持链式操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const e = tf.tensor2d([[1.0, 2.0], [3.0, 4.0]]);</span><br><span class="line">const f = tf.tensor2d([[5.0, 6.0], [7.0, 8.0]])</span><br><span class="line">const sq_sum = e.add(f).square();</span><br><span class="line">sq_sum.print();</span><br><span class="line">// Output: [[36 , 64 ],</span><br><span class="line">//          [100, 144]]</span><br><span class="line"></span><br><span class="line">// 所有的操作都暴露在函数的命名空间中，也可以进行下面操作，得到相同的结果</span><br><span class="line">const sq_sum = tf.square(tf.add(e, f));</span><br></pre></td></tr></table></figure>
+<h3 id="模型-model"><a href="#模型-model" class="headerlink" title="模型(model)"></a>模型(model)</h3><p>机器学习中，一个 model 是一个带有可训练参数的函数。这个函数将输入转化为输出。通俗的来说，这个函数表达了输入和输出之间的变换关系。我们通过在数据集上训练模型来获得最佳参数。训练好的模型可以精确的将输入数据转换为我们想得到的输出。<br>TensorFlow.js 有两种创建机器学习的方法：<br>用 Layers API（用 layers 来创建模型）<br>用 Core API（底端算子，例如 tf.matMul() 或 tf.add() 等）来建立模型<br>我们首先会用高层API：Layers API来建立模型。然后，我们会展示如何用Core API来搭建相同的模型。</p>
+<h4 id="用Layers-API创建模型"><a href="#用Layers-API创建模型" class="headerlink" title="用Layers API创建模型"></a>用Layers API创建模型</h4><p>Layers API有两种方式创建模型：第一种是创建 sequential 模型，第二种是创建 functional 模型。下面两段会分别解释这两种模型创建方式。</p>
+<h5 id="使用sequential-model"><a href="#使用sequential-model" class="headerlink" title="使用sequential model"></a>使用sequential model</h5><p>最常见的模型是 Sequential 模型。Sequential 模型将网络的每一层简单的叠在一起。您可以将需要的层按顺序写在一个列表里，然后将列表作为 sequential() 函数的输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const model = tf.sequential(&#123;</span><br><span class="line"> layers: [</span><br><span class="line">   tf.layers.dense(&#123;inputShape: [784], units: 32, activation: &apos;relu&apos;&#125;),</span><br><span class="line">   tf.layers.dense(&#123;units: 10, activation: &apos;softmax&apos;&#125;),</span><br><span class="line"> ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>或用 add() 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const model = tf.sequential();</span><br><span class="line">model.add(tf.layers.dense(&#123;inputShape: [784], units: 32, activation: &apos;relu&apos;&#125;));</span><br><span class="line">model.add(tf.layers.dense(&#123;units: 10, activation: &apos;softmax&apos;&#125;));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：模型的第一层需要“输入形状”参数（inputShape）。不要在“输入型状”中包含 batch size（批次大小）。假设您要向模型输入一个形状为[B, 784]的张量（B 是任意batch size），您只需要将“输入型状”设为[784]。</p>
+</blockquote>
+<p>您可以通过model.layers来使用模型中的每一层。例如，您可以用 model.inputLayers 和 model.outputLayers 来调用输入层和输出层。</p>
+<h5 id="使用functional-model"><a href="#使用functional-model" class="headerlink" title="使用functional model"></a>使用functional model</h5><p>我们也可以通过 tf.model() 来创建 LayersModel。tf.model() 和 tf.sequential() 的主要区别为，您可以用 tf.model() 来创建任何非闭环的计算图。<br>以下是一段如何用 tf.model() API 建立和上文相同模型的列子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 用apply()方法创建任意计算图</span><br><span class="line">const input = tf.input(&#123;shape: [784]&#125;);</span><br><span class="line">const dense1 = tf.layers.dense(&#123;units: 32, activation: &apos;relu&apos;&#125;).apply(input);</span><br><span class="line">const dense2 = tf.layers.dense(&#123;units: 10, activation: &apos;softmax&apos;&#125;).apply(dense1);</span><br><span class="line">const model = tf.model(&#123;inputs: input, outputs: dense2&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>我们在每一层用 apply() 将上一层的输出作为本层的输入。apply() 返回一个 SymbolicTensor（类似于张量，但不包含任何数值）<br>不同于 sequential model 使用 inputShape 来定义第一层的输入，我们用 tf.input() 创建的 SymbolicTensor 作为第一层的输入<br>如果您向 apply() 输入一个数值张量，它会进行计算并返还一个数值张量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const t = tf.tensor([-2, 1, 0, 5]);</span><br><span class="line">const o = tf.layers.activation(&#123;activation: &apos;relu&apos;&#125;).apply(t);</span><br><span class="line">o.print(); // [0, 1, 0, 5]</span><br></pre></td></tr></table></figure></p>
+<p>这个方式适用于单独测试每一层并检查它们的输出。<br>和 sequential model 一样，您可以通过 model.layers 来使用模型中的每一层。例如，您可以用 model.inputLayers 和 model.outputLayers 来调用输入层和输出层。</p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>Sequential model和functional model都属于 LayersModel类。使用 LayersModels 让验证更方便：它要求您定义输入形状，并用您定义的形状来验证您对模型的输入。LayersModel 会自动计算模型中所有张量的形状。知道张量的形状后，模型就可以自动创建它所需要的参数。您也可以用形状信息来判断两层相邻的层是否相互兼容。</p>
+<h4 id="模型总览"><a href="#模型总览" class="headerlink" title="模型总览"></a>模型总览</h4><p>使用 model.summary() 可以显示很多模型的重要信息，包括：</p>
+<ul>
+<li>每一层的名字和类型</li>
+<li>每一层的输出形状</li>
+<li>每一层的权重数量</li>
+<li>每一层的输入</li>
+<li>一个模型拥有的可训练参数总量，和不可训练参数总量</li>
+</ul>
+<p>用前面定义的模型来做例子，我们可以在命令行中得到以下信息：</p>
+<table>
+<thead>
+<tr>
+<th>Layer(type)</th>
+<th>Output shape</th>
+<th>Param #</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dense_Dense1 (Dense)</td>
+<td>[null,32]</td>
+<td>25120</td>
+</tr>
+<tr>
+<td>dense_Dense2 (Dense)</td>
+<td>[null,10]</td>
+<td>330</td>
+</tr>
+<tr>
+<td>Total params: 25450 Trainable params: 25450 Non-trainable params: 0</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>注意：每一层的输出形状中都含有 null 值。模型的输入形状包含了批次大小，而批次大小是可以灵活更变的，所以批次的值在张量形状中以 null 显示。</p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>相对于底端API而言，使用 LayersModel的另一个好处是方便存储、加载模型。LayersModel 包含如下信息：</p>
+<ul>
+<li>可用于重建模型的模型架构信息</li>
+<li>模型的权重</li>
+<li>训练配置（例如损失函数，优化器和评估方式）</li>
+<li>优化器的状态（可用于继续训练模型）</li>
+</ul>
+<p>存储和加载模型只需要一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const saveResult = await model.save(&apos;localstorage://my-model-1&apos;);</span><br><span class="line">const model = await tf.loadLayersModel(&apos;localstorage://my-model-1&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>在这个例子中，模型被存储在浏览器的本地存储里。请访问 model.save() 和 save and load 了解如何把模型保存在不同的媒介中（例如 file storage, IndexedDB, 触发下载到浏览器等等）。</p>
+<h4 id="自定义层"><a href="#自定义层" class="headerlink" title="自定义层"></a>自定义层</h4><p>层是创建模型的基础。如果您的模型需要定制化计算模块，您可以写一个自定义层并插入模型中。下面的例子是一个计算平方和的自定义层：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class SquaredSumLayer extends tf.layers.Layer &#123;</span><br><span class="line"> constructor() &#123;</span><br><span class="line">   super(&#123;&#125;);</span><br><span class="line"> &#125;</span><br><span class="line"> // In this case, the output is a scalar.</span><br><span class="line"> computeOutputShape(inputShape) &#123; return []; &#125;</span><br><span class="line"></span><br><span class="line"> // call() is where we do the computation.</span><br><span class="line"> call(input, kwargs) &#123; return input.square().sum();&#125;</span><br><span class="line"></span><br><span class="line"> // Every layer needs a unique name.</span><br><span class="line"> getClassName() &#123; return &apos;SquaredSum&apos;; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以用 apply() 方法在一个张量上测试这个自定义层<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const t = tf.tensor([-2, 1, 0, 5]);</span><br><span class="line">const o = new SquaredSumLayer().apply(t);</span><br><span class="line">o.print(); // prints 30</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：如果您在模型中包含了自定义层，模型将不能序列化</p>
+</blockquote>
+<h4 id="用Core-API创建模型"><a href="#用Core-API创建模型" class="headerlink" title="用Core API创建模型"></a>用Core API创建模型</h4><p>本文开头提到了两种在 TensorFlow.js 中建立模型的方法。最常用的方式是使用 Layers API，因为它的模式是基于广泛应用的 Keras API（详情见 best practices and reduces cognitive load）。Layers API 提供了大量方便的工具，例如权重初始化，模型序列化，训练监测，可迁移性和安全检查。<br>当您遇到如下情况时，可能会需要使用 Core API：</p>
+<ul>
+<li>您需要更多灵活性和控制</li>
+<li>您不需要序列化或可以创造自己的序列化方法</li>
+</ul>
+<p>用 Core API 写的模型包含了一系列的函数。这些函数以一个或多个张量作为输入，并输出另一个张量。我们可以用 Core API 来重写之前定义的模型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// The weights and biases for the two dense layers.</span><br><span class="line">const w1 = tf.variable(tf.randomNormal([784, 32]));</span><br><span class="line">const b1 = tf.variable(tf.randomNormal([32]));</span><br><span class="line">const w2 = tf.variable(tf.randomNormal([32, 10]));</span><br><span class="line">const b2 = tf.variable(tf.randomNormal([10]));</span><br><span class="line"></span><br><span class="line">function model(x) &#123;</span><br><span class="line">  return x.matMul(w1).add(b1).relu().matMul(w2).add(b2).softmax();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 Core API 中，我们需要自己创建和初始化权重。每个权重都是一个 Variable，TensorFlow.js 会把 Variable 权重设为可训练张量。您可以用 tf.variable() 创建 Variable 或把一个已存在的张量放到 Variable 中。</p>
+<h3 id="内存管理-dispose-amp-tidy"><a href="#内存管理-dispose-amp-tidy" class="headerlink" title="内存管理(dispose&amp;tidy)"></a>内存管理(dispose&amp;tidy)</h3><p>因为TensorFlow.js使用了GPU来加速数学运算，因此当tensorflow处理张量和变量时就有必要来管理GPU内存。在TensorFlow.js中，我们可以通过dispose 和 tf.tidy这两种方法来管理内存。</p>
+<h4 id="dispose"><a href="#dispose" class="headerlink" title="dispose"></a>dispose</h4><p>您可以在张量或变量上调用dispose来清除它并释放其GPU内存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const x = tf.tensor2d([[0.0, 2.0], [4.0, 6.0]]);</span><br><span class="line">const x_squared = x.square();</span><br><span class="line"></span><br><span class="line">x.dispose();</span><br><span class="line">x_squared.dispose();</span><br></pre></td></tr></table></figure></p>
+<h4 id="tf-tidy"><a href="#tf-tidy" class="headerlink" title="tf.tidy"></a>tf.tidy</h4><p>进行大量的张量操作时使用dispose可能会很麻烦。 TensorFlow.js提供了另一个函数tf.tidy，它对JavaScript中的常规范围起到类似的作用，不同的是它针对GPU支持的张量。<br>tf.tidy执行一个函数并清除所有创建的中间张量，释放它们的GPU内存。 它不清除内部函数的返回值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const average = tf.tidy(() =&gt; &#123;</span><br><span class="line">  const y = tf.tensor1d([1.0, 2.0, 3.0, 4.0]);</span><br><span class="line">  const z = tf.ones([4]);</span><br><span class="line"></span><br><span class="line">  return y.sub(z).square().mean();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">average.print()</span><br></pre></td></tr></table></figure></p>
+<p>使用tf.tidy将有助于防止应用程序中的内存泄漏。它也可以用来更谨慎地控制内存何时回收。</p>
+<h4 id="两个重要的注意事项"><a href="#两个重要的注意事项" class="headerlink" title="两个重要的注意事项"></a>两个重要的注意事项</h4><p>传递给tf.tidy的函数应该是同步的，并且不会返回Promise。我们建议在tf.tidy内不要有更新UI或在发出远程请求的代码。<br>tf.tidy不会清理变量。变量通常持续到机器学习模型的整个生命周期，因此TensorFlow.js不会清理它们，即使它们是在tidy中创建的。不过，您可以手动调用dispose处理它们。</p>
+<h2 id="Tensorflow-js实战例子"><a href="#Tensorflow-js实战例子" class="headerlink" title="Tensorflow.js实战例子"></a>Tensorflow.js实战例子</h2><p>TensorFlow.js的工作依然是围绕神经网络展开的，基本的工作过程包含了如下几个典型步骤：<br><img src="/2025/06/04/Tensorflow-js入门/2.png" alt="img"><br>下面将通过TensorFlow.js官方网站提供的数据拟合的示例来了解整个流程。</p>
+<h3 id="Define"><a href="#Define" class="headerlink" title="Define"></a>Define</h3><p>Define 阶段是使用TensorFlow.js的第一步，这个阶段中需要初始化神经网络模型，你可以在TensorFlow的tf.layers对象上找到具备各种功能和特征的隐藏层，通过模型实例的add方法将其逐层添加到神经网络中，从而实现张量变形处理、卷积神经网络、循环神经网络等复杂模型，当内置模型无法满足需求时，还可以自定义模型层，TensorFlow的高阶API可以帮助开发者以声明式的编码来完成神经网络的结构搭建，示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*创建模型*/</span><br><span class="line">function createModel() &#123;</span><br><span class="line">   const model = tf.sequential(); </span><br><span class="line">   model.add(tf.layers.dense(&#123;inputShape: [1], units: 1, useBias: true&#125;));</span><br><span class="line">   model.add(tf.layers.dense(&#123;units: 1, useBias: true&#125;));</span><br><span class="line">   return model;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Compile"><a href="#Compile" class="headerlink" title="Compile"></a>Compile</h3><p>Compile阶段需要对训练过程进行一些参数预设，你可以先温习一下上一章中介绍过的BP神经网络的工作过程，然后再来理解下面的示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">model.compile(&#123;</span><br><span class="line">   optimizer: tf.train.adam(),</span><br><span class="line">   loss: tf.losses.meanSquaredError,</span><br><span class="line">   metrics: [&apos;mse&apos;],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>loss（损失）用于定义损失函数，它是神经网络的实际输出和期望输出之间偏差的量化评估标准，最常用的损失函数就是均方差损失（tf.losses.meanSquaredError），其他损失函数可以在TensorFlow的API文档中进行查看；optimizer(优化器)是指误差反向传播结束后，神经网络进行权重调整时所使用的的算法。权重调整的目的就是为了使损失函数达到极小值，所以通常采用“梯度下降”的思想来进行逼近，梯度方向是指函数在某一点变化最显著的方向，但实际的情况往往并没有这么简单，假设下图是一个神经网络的损失函数曲线：<br><img src="/2025/06/04/Tensorflow-js入门/3.png" alt="img"><br>可以看到损失函数的形态、初始参数的位置以及优化过程的步长等都可能对训练过程和训练结果产生影响，这就需要在optimizer配置项中指定优化算法来达到较好的训练效果；metrics配置项用于指定模型的度量指标，大多数情况下可以直接使用损失函数来作为度量标准。</p>
+<h3 id="Fit"><a href="#Fit" class="headerlink" title="Fit"></a>Fit</h3><p>Fit 阶段执行的是模型训练的工作（fit本身是拟合的意思），通过调用模型的fit方法就可以启动训练循环，官方示例代码如下(fit方法接收的参数分别为输入张量集、输出张量集和配置参数)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const batchSize = 32;</span><br><span class="line">const epochs = 50;</span><br><span class="line"></span><br><span class="line">await model.fit(inputs, labels, &#123;</span><br><span class="line">   batchSize,</span><br><span class="line">   epochs,</span><br><span class="line">   shuffle: true,</span><br><span class="line">   callbacks: tfvis.show.fitCallbacks(</span><br><span class="line">      &#123; name: &apos;Training Performance&apos; &#125;,</span><br><span class="line">      [&apos;loss&apos;, &apos;mse&apos;], </span><br><span class="line">      &#123; height: 200, callbacks: [&apos;onEpochEnd&apos;] &#125;</span><br><span class="line">   )</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>相关参数说明如下（其他参数可参考官方开发文档）：</p>
+<ul>
+<li>batchSize（批大小）指每个循环中使用的样本数，通常取值为32~512</li>
+<li>epochs指定整个训练集上的数据的总循环次数</li>
+<li>shuffle指是否在每个epochs中打乱训练样本的次序</li>
+<li>callbacks指定了训练过程中的回调函数</li>
+</ul>
+<p>神经网络的训练是循环进行的，假设总训练样本大小为320个，那么上面的示例代码所描述的训练过程是：先使用下标为0^31的样本来训练神经网络，然后使用optimizer来更新一次权重，再使用下标为32^63的样本进行训练，再更新权重，直到总样本中所有数据均被使用过一次，上述过程被称为一个epoch，接着打乱整个训练样本的次序，再重复共计50轮，callbacks回调函数参数直接关联了tfvis库，它是TensorFlow提供的专用可视化工具模块。</p>
+<h3 id="Evaluate"><a href="#Evaluate" class="headerlink" title="Evaluate"></a>Evaluate</h3><p>Evaluate阶段需要对模型的训练结果进行评估，调用模型实例的evaluate方法就可以使用测试数据来获得损失函数和度量标准的数值。你可能已经注意到TensorFlow在定制训练过程时更加关注如何使用样本数据，而并没有将“度量指标小于给定阈值”作为训练终止的条件（例如brain.js中就可以通过设置errorthresh参数），在复杂神经网络的构建和设计中，开发者很可能需要一边构建一边进行非正式的训练测试，度量指标最终并不一定能够降低到给定的阈值以下，以此作为训练终止条件很可能会使训练过程陷入无限循环，所以使用固定的训练次数配合可视化工具来观察训练过程就更为合理。</p>
+<h3 id="Predict"><a href="#Predict" class="headerlink" title="Predict"></a>Predict</h3><p>Predict阶段是使用神经网络模型进行预测的阶段，这也是前端工程师参与度最高的部分，毕竟模型输出的结果只是数据，如何利用这些预测结果来制作一些更有趣或者更加智能化的应用或许才是前端工程师更应该关注的问题。从前文的过程中不难看出，TensorFlow.js提供的能力是围绕神经网络模型展开的，应用层很难直接使用，开发者通常都需要借助官方模型仓库中提供的预训练模型或者使用其他基于TensorFlow.js构建的第三方应用，例如人脸识别框架face-api.js（它可以在浏览器端和Node.js中实现快速的人脸追踪和身份识别），语义化更加明确的机器学习框架ml5.js（可以直接调用API来实现图像分类、姿势估计、人物抠图、风格迁移、物体识别等更加具体的任务），可以实现手部跟踪的handtrack.js等等，如果TensorFlow的相关知识让你觉得过于晦涩，也可以先尝试使用这些更高层的框架来构建一些有趣的程序。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是对Tensorflow.js的简单介绍，下边列出几个常用的链接，对学习Tensorflow.js有更加详细的了解<br><a href="https://tensorflow.google.cn/js?hl=zh-cn" target="_blank" rel="noopener">TensorFlow.js中文官网</a><br><a href="https://www.w3cschool.cn/tensorflowjs/" target="_blank" rel="noopener">w3cschool</a><br><a href="https://www.kaggle.com/models" target="_blank" rel="noopener">TensorFlow.js模型下载</a><br><a href="https://modelscope.cn/datasets" target="_blank" rel="noopener">训练数据集</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/AI/"><i class="fa fa-tag"></i>&nbsp;&nbsp;AI</a>
+                
+                    <a href="/tags/Tensorflow-js/"><i class="fa fa-tag"></i>&nbsp;&nbsp;Tensorflow.js</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="/2025/06/04/Tensorflow-js实战之训练模型/" rel="prev" title="Tensorflow.js实战之训练模型">
+                            Tensorflow.js实战之训练模型
+                        </a>
+                    </span>
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2025/06/03/使用-Rust-锈化前端工具链/" rel="next" title="使用 Rust 锈化前端工具链">
+                            使用 Rust 锈化前端工具链
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'Tensorflow.js入门',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>186</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>22</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 18.17px; color: #7d7d7d">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.5px; color: #888">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 16.5px; color: #888">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
