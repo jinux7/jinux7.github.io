@@ -47,7 +47,22 @@
 <meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/sources13.png">
 <meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/sources14.png">
 <meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/sources15.png">
-<meta property="og:updated_time" content="2025-07-28T08:28:55.400Z">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network1.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network2.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network3.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network4.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network5.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network6.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network7.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network8.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network8-1.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network9.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network10.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network11.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network12.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network13.png">
+<meta property="og:image" content="/2025/07/24/Chrome-DevTools面板功能详解/network14.png">
+<meta property="og:updated_time" content="2025-07-29T06:17:09.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chrome DevTools面板功能详解">
 <meta name="twitter:description" content="Chrome DevTools面板的功能介绍">
@@ -201,7 +216,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elements面板"><span class="toc-number">1.</span> <span class="toc-text">Elements面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css调试"><span class="toc-number">1.1.</span> <span class="toc-text">css调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#style"><span class="toc-number">1.1.1.</span> <span class="toc-text">style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#computed"><span class="toc-number">1.1.2.</span> <span class="toc-text">computed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调整某个元素的数值"><span class="toc-number">1.1.3.</span> <span class="toc-text">调整某个元素的数值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-调试"><span class="toc-number">1.2.</span> <span class="toc-text">html 调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#骚操作"><span class="toc-number">1.2.1.</span> <span class="toc-text">骚操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将某个元素存储到全局临时变量中"><span class="toc-number">1.2.2.</span> <span class="toc-text">将某个元素存储到全局临时变量中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#滚动到某个节点"><span class="toc-number">1.2.3.</span> <span class="toc-text">滚动到某个节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Edge专属的3D视图"><span class="toc-number">1.2.4.</span> <span class="toc-text">Edge专属的3D视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-断点"><span class="toc-number">1.3.</span> <span class="toc-text">DOM 断点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Console面板"><span class="toc-number">2.</span> <span class="toc-text">Console面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#console对象"><span class="toc-number">2.1.</span> <span class="toc-text">console对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#console-clear"><span class="toc-number">2.1.1.</span> <span class="toc-text">console.clear()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-log-info-warn-error"><span class="toc-number">2.1.2.</span> <span class="toc-text">console.log(), info(), warn(), error()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用占位符"><span class="toc-number">2.1.3.</span> <span class="toc-text">使用占位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-time-timeEnd"><span class="toc-number">2.1.4.</span> <span class="toc-text">console.time(), timeEnd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-count"><span class="toc-number">2.1.5.</span> <span class="toc-text">console.count()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-trace"><span class="toc-number">2.1.6.</span> <span class="toc-text">console.trace()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-table"><span class="toc-number">2.1.7.</span> <span class="toc-text">console.table()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-dir"><span class="toc-number">2.1.8.</span> <span class="toc-text">console.dir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-assert"><span class="toc-number">2.1.9.</span> <span class="toc-text">console.assert()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-group-groupEnd"><span class="toc-number">2.1.10.</span> <span class="toc-text">console.group(), groupEnd()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">2.2.</span> <span class="toc-text">$ 选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.2.1.</span> <span class="toc-text">$_</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-1…-4"><span class="toc-number">2.2.2.</span> <span class="toc-text">$0,$1…$4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#和"><span class="toc-number">2.2.3.</span> <span class="toc-text">$和?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x"><span class="toc-number">2.2.4.</span> <span class="toc-text">$x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#keys-values"><span class="toc-number">2.2.5.</span> <span class="toc-text">keys(), values()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy"><span class="toc-number">2.2.6.</span> <span class="toc-text">copy()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sources面板"><span class="toc-number">3.</span> <span class="toc-text">Sources面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义代码片段-Snippets"><span class="toc-number">3.1.</span> <span class="toc-text">自定义代码片段 Snippets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置断点"><span class="toc-number">3.2.</span> <span class="toc-text">设置断点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#断点的面板"><span class="toc-number">3.2.1.</span> <span class="toc-text">断点的面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定位置的中断"><span class="toc-number">3.2.2.</span> <span class="toc-text">指定位置的中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局事件中断"><span class="toc-number">3.2.3.</span> <span class="toc-text">全局事件中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#黑盒模式"><span class="toc-number">3.2.4.</span> <span class="toc-text">黑盒模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM-断点-1"><span class="toc-number">3.2.5.</span> <span class="toc-text">DOM 断点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Network面板"><span class="toc-number">4.</span> <span class="toc-text">Network面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Performance面板"><span class="toc-number">5.</span> <span class="toc-text">Performance面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory面板"><span class="toc-number">6.</span> <span class="toc-text">Memory面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application面板"><span class="toc-number">7.</span> <span class="toc-text">Application面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Security面板"><span class="toc-number">8.</span> <span class="toc-text">Security面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lighthouse面板"><span class="toc-number">9.</span> <span class="toc-text">Lighthouse面板</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elements面板"><span class="toc-number">1.</span> <span class="toc-text">Elements面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css调试"><span class="toc-number">1.1.</span> <span class="toc-text">css调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#style"><span class="toc-number">1.1.1.</span> <span class="toc-text">style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#computed"><span class="toc-number">1.1.2.</span> <span class="toc-text">computed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调整某个元素的数值"><span class="toc-number">1.1.3.</span> <span class="toc-text">调整某个元素的数值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-调试"><span class="toc-number">1.2.</span> <span class="toc-text">html 调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#骚操作"><span class="toc-number">1.2.1.</span> <span class="toc-text">骚操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将某个元素存储到全局临时变量中"><span class="toc-number">1.2.2.</span> <span class="toc-text">将某个元素存储到全局临时变量中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#滚动到某个节点"><span class="toc-number">1.2.3.</span> <span class="toc-text">滚动到某个节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Edge专属的3D视图"><span class="toc-number">1.2.4.</span> <span class="toc-text">Edge专属的3D视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-断点"><span class="toc-number">1.3.</span> <span class="toc-text">DOM 断点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Console面板"><span class="toc-number">2.</span> <span class="toc-text">Console面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#console对象"><span class="toc-number">2.1.</span> <span class="toc-text">console对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#console-clear"><span class="toc-number">2.1.1.</span> <span class="toc-text">console.clear()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-log-info-warn-error"><span class="toc-number">2.1.2.</span> <span class="toc-text">console.log(), info(), warn(), error()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用占位符"><span class="toc-number">2.1.3.</span> <span class="toc-text">使用占位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-time-timeEnd"><span class="toc-number">2.1.4.</span> <span class="toc-text">console.time(), timeEnd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-count"><span class="toc-number">2.1.5.</span> <span class="toc-text">console.count()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-trace"><span class="toc-number">2.1.6.</span> <span class="toc-text">console.trace()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-table"><span class="toc-number">2.1.7.</span> <span class="toc-text">console.table()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-dir"><span class="toc-number">2.1.8.</span> <span class="toc-text">console.dir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-assert"><span class="toc-number">2.1.9.</span> <span class="toc-text">console.assert()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#console-group-groupEnd"><span class="toc-number">2.1.10.</span> <span class="toc-text">console.group(), groupEnd()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">2.2.</span> <span class="toc-text">$ 选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.2.1.</span> <span class="toc-text">$_</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-1…-4"><span class="toc-number">2.2.2.</span> <span class="toc-text">$0,$1…$4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#和"><span class="toc-number">2.2.3.</span> <span class="toc-text">$和?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x"><span class="toc-number">2.2.4.</span> <span class="toc-text">$x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#keys-values"><span class="toc-number">2.2.5.</span> <span class="toc-text">keys(), values()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy"><span class="toc-number">2.2.6.</span> <span class="toc-text">copy()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sources面板"><span class="toc-number">3.</span> <span class="toc-text">Sources面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义代码片段-Snippets"><span class="toc-number">3.1.</span> <span class="toc-text">自定义代码片段 Snippets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置断点"><span class="toc-number">3.2.</span> <span class="toc-text">设置断点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#断点的面板"><span class="toc-number">3.2.1.</span> <span class="toc-text">断点的面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定位置的中断"><span class="toc-number">3.2.2.</span> <span class="toc-text">指定位置的中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局事件中断"><span class="toc-number">3.2.3.</span> <span class="toc-text">全局事件中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#黑盒模式"><span class="toc-number">3.2.4.</span> <span class="toc-text">黑盒模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM-断点-1"><span class="toc-number">3.2.5.</span> <span class="toc-text">DOM 断点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Network面板"><span class="toc-number">4.</span> <span class="toc-text">Network面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Controls，Filters-区域"><span class="toc-number">4.1.</span> <span class="toc-text">Controls，Filters 区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview-区域"><span class="toc-number">4.2.</span> <span class="toc-text">Overview 区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Requests-Table-区域"><span class="toc-number">4.3.</span> <span class="toc-text">Requests Table 区域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#重新发起xhr请求"><span class="toc-number">4.3.1.</span> <span class="toc-text">重新发起xhr请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看-HTTP-相关信息"><span class="toc-number">4.3.2.</span> <span class="toc-text">查看 HTTP 相关信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Size-和-Time-为什么有两行参数？"><span class="toc-number">4.3.3.</span> <span class="toc-text">Size 和 Time 为什么有两行参数？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Size列"><span class="toc-number">4.3.3.1.</span> <span class="toc-text">Size列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Time列"><span class="toc-number">4.3.3.2.</span> <span class="toc-text">Time列</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Waterfall"><span class="toc-number">4.3.4.</span> <span class="toc-text">Waterfall</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary-区域"><span class="toc-number">4.4.</span> <span class="toc-text">Summary 区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Network-面板进行网络优化"><span class="toc-number">4.5.</span> <span class="toc-text">使用 Network 面板进行网络优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排队或停止阻塞"><span class="toc-number">4.5.1.</span> <span class="toc-text">排队或停止阻塞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接收到第一个字节的时间很慢"><span class="toc-number">4.5.2.</span> <span class="toc-text">接收到第一个字节的时间很慢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加载缓慢"><span class="toc-number">4.5.3.</span> <span class="toc-text">加载缓慢</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Performance面板"><span class="toc-number">5.</span> <span class="toc-text">Performance面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory面板"><span class="toc-number">6.</span> <span class="toc-text">Memory面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application面板"><span class="toc-number">7.</span> <span class="toc-text">Application面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Security面板"><span class="toc-number">8.</span> <span class="toc-text">Security面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lighthouse面板"><span class="toc-number">9.</span> <span class="toc-text">Lighthouse面板</span></a></li></ol>
             </div>
         </section>
     
@@ -308,7 +323,120 @@
 <li>打开方式②<br>直接在想要忽略的堆栈信息上<code>blackbox script</code></li>
 </ul>
 <h4 id="DOM-断点-1"><a href="#DOM-断点-1" class="headerlink" title="DOM 断点"></a>DOM 断点</h4><p>查看<code>element</code>面板<a href="#DOM-断点"><code>DOM</code>断点</a></p>
-<h2 id="Network面板"><a href="#Network面板" class="headerlink" title="Network面板"></a>Network面板</h2><h2 id="Performance面板"><a href="#Performance面板" class="headerlink" title="Performance面板"></a>Performance面板</h2><p><a href="https://juejin.cn/post/7149093181244571678" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Network面板"><a href="#Network面板" class="headerlink" title="Network面板"></a>Network面板</h2><blockquote>
+<p>可以查看通过网络请求的资源的相关详细信息</p>
+</blockquote>
+<p>按区域划分大概分为如下几个区域：<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network1.png" alt="img"></p>
+<blockquote>
+<ul>
+<li><code>Controls</code>-控制<code>Network</code>功能选项，以及一些展示外观</li>
+<li><code>Filters</code>-控制在<code>Requests Table</code>中显示哪些类型的资源(tips：按住<code>Cmd(Mac)</code>或<code>Ctrl (Windows/Linux)</code>并点击筛选项可以同时选择多个筛选项)</li>
+<li><code>Overview</code>-此图表显示了资源检索时间的时间线。如果看到多条竖线堆叠在一起，则说明这些资源被同时检索</li>
+<li><code>Requests Table</code>-此表格列出了检索的每一个资源。 默认情况下，此表格按时间顺序排序，最早的资源在顶部。点击资源的名称可以显示更多信息。 提示：右键点击<code>Timeline</code>以外的任何一个表格标题可以添加或移除信息列</li>
+<li><code>Summary</code>-可以一目了然地看到页面的请求总数、传输的数据总量、加载时间</li>
+</ul>
+</blockquote>
+<h3 id="Controls，Filters-区域"><a href="#Controls，Filters-区域" class="headerlink" title="Controls，Filters 区域"></a>Controls，Filters 区域</h3><p><img src="/2025/07/24/Chrome-DevTools面板功能详解/network2.png" alt="img"><br>Filters 控制的展示：</p>
+<ul>
+<li>使用大请求行-默认情况下，<code>Requests Table</code>一个资源只显示很小的一行。选中<code>Use large resource rows</code>(使用大资源行) 按钮可以显示两个文本字段：主要字段和次要字段。</li>
+<li>捕获屏幕截图-将鼠标悬停在某个屏幕截图上的时候，<code>Timeline/Waterfall</code>(时间轴) 会显示一条垂直的黄线，指示该帧是何时被捕获的</li>
+<li>显示概述 - 展示页面整个生命周期的各个阶段（Overview 区域）的耗时（蓝色绿色的那些横杠）</li>
+</ul>
+<h3 id="Overview-区域"><a href="#Overview-区域" class="headerlink" title="Overview 区域"></a>Overview 区域</h3><p>页面整个生命周期的各个阶段网络资源加载耗时信息的汇总，可以选择区域来筛选<code>Requests Table</code>的详细资源信息</p>
+<h3 id="Requests-Table-区域"><a href="#Requests-Table-区域" class="headerlink" title="Requests Table 区域"></a>Requests Table 区域</h3><p>标题栏的对应描述：</p>
+<blockquote>
+<ul>
+<li><code>Name</code>(名称): 资源的名称。</li>
+<li><code>Status</code>(状态): <code>HTTP</code> 状态代码。</li>
+<li><code>Type</code>(类型): 请求的资源的 <code>MIME</code> 类型。</li>
+<li><code>Initiator</code>(发起): 发起请求的对象或进程。它可能有以下几种值：<br>  <code>Parser</code>(解析器): <code>Chrome</code> 的 <code>HTML</code> 解析器发起了请求。<br>  <code>Redirect</code>(重定向): <code>HTTP</code> 重定向启动了请求。<br>  <code>Script</code>(脚本): 脚本启动了请求。<br>  <code>Other</code>(其他): 一些其他进程或动作发起请求，例如用户点击链接跳转到页面，或在地址栏中输入网址。</li>
+<li><code>Size</code>(大小): 响应头的大小（通常是几百字节）加上响应数据，由服务器提供。</li>
+<li><code>Time</code>(时间): 总持续时间，从请求的开始到接收响应中的最后一个字节</li>
+<li><code>Timeline/Waterfall</code>(时间轴): 显示所有网络请求的可视化统计信息</li>
+</ul>
+</blockquote>
+<p>在标题栏如 (Name 上) 右键，可以添加或删除信息列。比如可以多加一列<code>Response Header =&gt; Content-Encoding</code>选项来总览页面资源的<code>gzip</code>压缩情况:</p>
+<p><img src="/2025/07/24/Chrome-DevTools面板功能详解/network3.png" alt="img"></p>
+<h4 id="重新发起xhr请求"><a href="#重新发起xhr请求" class="headerlink" title="重新发起xhr请求"></a>重新发起xhr请求</h4><p>在平时和后端联调时，我们用的最多的可能就是Network面板了。但是每次想重新查看一个请求通过刷新页面、点击按钮等方式去触发xhr请求，这种方式有时显得会比较麻烦，可以通过Replay XHR的方式去发起一条新的请求：<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network4.png" alt="img"></p>
+<h4 id="查看-HTTP-相关信息"><a href="#查看-HTTP-相关信息" class="headerlink" title="查看 HTTP 相关信息"></a>查看 HTTP 相关信息</h4><p>查看网络请求的参数<br>可以通过点击<code>query string parameters</code>(查询字符串参数) 旁边的<code>view URL encoded</code>(查看 URL 编码) 或<code>view decoded</code>(查看解码) 链接，查看<code>URL</code>编码或解码格式的<code>query string parameters</code>(查询字符串参数)。在使用<code>postman</code>复制相关入参时尤其实用。<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network5.png" alt="img"><br>查看<code>HTTP</code>响应内容 点击<code>Response</code>(响应) 标签页可以查看该资源未格式化的<code>HTTP</code>响应内容<br>接口的返回值 (在<code>preview</code>中）同样也可以<code>Save global variable</code>存储一个全局变量<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network6.png" alt="img"></p>
+<h4 id="Size-和-Time-为什么有两行参数？"><a href="#Size-和-Time-为什么有两行参数？" class="headerlink" title="Size 和 Time 为什么有两行参数？"></a>Size 和 Time 为什么有两行参数？</h4><p><img src="/2025/07/24/Chrome-DevTools面板功能详解/network7.png" alt="img"></p>
+<h5 id="Size列"><a href="#Size列" class="headerlink" title="Size列"></a>Size列</h5><p>第一行表示的是数据的传输时的大小，例如上图中的<code>190KB</code><br>第二行表示的是数据实际的大小<code>708KB</code></p>
+<blockquote>
+<p>在服务器端采取<code>gzip</code>压缩算法将原有<code>708KB</code>压缩至<code>190KB</code>, 传输大小缩短<code>3.7</code>倍，大大的提高了资源传输的效率</p>
+</blockquote>
+<p>需要注意的点：<br><code>gzip</code>压缩只会压缩响应体内容，所以适用于返回数据量大的时候，如果数据量太小的话，有可能会导致数据传输时的大小比实际大小要大 (加入了一些额外的响应头)</p>
+<h5 id="Time列"><a href="#Time列" class="headerlink" title="Time列"></a>Time列</h5><p>第一行表示从客户端发送请求到服务端返回所有数据所花费的总时间，对于上图来说就是<code>471ms</code><br>第二行表示的是从客户端发送请求到服务器端返回第一个字节所表示的时间，对于上图来说就是<code>55ms</code></p>
+<blockquote>
+<p>第一行的时间代表了所有项目：例如解析<code>dns</code>，建立连接，等待服务器返回数据，传输数据等<br>第二行的时间是 总时间-数据传输的时间</p>
+</blockquote>
+<p>从上面的分析中我们看到 从客户端请求到服务器处理结束准备返回数据花了<code>55ms</code>，但是在进行传输数据的时候花费了<code>471ms</code><br>对于网慢的用户来说，可能会耗费更长的时间，所以在写代码（接口）的时候，返回的数据量要尽量精简</p>
+<h4 id="Waterfall"><a href="#Waterfall" class="headerlink" title="Waterfall"></a>Waterfall</h4><p>点击某个资源会展示出详细的网络加载信息：<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network8.png" alt="img"><br>相关字段描述:</p>
+<ul>
+<li><p><code>Queuing</code> (排队)</p>
+<blockquote>
+<p>浏览器在以下情况下对请求排队</p>
+<ul>
+<li>存在更高优先级的请求, 请求被渲染引擎推迟，这经常发生在<code>images</code>（图像）上, 因为它被认为比关键资源（如脚本 / 样式）的优先级低。</li>
+<li>此源已打开六个<code>TCP</code>连接，达到限值，仅适用于<code>HTTP/1.0</code>和<code>HTTP/1.1</code>。在等待一个即将被释放的不可用的<code>TCP socket</code></li>
+<li>浏览器正在短暂分配磁盘缓存中的空间，生成磁盘缓存条目（通常非常快）</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>Stalled</code>(停滞)-发送请求之前等待的时间。它可能因为进入队列的任意原因而被阻塞，这个时间包括代理协商的时间。请求可能会因<code>Queueing</code>中描述的任何原因而停止。</p>
+</li>
+<li><code>DNS lookup</code>(DNS 查找) - 浏览器正在解析请求<code>IP</code>地址，页面上的每个新域都需要完整的往返(<code>roundtrip</code>)才能进行<code>DNS</code>查找</li>
+<li><code>Proxy Negotiation</code>-浏览器正在与代理服务器协商请求</li>
+<li><code>initial connection</code>(初始连接)-建立连接所需的时间，包括<code>TCP</code>握手/重试和协商<code>SSL</code>。</li>
+<li><code>SSL handshake</code>(SSL握手)-完成<code>SSL</code>握手所用的时间</li>
+<li><code>Request sent</code>(请求发送)-发出网络请求所花费的时间，通常是几分之一毫秒。</li>
+<li><code>Waiting</code>(等待)-等待初始响应所花费的时间，也称为<code>Time To First Byte</code>(接收到第一个字节所花费的时间)。这个时间除了等待服务器传递响应所花费的时间之外，还包括<code>1</code>次往返延迟时间及服务器准备响应所用的时间（服务器发送数据的延迟时间）</li>
+<li><code>Content Download</code>(内容下载)-接收响应数据所花费的时间 (从接收到第一个字节开始，到下载完最后一个字节结束)</li>
+<li><code>ServiceWorker Preparation</code>-浏览器正在启动<code>Service Worker</code></li>
+<li><code>Request to ServiceWorker</code>-正在将请求发送到<code>Service Worker</code></li>
+<li><code>Receiving Push</code>-浏览器正在通过<code>HTTP/2</code>服务器推送接收此响应的数据</li>
+<li><code>Reading Push</code>-浏览器正在读取之前收到的本地数据<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network8-1.png" alt="img"><h3 id="Summary-区域"><a href="#Summary-区域" class="headerlink" title="Summary 区域"></a>Summary 区域</h3><img src="/2025/07/24/Chrome-DevTools面板功能详解/network9.png" alt="img"><br><code>requests</code>查看请求的总数量|<code>transferred</code>查看请求的总大小|<code>resources</code>资源|<code>Finish</code>所有<code>http</code>请求响应完成的时间|<code>DOMContentLoaded</code>时间|<code>load</code>时间<br>当页面的初始的标记被解析完时，会触发<code>DOMContentLoaded</code>。它在<code>Network</code>(网络) 面板上的显示：<blockquote>
+<ul>
+<li>在<code>Overview</code>(概览) 窗格中的蓝色垂直线表示这个事件。</li>
+<li>在<code>Requests Table</code>(请求列表) 中的红色垂直线也表示这个事件。</li>
+<li>在<code>Summary</code>(概要) 窗格中，您可以查看事件的确切时间。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="/2025/07/24/Chrome-DevTools面板功能详解/network10.png" alt="img"><br>当页面完全加载时触发<code>load</code>事件。</p>
+<blockquote>
+<ul>
+<li>在<code>Overview</code>(概览)窗格的红色垂直线表示这个事件。</li>
+<li>在<code>Requests Table</code>(请求列表)中的红色垂直线也表示这个事件。</li>
+<li>在<code>Summary</code>(概要)中，可以查看改事件的确切时间。</li>
+</ul>
+</blockquote>
+<p><img src="/2025/07/24/Chrome-DevTools面板功能详解/network11.png" alt="img"></p>
+<blockquote>
+<ul>
+<li><code>DOMContentLoaded</code>会比<code>Load</code>时间小，两者时间差大致等于外部资源加载（一般是图片 / 字体）的时间</li>
+<li><code>Finish</code>时间是页面上所有<code>http</code>请求发送到响应完成的时间（如果页面存在一个轮询的接口，这个值也会累加的）。<code>HTTP1.0/1.1</code>协议限定单个域名的请求并发量是<code>6</code>个，即<code>Finish</code>是所有请求（不只是<code>XHR</code>请求，还包括<code>DOC，img，js，css</code>等资源的请求）在并发量为<code>6</code>的限制下完成的时间。<ul>
+<li><code>Finish</code>的时间比<code>Load</code>大，意味着页面有相当部分的请求量</li>
+<li><code>Finish</code>的时间比<code>Load</code>小，意味着页面请求量很少，如果页面是只有一个<code>html</code>文档请求的静态页面，<code>Finish</code>时间基本就等于<code>HTML</code>文档请求的时间</li>
+</ul>
+</li>
+<li>所以<code>Finish</code>时间与<code>DOMContentLoaded</code>和<code>Load</code>并无直接关系</li>
+</ul>
+</blockquote>
+<h3 id="使用-Network-面板进行网络优化"><a href="#使用-Network-面板进行网络优化" class="headerlink" title="使用 Network 面板进行网络优化"></a>使用 Network 面板进行网络优化</h3><h4 id="排队或停止阻塞"><a href="#排队或停止阻塞" class="headerlink" title="排队或停止阻塞"></a>排队或停止阻塞</h4><p>最常见的问题是很多个请求排队或被阻塞。这表示从单个客户端检索的资源太多。在<code>HTTP 1.0/1.1</code>连接协议中，<code>Chrome</code>限制每个域名最多执行<code>6</code>个<code>TCP</code> 连接。如果一次请求十二个资源，前<code>6</code>个将开始，后<code>6</code>个将排队。一旦其中一个请求完成，队列中的第一个请求项目将开始其请求过程。<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network12.png" alt="img"><br>要解决传统<code>HTTP 1</code>的此问题，需要用多个子域名提供服务资源，将资源拆分到多个子域中，均匀分配。</p>
+<blockquote>
+<p>上面说的修复<code>HTTP 1</code>连接数问题，不适用于<code>HTTP 2</code>连接，如果已部署<code>HTTP 2</code>，不要对资源进行域划分，因为它会影响<code>HTTP 2</code>的工作原理（在 <code>HTTP 2</code>中<code>TCP</code>连接多路复用连接的）。取消了<code>HTTP 1</code>的<code>6</code>个连接限制，并且可以通过单个连接同时传输多个资源。</p>
+</blockquote>
+<h4 id="接收到第一个字节的时间很慢"><a href="#接收到第一个字节的时间很慢" class="headerlink" title="接收到第一个字节的时间很慢"></a>接收到第一个字节的时间很慢</h4><p>绿色的块占据比例很高：<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network13.png" alt="img"><br><code>TTFB</code>就是等待第一个响应字节的时间，建议在<code>200ms</code>以下，以下情况可能会导致高<code>TTFB</code>:</p>
+<ul>
+<li>客户端和服务器之间的网络条件差</li>
+<li>要么，服务器端程序响应很慢</li>
+</ul>
+<blockquote>
+<p>为了解决高<code>TTFB</code>，首先去排除尽可能多的网络连接。理想情况下，在本地托管应用程序（部署在本地），并查看是否仍有一个大的<code>TTFB</code>。如果有，那么需要优化应用程序针的响应速度。这可能意味着优化数据库查询，为内容的某些部分实现高速缓存，或修改<code>Web</code>服务器配置。后端可能很慢的原因有很多。您需要对您的程序进行研究，并找出不符合您预期的内容。<br>如果本地<code>TTFB</code>低，那么是您的客户端和服务器之间的网络问题。网络传输可能被很多种事情干扰阻碍。在客户端和服务器之间有很多点，每个都有自己的连接限制，可能会导致问题。测试减少这种情况的最简单的方法是将您的应用程序放在另一台主机上，看看<code>TTFB</code>是否改进。</p>
+</blockquote>
+<h4 id="加载缓慢"><a href="#加载缓慢" class="headerlink" title="加载缓慢"></a>加载缓慢</h4><p>蓝色的块占据比例很高：<br><img src="/2025/07/24/Chrome-DevTools面板功能详解/network14.png" alt="img"><br>如果<code>Content Download</code>(内容下载)阶段花费了很多时间，提高服务响应速度、并行下载等优化措施帮助都不大。主要的解决方案是发送更少的字节（比如一张高质量的大图可能几<code>M</code>的大小，这时可以酌情优化一下图片的宽高/清晰度）</p>
+<h2 id="Performance面板"><a href="#Performance面板" class="headerlink" title="Performance面板"></a>Performance面板</h2><p><a href="https://juejin.cn/post/7149093181244571678" target="_blank" rel="noopener">参考</a></p>
 <h2 id="Memory面板"><a href="#Memory面板" class="headerlink" title="Memory面板"></a>Memory面板</h2><h2 id="Application面板"><a href="#Application面板" class="headerlink" title="Application面板"></a>Application面板</h2><h2 id="Security面板"><a href="#Security面板" class="headerlink" title="Security面板"></a>Security面板</h2><h2 id="Lighthouse面板"><a href="#Lighthouse面板" class="headerlink" title="Lighthouse面板"></a>Lighthouse面板</h2>
         </div>
 
