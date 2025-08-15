@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Chrome浏览器插件开发 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Chrome浏览器插件开发入门">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome浏览器插件开发">
+<meta property="og:url" content="/2025/08/13/Chrome-浏览器插件开发/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="Chrome浏览器插件开发入门">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2025/08/13/Chrome-浏览器插件开发/1.gif">
+<meta property="og:image" content="/2025/08/13/Chrome-浏览器插件开发/2.gif">
+<meta property="og:updated_time" content="2025-08-15T01:55:15.954Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chrome浏览器插件开发">
+<meta name="twitter:description" content="Chrome浏览器插件开发入门">
+<meta name="twitter:image" content="/2025/08/13/Chrome-浏览器插件开发/1.gif">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-Chrome-浏览器插件开发" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                Chrome浏览器插件开发
+            
+        </h1>
+        <time>
+            2025-08-13 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome插件是什么？"><span class="toc-number">1.</span> <span class="toc-text">Chrome插件是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建插件项目"><span class="toc-number">2.</span> <span class="toc-text">创建插件项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目结构"><span class="toc-number">2.1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核心文件：manifest-json"><span class="toc-number">2.2.</span> <span class="toc-text">核心文件：manifest.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弹出页面-popup-html"><span class="toc-number">2.3.</span> <span class="toc-text">弹出页面 popup.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弹出页面交互逻辑-popup-js"><span class="toc-number">2.4.</span> <span class="toc-text">弹出页面交互逻辑 popup.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作网页内容-content-js"><span class="toc-number">2.5.</span> <span class="toc-text">操作网页内容 content.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台逻辑-background-js"><span class="toc-number">2.6.</span> <span class="toc-text">后台逻辑 background.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载并测试插件"><span class="toc-number">2.7.</span> <span class="toc-text">加载并测试插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核心概念与API"><span class="toc-number">2.8.</span> <span class="toc-text">核心概念与API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.9.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preview-amp-source"><span class="toc-number">2.10.</span> <span class="toc-text">preview&amp;source</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实战"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>Chrome浏览器插件开发入门<br><a id="more"></a></p>
+<h2 id="Chrome插件是什么？"><a href="#Chrome插件是什么？" class="headerlink" title="Chrome插件是什么？"></a>Chrome插件是什么？</h2><blockquote>
+<p>Chrome 插件（也称为扩展程序）是使用 HTML、CSS 和 JavaScript 构建的小型程序，可以自定义和增强你的浏览体验。</p>
+</blockquote>
+<h2 id="创建插件项目"><a href="#创建插件项目" class="headerlink" title="创建插件项目"></a>创建插件项目</h2><h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>一个基本的 Chrome 插件需要以下文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my-first-extension/</span><br><span class="line">├── manifest.json      # 必需：插件的“身份证”</span><br><span class="line">├── popup.html         # 可选：点击插件图标时弹出的页面</span><br><span class="line">├── popup.js           # 可选：popup.html 的脚本</span><br><span class="line">├── popup.css          # 可选：popup.html 的样式</span><br><span class="line">├── background.js      # 可选：后台运行的脚本</span><br><span class="line">├── content.js         # 可选: 内容脚本，运行在网页中的脚本</span><br><span class="line">└── icon.png           # 可选：插件图标 (建议 128x128)</span><br></pre></td></tr></table></figure></p>
+<h3 id="核心文件：manifest-json"><a href="#核心文件：manifest-json" class="headerlink" title="核心文件：manifest.json"></a>核心文件：manifest.json</h3><p>这是插件的配置文件，必须放在根目录，Chrome 插件现在使用Manifest V3。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;manifest_version&quot;: 3, // 指定使用 V3 版本</span><br><span class="line">  &quot;name&quot;: &quot;我的第一个插件&quot;, // 插件名称</span><br><span class="line">  &quot;version&quot;: &quot;1.0&quot;, // 版本号</span><br><span class="line"></span><br><span class="line">  // 基本信息（可选）</span><br><span class="line">  &quot;description&quot;: &quot;一个简单的 Chrome 插件示例&quot;,</span><br><span class="line"></span><br><span class="line">  // 图标（可选）</span><br><span class="line">  &quot;icons&quot;: &#123;</span><br><span class="line">    &quot;16&quot;: &quot;icon.png&quot;,</span><br><span class="line">    &quot;48&quot;: &quot;icon.png&quot;,</span><br><span class="line">    &quot;128&quot;: &quot;icon.png&quot;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 弹出页面（可选）</span><br><span class="line">  &quot;action&quot;: &#123;</span><br><span class="line">    &quot;default_popup&quot;: &quot;popup.html&quot;,</span><br><span class="line">    &quot;default_title&quot;: &quot;点击打开弹窗&quot;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 背景服务工作线程（可选，V3 使用 service_worker 替代 background scripts）</span><br><span class="line">  &quot;background&quot;: &#123;</span><br><span class="line">    &quot;service_worker&quot;: &quot;background.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 权限声明（根据需要添加）</span><br><span class="line">  &quot;permissions&quot;: [</span><br><span class="line">    &quot;activeTab&quot;, // 访问当前标签页的权限（安全推荐）</span><br><span class="line">    // &quot;storage&quot; // 如果需要持久化存储</span><br><span class="line">    // &quot;tabs&quot; // 如果需要操作标签页</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  // 内容脚本（可选：注入到网页中的脚本）</span><br><span class="line">  &quot;content_scripts&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;matches&quot;: [&quot;&lt;all_urls&gt;&quot;], // 在哪些网页上注入</span><br><span class="line">      &quot;js&quot;: [&quot;content.js&quot;] // 注入的 JS 文件</span><br><span class="line">      // &quot;css&quot;: [&quot;content.css&quot;] // 注入的 CSS 文件</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="弹出页面-popup-html"><a href="#弹出页面-popup-html" class="headerlink" title="弹出页面 popup.html"></a>弹出页面 popup.html</h3><p>当用户点击插件图标时显示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;我的插件&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;popup.css&quot;&gt;</span><br><span class="line">  &lt;!-- 弹出页面的宽度和高度最好明确设置 --&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">      width: 300px;</span><br><span class="line">      padding: 20px;</span><br><span class="line">      font-family: Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;h1&gt;你好，世界！&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;这是一个简单的 Chrome 插件。&lt;/p&gt;</span><br><span class="line">  &lt;button id=&quot;changeColor&quot;&gt;改变页面背景色&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 必须在 HTML 中直接引入 JS，不能使用内联脚本 --&gt;</span><br><span class="line">  &lt;script src=&quot;popup.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="弹出页面交互逻辑-popup-js"><a href="#弹出页面交互逻辑-popup-js" class="headerlink" title="弹出页面交互逻辑 popup.js"></a>弹出页面交互逻辑 popup.js</h3><p>popup.html引入的js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 获取按钮元素</span><br><span class="line">const changeColorButton = document.getElementById(&apos;changeColor&apos;);</span><br><span class="line"></span><br><span class="line">// 当按钮被点击时</span><br><span class="line">changeColorButton.addEventListener(&apos;click&apos;, async () =&gt; &#123;</span><br><span class="line">  // 使用 Chrome 扩展 API 获取当前活动标签页</span><br><span class="line">  let [tab] = await chrome.tabs.query(&#123;</span><br><span class="line">    active: true,</span><br><span class="line">    currentWindow: true</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  // 向当前标签页发送消息，让 content script 执行操作</span><br><span class="line">  chrome.tabs.sendMessage(tab.id, &#123; action: &quot;changeColor&quot;, color: &quot;yellow&quot; &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="操作网页内容-content-js"><a href="#操作网页内容-content-js" class="headerlink" title="操作网页内容 content.js"></a>操作网页内容 content.js</h3><p>这个脚本会被注入到匹配的网页中，可以直接操作 DOM。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 监听来自 popup 或 background 的消息</span><br><span class="line">chrome.runtime.onMessage.addListener((request, sender, sendResponse) =&gt; &#123;</span><br><span class="line">  if (request.action === &quot;changeColor&quot;) &#123;</span><br><span class="line">    // 改变页面背景色</span><br><span class="line">    document.body.style.backgroundColor = request.color;</span><br><span class="line">    // 可以发送响应（如果需要）</span><br><span class="line">    // sendResponse(&#123;status: &quot;success&quot;&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="后台逻辑-background-js"><a href="#后台逻辑-background-js" class="headerlink" title="后台逻辑 background.js"></a>后台逻辑 background.js</h3><p>后台脚本（V3 中是 Service Worker）在插件安装后常驻内存，处理事件和长期任务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 监听扩展图标被点击的事件</span><br><span class="line">chrome.action.onClicked.addListener(async (tab) =&gt; &#123;</span><br><span class="line">  // 例如：可以在这里执行一些后台操作</span><br><span class="line">  console.log(&apos;插件图标被点击了！当前标签页:&apos;, tab.url);</span><br><span class="line">  // 也可以向内容脚本发送消息</span><br><span class="line">  // chrome.tabs.sendMessage(tab.id, &#123;action: &quot;doSomething&quot;&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 监听来自 content script 或 popup 的消息</span><br><span class="line">chrome.runtime.onMessage.addListener((request, sender, sendResponse) =&gt; &#123;</span><br><span class="line">  if (request.action === &quot;getData&quot;) &#123;</span><br><span class="line">    // 执行一些后台逻辑</span><br><span class="line">    const data = &quot;来自后台的数据&quot;;</span><br><span class="line">    sendResponse(&#123;data: data&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  // 如果使用 sendResponse，需要返回 true（异步情况下）</span><br><span class="line">  return true;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="加载并测试插件"><a href="#加载并测试插件" class="headerlink" title="加载并测试插件"></a>加载并测试插件</h3><ul>
+<li>打开 Chrome 浏览器。</li>
+<li>在地址栏输入 chrome://extensions 并回车。</li>
+<li>打开右上角的 “开发者模式” 开关。</li>
+<li>点击 “加载已解压的扩展程序”。</li>
+<li>选择你创建的 my-first-extension 文件夹。</li>
+<li>成功加载后，你会在浏览器右上角看到你的插件图标。</li>
+</ul>
+<h3 id="核心概念与API"><a href="#核心概念与API" class="headerlink" title="核心概念与API"></a>核心概念与API</h3><ul>
+<li>Manifest V3: 最新版本，更安全（例如用 service_worker 替代了持久化 background scripts，用 declarativeNetRequest 替代部分 webRequest）。</li>
+<li>权限 (Permissions): 插件需要明确声明所需权限（如 activeTab, storage, tabs 等），用户安装时会提示。</li>
+<li>消息传递 (Messaging): 不同部分（popup, content script, background）之间通过 chrome.runtime.sendMessage 和 chrome.runtime.onMessage 进行通信。</li>
+<li>内容脚本 (Content Scripts): 注入到网页 DOM 中的脚本，可以直接读取和修改页面内容，但运行在独立的环境中。</li>
+<li>Service Worker (Background): 处理事件、管理状态、执行长期任务。注意：V3 的 Service Worker 是非持久化的，可能被暂停。</li>
+<li>存储 (chrome.storage): 用于持久化存储数据，比 localStorage 更好（支持同步、配额更大）。</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>安全性: 不要注入不安全的内联脚本。使用 Content Security Policy (CSP)。<br>性能: 避免在 content script 或 background 中执行耗时操作。<br>Manifest V3: 确保遵循 V3 规范，旧的 V2 插件未来可能不被支持。<br>调试:</p>
+<blockquote>
+<p>popup.html: 右键点击插件图标 -&gt; “检查弹出窗口”。<br>content.js: 在目标网页的开发者工具中找到对应的 content script 标签页。<br>background.js: 在 chrome://extensions 页面，找到你的插件，点击 “service worker” 链接进行调试。</p>
+</blockquote>
+<h3 id="preview-amp-source"><a href="#preview-amp-source" class="headerlink" title="preview&amp;source"></a>preview&amp;source</h3><p><img src="/2025/08/13/Chrome-浏览器插件开发/1.gif" alt="img"><br><a href="https://github.com/jinux7/study-collections/tree/master/chrome%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/my-first-extension" target="_blank" rel="noopener">源码</a></p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>一个简单的翻译插件<br><img src="/2025/08/13/Chrome-浏览器插件开发/2.gif" alt="img"><br><a href="https://github.com/jinux7/study-collections/tree/master/chrome%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/%E7%BF%BB%E8%AF%91" target="_blank" rel="noopener">源码</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://18055975947.github.io/extension/" target="_blank" rel="noopener">Chrome 浏览器插件开发实践指南</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/浏览器/"><i class="fa fa-tag"></i>&nbsp;&nbsp;浏览器</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2025/07/24/Chrome-DevTools面板功能详解/" rel="next" title="Chrome DevTools面板功能详解">
+                            Chrome DevTools面板功能详解
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'Chrome浏览器插件开发',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>190</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>23</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badge'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.83px; color: #939393">3D</a> <a href="/tags/AI/" style="font-size: 18.17px; color: #7d7d7d">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.67px; color: #6c6c6c">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.5px; color: #888">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.67px; color: #8e8e8e">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.67px; color: #8e8e8e">WEB3</a> <a href="/tags/ajax/" style="font-size: 18.17px; color: #7d7d7d">ajax</a> <a href="/tags/canvas/" style="font-size: 14.83px; color: #939393">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 18.17px; color: #7d7d7d">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.33px; color: #828282">html</a> <a href="/tags/jquery/" style="font-size: 15.67px; color: #8e8e8e">jquery</a> <a href="/tags/linux/" style="font-size: 14.83px; color: #939393">linux</a> <a href="/tags/nodejs/" style="font-size: 15.67px; color: #8e8e8e">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.67px; color: #8e8e8e">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 18.17px; color: #7d7d7d">webpack</a> <a href="/tags/web图形/" style="font-size: 18.17px; color: #7d7d7d">web图形</a> <a href="/tags/web安全/" style="font-size: 18.17px; color: #7d7d7d">web安全</a> <a href="/tags/web性能/" style="font-size: 19px; color: #777">web性能</a> <a href="/tags/worker/" style="font-size: 14.83px; color: #939393">worker</a> <a href="/tags/兼容性/" style="font-size: 15.67px; color: #8e8e8e">兼容性</a> <a href="/tags/后端/" style="font-size: 15.67px; color: #8e8e8e">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.17px; color: #7d7d7d">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.17px; color: #5b5b5b">工具库</a> <a href="/tags/微信/" style="font-size: 14.83px; color: #939393">微信</a> <a href="/tags/手写/" style="font-size: 19.83px; color: #717171">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 18.17px; color: #7d7d7d">日语</a> <a href="/tags/样式/" style="font-size: 18.17px; color: #7d7d7d">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 18.17px; color: #7d7d7d">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.5px; color: #666">移动端</a> <a href="/tags/算法/" style="font-size: 15.67px; color: #8e8e8e">算法</a> <a href="/tags/编译/" style="font-size: 17.33px; color: #828282">编译</a> <a href="/tags/网络基础/" style="font-size: 20.67px; color: #6c6c6c">网络基础</a> <a href="/tags/调试/" style="font-size: 14.83px; color: #939393">调试</a> <a href="/tags/资源导航/" style="font-size: 14.83px; color: #939393">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.33px; color: #606060">面试题</a> <a href="/tags/面试题系列/" style="font-size: 18.17px; color: #7d7d7d">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
