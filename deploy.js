@@ -31,16 +31,15 @@ simpleGit
   .commit('update') // 提交暂存区的更改，并附带提交信息
   .then(() => {
     console.log('Commit successful!');
+    simpleGit
+      .push('origin', 'master') // 将代码推送到远程仓库的master分支
+      .then(() => {
+        console.log('Push successful!');
+      })
+      .catch((err) => {
+        console.error('Error during push:', err);
+    });
   })
   .catch((err) => {
     console.error('Error during commit:', err);
-});
-
-simpleGit
-  .push('origin', 'master') // 将代码推送到远程仓库的master分支
-  .then(() => {
-    console.log('Push successful!');
-  })
-  .catch((err) => {
-    console.error('Error during push:', err);
 });
