@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2025-10-28T02:56:08.225Z</updated>
+  <updated>2025-11-04T02:48:21.801Z</updated>
   <id>/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="/2025/10/14/ComfyUI%E6%95%99%E7%A8%8B/"/>
     <id>/2025/10/14/ComfyUI教程/</id>
     <published>2025-10-14T08:30:45.000Z</published>
-    <updated>2025-10-28T02:56:08.225Z</updated>
+    <updated>2025-11-04T02:48:21.801Z</updated>
     
-    <content type="html"><![CDATA[<p>ComfyUI入门教程<br><a id="more"></a><br>ComfyUI是最强大的开源基于节点的生成式人工智能应用。</p><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="https://www.comfy.org/zh-cn/" target="_blank" rel="noopener">ComfyUI</a></p><h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p><a href="https://www.comflowy.com/zh-CN/docs" target="_blank" rel="noopener">Comflowy</a><br><a href="https://www.digitfold.com/" target="_blank" rel="noopener">数字折叠</a></p><h2 id="视频学习"><a href="#视频学习" class="headerlink" title="视频学习"></a>视频学习</h2><p><a href="https://aistudio.baidu.com/course/introduce/32359" target="_blank" rel="noopener">PP飞桨</a></p><h2 id="使用问题"><a href="#使用问题" class="headerlink" title="使用问题"></a>使用问题</h2><p><a href="https://blog.csdn.net/Misdirection_XG/article/details/147550911" target="_blank" rel="noopener">ComfyUI常见错误</a></p><h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>由于ComfyUI的节点需要从github下载，所以需要设置代理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">正常下载</span><br><span class="line">git clone https://github.com/comfyanonymous/ComfyUI.git</span><br><span class="line">代理下载,在地址前加 https://mirror.ghproxy.com/</span><br><span class="line">git clone https://mirror.ghproxy.com/https://github.com/comfyanonymous/ComfyUI.git</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<p>ComfyUI入门教程<br><a id="more"></a><br>ComfyUI是最强大的开源基于节点的生成式人工智能应用。</p><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="https://www.comfy.org/zh-cn/" target="_blank" rel="noopener">ComfyUI</a></p><h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p><a href="https://www.comflowy.com/zh-CN/docs" target="_blank" rel="noopener">Comflowy</a><br><a href="https://www.digitfold.com/" target="_blank" rel="noopener">数字折叠</a></p><h2 id="工作流例子"><a href="#工作流例子" class="headerlink" title="工作流例子"></a>工作流例子</h2><p><a href="https://comfyanonymous.github.io/ComfyUI_examples/" target="_blank" rel="noopener">ComfyUI_examples</a></p><h2 id="视频学习"><a href="#视频学习" class="headerlink" title="视频学习"></a>视频学习</h2><p><a href="https://aistudio.baidu.com/course/introduce/32359" target="_blank" rel="noopener">PP飞桨</a></p><h2 id="使用问题"><a href="#使用问题" class="headerlink" title="使用问题"></a>使用问题</h2><p><a href="https://blog.csdn.net/Misdirection_XG/article/details/147550911" target="_blank" rel="noopener">ComfyUI常见错误</a></p><h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>由于ComfyUI的节点需要从github下载，所以需要设置代理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">正常下载</span><br><span class="line">git clone https://github.com/comfyanonymous/ComfyUI.git</span><br><span class="line">代理下载,在地址前加 https://mirror.ghproxy.com/</span><br><span class="line">git clone https://mirror.ghproxy.com/https://github.com/comfyanonymous/ComfyUI.git</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
