@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Rust开发nodejs模块 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用rust开发nodejs的模块">
+<meta name="keywords" content="工具库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust开发nodejs模块">
+<meta property="og:url" content="/2025/12/19/Rust开发nodejs模块/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="使用rust开发nodejs的模块">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2025-12-19T08:27:20.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rust开发nodejs模块">
+<meta name="twitter:description" content="使用rust开发nodejs的模块">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-Rust开发nodejs模块" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                Rust开发nodejs模块
+            
+        </h1>
+        <time>
+            2025-12-19 Friday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/python-rust/">python&rust</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Neon"><span class="toc-number">1.</span> <span class="toc-text">使用Neon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Neon-CLI"><span class="toc-number">1.1.</span> <span class="toc-text">安装Neon CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个新的Neon项目"><span class="toc-number">1.2.</span> <span class="toc-text">创建一个新的Neon项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Rust代码"><span class="toc-number">1.3.</span> <span class="toc-text">编写Rust代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建项目"><span class="toc-number">1.4.</span> <span class="toc-text">构建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Node-js中使用Module"><span class="toc-number">1.5.</span> <span class="toc-text">在Node.js中使用Module</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用NAPI-RS"><span class="toc-number">2.</span> <span class="toc-text">使用NAPI-RS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装NAPI-RS-CLI"><span class="toc-number">2.1.</span> <span class="toc-text">安装NAPI-RS CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个新的NAPI-RS项目"><span class="toc-number">2.2.</span> <span class="toc-text">创建一个新的NAPI-RS项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Rust代码-1"><span class="toc-number">2.3.</span> <span class="toc-text">编写Rust代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建项目-1"><span class="toc-number">2.4.</span> <span class="toc-text">构建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Node-js中使用Module-1"><span class="toc-number">2.5.</span> <span class="toc-text">在Node.js中使用Module</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用WebAssembly-WASM"><span class="toc-number">3.</span> <span class="toc-text">使用WebAssembly(WASM)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装wasm-pack"><span class="toc-number">3.1.</span> <span class="toc-text">安装wasm-pack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个新的项目"><span class="toc-number">3.2.</span> <span class="toc-text">创建一个新的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加WASM-target"><span class="toc-number">3.3.</span> <span class="toc-text">添加WASM target</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Rust代码-2"><span class="toc-number">3.4.</span> <span class="toc-text">编写Rust代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建项目-2"><span class="toc-number">3.5.</span> <span class="toc-text">构建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Node-js中使用Module-2"><span class="toc-number">3.6.</span> <span class="toc-text">在Node.js中使用Module</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用FFI"><span class="toc-number">4.</span> <span class="toc-text">使用FFI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个Rust库"><span class="toc-number">4.1.</span> <span class="toc-text">创建一个Rust库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加构建目标"><span class="toc-number">4.2.</span> <span class="toc-text">添加构建目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Rust代码-3"><span class="toc-number">4.3.</span> <span class="toc-text">编写Rust代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译库"><span class="toc-number">4.4.</span> <span class="toc-text">编译库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Node-js中使用库"><span class="toc-number">4.5.</span> <span class="toc-text">在Node.js中使用库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>使用rust开发nodejs的模块<br><a id="more"></a></p>
+<blockquote>
+<p>要在Node.js中使用Rust，通常需要在Rust中创建一个本地Node.js模块。有几种方法可以实现这种集成，包括使用像neon、napi-rs、FFI和WebAssembly (WASM)这样的库。</p>
+</blockquote>
+<h2 id="使用Neon"><a href="#使用Neon" class="headerlink" title="使用Neon"></a>使用Neon</h2><p>Neon是一个库，为在Rust中编写本地Node.js模块提供绑定。它简化了Rust与Node.js集成的过程，可以在JavaScript应用程序中利用Rust的性能和安全优势。<br>示例：用Neon创建一个简单的Rust模块</p>
+<h3 id="安装Neon-CLI"><a href="#安装Neon-CLI" class="headerlink" title="安装Neon CLI"></a>安装Neon CLI</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g neon-cli</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个新的Neon项目"><a href="#创建一个新的Neon项目" class="headerlink" title="创建一个新的Neon项目"></a>创建一个新的Neon项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">neon new my-neon-project</span><br><span class="line">cd my-neon-project</span><br></pre></td></tr></table></figure>
+<h3 id="编写Rust代码"><a href="#编写Rust代码" class="headerlink" title="编写Rust代码"></a>编写Rust代码</h3><p>在src/lib.rs文件中添加一个简单的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">use neon::prelude::*;</span><br><span class="line"></span><br><span class="line">fn hello(mut cx: FunctionContext) -&gt; JsResult&lt;JsString&gt; &#123;</span><br><span class="line">    Ok(cx.string(&quot;Hello from Rust!&quot;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">register_module!(mut cx, &#123;</span><br><span class="line">    cx.export_function(&quot;hello&quot;, hello)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">neon build</span><br></pre></td></tr></table></figure>
+<h3 id="在Node-js中使用Module"><a href="#在Node-js中使用Module" class="headerlink" title="在Node.js中使用Module"></a>在Node.js中使用Module</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const addon = require(&apos;../native&apos;);</span><br><span class="line">console.log(addon.hello()); // 输出: Hello from Rust!</span><br></pre></td></tr></table></figure>
+<h2 id="使用NAPI-RS"><a href="#使用NAPI-RS" class="headerlink" title="使用NAPI-RS"></a>使用NAPI-RS</h2><p>NAPI-RS是另一个用Rust编写Node.js原生插件的流行库。它使用Node-API (N-API)，它为Node.js模块提供了一个稳定的ABI(应用程序二进制接口)。这确保了不同版本Node.js的兼容性。<br>示例：使用NAPI-RS创建一个简单的Rust模块。</p>
+<h3 id="安装NAPI-RS-CLI"><a href="#安装NAPI-RS-CLI" class="headerlink" title="安装NAPI-RS CLI"></a>安装NAPI-RS CLI</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @napi-rs/cli</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个新的NAPI-RS项目"><a href="#创建一个新的NAPI-RS项目" class="headerlink" title="创建一个新的NAPI-RS项目"></a>创建一个新的NAPI-RS项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">napi new my-napi-project</span><br><span class="line">cd my-napi-project</span><br></pre></td></tr></table></figure>
+<h3 id="编写Rust代码-1"><a href="#编写Rust代码-1" class="headerlink" title="编写Rust代码"></a>编写Rust代码</h3><p>在src/lib.rs文件中添加一个简单的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#[macro_use]</span><br><span class="line">extern crate napi_derive;</span><br><span class="line"></span><br><span class="line">#[napi]</span><br><span class="line">fn hello() -&gt; String &#123;</span><br><span class="line">    &quot;Hello from Rust!&quot;.to_string()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构建项目-1"><a href="#构建项目-1" class="headerlink" title="构建项目"></a>构建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">napi build</span><br></pre></td></tr></table></figure>
+<h3 id="在Node-js中使用Module-1"><a href="#在Node-js中使用Module-1" class="headerlink" title="在Node.js中使用Module"></a>在Node.js中使用Module</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const &#123; hello &#125; = require(&apos;./napi-rs&apos;);</span><br><span class="line">console.log(hello()); // 输出: Hello from Rust!</span><br></pre></td></tr></table></figure>
+<h2 id="使用WebAssembly-WASM"><a href="#使用WebAssembly-WASM" class="headerlink" title="使用WebAssembly(WASM)"></a>使用WebAssembly(WASM)</h2><p>WASM是在Node.js应用程序中使用Rust的另一种方法。WASM允许你将Rust代码编译成可以在Node.js运行时执行的二进制格式。<br>示例：创建简单WASM模块</p>
+<h3 id="安装wasm-pack"><a href="#安装wasm-pack" class="headerlink" title="安装wasm-pack"></a>安装wasm-pack</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install wasm-pack</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个新的项目"><a href="#创建一个新的项目" class="headerlink" title="创建一个新的项目"></a>创建一个新的项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new --lib wasm_example</span><br><span class="line">cd wasm_example</span><br></pre></td></tr></table></figure>
+<h3 id="添加WASM-target"><a href="#添加WASM-target" class="headerlink" title="添加WASM target"></a>添加WASM target</h3><p>在Cargo.toml文件中加入以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[lib]</span><br><span class="line">crate-type = [&quot;cdylib&quot;]</span><br><span class="line"></span><br><span class="line">[dependencies]</span><br><span class="line">wasm-bindgen = &quot;0.2&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="编写Rust代码-2"><a href="#编写Rust代码-2" class="headerlink" title="编写Rust代码"></a>编写Rust代码</h3><p>在src/lib.rs中添加Rust函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use wasm_bindgen::prelude::*;</span><br><span class="line"></span><br><span class="line">#[wasm_bindgen]</span><br><span class="line">pub fn greet(name: &amp;str) -&gt; String &#123;</span><br><span class="line">    format!(&quot;Hello, &#123;&#125;!&quot;, name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构建项目-2"><a href="#构建项目-2" class="headerlink" title="构建项目"></a>构建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wasm-pack build --target nodejs</span><br></pre></td></tr></table></figure>
+<h3 id="在Node-js中使用Module-2"><a href="#在Node-js中使用Module-2" class="headerlink" title="在Node.js中使用Module"></a>在Node.js中使用Module</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const &#123; greet &#125; = require(&apos;./pkg/wasm_example&apos;);</span><br><span class="line">console.log(greet(&apos;World&apos;));</span><br></pre></td></tr></table></figure>
+<h2 id="使用FFI"><a href="#使用FFI" class="headerlink" title="使用FFI"></a>使用FFI</h2><p>另一种方法是使用FFI从Node.js调用Rust函数。这种情况不太常见，但对于首选直接绑定的某些场景可能很有用。<br>示例：创建一个简单的Rust库</p>
+<h3 id="创建一个Rust库"><a href="#创建一个Rust库" class="headerlink" title="创建一个Rust库"></a>创建一个Rust库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new --lib my_rust_library</span><br><span class="line">cd my_rust_library</span><br></pre></td></tr></table></figure>
+<h3 id="添加构建目标"><a href="#添加构建目标" class="headerlink" title="添加构建目标"></a>添加构建目标</h3><p>在Cargo.toml文件中加入以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[lib]</span><br><span class="line">crate-type = [&quot;dylib&quot;]</span><br></pre></td></tr></table></figure></p>
+<h3 id="编写Rust代码-3"><a href="#编写Rust代码-3" class="headerlink" title="编写Rust代码"></a>编写Rust代码</h3><p>在src/lib.rs中添加Rust函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn hello() -&gt; *const u8 &#123;</span><br><span class="line">    &quot;Hello from Rust!&quot;.as_ptr()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="编译库"><a href="#编译库" class="headerlink" title="编译库"></a>编译库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></table></figure>
+<h3 id="在Node-js中使用库"><a href="#在Node-js中使用库" class="headerlink" title="在Node.js中使用库"></a>在Node.js中使用库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const ffi = require(&apos;ffi-napi&apos;);</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const lib = ffi.Library(path.join(__dirname, &apos;target/release/libffi&apos;), &#123;</span><br><span class="line">    &apos;hello&apos;: [&apos;string&apos;, []]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(lib.hello()); // 输出: Hello from Rust!</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>每种方法都有其优点，选择取决于您的应用程序的具体需求：</p>
+<ul>
+<li>Neon：最适合与Node.js直接集成，提供了一种简单有效的方式来编写本机模块。</li>
+<li>NAPI-RS：适用于使用Node-API创建稳定的、与版本无关的本地模块。</li>
+<li>WebAssembly：非常适合在Node.js和浏览器中运行Rust代码，提供可移植性和性能。</li>
+<li>FFI：对于需要直接从Node.js调用Rust函数而不需要额外绑定的场景非常有用。</li>
+</ul>
+<p>在Node.js应用中利用Rust的有效案例</p>
+<ul>
+<li>cpu密集型计算：图像处理、数据压缩和加密计算等任务。</li>
+<li>实时数据处理：高频交易系统、游戏后端和实时分析。</li>
+<li>网络服务：构建高性能web服务器、代理或网络实用程序。</li>
+</ul>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2025/10/14/ComfyUI教程/" rel="next" title="ComfyUI教程">
+                            ComfyUI教程
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'Rust开发nodejs模块',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>190</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>23</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>5</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.77px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 18.62px; color: #7a7a7a">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.92px; color: #6a6a6a">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.31px; color: #898989">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.54px; color: #8f8f8f">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.54px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.85px; color: #7f7f7f">ajax</a> <a href="/tags/canvas/" style="font-size: 14.77px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.85px; color: #7f7f7f">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.08px; color: #848484">html</a> <a href="/tags/jquery/" style="font-size: 15.54px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.77px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.54px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.54px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.69px; color: #656565">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.85px; color: #7f7f7f">webpack</a> <a href="/tags/web图形/" style="font-size: 17.85px; color: #7f7f7f">web图形</a> <a href="/tags/web安全/" style="font-size: 17.85px; color: #7f7f7f">web安全</a> <a href="/tags/web性能/" style="font-size: 19.38px; color: #747474">web性能</a> <a href="/tags/worker/" style="font-size: 14.77px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.54px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 17.08px; color: #848484">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.85px; color: #7f7f7f">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.23px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.77px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.15px; color: #6f6f6f">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.85px; color: #7f7f7f">日语</a> <a href="/tags/样式/" style="font-size: 17.85px; color: #7f7f7f">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.85px; color: #7f7f7f">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.69px; color: #656565">移动端</a> <a href="/tags/算法/" style="font-size: 15.54px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 17.08px; color: #848484">编译</a> <a href="/tags/网络基础/" style="font-size: 20.92px; color: #6a6a6a">网络基础</a> <a href="/tags/调试/" style="font-size: 14.77px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.77px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.46px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.85px; color: #7f7f7f">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
