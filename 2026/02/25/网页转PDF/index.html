@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>网页转PDF | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网页转PDF技术指南">
+<meta name="keywords" content="工具库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页转PDF">
+<meta property="og:url" content="/2026/02/25/网页转PDF/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="网页转PDF技术指南">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2026/02/25/网页转PDF/1.png">
+<meta property="og:image" content="/2026/02/25/网页转PDF/2.png">
+<meta property="og:updated_time" content="2026-02-25T02:16:18.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页转PDF">
+<meta name="twitter:description" content="网页转PDF技术指南">
+<meta name="twitter:image" content="/2026/02/25/网页转PDF/1.png">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-网页转PDF" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                网页转PDF
+            
+        </h1>
+        <time>
+            2026-02-25 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/nodejs/">nodejs</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加目录"><span class="toc-number">2.</span> <span class="toc-text">添加目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加页眉页脚"><span class="toc-number">3.</span> <span class="toc-text">添加页眉页脚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成书签"><span class="toc-number">4.</span> <span class="toc-text">生成书签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加封面和封底"><span class="toc-number">5.</span> <span class="toc-text">添加封面和封底</span></a></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>网页转PDF技术指南<br><a id="more"></a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>把一个页面转成一个PDF文件，最简单的方法是用浏览器的打印功能，可以直接将页面输出为PDF,但是，直接打印HTML页面为PDF是不行的，主要问题是：</p>
+<ul>
+<li>PDF不需要网站的页头、页脚；</li>
+<li>一个页面对应一个PDF，但一个教程有几十个页面，一个一个输出PDF再合非常麻烦。</li>
+</ul>
+<p>所以，必须把所有页面先拼接成一个非常长的页面，再输出成一个PDF。<br>要自动化完成生成一个大页面再输出PDF，可以用<a href="https://pptr.dev/" target="_blank" rel="noopener">Puppeteer</a>，它封装了Chromium浏览器，相当于在本地以API的方式启动浏览器、加载页面、输出PDF，并且不需要窗口模式（Headless模式），命令行就能跑。<br>输出PDF的核心代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const browser = await puppeteer.launch(&#123; headless: true &#125;);</span><br><span class="line">const page = await browser.newPage();</span><br><span class="line">await page.goto(&apos;http://localhost:3000/books/python/pdf.html&apos;, &#123; waitUntil: &apos;networkidle0&apos; &#125;);</span><br><span class="line">await page.pdf(&#123;</span><br><span class="line">    path: &apos;/path/to/python.pdf&apos;,</span><br><span class="line">    margin: &#123; top: 80, left: 50, right: 50, bottom: 80 &#125;</span><br><span class="line">&#125;);</span><br><span class="line">await browser.close();</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h2><p>为了便于阅读，可以在生成大页面时，在最顶端添加一个目录，每一个章节用<code>&lt;a href=&quot;#chapter-n&quot;&gt;</code>指向特定ID的<code>&lt;h1 id=&quot;chapter-n&quot;&gt;</code>标签，在HTML页面中可以实现内部跳转，生成的PDF文件也能实现内部跳转：<br><img src="/2026/02/25/网页转PDF/1.png" alt="img"></p>
+<h2 id="添加页眉页脚"><a href="#添加页眉页脚" class="headerlink" title="添加页眉页脚"></a>添加页眉页脚</h2><p>生成PDF时，可以通过以下参数给每一页添加页眉和页脚：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">await page.pdf(&#123;</span><br><span class="line">    path: &apos;/path/to/python.pdf&apos;,</span><br><span class="line">    margin: &#123; top: 80, left: 50, right: 50, bottom: 80 &#125;,</span><br><span class="line">    displayHeaderFooter: true,</span><br><span class="line">    headerTemplate: &apos;&lt;div&gt;Header&lt;/div&gt;&apos;,</span><br><span class="line">    footerTemplate: &apos;&lt;div&gt;&lt;span class=&quot;pageNumber&quot;&gt;&lt;/span&gt; / &lt;span class=&quot;totalPages&quot;&gt;&lt;/span&gt;&lt;/div&gt;&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>设置页眉和页脚时，必须传入HTML片段，不能从外部引入图片和CSS。有几个特殊的class会被自动加上当前页码、总页数。</p>
+<h2 id="生成书签"><a href="#生成书签" class="headerlink" title="生成书签"></a>生成书签</h2><p>在PDF文件中，可以创建书签。书签和目录类似，但它会自动加载到PDF阅读器的左侧，实际上是一组到指定页面的链接。<br>Puppeteer不支持生成书签，要创建书签，就必须解析生成的PDF，然后提取每个<code>&lt;h1 id=&quot;chapter-n&quot;&gt;</code>所在页的页码。用<a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>这个JS库可以实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 读取PDF:</span><br><span class="line">const pdfMainDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">// 获取每一页的Object Number:</span><br><span class="line">const pdfPages = pdfMainDoc.getPages();</span><br><span class="line">const pdfPageObjNums = [];</span><br><span class="line">for (let i=0; i&lt;pdfPages.length; i++) &#123;</span><br><span class="line">    const page = pdfPages[i];</span><br><span class="line">    pdfPageObjNums.push(page.ref.objectNumber); </span><br><span class="line">&#125;</span><br><span class="line">// 获取ID到Page Object Number的映射:</span><br><span class="line">const nameToPageObjNumber = &#123;&#125;;</span><br><span class="line">const pdfIndObjs = pdfMainDoc.context.indirectObjects;</span><br><span class="line">for (let [pdfKey, pdfValue] of pdfIndObjs.entries()) &#123;</span><br><span class="line">    if (pdfKey instanceof PDFRef) &#123;</span><br><span class="line">        let pdfValueDict = pdfValue.dict;</span><br><span class="line">        if (pdfValueDict) &#123;</span><br><span class="line">            for (let [pk, pv] of pdfValueDict.entries()) &#123;</span><br><span class="line">                if (pk instanceof PDFName &amp;&amp; pv instanceof PDFArray) &#123;</span><br><span class="line">                    let name = pk.decodeText();</span><br><span class="line">                    if (name &amp;&amp; name.startsWith(&apos;chapter-&apos;)) &#123;</span><br><span class="line">                        nameToPageObjNumber[name] = pv.array[0].objectNumber;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 针对每个ID生成书签描述文件:</span><br><span class="line">let bookmark = `</span><br><span class="line">BookmarkBegin</span><br><span class="line">BookmarkTitle: Chapter 1</span><br><span class="line">BookmarkLevel: 1</span><br><span class="line">BookmarkPageNumber: 2</span><br><span class="line">...</span><br><span class="line">`;</span><br><span class="line">await fs.write(...);</span><br></pre></td></tr></table></figure></p>
+<p>实际上，pdf-lib只能提取出生成书签的信息，并不能生成书签。这里我们生成了一个书签描述文件，然后用<a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" target="_blank" rel="noopener">pdftk</a>更新PDF就可以把书签加进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_process.execSync(&apos;pdftk input.pdf update_info_utf8 bookmark.txt output output.pdf&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>在PDF Reader中的效果如下：<br><img src="/2026/02/25/网页转PDF/2.png" alt="img"></p>
+<h2 id="添加封面和封底"><a href="#添加封面和封底" class="headerlink" title="添加封面和封底"></a>添加封面和封底</h2><p>封面和封底实际上就是两个小的HTML页面，各自生成单页PDF文件，然后，我们用<code>pdf-lib</code>把3个PDF文件合并成一个，就完成了最终的PDF：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 读取3个PDF文件:</span><br><span class="line">const pdfMainDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">const pdfFrontDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">const pdfBackDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">// 复制页面到主文件:</span><br><span class="line">const [frontPage] = await pdfMainDoc.copyPages(pdfFrontDoc, [0]);</span><br><span class="line">const [backPage] = await pdfMainDoc.copyPages(pdfBackDoc, [0]);</span><br><span class="line">pdfMainDoc.insertPage(0, frontPage);</span><br><span class="line">pdfMainDoc.addPage(backPage);</span><br><span class="line">// 保存:</span><br><span class="line">const mergedPdfBuffer = await pdfMainDoc.save();</span><br><span class="line">fs.writeFileSync(&apos;output.pdf&apos;, mergedPdfBuffer);</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/工具库/"><i class="fa fa-tag"></i>&nbsp;&nbsp;工具库</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2025/12/19/Rust开发nodejs模块/" rel="next" title="Rust开发nodejs模块">
+                            Rust开发nodejs模块
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '网页转PDF',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>190</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>24</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>5</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.77px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 18.62px; color: #7a7a7a">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 20.92px; color: #6a6a6a">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.31px; color: #898989">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.54px; color: #8f8f8f">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.54px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.85px; color: #7f7f7f">ajax</a> <a href="/tags/canvas/" style="font-size: 14.77px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.85px; color: #7f7f7f">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.08px; color: #848484">html</a> <a href="/tags/jquery/" style="font-size: 15.54px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.77px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.54px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typescript/" style="font-size: 15.54px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.69px; color: #656565">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.85px; color: #7f7f7f">webpack</a> <a href="/tags/web图形/" style="font-size: 17.85px; color: #7f7f7f">web图形</a> <a href="/tags/web安全/" style="font-size: 17.85px; color: #7f7f7f">web安全</a> <a href="/tags/web性能/" style="font-size: 19.38px; color: #747474">web性能</a> <a href="/tags/worker/" style="font-size: 14.77px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.54px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 17.08px; color: #848484">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.85px; color: #7f7f7f">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.23px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.77px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.15px; color: #6f6f6f">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.85px; color: #7f7f7f">日语</a> <a href="/tags/样式/" style="font-size: 17.85px; color: #7f7f7f">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.85px; color: #7f7f7f">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.69px; color: #656565">移动端</a> <a href="/tags/算法/" style="font-size: 15.54px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 17.08px; color: #848484">编译</a> <a href="/tags/网络基础/" style="font-size: 20.92px; color: #6a6a6a">网络基础</a> <a href="/tags/调试/" style="font-size: 14.77px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.77px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.46px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.85px; color: #7f7f7f">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

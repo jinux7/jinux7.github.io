@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2025-12-23T05:08:19.549Z</updated>
+  <updated>2026-02-25T02:16:18.939Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网页转PDF</title>
+    <link href="/2026/02/25/%E7%BD%91%E9%A1%B5%E8%BD%ACPDF/"/>
+    <id>/2026/02/25/网页转PDF/</id>
+    <published>2026-02-25T01:52:43.000Z</published>
+    <updated>2026-02-25T02:16:18.939Z</updated>
+    
+    <content type="html"><![CDATA[<p>网页转PDF技术指南<br><a id="more"></a></p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>把一个页面转成一个PDF文件，最简单的方法是用浏览器的打印功能，可以直接将页面输出为PDF,但是，直接打印HTML页面为PDF是不行的，主要问题是：</p><ul><li>PDF不需要网站的页头、页脚；</li><li>一个页面对应一个PDF，但一个教程有几十个页面，一个一个输出PDF再合非常麻烦。</li></ul><p>所以，必须把所有页面先拼接成一个非常长的页面，再输出成一个PDF。<br>要自动化完成生成一个大页面再输出PDF，可以用<a href="https://pptr.dev/" target="_blank" rel="noopener">Puppeteer</a>，它封装了Chromium浏览器，相当于在本地以API的方式启动浏览器、加载页面、输出PDF，并且不需要窗口模式（Headless模式），命令行就能跑。<br>输出PDF的核心代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const browser = await puppeteer.launch(&#123; headless: true &#125;);</span><br><span class="line">const page = await browser.newPage();</span><br><span class="line">await page.goto(&apos;http://localhost:3000/books/python/pdf.html&apos;, &#123; waitUntil: &apos;networkidle0&apos; &#125;);</span><br><span class="line">await page.pdf(&#123;</span><br><span class="line">    path: &apos;/path/to/python.pdf&apos;,</span><br><span class="line">    margin: &#123; top: 80, left: 50, right: 50, bottom: 80 &#125;</span><br><span class="line">&#125;);</span><br><span class="line">await browser.close();</span><br></pre></td></tr></table></figure></p><h2 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h2><p>为了便于阅读，可以在生成大页面时，在最顶端添加一个目录，每一个章节用<code>&lt;a href=&quot;#chapter-n&quot;&gt;</code>指向特定ID的<code>&lt;h1 id=&quot;chapter-n&quot;&gt;</code>标签，在HTML页面中可以实现内部跳转，生成的PDF文件也能实现内部跳转：<br><img src="/2026/02/25/网页转PDF/1.png" alt="img"></p><h2 id="添加页眉页脚"><a href="#添加页眉页脚" class="headerlink" title="添加页眉页脚"></a>添加页眉页脚</h2><p>生成PDF时，可以通过以下参数给每一页添加页眉和页脚：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">await page.pdf(&#123;</span><br><span class="line">    path: &apos;/path/to/python.pdf&apos;,</span><br><span class="line">    margin: &#123; top: 80, left: 50, right: 50, bottom: 80 &#125;,</span><br><span class="line">    displayHeaderFooter: true,</span><br><span class="line">    headerTemplate: &apos;&lt;div&gt;Header&lt;/div&gt;&apos;,</span><br><span class="line">    footerTemplate: &apos;&lt;div&gt;&lt;span class=&quot;pageNumber&quot;&gt;&lt;/span&gt; / &lt;span class=&quot;totalPages&quot;&gt;&lt;/span&gt;&lt;/div&gt;&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p><p>设置页眉和页脚时，必须传入HTML片段，不能从外部引入图片和CSS。有几个特殊的class会被自动加上当前页码、总页数。</p><h2 id="生成书签"><a href="#生成书签" class="headerlink" title="生成书签"></a>生成书签</h2><p>在PDF文件中，可以创建书签。书签和目录类似，但它会自动加载到PDF阅读器的左侧，实际上是一组到指定页面的链接。<br>Puppeteer不支持生成书签，要创建书签，就必须解析生成的PDF，然后提取每个<code>&lt;h1 id=&quot;chapter-n&quot;&gt;</code>所在页的页码。用<a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>这个JS库可以实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 读取PDF:</span><br><span class="line">const pdfMainDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">// 获取每一页的Object Number:</span><br><span class="line">const pdfPages = pdfMainDoc.getPages();</span><br><span class="line">const pdfPageObjNums = [];</span><br><span class="line">for (let i=0; i&lt;pdfPages.length; i++) &#123;</span><br><span class="line">    const page = pdfPages[i];</span><br><span class="line">    pdfPageObjNums.push(page.ref.objectNumber); </span><br><span class="line">&#125;</span><br><span class="line">// 获取ID到Page Object Number的映射:</span><br><span class="line">const nameToPageObjNumber = &#123;&#125;;</span><br><span class="line">const pdfIndObjs = pdfMainDoc.context.indirectObjects;</span><br><span class="line">for (let [pdfKey, pdfValue] of pdfIndObjs.entries()) &#123;</span><br><span class="line">    if (pdfKey instanceof PDFRef) &#123;</span><br><span class="line">        let pdfValueDict = pdfValue.dict;</span><br><span class="line">        if (pdfValueDict) &#123;</span><br><span class="line">            for (let [pk, pv] of pdfValueDict.entries()) &#123;</span><br><span class="line">                if (pk instanceof PDFName &amp;&amp; pv instanceof PDFArray) &#123;</span><br><span class="line">                    let name = pk.decodeText();</span><br><span class="line">                    if (name &amp;&amp; name.startsWith(&apos;chapter-&apos;)) &#123;</span><br><span class="line">                        nameToPageObjNumber[name] = pv.array[0].objectNumber;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 针对每个ID生成书签描述文件:</span><br><span class="line">let bookmark = `</span><br><span class="line">BookmarkBegin</span><br><span class="line">BookmarkTitle: Chapter 1</span><br><span class="line">BookmarkLevel: 1</span><br><span class="line">BookmarkPageNumber: 2</span><br><span class="line">...</span><br><span class="line">`;</span><br><span class="line">await fs.write(...);</span><br></pre></td></tr></table></figure></p><p>实际上，pdf-lib只能提取出生成书签的信息，并不能生成书签。这里我们生成了一个书签描述文件，然后用<a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" target="_blank" rel="noopener">pdftk</a>更新PDF就可以把书签加进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_process.execSync(&apos;pdftk input.pdf update_info_utf8 bookmark.txt output output.pdf&apos;);</span><br></pre></td></tr></table></figure></p><p>在PDF Reader中的效果如下：<br><img src="/2026/02/25/网页转PDF/2.png" alt="img"></p><h2 id="添加封面和封底"><a href="#添加封面和封底" class="headerlink" title="添加封面和封底"></a>添加封面和封底</h2><p>封面和封底实际上就是两个小的HTML页面，各自生成单页PDF文件，然后，我们用<code>pdf-lib</code>把3个PDF文件合并成一个，就完成了最终的PDF：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 读取3个PDF文件:</span><br><span class="line">const pdfMainDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">const pdfFrontDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">const pdfBackDoc = await PDFDocument.load(await fs.read(...));</span><br><span class="line">// 复制页面到主文件:</span><br><span class="line">const [frontPage] = await pdfMainDoc.copyPages(pdfFrontDoc, [0]);</span><br><span class="line">const [backPage] = await pdfMainDoc.copyPages(pdfBackDoc, [0]);</span><br><span class="line">pdfMainDoc.insertPage(0, frontPage);</span><br><span class="line">pdfMainDoc.addPage(backPage);</span><br><span class="line">// 保存:</span><br><span class="line">const mergedPdfBuffer = await pdfMainDoc.save();</span><br><span class="line">fs.writeFileSync(&apos;output.pdf&apos;, mergedPdfBuffer);</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网页转PDF技术指南&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="nodejs" scheme="/categories/nodejs/"/>
+    
+    
+      <category term="工具库" scheme="/tags/%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Rust开发nodejs模块</title>
@@ -443,28 +465,6 @@
     
     
       <category term="docker" scheme="/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>element-plus全局设置组件默认属性</title>
-    <link href="/2025/01/09/element-plus%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%E7%BB%84%E4%BB%B6%E9%BB%98%E8%AE%A4%E5%B1%9E%E6%80%A7/"/>
-    <id>/2025/01/09/element-plus全局设置组件默认属性/</id>
-    <published>2025-01-09T08:17:43.000Z</published>
-    <updated>2025-01-09T08:30:49.193Z</updated>
-    
-    <content type="html"><![CDATA[<p>element-plus全局设置组件默认属性<br><a id="more"></a><br>以Dialog组件的close-on-click-modal属性为例，默认是true，通过点击modal可以关闭Dialog。<br>现在全局把它设置成false</p><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import ElementPlus, &#123; ElDialog &#125; from &quot;element-plus&quot;;</span><br><span class="line">ElDialog.props.closeOnclickModal.default = false;</span><br><span class="line">const app = Vue.createApp(App);</span><br><span class="line">app.use(ElementPlus);</span><br></pre></td></tr></table></figure><p><code>ElDialog.props.closeOnclickModal.default = false;</code>这句来修改默认属性</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import ElementPlus from &quot;element-plus&quot;;</span><br><span class="line">const app = Vue.createApp(App);</span><br><span class="line">app.use(ElementPlus);</span><br><span class="line">app._context.components.ElDialog[&apos;props&apos;].closeOnClickModal.default = false;</span><br></pre></td></tr></table></figure><p><code>app._context.components.ElDialog[&#39;props&#39;].closeOnClickModal.default = false;</code>这句来修改默认属性</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上举例了ElDialog组件，其他组件也可以这样设置。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;element-plus全局设置组件默认属性&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="/categories/javascript/"/>
-    
-    
-      <category term="vue" scheme="/tags/vue/"/>
     
   </entry>
   
