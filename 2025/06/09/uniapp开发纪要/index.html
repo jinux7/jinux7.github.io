@@ -20,10 +20,12 @@
 <meta property="og:site_name" content="jinux">
 <meta property="og:description" content="记录一些uniapp开发中遇到的问题和解决技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-07-14T01:13:38.398Z">
+<meta property="og:image" content="/2025/06/09/uniapp开发纪要/1.png">
+<meta property="og:updated_time" content="2026-03-04T08:26:24.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="uniapp开发纪要">
 <meta name="twitter:description" content="记录一些uniapp开发中遇到的问题和解决技巧">
+<meta name="twitter:image" content="/2025/06/09/uniapp开发纪要/1.png">
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico">
@@ -173,7 +175,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#真机调试"><span class="toc-number">1.</span> <span class="toc-text">真机调试</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#真机调试"><span class="toc-number">1.</span> <span class="toc-text">真机调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用自有证书云打包"><span class="toc-number">2.</span> <span class="toc-text">使用自有证书云打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用极光推送插件"><span class="toc-number">3.</span> <span class="toc-text">使用极光推送插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建极光推送账号"><span class="toc-number">3.1.</span> <span class="toc-text">创建极光推送账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开插件市场"><span class="toc-number">3.2.</span> <span class="toc-text">打开插件市场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开HBuilder，在manifest-json的"><span class="toc-number">3.3.</span> <span class="toc-text">打开HBuilder，在manifest.json的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">3.4.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包"><span class="toc-number">3.5.</span> <span class="toc-text">打包</span></a></li></ol></li></ol>
             </div>
         </section>
     
@@ -189,8 +191,24 @@
 <li>HBuilderX的工具—&gt;设置—&gt;运行配置—&gt;adb路径，换成HBuilderX目录下plugins/launcher-tools/tools/adbs/1.0.36/adb.exe</li>
 <li>设置—&gt;系统和更新—&gt;开发人员选项【USB调试】打开</li>
 <li>设置—&gt;系统和更新—&gt;开发人员选项【“仅充电”模式下允许ADB调试】打开</li>
-<li>设置—&gt;系统和更新—&gt;开发人员选项【选择USB配置】RNDIS(USB以太网)</li>
+<li><p>设置—&gt;系统和更新—&gt;开发人员选项【选择USB配置】RNDIS(USB以太网)</p>
+<h2 id="使用自有证书云打包"><a href="#使用自有证书云打包" class="headerlink" title="使用自有证书云打包"></a>使用自有证书云打包</h2><p><a href="https://ask.dcloud.net.cn/article/35777" target="_blank" rel="noopener">Android平台签名证书(.keystore)生成指南</a><br>笔者是让同事用工具生成的，要了好多个字符串，统一都给了”jjjjj”,最后生成了一个”jjjjj.jks”文件。<br><img src="/2025/06/09/uniapp开发纪要/1.png" alt="img"></p>
+<h2 id="使用极光推送插件"><a href="#使用极光推送插件" class="headerlink" title="使用极光推送插件"></a>使用极光推送插件</h2><h3 id="创建极光推送账号"><a href="#创建极光推送账号" class="headerlink" title="创建极光推送账号"></a>创建极光推送账号</h3><p><a href="https://www.jiguang.cn/" target="_blank" rel="noopener">极光推送</a></p>
+</li>
+<li><p>创建账号</p>
+</li>
+<li>进入“工作台”，创建应用，中间会输入Android包名，如<code>top.jinux7.appName</code>，成功后拿到这个应用的AppKey</li>
 </ul>
+<h3 id="打开插件市场"><a href="#打开插件市场" class="headerlink" title="打开插件市场"></a>打开插件市场</h3><p><a href="https://ext.dcloud.net.cn/plugin?" target="_blank" rel="noopener">插件市场</a></p>
+<ul>
+<li>点击我的插件</li>
+<li>在下载的插件中(先在插件市场中下载)，找到极光推送插件，点击进入插件市场页面</li>
+<li>点击右侧购买(0元) for 云打包，根据提示选择当前项目，注意看AppId</li>
+<li>之后会在使用的插件中看到这个插件，绑定成功</li>
+</ul>
+<h3 id="打开HBuilder，在manifest-json的"><a href="#打开HBuilder，在manifest-json的" class="headerlink" title="打开HBuilder，在manifest.json的"></a>打开HBuilder，在manifest.json的</h3><p>在安卓/IOS原生插件配置中选择好极光插件，将上边的极光推送官网里申请的AppKey填入</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>使用方法见插件文档</p>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><p>上边步骤完成后进行云打包就会成功了</p>
 
         </div>
 
@@ -262,7 +280,7 @@
     
         <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>24</div></a></li>
     
-        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>5</div></a></li>
+        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>7</div></a></li>
     
         <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
     
@@ -278,7 +296,7 @@
 <div class="m_widget tagcloud">
     <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
     <div class='content'>
-        <a href="/tags/3D/" style="font-size: 14.71px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 18.29px; color: #7c7c7c">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 21.14px; color: #686868">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.14px; color: #8a8a8a">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.43px; color: #8f8f8f">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.43px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.57px; color: #818181">ajax</a> <a href="/tags/canvas/" style="font-size: 14.71px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.57px; color: #818181">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.57px; color: #818181">html</a> <a href="/tags/jquery/" style="font-size: 15.43px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.71px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.43px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typeScript/" style="font-size: 14px; color: #999">typeScript</a> <a href="/tags/typescript/" style="font-size: 15.43px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.86px; color: #646464">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.57px; color: #818181">webpack</a> <a href="/tags/web图形/" style="font-size: 17.57px; color: #818181">web图形</a> <a href="/tags/web安全/" style="font-size: 17.57px; color: #818181">web安全</a> <a href="/tags/web性能/" style="font-size: 19.71px; color: #727272">web性能</a> <a href="/tags/worker/" style="font-size: 14.71px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.43px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 16.86px; color: #868686">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 17.57px; color: #818181">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.29px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.71px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.43px; color: #6d6d6d">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/教程/" style="font-size: 19px; color: #777">教程</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.57px; color: #818181">日语</a> <a href="/tags/样式/" style="font-size: 17.57px; color: #818181">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.57px; color: #818181">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.86px; color: #646464">移动端</a> <a href="/tags/算法/" style="font-size: 15.43px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 16.86px; color: #868686">编译</a> <a href="/tags/网络基础/" style="font-size: 21.14px; color: #686868">网络基础</a> <a href="/tags/调试/" style="font-size: 14.71px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.71px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.57px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.57px; color: #818181">面试题系列</a>
+        <a href="/tags/3D/" style="font-size: 14.71px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 19.71px; color: #727272">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 21.14px; color: #686868">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.14px; color: #8a8a8a">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.43px; color: #8f8f8f">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.43px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.57px; color: #818181">ajax</a> <a href="/tags/canvas/" style="font-size: 14.71px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.57px; color: #818181">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.57px; color: #818181">html</a> <a href="/tags/jquery/" style="font-size: 15.43px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.71px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.43px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typeScript/" style="font-size: 14px; color: #999">typeScript</a> <a href="/tags/typescript/" style="font-size: 15.43px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.86px; color: #646464">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.57px; color: #818181">webpack</a> <a href="/tags/web图形/" style="font-size: 17.57px; color: #818181">web图形</a> <a href="/tags/web安全/" style="font-size: 17.57px; color: #818181">web安全</a> <a href="/tags/web性能/" style="font-size: 19.71px; color: #727272">web性能</a> <a href="/tags/worker/" style="font-size: 14.71px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.43px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 16.86px; color: #868686">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.29px; color: #7c7c7c">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.29px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.71px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.43px; color: #6d6d6d">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/教程/" style="font-size: 19px; color: #777">教程</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.57px; color: #818181">日语</a> <a href="/tags/样式/" style="font-size: 17.57px; color: #818181">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.57px; color: #818181">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.86px; color: #646464">移动端</a> <a href="/tags/算法/" style="font-size: 15.43px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 16.86px; color: #868686">编译</a> <a href="/tags/网络基础/" style="font-size: 21.14px; color: #686868">网络基础</a> <a href="/tags/调试/" style="font-size: 14.71px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.71px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.57px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.57px; color: #818181">面试题系列</a>
     </div>
 </div>
 
