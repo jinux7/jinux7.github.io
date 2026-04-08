@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Agent Skills Specification | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="智能体技能的定义规则">
+<meta name="keywords" content="AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent Skills Specification">
+<meta property="og:url" content="/2026/04/08/Agent-Skills-Specification/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="智能体技能的定义规则">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-04-08T07:01:05.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent Skills Specification">
+<meta name="twitter:description" content="智能体技能的定义规则">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-Agent-Skills-Specification" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                Agent Skills Specification
+            
+        </h1>
+        <time>
+            2026-04-08 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/计算机原理/">计算机原理</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Specification"><span class="toc-number">1.</span> <span class="toc-text">Specification</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Directory-structure"><span class="toc-number">1.1.</span> <span class="toc-text">Directory structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SKILL-md-format"><span class="toc-number">1.2.</span> <span class="toc-text">SKILL.md format</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Frontmatter"><span class="toc-number">1.2.1.</span> <span class="toc-text">Frontmatter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#name-field"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">name field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#description-field"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">description field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#license-field"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">license field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compatibility-field"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">compatibility field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#metadata-field"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">metadata field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#allowed-tools-field"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">allowed-tools field</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Body-content"><span class="toc-number">1.2.2.</span> <span class="toc-text">Body content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optional-directories"><span class="toc-number">1.3.</span> <span class="toc-text">Optional directories</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scripts"><span class="toc-number">1.3.1.</span> <span class="toc-text">scripts/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">1.3.2.</span> <span class="toc-text">references/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assets"><span class="toc-number">1.3.3.</span> <span class="toc-text">assets/</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Progressive-disclosure"><span class="toc-number">1.4.</span> <span class="toc-text">Progressive disclosure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-references"><span class="toc-number">1.5.</span> <span class="toc-text">File references</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Validation"><span class="toc-number">1.6.</span> <span class="toc-text">Validation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills-library"><span class="toc-number">2.2.</span> <span class="toc-text">Skills library</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>智能体技能的定义规则<br><a id="more"></a></p>
+<h1 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h1><blockquote>
+<p>The complete format specification for Agent Skills.</p>
+</blockquote>
+<h2 id="Directory-structure"><a href="#Directory-structure" class="headerlink" title="Directory structure"></a>Directory structure</h2><p>A skill is a directory containing, at minimum, a <code>SKILL.md</code> file:<br><span style="color:#2babdb">(技能是一个目录，至少包含一个文件：SKILL.md)</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">skill-name/</span><br><span class="line">├── SKILL.md          # Required: metadata + instructions</span><br><span class="line">├── scripts/          # Optional: executable code</span><br><span class="line">├── references/       # Optional: documentation</span><br><span class="line">├── assets/           # Optional: templates, resources</span><br><span class="line">└── ...               # Any additional files or directories</span><br></pre></td></tr></table></figure>
+<h2 id="SKILL-md-format"><a href="#SKILL-md-format" class="headerlink" title="SKILL.md format"></a><code>SKILL.md</code> format</h2><p>The <code>SKILL.md</code> file must contain YAML frontmatter followed by Markdown content.<br><span style="color:#2babdb">(SKILL.md文件必须包含 YAML 前言，后面是 Markdown 内容。)</span></p>
+<h3 id="Frontmatter"><a href="#Frontmatter" class="headerlink" title="Frontmatter"></a>Frontmatter</h3><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Yes</td>
+<td>Max 64 characters. Lowercase letters, numbers, and hyphens only. Must not start or end with a hyphen.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Yes</td>
+<td>Max 1024 characters. Non-empty. Describes what the skill does and when to use it.</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>No</td>
+<td>License name or reference to a bundled license file.</td>
+</tr>
+<tr>
+<td><code>compatibility</code></td>
+<td>No</td>
+<td>Max 500 characters. Indicates environment requirements (intended product, system packages, network access, etc.).</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>No</td>
+<td>Arbitrary key-value mapping for additional metadata.</td>
+</tr>
+<tr>
+<td><code>allowed-tools</code></td>
+<td>No</td>
+<td>Space-delimited list of pre-approved tools the skill may use. (Experimental)</td>
+</tr>
+</tbody>
+</table>
+<card><br>  <strong>Minimal example:</strong><br>  <span style="color:#2babdb">(简略的例子)</span><br><br>  <figure class="highlight markdown"><figcaption><span>SKILL.md </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: skill-name</span><br><span class="line">description: A description of what this skill does and when to use it.</span><br><span class="line">---</span><br></pre></td></tr></table></figure><br><br>  <strong>Example with optional fields:</strong><br>  <span style="color:#2babdb">(带有可选字段的示例)</span><br><br>  <figure class="highlight markdown"><figcaption><span>SKILL.md </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: pdf-processing</span><br><span class="line">description: Extract PDF text, fill forms, merge files. Use when handling PDFs.</span><br><span class="line">license: Apache-2.0</span><br><span class="line">metadata:</span><br><span class="line">  author: example-org</span><br><span class="line">  version: "1.0"</span><br><span class="line">---</span><br></pre></td></tr></table></figure><br><br></card>
+
+<h4 id="name-field"><a href="#name-field" class="headerlink" title="name field"></a><code>name</code> field</h4><p>The required <code>name</code> field:</p>
+<ul>
+<li>Must be 1-64 characters</li>
+<li>May only contain unicode lowercase alphanumeric characters (<code>a-z</code>) and hyphens (<code>-</code>)</li>
+<li>Must not start or end with a hyphen (<code>-</code>)</li>
+<li>Must not contain consecutive hyphens (<code>--</code>)</li>
+<li>Must match the parent directory name</li>
+</ul>
+<card><br>  <strong>Valid examples:</strong><br>  <span style="color:#2babdb">(有效的例子)</span><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">pdf-processing</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">data-analysis</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">code-review</span></span><br></pre></td></tr></table></figure><br><br>  <strong>Invalid examples:</strong><br>  <span style="color:#2babdb">(无效示例)</span><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">PDF-Processing</span>  <span class="comment"># uppercase not allowed</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">-pdf</span>  <span class="comment"># cannot start with hyphen</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">pdf--processing</span>  <span class="comment"># consecutive hyphens not allowed</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<h4 id="description-field"><a href="#description-field" class="headerlink" title="description field"></a><code>description</code> field</h4><p>The required <code>description</code> field:</p>
+<ul>
+<li>Must be 1-1024 characters<span style="color:#2babdb">(字符必须是1到1024个字符)</span></li>
+<li>Should describe both what the skill does and when to use it<span style="color:#2babdb">(应该能描述技能的作用以及何时使用)</span></li>
+<li>Should include specific keywords that help agents identify relevant tasks<span style="color:#2babdb">(应包含具体关键词，帮助智能体识别相关任务)</span></li>
+</ul>
+<card><br>  <strong>Good example:</strong><br>  <span style="color:#2babdb">(举个好例子)</span><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">Extracts</span> <span class="string">text</span> <span class="string">and</span> <span class="string">tables</span> <span class="string">from</span> <span class="string">PDF</span> <span class="string">files,</span> <span class="string">fills</span> <span class="string">PDF</span> <span class="string">forms,</span> <span class="string">and</span> <span class="string">merges</span> <span class="string">multiple</span> <span class="string">PDFs.</span> <span class="string">Use</span> <span class="string">when</span> <span class="string">working</span> <span class="string">with</span> <span class="string">PDF</span> <span class="string">documents</span> <span class="string">or</span> <span class="string">when</span> <span class="string">the</span> <span class="string">user</span> <span class="string">mentions</span> <span class="string">PDFs,</span> <span class="string">forms,</span> <span class="string">or</span> <span class="string">document</span> <span class="string">extraction.</span></span><br></pre></td></tr></table></figure><br><br>  <strong>Poor example:</strong><br>  <span style="color:#2babdb">(举个不好的例子)</span><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">Helps</span> <span class="string">with</span> <span class="string">PDFs.</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<h4 id="license-field"><a href="#license-field" class="headerlink" title="license field"></a><code>license</code> field</h4><p>The optional <code>license</code> field:<br><span style="color:#2babdb">(可选字段)</span></p>
+<ul>
+<li>Specifies the license applied to the skill<span style="color:#2babdb">(指定适用于该技能的许可)</span></li>
+<li>We recommend keeping it short (either the name of a license or the name of a bundled license file)<span style="color:#2babdb">(我们建议简短（无论是许可证名称还是捆绑许可证文件名称）)</span></li>
+</ul>
+<card><br>  <strong>Example:</strong><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">license:</span> <span class="string">Proprietary.</span> <span class="string">LICENSE.txt</span> <span class="string">has</span> <span class="string">complete</span> <span class="string">terms</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<h4 id="compatibility-field"><a href="#compatibility-field" class="headerlink" title="compatibility field"></a><code>compatibility</code> field</h4><p>The optional <code>compatibility</code> field:<br><span style="color:#2babdb">(可选字段)</span></p>
+<ul>
+<li>Must be 1-500 characters if provided<span style="color:#2babdb">(如果提供了，必须为1-500字符)</span></li>
+<li>Should only be included if your skill has specific environment requirements<span style="color:#2babdb">(只有在你的技能有特定环境要求时才应该包含)</span></li>
+<li>Can indicate intended product, required system packages, network access needs, etc.<span style="color:#2babdb">(可以说明预期产品、所需系统包、网络访问需求等)</span></li>
+</ul>
+<card><br>  <strong>Examples:</strong><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">compatibility:</span> <span class="string">Designed</span> <span class="string">for</span> <span class="string">Claude</span> <span class="string">Code</span> <span class="string">(or</span> <span class="string">similar</span> <span class="string">products)</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">compatibility:</span> <span class="string">Requires</span> <span class="string">git,</span> <span class="string">docker,</span> <span class="string">jq,</span> <span class="string">and</span> <span class="string">access</span> <span class="string">to</span> <span class="string">the</span> <span class="string">internet</span></span><br></pre></td></tr></table></figure><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">compatibility:</span> <span class="string">Requires</span> <span class="string">Python</span> <span class="number">3.14</span><span class="string">+</span> <span class="string">and</span> <span class="string">uv</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<note><br>  Most skills do not need the <code>compatibility</code> field.<br>  <span style="color:#2babdb">(大多数技能不需要compatibility字段)</span><br></note>
+
+<h4 id="metadata-field"><a href="#metadata-field" class="headerlink" title="metadata field"></a><code>metadata</code> field</h4><p>The optional <code>metadata</code> field:</p>
+<ul>
+<li>A map from string keys to string values<span style="color:#2babdb">(字符串键到字符串值的映射)</span></li>
+<li>Clients can use this to store additional properties not defined by the Agent Skills spec<span style="color:#2babdb">(客户端可以利用它存储Agent Skills规范中未定义的额外属性)</span></li>
+<li>We recommend making your key names reasonably unique to avoid accidental conflicts<span style="color:#2babdb">(我们建议让你的关键名称保持相对独特，以避免意外冲突)</span></li>
+</ul>
+<card><br>  <strong>Example:</strong><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">example-org</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">"1.0"</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<h4 id="allowed-tools-field"><a href="#allowed-tools-field" class="headerlink" title="allowed-tools field"></a><code>allowed-tools</code> field</h4><p>The optional <code>allowed-tools</code> field:</p>
+<ul>
+<li>A space-delimited list of tools that are pre-approved to run<span style="color:#2babdb">(一份预先批准运行的工具空间限定列表)</span></li>
+<li>Experimental. Support for this field may vary between agent implementations<span style="color:#2babdb">(实验性质。该领域的支持因代理实现而异)</span></li>
+</ul>
+<card><br>  <strong>Example:</strong><br><br>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">allowed-tools:</span> <span class="string">Bash(git:*)</span> <span class="string">Bash(jq:*)</span> <span class="string">Read</span></span><br></pre></td></tr></table></figure><br><br></card>
+
+<h3 id="Body-content"><a href="#Body-content" class="headerlink" title="Body content"></a>Body content</h3><p><span style="color:#2babdb">(主题内容)</span></p>
+<p>The Markdown body after the frontmatter contains the skill instructions. There are no format restrictions. Write whatever helps agents perform the task effectively.<span style="color:#2babdb">(前言后的Markdown主体包含技能指令。没有格式限制。写任何帮助智能体有效完成任务的内容。)</span></p>
+<p>Recommended sections:<br><span style="color:#2babdb">(推荐章节)</span></p>
+<ul>
+<li>Step-by-step instructions<span style="color:#2babdb">(逐步说明)</span></li>
+<li>Examples of inputs and outputs<span style="color:#2babdb">(输入和输出的例子)</span></li>
+<li>Common edge cases<span style="color:#2babdb">(常见的边缘情况)</span></li>
+</ul>
+<p>Note that the agent will load this entire file once it’s decided to activate a skill. Consider splitting longer <code>SKILL.md</code> content into referenced files.<span style="color:#2babdb">(注意，一旦决定激活技能，智能体会加载整个文件。考虑将较长的内容拆分为引用文件)</span></p>
+<h2 id="Optional-directories"><a href="#Optional-directories" class="headerlink" title="Optional directories"></a>Optional directories</h2><p><span style="color:#2babdb">(可选目录)</span></p>
+<h3 id="scripts"><a href="#scripts" class="headerlink" title="scripts/"></a><code>scripts/</code></h3><p>Contains executable code that agents can run. Scripts should:<span style="color:#2babdb">(包含智能体可以运行的可执行代码。脚本应当:)</span></p>
+<ul>
+<li>Be self-contained or clearly document dependencies<span style="color:#2babdb">(要是自包含的，或者明确记录依赖关系)</span></li>
+<li>Include helpful error messages<span style="color:#2babdb">(包含有用的错误信息)</span></li>
+<li>Handle edge cases gracefully<span style="color:#2babdb">(优雅地处理边缘情况)</span></li>
+</ul>
+<p>Supported languages depend on the agent implementation. Common options include Python, Bash, and JavaScript.<br><span style="color:#2babdb">(支持的语言取决于智能体实现。常见选项包括 Python、Bash 和 JavaScript。)</span></p>
+<h3 id="references"><a href="#references" class="headerlink" title="references/"></a><code>references/</code></h3><p>Contains additional documentation that agents can read when needed:<br><span style="color:#2babdb">(包含智能体在需要时可阅读的额外文件：)</span></p>
+<ul>
+<li><code>REFERENCE.md</code> - Detailed technical reference<span style="color:#2babdb">(REFERENCE.md- 详细技术参考)</span></li>
+<li><code>FORMS.md</code> - Form templates or structured data formats<span style="color:#2babdb">(FORMS.md- 表单模板或结构化数据格式)</span></li>
+<li>Domain-specific files (<code>finance.md</code>, <code>legal.md</code>, etc.)<span style="color:#2babdb">(域特定文件)</span></li>
+</ul>
+<p>Keep individual <a href="#file-references">reference files</a> focused. Agents load these on demand, so smaller files mean less use of context.<br><span style="color:#2babdb">(保持个人参考文件专注。智能体按需加载这些文件，因此文件越小，上下文的使用越少。)</span></p>
+<h3 id="assets"><a href="#assets" class="headerlink" title="assets/"></a><code>assets/</code></h3><p>Contains static resources:<br><span style="color:#2babdb">(包含静态资源：)</span></p>
+<ul>
+<li>Templates (document templates, configuration templates)<span style="color:#2babdb">(模板（文档模板、配置模板）)</span></li>
+<li>Images (diagrams, examples)<span style="color:#2babdb">(图片（图示、示例）)</span></li>
+<li>Data files (lookup tables, schemas)<span style="color:#2babdb">(数据文件（查找表，模式）)</span></li>
+</ul>
+<h2 id="Progressive-disclosure"><a href="#Progressive-disclosure" class="headerlink" title="Progressive disclosure"></a>Progressive disclosure</h2><p><span style="color:#2babdb">(渐进式展示)</span></p>
+<p>Skills should be structured for efficient use of context:<br><span style="color:#2babdb">(技能应结构化以高效利用上下文：)</span></p>
+<ol>
+<li><strong>Metadata</strong> (~100 tokens): The <code>name</code> and <code>description</code> fields are loaded at startup for all skills<span style="color:#2babdb">(元数据（~100个词元）：所有技能的和字段在启动时加载name和description)</span></li>
+<li><strong>Instructions</strong> (\&lt; 5000 tokens recommended): The full <code>SKILL.md</code> body is loaded when the skill is activated<span style="color:#2babdb">(说明（建议&lt;5000词元）：技能激活时加载SKILL.md主体)</span></li>
+<li><strong>Resources</strong> (as needed): Files (e.g. those in <code>scripts/</code>, <code>references/</code>, or <code>assets/</code>) are loaded only when required<span style="color:#2babdb">(资源（视需要）：文件（例如位于scripts/,references/,assets/）仅在需要时加载)</span></li>
+</ol>
+<p>Keep your main <code>SKILL.md</code> under 500 lines. Move detailed reference material to separate files.<br><span style="color:#2babdb">(让你的主SKILL.md保持在500行以内。把详细的参考资料移到单独的文件里。)</span></p>
+<h2 id="File-references"><a href="#File-references" class="headerlink" title="File references"></a>File references</h2><p><span style="color:#2babdb">(文件引用)</span></p>
+<p>When referencing other files in your skill, use relative paths from the skill root:<br><span style="color:#2babdb">(在引用技能中的其他文件时，使用技能根的相对路径：)</span></p>
+<figure class="highlight markdown"><figcaption><span>SKILL.md </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">See [<span class="string">the reference guide</span>](<span class="link">references/REFERENCE.md</span>) for details.</span><br><span class="line"></span><br><span class="line">Run the extraction script:</span><br><span class="line">scripts/extract.py</span><br></pre></td></tr></table></figure>
+<p>Keep file references one level deep from <code>SKILL.md</code>. Avoid deeply nested reference chains.<br><span style="color:#2babdb">(文件引用只能从 SKILL.md 往下一级，避免多层嵌套的引用链。)</span></p>
+<h2 id="Validation"><a href="#Validation" class="headerlink" title="Validation"></a>Validation</h2><p><span style="color:#2babdb">(校验检查)</span></p>
+<p>Use the <a href="https://github.com/agentskills/agentskills/tree/main/skills-ref" target="_blank" rel="noopener">skills-ref</a> reference library to validate your skills:<br><span style="color:#2babdb">(使用 skills-ref 参考库 来校验 / 验证你的技能文档：)</span></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skills-ref validate ./my-skill</span><br></pre></td></tr></table></figure>
+<p>This checks that your <code>SKILL.md</code> frontmatter is valid and follows all naming conventions.<br><span style="color:#2babdb">(它会检查你的 SKILL.md 头部元信息（frontmatter）是否合法，以及是否遵守所有命名规范。)</span></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://agentskills.io/home" target="_blank" rel="noopener">Agent Skills</a></p>
+<h2 id="Skills-library"><a href="#Skills-library" class="headerlink" title="Skills library"></a>Skills library</h2><p><a href="https://github.com/anthropics/skills/tree/main" target="_blank" rel="noopener">Anthropic Skills</a><br><a href="https://github.com/daymade/claude-code-skills" target="_blank" rel="noopener">claude-code-skills</a></p>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/AI/"><i class="fa fa-tag"></i>&nbsp;&nbsp;AI</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2026/03/30/解决Git-Bash无法交互问题/" rel="next" title="解决Git Bash无法交互问题">
+                            解决Git Bash无法交互问题
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: 'Agent Skills Specification',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/AI/"><div class='name'>AI</div><div class='badge'>0</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>195</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>28</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>26</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.71px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 21.14px; color: #686868">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 21.14px; color: #686868">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.14px; color: #8a8a8a">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 15.43px; color: #8f8f8f">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.43px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.57px; color: #818181">ajax</a> <a href="/tags/canvas/" style="font-size: 14.71px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.57px; color: #818181">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.57px; color: #818181">html</a> <a href="/tags/jquery/" style="font-size: 15.43px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.71px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.43px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typeScript/" style="font-size: 14.71px; color: #949494">typeScript</a> <a href="/tags/typescript/" style="font-size: 15.43px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.86px; color: #646464">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.57px; color: #818181">webpack</a> <a href="/tags/web图形/" style="font-size: 17.57px; color: #818181">web图形</a> <a href="/tags/web安全/" style="font-size: 17.57px; color: #818181">web安全</a> <a href="/tags/web性能/" style="font-size: 19.71px; color: #727272">web性能</a> <a href="/tags/worker/" style="font-size: 14.71px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.43px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 16.86px; color: #868686">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.29px; color: #7c7c7c">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.29px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.71px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.43px; color: #6d6d6d">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/教程/" style="font-size: 19px; color: #777">教程</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.57px; color: #818181">日语</a> <a href="/tags/样式/" style="font-size: 17.57px; color: #818181">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.57px; color: #818181">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.86px; color: #646464">移动端</a> <a href="/tags/算法/" style="font-size: 15.43px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 16.86px; color: #868686">编译</a> <a href="/tags/网络基础/" style="font-size: 21.14px; color: #686868">网络基础</a> <a href="/tags/调试/" style="font-size: 14.71px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.71px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.57px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.57px; color: #818181">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
