@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>卡车寻钻实战教程 | jinux</title>
+  <meta name="description" content="前端 学习 javascript">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="jinux">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于项目 卡车寻钻 的完整代码，循序渐进掌握 Three.js 核心概念。">
+<meta name="keywords" content="Threejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卡车寻钻实战教程">
+<meta property="og:url" content="/2026/08/05/卡车寻钻实战教程/index.html">
+<meta property="og:site_name" content="jinux">
+<meta property="og:description" content="基于项目 卡车寻钻 的完整代码，循序渐进掌握 Three.js 核心概念。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-08-05T06:52:30.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="卡车寻钻实战教程">
+<meta name="twitter:description" content="基于项目 卡车寻钻 的完整代码，循序渐进掌握 Three.js 核心概念。">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				jinux
+			</a>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						
+							<li>
+								<a class='flat-box nav-home' href='/'>
+									<i class="fa fa-home"></i>
+									主页
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-cube' href='/categories'>
+									<i class="fa fa-cube"></i>
+									导航
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-github' href='https://github.com/jinux7'>
+									<i class="fa fa-github"></i>
+									github
+								</a>
+							</li>
+						
+							<li>
+								<a class='flat-box nav-archive' href='/archives'>
+									<i class="fa fa-archive"></i>
+									归档
+								</a>
+							</li>
+						
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><i class="fa fa-comments flat-box"></i></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><i class="fa fa-arrow-up flat-box"></i></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><i class="fa fa-list-ul flat-box"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+        <div class="header">jinux</div>
+		<nav>
+			
+				<a href="/" class="nav-home nav">
+					<i class="fa fa-home"></i>
+					主页
+				</a>
+			
+				<a href="/categories" class="nav-cube nav">
+					<i class="fa fa-cube"></i>
+					导航
+				</a>
+			
+				<a href="https://github.com/jinux7" class="nav-github nav">
+					<i class="fa fa-github"></i>
+					github
+				</a>
+			
+				<a href="/archives" class="nav-archive nav">
+					<i class="fa fa-archive"></i>
+					归档
+				</a>
+			
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-卡车寻钻实战教程" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            
+                卡车寻钻实战教程
+            
+        </h1>
+        <time>
+            2026-08-05 Wednesday&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/javascript/">javascript</a>
+    </div>
+
+
+    </section>
+    
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-环境搭建与第一个场景"><span class="toc-number">2.</span> <span class="toc-text">1. 环境搭建与第一个场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-HTML-骨架"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 HTML 骨架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-CSS-全屏画布"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 CSS 全屏画布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Three-js-三大核心：Scene、Camera、Renderer"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 Three.js 三大核心：Scene、Camera、Renderer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-几何体与材质"><span class="toc-number">3.</span> <span class="toc-text">2. 几何体与材质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-核心公式：Mesh-Geometry-Material"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 核心公式：Mesh = Geometry + Material</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-常用几何体一览"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 常用几何体一览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-材质类型对比"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 材质类型对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-位置、旋转、缩放"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 位置、旋转、缩放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-光照系统"><span class="toc-number">4.</span> <span class="toc-text">3. 光照系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-四种基础光源"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 四种基础光源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-光照策略"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 光照策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-阴影"><span class="toc-number">5.</span> <span class="toc-text">4. 阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-阴影三步走"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 阴影三步走</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-阴影贴图分辨率"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 阴影贴图分辨率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-阴影相机范围"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 阴影相机范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-组合与层级"><span class="toc-number">6.</span> <span class="toc-text">5. 组合与层级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Group：逻辑容器"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 Group：逻辑容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-为什么需要容器组？"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 为什么需要容器组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-坐标系继承"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 坐标系继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-构建复杂模型：半挂卡车"><span class="toc-number">7.</span> <span class="toc-text">6. 构建复杂模型：半挂卡车</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-设计思路"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 设计思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-材质管理"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 材质管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-车轮创建函数"><span class="toc-number">7.3.</span> <span class="toc-text">6.3 车轮创建函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-双轮轴函数"><span class="toc-number">7.4.</span> <span class="toc-text">6.4 双轮轴函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-模块化导出"><span class="toc-number">7.5.</span> <span class="toc-text">6.5 模块化导出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-动画循环"><span class="toc-number">8.</span> <span class="toc-text">7. 动画循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-requestAnimationFrame-基础"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 requestAnimationFrame 基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-deltaTime-的重要性"><span class="toc-number">8.2.</span> <span class="toc-text">7.2 deltaTime 的重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-平滑旋转（角度插值）"><span class="toc-number">8.3.</span> <span class="toc-text">7.3 平滑旋转（角度插值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-相机平滑跟随（Lerp）"><span class="toc-number">8.4.</span> <span class="toc-text">7.4 相机平滑跟随（Lerp）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-相机与轨道控制器"><span class="toc-number">9.</span> <span class="toc-text">8. 相机与轨道控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-两种相机"><span class="toc-number">9.1.</span> <span class="toc-text">8.1 两种相机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-OrbitControls-轨道控制器"><span class="toc-number">9.2.</span> <span class="toc-text">8.2 OrbitControls 轨道控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-区分拖拽和点击"><span class="toc-number">9.3.</span> <span class="toc-text">8.3 区分拖拽和点击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-射线检测与点击交互"><span class="toc-number">10.</span> <span class="toc-text">9. 射线检测与点击交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-Raycaster-原理"><span class="toc-number">10.1.</span> <span class="toc-text">9.1 Raycaster 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-完整点击流程"><span class="toc-number">10.2.</span> <span class="toc-text">9.2 完整点击流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-目标点标记"><span class="toc-number">10.3.</span> <span class="toc-text">9.3 目标点标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-脉冲动画"><span class="toc-number">10.4.</span> <span class="toc-text">9.4 脉冲动画</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-雾效与大气"><span class="toc-number">11.</span> <span class="toc-text">10. 雾效与大气</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-雾的基本用法"><span class="toc-number">11.1.</span> <span class="toc-text">10.1 雾的基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-雾的策略"><span class="toc-number">11.2.</span> <span class="toc-text">10.2 雾的策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-雾与材质的交互"><span class="toc-number">11.3.</span> <span class="toc-text">10.3 雾与材质的交互</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-碰撞检测与避障"><span class="toc-number">12.</span> <span class="toc-text">11. 碰撞检测与避障</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-圆形碰撞检测"><span class="toc-number">12.1.</span> <span class="toc-text">11.1 圆形碰撞检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-方向避让算法"><span class="toc-number">12.2.</span> <span class="toc-text">11.2 方向避让算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-卡住检测"><span class="toc-number">12.3.</span> <span class="toc-text">11.3 卡住检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-粒子特效：爆炸"><span class="toc-number">13.</span> <span class="toc-text">12. 粒子特效：爆炸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-粒子生成"><span class="toc-number">13.1.</span> <span class="toc-text">12.1 粒子生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-粒子更新与清理"><span class="toc-number">13.2.</span> <span class="toc-text">12.2 粒子更新与清理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-多渲染器：小地图"><span class="toc-number">14.</span> <span class="toc-text">13. 多渲染器：小地图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-独立渲染器"><span class="toc-number">14.1.</span> <span class="toc-text">13.1 独立渲染器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-独立场景"><span class="toc-number">14.2.</span> <span class="toc-text">13.2 独立场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-正交相机"><span class="toc-number">14.3.</span> <span class="toc-text">13.3 正交相机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-同步标记"><span class="toc-number">14.4.</span> <span class="toc-text">13.4 同步标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-自定义形状标记"><span class="toc-number">14.5.</span> <span class="toc-text">13.5 自定义形状标记</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-UI-叠加层：计时器"><span class="toc-number">15.</span> <span class="toc-text">14. UI 叠加层：计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-动态创建-DOM-元素"><span class="toc-number">15.1.</span> <span class="toc-text">14.1 动态创建 DOM 元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-2-CSS-定位"><span class="toc-number">15.2.</span> <span class="toc-text">14.2 CSS 定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-3-时间格式化"><span class="toc-number">15.3.</span> <span class="toc-text">14.3 时间格式化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-游戏状态管理"><span class="toc-number">16.</span> <span class="toc-text">15. 游戏状态管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#15-1-状态变量"><span class="toc-number">16.1.</span> <span class="toc-text">15.1 状态变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-2-状态转换"><span class="toc-number">16.2.</span> <span class="toc-text">15.2 状态转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-3-暂停逻辑"><span class="toc-number">16.3.</span> <span class="toc-text">15.3 暂停逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-代码组织与模块化"><span class="toc-number">17.</span> <span class="toc-text">16. 代码组织与模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-1-项目结构"><span class="toc-number">17.1.</span> <span class="toc-text">16.1 项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-2-模块导出-导入"><span class="toc-number">17.2.</span> <span class="toc-text">16.2 模块导出/导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-3-代码分区原则"><span class="toc-number">17.3.</span> <span class="toc-text">16.3 代码分区原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录：常见问题与调试"><span class="toc-number">18.</span> <span class="toc-text">附录：常见问题与调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-1-物体不显示？"><span class="toc-number">18.1.</span> <span class="toc-text">A.1 物体不显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-2-阴影不显示？"><span class="toc-number">18.2.</span> <span class="toc-text">A.2 阴影不显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-3-性能优化建议"><span class="toc-number">18.3.</span> <span class="toc-text">A.3 性能优化建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-4-调试技巧"><span class="toc-number">18.4.</span> <span class="toc-text">A.4 调试技巧</span></a></li></ol></li></ol>
+            </div>
+        </section>
+    
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>基于项目 <code>卡车寻钻</code> 的完整代码，循序渐进掌握 Three.js 核心概念。<br><a id="more"></a></p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-环境搭建与第一个场景">环境搭建与第一个场景</a></li>
+<li><a href="#2-几何体与材质">几何体与材质</a></li>
+<li><a href="#3-光照系统">光照系统</a></li>
+<li><a href="#4-阴影">阴影</a></li>
+<li><a href="#5-组合与层级">组合与层级</a></li>
+<li><a href="#6-构建复杂模型半挂卡车">构建复杂模型：半挂卡车</a></li>
+<li><a href="#7-动画循环">动画循环</a></li>
+<li><a href="#8-相机与轨道控制器">相机与轨道控制器</a></li>
+<li><a href="#9-射线检测与点击交互">射线检测与点击交互</a></li>
+<li><a href="#10-雾效与大气">雾效与大气</a></li>
+<li><a href="#11-碰撞检测与避障">碰撞检测与避障</a></li>
+<li><a href="#12-粒子特效爆炸">粒子特效：爆炸</a></li>
+<li><a href="#13-多渲染器小地图">多渲染器：小地图</a></li>
+<li><a href="#14-ui-叠加层计时器">UI 叠加层：计时器</a></li>
+<li><a href="#15-游戏状态管理">游戏状态管理</a></li>
+<li><a href="#16-代码组织与模块化">代码组织与模块化</a></li>
+</ol>
+<hr>
+<h2 id="1-环境搭建与第一个场景"><a href="#1-环境搭建与第一个场景" class="headerlink" title="1. 环境搭建与第一个场景"></a>1. 环境搭建与第一个场景</h2><h3 id="1-1-HTML-骨架"><a href="#1-1-HTML-骨架" class="headerlink" title="1.1 HTML 骨架"></a>1.1 HTML 骨架</h3><p>Three.js 需要一个 <code>&lt;canvas&gt;</code> 元素作为渲染目标：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>3D Scene<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">class</span>=<span class="string">"webgl"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"./script.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><code>type=&quot;module&quot;</code> 启用 ES Module，支持 <code>import</code> 语法</li>
+<li>canvas 使用 class 选择器而非 id，便于 CSS 控制</li>
+</ul>
+<h3 id="1-2-CSS-全屏画布"><a href="#1-2-CSS-全屏画布" class="headerlink" title="1.2 CSS 全屏画布"></a>1.2 CSS 全屏画布</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;  <span class="comment">/* 禁止滚动条 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.webgl</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">outline</span>: none;     <span class="comment">/* 去除聚焦边框 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-Three-js-三大核心：Scene、Camera、Renderer"><a href="#1-3-Three-js-三大核心：Scene、Camera、Renderer" class="headerlink" title="1.3 Three.js 三大核心：Scene、Camera、Renderer"></a>1.3 Three.js 三大核心：Scene、Camera、Renderer</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> THREE <span class="keyword">from</span> <span class="string">'three'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 场景 —— 容纳所有 3D 对象的容器</span></span><br><span class="line"><span class="keyword">const</span> scene = <span class="keyword">new</span> THREE.Scene()</span><br><span class="line">scene.background = <span class="keyword">new</span> THREE.Color(<span class="string">'#C8C8C8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 相机 —— 决定"观众"看到什么</span></span><br><span class="line"><span class="keyword">const</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(</span><br><span class="line">    <span class="number">50</span>,                          <span class="comment">// FOV：视野角度（度）</span></span><br><span class="line">    <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight,  <span class="comment">// 宽高比</span></span><br><span class="line">    <span class="number">0.1</span>,                         <span class="comment">// near：近裁剪面</span></span><br><span class="line">    <span class="number">100</span>                          <span class="comment">// far：远裁剪面</span></span><br><span class="line">)</span><br><span class="line">camera.position.set(<span class="number">10</span>, <span class="number">7</span>, <span class="number">10</span>)  <span class="comment">// 相机位置 (x, y, z)</span></span><br><span class="line">camera.lookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)          <span class="comment">// 看向原点</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 渲染器 —— 把场景画到 canvas 上</span></span><br><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas.webgl'</span>)</span><br><span class="line"><span class="keyword">const</span> renderer = <span class="keyword">new</span> THREE.WebGLRenderer(&#123; canvas &#125;)</span><br><span class="line">renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight)</span><br><span class="line">renderer.setPixelRatio(<span class="built_in">Math</span>.min(<span class="built_in">window</span>.devicePixelRatio, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 渲染一帧</span></span><br><span class="line">renderer.render(scene, camera)</span><br></pre></td></tr></table></figure>
+<p><strong>概念解释</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>类比</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scene</td>
+<td>舞台</td>
+<td>所有演员（物体）、灯光都在舞台上</td>
+</tr>
+<tr>
+<td>Camera</td>
+<td>摄像机</td>
+<td>决定观众从哪个角度、多大范围看舞台</td>
+</tr>
+<tr>
+<td>Renderer</td>
+<td>转播车</td>
+<td>把舞台画面转换成屏幕上的像素</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PerspectiveCamera 参数详解</strong>：</p>
+<ul>
+<li><strong>FOV (50)</strong>：视野角度，越大看到的范围越广，但边缘畸变越明显。50° 接近人眼自然视角</li>
+<li><strong>Aspect</strong>：宽/高比，必须匹配 canvas 尺寸，否则物体会被拉伸</li>
+<li><strong>Near (0.1)</strong>：比这个距离更近的物体不渲染</li>
+<li><strong>Far (100)</strong>：比这个距离更远的物体不渲染</li>
+</ul>
+<hr>
+<h2 id="2-几何体与材质"><a href="#2-几何体与材质" class="headerlink" title="2. 几何体与材质"></a>2. 几何体与材质</h2><h3 id="2-1-核心公式：Mesh-Geometry-Material"><a href="#2-1-核心公式：Mesh-Geometry-Material" class="headerlink" title="2.1 核心公式：Mesh = Geometry + Material"></a>2.1 核心公式：Mesh = Geometry + Material</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Geometry：定义形状（顶点位置）</span></span><br><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> THREE.BoxGeometry(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)  <span class="comment">// 宽、高、深</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Material：定义外观（颜色、光泽、纹理）</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#c41e3a'</span>,</span><br><span class="line">    roughness: <span class="number">0.2</span>,    <span class="comment">// 粗糙度 0=镜面 1=磨砂</span></span><br><span class="line">    metalness: <span class="number">0.7</span>     <span class="comment">// 金属度 0=塑料 1=纯金属</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Mesh：几何体 + 材质 = 可渲染的物体</span></span><br><span class="line"><span class="keyword">const</span> cube = <span class="keyword">new</span> THREE.Mesh(geometry, material)</span><br><span class="line">scene.add(cube)</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-常用几何体一览"><a href="#2-2-常用几何体一览" class="headerlink" title="2.2 常用几何体一览"></a>2.2 常用几何体一览</h3><table>
+<thead>
+<tr>
+<th>几何体</th>
+<th>构造函数</th>
+<th>本项目用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BoxGeometry</code></td>
+<td><code>BoxGeometry(w, h, d)</code></td>
+<td>车身、货箱、障碍物</td>
+</tr>
+<tr>
+<td><code>CylinderGeometry</code></td>
+<td><code>CylinderGeometry(rTop, rBot, h, seg)</code></td>
+<td>车轮、排气管</td>
+</tr>
+<tr>
+<td><code>PlaneGeometry</code></td>
+<td><code>PlaneGeometry(w, h)</code></td>
+<td>地面</td>
+</tr>
+<tr>
+<td><code>SphereGeometry</code></td>
+<td><code>SphereGeometry(r, wSeg, hSeg)</code></td>
+<td>爆炸粒子</td>
+</tr>
+<tr>
+<td><code>OctahedronGeometry</code></td>
+<td><code>OctahedronGeometry(r, detail)</code></td>
+<td>钻石</td>
+</tr>
+<tr>
+<td><code>ConeGeometry</code></td>
+<td><code>ConeGeometry(r, h, seg)</code></td>
+<td>小地图箭头</td>
+</tr>
+<tr>
+<td><code>RingGeometry</code></td>
+<td><code>RingGeometry(innerR, outerR, seg)</code></td>
+<td>目标点标记</td>
+</tr>
+<tr>
+<td><code>CircleGeometry</code></td>
+<td><code>CircleGeometry(r, seg)</code></td>
+<td>小地图标记点</td>
+</tr>
+<tr>
+<td><code>ShapeGeometry</code></td>
+<td><code>ShapeGeometry(shape)</code></td>
+<td>小地图菱形标记</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-材质类型对比"><a href="#2-3-材质类型对比" class="headerlink" title="2.3 材质类型对比"></a>2.3 材质类型对比</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MeshStandardMaterial —— PBR 物理渲染（最常用）</span></span><br><span class="line"><span class="comment">// 需要灯光才能看到，效果最真实</span></span><br><span class="line"><span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#c41e3a'</span>,</span><br><span class="line">    roughness: <span class="number">0.2</span>,</span><br><span class="line">    metalness: <span class="number">0.7</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// MeshBasicMaterial —— 不受灯光影响，始终明亮</span></span><br><span class="line"><span class="comment">// 适合 UI 标记、小地图、粒子</span></span><br><span class="line"><span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#ffff00'</span>,</span><br><span class="line">    side: THREE.DoubleSide,  <span class="comment">// 双面渲染</span></span><br><span class="line">    transparent: <span class="literal">true</span>,</span><br><span class="line">    opacity: <span class="number">0.8</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发光材质 —— 自发光效果</span></span><br><span class="line"><span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#fffacd'</span>,</span><br><span class="line">    emissive: <span class="string">'#fffacd'</span>,        <span class="comment">// 自发光颜色</span></span><br><span class="line">    emissiveIntensity: <span class="number">0.6</span>      <span class="comment">// 自发光强度</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>材质选择决策树</strong>：</p>
+<ul>
+<li>需要灯光影响？→ <code>MeshStandardMaterial</code>（99% 的场景物体）</li>
+<li>始终可见、不受光？→ <code>MeshBasicMaterial</code>（UI、标记、粒子）</li>
+<li>需要自发光？→ 给 <code>MeshStandardMaterial</code> 加 <code>emissive</code> 属性</li>
+</ul>
+<h3 id="2-4-位置、旋转、缩放"><a href="#2-4-位置、旋转、缩放" class="headerlink" title="2.4 位置、旋转、缩放"></a>2.4 位置、旋转、缩放</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 位置 —— 物体在 3D 空间中的坐标</span></span><br><span class="line">mesh.position.set(x, y, z)   <span class="comment">// 绝对设置</span></span><br><span class="line">mesh.position.x = <span class="number">5</span>           <span class="comment">// 单轴修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 旋转 —— 绕各轴旋转（弧度制）</span></span><br><span class="line">mesh.rotation.x = -<span class="built_in">Math</span>.PI / <span class="number">2</span>  <span class="comment">// 绕 X 轴旋转 -90°</span></span><br><span class="line">mesh.rotation.y = <span class="built_in">Math</span>.PI / <span class="number">4</span>   <span class="comment">// 绕 Y 轴旋转 45°</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 缩放</span></span><br><span class="line">mesh.scale.set(<span class="number">1</span>, <span class="number">1.6</span>, <span class="number">1</span>)    <span class="comment">// Y 轴拉长 1.6 倍</span></span><br></pre></td></tr></table></figure>
+<p><strong>Three.js 坐标系</strong>：</p>
+<ul>
+<li><strong>X 轴</strong>：右为正</li>
+<li><strong>Y 轴</strong>：上为正</li>
+<li><strong>Z 轴</strong>：屏幕外（朝向观众）为正</li>
+</ul>
+<hr>
+<h2 id="3-光照系统"><a href="#3-光照系统" class="headerlink" title="3. 光照系统"></a>3. 光照系统</h2><h3 id="3-1-四种基础光源"><a href="#3-1-四种基础光源" class="headerlink" title="3.1 四种基础光源"></a>3.1 四种基础光源</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 环境光 —— 均匀照亮所有物体，消除纯黑阴影</span></span><br><span class="line"><span class="keyword">const</span> ambientLight = <span class="keyword">new</span> THREE.AmbientLight(<span class="string">'#ffffff'</span>, <span class="number">0.4</span>)</span><br><span class="line">scene.add(ambientLight)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 半球光 —— 模拟天空（上）和地面（下）的漫反射</span></span><br><span class="line"><span class="keyword">const</span> hemisphereLight = <span class="keyword">new</span> THREE.HemisphereLight(</span><br><span class="line">    <span class="string">'#C8C8C8'</span>,  <span class="comment">// 天空颜色</span></span><br><span class="line">    <span class="string">'#8B7355'</span>,  <span class="comment">// 地面颜色</span></span><br><span class="line">    <span class="number">0.6</span>         <span class="comment">// 强度</span></span><br><span class="line">)</span><br><span class="line">scene.add(hemisphereLight)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 方向光 —— 模拟太阳，平行光线，可产生阴影</span></span><br><span class="line"><span class="keyword">const</span> directionalLight = <span class="keyword">new</span> THREE.DirectionalLight(<span class="string">'#ffffff'</span>, <span class="number">2.5</span>)</span><br><span class="line">directionalLight.position.set(<span class="number">10</span>, <span class="number">15</span>, <span class="number">5</span>)</span><br><span class="line">scene.add(directionalLight)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 点光源 —— 从一点向四周发光，有衰减范围</span></span><br><span class="line"><span class="keyword">const</span> pointLight = <span class="keyword">new</span> THREE.PointLight(<span class="string">'#ccddff'</span>, <span class="number">2.5</span>, <span class="number">6</span>)</span><br><span class="line"><span class="comment">//                                         颜色    强度  照射距离</span></span><br><span class="line">pointLight.position.set(sx, <span class="number">1.5</span>, sz)</span><br><span class="line">scene.add(pointLight)</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-光照策略"><a href="#3-2-光照策略" class="headerlink" title="3.2 光照策略"></a>3.2 光照策略</h3><table>
+<thead>
+<tr>
+<th>光源</th>
+<th>强度</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AmbientLight</td>
+<td>0.4</td>
+<td>基础照明，防止暗面全黑</td>
+</tr>
+<tr>
+<td>HemisphereLight</td>
+<td>0.6</td>
+<td>模拟天空/地面环境光</td>
+</tr>
+<tr>
+<td>DirectionalLight</td>
+<td>2.5</td>
+<td>主光源，产生阴影</td>
+</tr>
+<tr>
+<td>PointLight</td>
+<td>2.5</td>
+<td>钻石发光效果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>经验法则</strong>：</p>
+<ul>
+<li>AmbientLight 强度通常 0.3~0.5，太高会让场景”平”</li>
+<li>DirectionalLight 作为主光源，强度 1~3</li>
+<li>PointLight 的第三个参数（距离）要合理设置，太小照不到，太大浪费性能</li>
+</ul>
+<hr>
+<h2 id="4-阴影"><a href="#4-阴影" class="headerlink" title="4. 阴影"></a>4. 阴影</h2><h3 id="4-1-阴影三步走"><a href="#4-1-阴影三步走" class="headerlink" title="4.1 阴影三步走"></a>4.1 阴影三步走</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步：渲染器开启阴影</span></span><br><span class="line">renderer.shadowMap.enabled = <span class="literal">true</span></span><br><span class="line">renderer.shadowMap.type = THREE.PCFSoftShadowMap  <span class="comment">// 柔和阴影</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二步：光源投射阴影</span></span><br><span class="line">directionalLight.castShadow = <span class="literal">true</span></span><br><span class="line">directionalLight.shadow.mapSize.width = <span class="number">1024</span>   <span class="comment">// 阴影贴图分辨率</span></span><br><span class="line">directionalLight.shadow.mapSize.height = <span class="number">1024</span></span><br><span class="line">directionalLight.shadow.camera.near = <span class="number">0.5</span></span><br><span class="line">directionalLight.shadow.camera.far = <span class="number">50</span></span><br><span class="line">directionalLight.shadow.camera.left = <span class="number">-15</span>      <span class="comment">// 阴影相机范围</span></span><br><span class="line">directionalLight.shadow.camera.right = <span class="number">15</span></span><br><span class="line">directionalLight.shadow.camera.top = <span class="number">15</span></span><br><span class="line">directionalLight.shadow.camera.bottom = <span class="number">-15</span></span><br><span class="line">directionalLight.shadow.bias = <span class="number">-0.0001</span>         <span class="comment">// 防止阴影条纹</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三步：物体设置阴影属性</span></span><br><span class="line">mesh.castShadow = <span class="literal">true</span>      <span class="comment">// 该物体会投射阴影</span></span><br><span class="line">mesh.receiveShadow = <span class="literal">true</span>   <span class="comment">// 该物体表面接收阴影</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-阴影贴图分辨率"><a href="#4-2-阴影贴图分辨率" class="headerlink" title="4.2 阴影贴图分辨率"></a>4.2 阴影贴图分辨率</h3><p><code>shadow.mapSize</code> 决定阴影清晰度：</p>
+<ul>
+<li><code>512</code> — 模糊，性能好</li>
+<li><code>1024</code> — 适中（本项目使用）</li>
+<li><code>2048</code> — 清晰，性能开销大</li>
+<li><code>4096</code> — 非常清晰，仅高端设备</li>
+</ul>
+<h3 id="4-3-阴影相机范围"><a href="#4-3-阴影相机范围" class="headerlink" title="4.3 阴影相机范围"></a>4.3 阴影相机范围</h3><p><code>shadow.camera</code> 的 left/right/top/bottom 决定了阴影覆盖范围。范围太小会导致阴影被裁切，太大会浪费分辨率。</p>
+<hr>
+<h2 id="5-组合与层级"><a href="#5-组合与层级" class="headerlink" title="5. 组合与层级"></a>5. 组合与层级</h2><h3 id="5-1-Group：逻辑容器"><a href="#5-1-Group：逻辑容器" class="headerlink" title="5.1 Group：逻辑容器"></a>5.1 Group：逻辑容器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Group 本身不可见，但可以包含子物体</span></span><br><span class="line"><span class="keyword">const</span> carContainer = <span class="keyword">new</span> THREE.Group()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子物体相对于 Group 定位</span></span><br><span class="line"><span class="keyword">const</span> car = createTruck()</span><br><span class="line">carContainer.add(car)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移动 Group 会带动所有子物体</span></span><br><span class="line">carContainer.position.set(<span class="number">10</span>, <span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line">carContainer.rotation.y = <span class="built_in">Math</span>.PI / <span class="number">4</span></span><br><span class="line"></span><br><span class="line">scene.add(carContainer)</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-为什么需要容器组？"><a href="#5-2-为什么需要容器组？" class="headerlink" title="5.2 为什么需要容器组？"></a>5.2 为什么需要容器组？</h3><p>本项目中的关键设计：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// car 的视觉朝向是固定的（车头朝 +Z）</span></span><br><span class="line"><span class="comment">// carContainer 负责旋转，car 的视觉不受影响</span></span><br><span class="line">carContainer.add(car)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移动时只旋转容器</span></span><br><span class="line">carContainer.rotation.y = targetAngle</span><br><span class="line"></span><br><span class="line"><span class="comment">// car 内部的视觉结构保持不变</span></span><br></pre></td></tr></table></figure>
+<p><strong>核心思想</strong>：分离”逻辑朝向”和”视觉朝向”。容器负责移动和旋转，内部模型保持自己的坐标系。</p>
+<h3 id="5-3-坐标系继承"><a href="#5-3-坐标系继承" class="headerlink" title="5.3 坐标系继承"></a>5.3 坐标系继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">World (scene)</span><br><span class="line">  └── carContainer (position, rotation)</span><br><span class="line">        └── car (local position, local rotation)</span><br><span class="line">              ├── cabBody</span><br><span class="line">              ├── wheel1</span><br><span class="line">              ├── wheel2</span><br><span class="line">              └── ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子物体的 <code>position</code> 是相对于父物体的</li>
+<li>父物体移动/旋转，子物体自动跟随</li>
+<li>子物体可以有自己的局部变换</li>
+</ul>
+<hr>
+<h2 id="6-构建复杂模型：半挂卡车"><a href="#6-构建复杂模型：半挂卡车" class="headerlink" title="6. 构建复杂模型：半挂卡车"></a>6. 构建复杂模型：半挂卡车</h2><h3 id="6-1-设计思路"><a href="#6-1-设计思路" class="headerlink" title="6.1 设计思路"></a>6.1 设计思路</h3><p>卡车由多个基础几何体组合而成，分为两大区域：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">卡车结构：</span><br><span class="line">├── 车头 (Cab)</span><br><span class="line">│   ├── 底盘</span><br><span class="line">│   ├── 车身主体</span><br><span class="line">│   ├── 前格栅 + 镀铬横条</span><br><span class="line">│   ├── 前保险杠</span><br><span class="line">│   ├── 大灯（左右）</span><br><span class="line">│   ├── 挡风玻璃</span><br><span class="line">│   ├── 侧窗（左右）</span><br><span class="line">│   ├── 后视镜（左右）</span><br><span class="line">│   ├── 车顶导流罩</span><br><span class="line">│   ├── 车顶灯排</span><br><span class="line">│   └── 排气管（左右）</span><br><span class="line">├── 货箱 (Trailer)</span><br><span class="line">│   ├── 货箱主体</span><br><span class="line">│   ├── 前围</span><br><span class="line">│   ├── 底护板</span><br><span class="line">│   ├── 银色腰线</span><br><span class="line">│   ├── 尾部装饰条纹</span><br><span class="line">│   ├── 尾灯（左右）</span><br><span class="line">│   └── 尾部防撞梁</span><br><span class="line">└── 车轮</span><br><span class="line">    ├── 前转向桥 ×2（单轮）</span><br><span class="line">    ├── 驱动桥 ×4（双轮）</span><br><span class="line">    ├── 挂车桥1 ×4（双轮）</span><br><span class="line">    ├── 挂车桥2 ×4（双轮）</span><br><span class="line">    ├── 挂车桥2.5 ×4（双轮）</span><br><span class="line">    ├── 挂车桥3 ×4（双轮）</span><br><span class="line">    └── 轮眉 ×7</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-材质管理"><a href="#6-2-材质管理" class="headerlink" title="6.2 材质管理"></a>6.2 材质管理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 集中定义材质，便于统一调整</span></span><br><span class="line"><span class="keyword">const</span> bodyMaterial = <span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#c41e3a'</span>,     <span class="comment">// 法拉利红</span></span><br><span class="line">    roughness: <span class="number">0.2</span>,       <span class="comment">// 光滑漆面</span></span><br><span class="line">    metalness: <span class="number">0.7</span>        <span class="comment">// 金属质感</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rimMaterial = <span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#e0e8f0'</span>,     <span class="comment">// 亮银色</span></span><br><span class="line">    roughness: <span class="number">0.1</span>,       <span class="comment">// 镜面</span></span><br><span class="line">    metalness: <span class="number">0.98</span>       <span class="comment">// 接近纯金属</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> glassMaterial = <span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#a8dadc'</span>,     <span class="comment">// 淡蓝玻璃</span></span><br><span class="line">    roughness: <span class="number">0.05</span>,</span><br><span class="line">    metalness: <span class="number">0.15</span>,</span><br><span class="line">    opacity: <span class="number">0.6</span>,         <span class="comment">// 半透明</span></span><br><span class="line">    transparent: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-车轮创建函数"><a href="#6-3-车轮创建函数" class="headerlink" title="6.3 车轮创建函数"></a>6.3 车轮创建函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWheel</span>(<span class="params">x, z</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> wg = <span class="keyword">new</span> THREE.Group()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 轮胎（黑色圆柱）</span></span><br><span class="line">    <span class="keyword">const</span> tireGeo = <span class="keyword">new</span> THREE.CylinderGeometry(<span class="number">0.26</span>, <span class="number">0.26</span>, <span class="number">0.22</span>, <span class="number">28</span>)</span><br><span class="line">    <span class="keyword">const</span> tire = <span class="keyword">new</span> THREE.Mesh(tireGeo, wheelMaterial)</span><br><span class="line">    tire.rotation.x = <span class="built_in">Math</span>.PI / <span class="number">2</span>  <span class="comment">// 圆柱默认朝 Y，旋转到朝 Z</span></span><br><span class="line">    wg.add(tire)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 轮毂（银色圆柱）</span></span><br><span class="line">    <span class="keyword">const</span> rimGeo = <span class="keyword">new</span> THREE.CylinderGeometry(<span class="number">0.145</span>, <span class="number">0.145</span>, <span class="number">0.224</span>, <span class="number">20</span>)</span><br><span class="line">    <span class="keyword">const</span> rim = <span class="keyword">new</span> THREE.Mesh(rimGeo, rimMaterial)</span><br><span class="line">    rim.rotation.x = <span class="built_in">Math</span>.PI / <span class="number">2</span></span><br><span class="line">    wg.add(rim)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 辐条（6 根均匀分布）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> spokeGeo = <span class="keyword">new</span> THREE.BoxGeometry(<span class="number">0.226</span>, <span class="number">0.114</span>, <span class="number">0.014</span>)</span><br><span class="line">        <span class="keyword">const</span> spoke = <span class="keyword">new</span> THREE.Mesh(spokeGeo, rimMaterial)</span><br><span class="line">        spoke.rotation.y = (<span class="built_in">Math</span>.PI / <span class="number">3</span>) * i  <span class="comment">// 每根旋转 60°</span></span><br><span class="line">        spoke.position.y = <span class="number">0.07</span></span><br><span class="line">        wg.add(spoke)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 轴心盖</span></span><br><span class="line">    <span class="keyword">const</span> hubCapGeo = <span class="keyword">new</span> THREE.CylinderGeometry(<span class="number">0.052</span>, <span class="number">0.052</span>, <span class="number">0.228</span>, <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">const</span> hubCap = <span class="keyword">new</span> THREE.Mesh(hubCapGeo, chromeMaterial)</span><br><span class="line">    hubCap.rotation.x = <span class="built_in">Math</span>.PI / <span class="number">2</span></span><br><span class="line">    wg.add(hubCap)</span><br><span class="line"></span><br><span class="line">    wg.position.set(x, <span class="number">0.26</span>, z)  <span class="comment">// wheelY = wheelRadius</span></span><br><span class="line">    <span class="keyword">return</span> wg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-双轮轴函数"><a href="#6-4-双轮轴函数" class="headerlink" title="6.4 双轮轴函数"></a>6.4 双轮轴函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createDualWheelAxle</span>(<span class="params">axleX</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> dualGap = <span class="number">0.253</span>  <span class="comment">// 双轮间距</span></span><br><span class="line">    <span class="keyword">const</span> outerZ = <span class="number">0.5</span> + <span class="number">0.077</span> + dualGap * <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">const</span> innerZ = <span class="number">0.5</span> + <span class="number">0.077</span> - dualGap * <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每侧两个轮子（共 4 个）</span></span><br><span class="line">    car.add(createWheel(axleX,  outerZ))</span><br><span class="line">    car.add(createWheel(axleX,  innerZ))</span><br><span class="line">    car.add(createWheel(axleX, -outerZ))</span><br><span class="line">    car.add(createWheel(axleX, -innerZ))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-5-模块化导出"><a href="#6-5-模块化导出" class="headerlink" title="6.5 模块化导出"></a>6.5 模块化导出</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// truck.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createTruck</span>(<span class="params">&#123; bodyColor = <span class="string">'#c41e3a'</span>, trailerColor = <span class="string">'#d62828'</span> &#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> car = <span class="keyword">new</span> THREE.Group()</span><br><span class="line">    <span class="comment">// ... 构建所有部件 ...</span></span><br><span class="line">    <span class="keyword">return</span> car</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// script.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createTruck &#125; <span class="keyword">from</span> <span class="string">'./truck.js'</span></span><br><span class="line"><span class="keyword">const</span> car = createTruck(&#123; <span class="attr">bodyColor</span>: <span class="string">'#c41e3a'</span>, <span class="attr">trailerColor</span>: <span class="string">'#d62828'</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>模块化好处</strong>：</p>
+<ul>
+<li>主文件保持简洁</li>
+<li>卡车模型可复用</li>
+<li>修改外观只需改 truck.js</li>
+<li>支持参数化配置颜色</li>
+</ul>
+<hr>
+<h2 id="7-动画循环"><a href="#7-动画循环" class="headerlink" title="7. 动画循环"></a>7. 动画循环</h2><h3 id="7-1-requestAnimationFrame-基础"><a href="#7-1-requestAnimationFrame-基础" class="headerlink" title="7.1 requestAnimationFrame 基础"></a>7.1 requestAnimationFrame 基础</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> clock = <span class="keyword">new</span> THREE.Clock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 获取上一帧到现在的秒数</span></span><br><span class="line">    <span class="keyword">const</span> deltaTime = <span class="built_in">Math</span>.min(clock.getDelta(), <span class="number">0.1</span>)</span><br><span class="line">    <span class="comment">//                        ^^^^^^^^^^^^^^^^^^^</span></span><br><span class="line">    <span class="comment">//                        防止切标签页回来时 deltaTime 过大</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在这里更新所有动画...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 渲染</span></span><br><span class="line">    renderer.render(scene, camera)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 请求下一帧</span></span><br><span class="line">    <span class="built_in">window</span>.requestAnimationFrame(tick)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tick()  <span class="comment">// 启动循环</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-2-deltaTime-的重要性"><a href="#7-2-deltaTime-的重要性" class="headerlink" title="7.2 deltaTime 的重要性"></a>7.2 deltaTime 的重要性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 错误：帧率不同时移动速度不同</span></span><br><span class="line">carContainer.position.x += <span class="number">0.05</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确：使用 deltaTime 保证速度恒定</span></span><br><span class="line"><span class="keyword">const</span> speed = <span class="number">1.8</span>  <span class="comment">// 单位/秒</span></span><br><span class="line">carContainer.position.x += speed * deltaTime</span><br></pre></td></tr></table></figure>
+<p><code>deltaTime</code> 是帧间隔时间（秒）。60fps 时约为 0.016，30fps 时约为 0.033。乘以 deltaTime 后，无论帧率如何，每秒移动距离相同。</p>
+<h3 id="7-3-平滑旋转（角度插值）"><a href="#7-3-平滑旋转（角度插值）" class="headerlink" title="7.3 平滑旋转（角度插值）"></a>7.3 平滑旋转（角度插值）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算目标角度</span></span><br><span class="line"><span class="keyword">const</span> targetAngle = <span class="built_in">Math</span>.atan2(moveDir.x, moveDir.z)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前角度</span></span><br><span class="line"><span class="keyword">const</span> currentAngle = carContainer.rotation.y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算最短旋转路径</span></span><br><span class="line"><span class="keyword">let</span> angleDiff = targetAngle - currentAngle</span><br><span class="line"><span class="keyword">while</span> (angleDiff &gt; <span class="built_in">Math</span>.PI) angleDiff -= <span class="built_in">Math</span>.PI * <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> (angleDiff &lt; -<span class="built_in">Math</span>.PI) angleDiff += <span class="built_in">Math</span>.PI * <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 平滑旋转（每帧旋转差值的一部分）</span></span><br><span class="line">carContainer.rotation.y += angleDiff * <span class="built_in">Math</span>.min(deltaTime * <span class="number">8</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>关键技巧</strong>：</p>
+<ul>
+<li><code>Math.atan2(x, z)</code> 计算从 +Z 轴到目标方向的角度</li>
+<li><code>while</code> 循环确保走最短弧（不绕远路）</li>
+<li><code>deltaTime * 8</code> 控制旋转速度，<code>Math.min(..., 1)</code> 防止过冲</li>
+</ul>
+<h3 id="7-4-相机平滑跟随（Lerp）"><a href="#7-4-相机平滑跟随（Lerp）" class="headerlink" title="7.4 相机平滑跟随（Lerp）"></a>7.4 相机平滑跟随（Lerp）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 目标相机位置（卡车右后方上方）</span></span><br><span class="line"><span class="keyword">const</span> targetCamPos = <span class="keyword">new</span> THREE.Vector3(</span><br><span class="line">    carContainer.position.x + <span class="number">8</span>,</span><br><span class="line">    carContainer.position.y + <span class="number">6</span>,</span><br><span class="line">    carContainer.position.z + <span class="number">8</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 线性插值：每帧移动剩余距离的 5%</span></span><br><span class="line">camera.position.lerp(targetCamPos, <span class="number">0.05</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轨道控制器目标也跟随</span></span><br><span class="line">controls.target.lerp(carContainer.position, <span class="number">0.08</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Lerp 原理</strong>：<code>A.lerp(B, t)</code> 计算 <code>A + (B - A) * t</code></p>
+<ul>
+<li><code>t = 0</code>：保持在 A</li>
+<li><code>t = 1</code>：瞬间到达 B</li>
+<li><code>t = 0.05</code>：每帧移动剩余距离的 5%，产生缓动效果</li>
+</ul>
+<hr>
+<h2 id="8-相机与轨道控制器"><a href="#8-相机与轨道控制器" class="headerlink" title="8. 相机与轨道控制器"></a>8. 相机与轨道控制器</h2><h3 id="8-1-两种相机"><a href="#8-1-两种相机" class="headerlink" title="8.1 两种相机"></a>8.1 两种相机</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透视相机 —— 近大远小（本项目使用）</span></span><br><span class="line"><span class="keyword">const</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">50</span>, aspect, <span class="number">0.1</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正交相机 —— 无透视，适合小地图</span></span><br><span class="line"><span class="keyword">const</span> minimapCamera = <span class="keyword">new</span> THREE.OrthographicCamera(<span class="number">-60</span>, <span class="number">60</span>, <span class="number">60</span>, <span class="number">-60</span>, <span class="number">0.1</span>, <span class="number">200</span>)</span><br><span class="line"><span class="comment">//                                                  left right top bottom near far</span></span><br><span class="line">minimapCamera.position.set(<span class="number">0</span>, <span class="number">80</span>, <span class="number">0</span>)</span><br><span class="line">minimapCamera.lookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="8-2-OrbitControls-轨道控制器"><a href="#8-2-OrbitControls-轨道控制器" class="headerlink" title="8.2 OrbitControls 轨道控制器"></a>8.2 OrbitControls 轨道控制器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; OrbitControls &#125; <span class="keyword">from</span> <span class="string">'three/examples/jsm/controls/OrbitControls.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> controls = <span class="keyword">new</span> OrbitControls(camera, canvas)</span><br><span class="line">controls.enableDamping = <span class="literal">true</span>       <span class="comment">// 惯性阻尼</span></span><br><span class="line">controls.dampingFactor = <span class="number">0.08</span>      <span class="comment">// 阻尼系数</span></span><br><span class="line">controls.target.set(<span class="number">0</span>, <span class="number">0.8</span>, <span class="number">0</span>)     <span class="comment">// 注视目标点</span></span><br><span class="line">controls.maxPolarAngle = <span class="built_in">Math</span>.PI / <span class="number">2.2</span>  <span class="comment">// 限制俯角（防止看到地底）</span></span><br><span class="line">controls.enableZoom = <span class="literal">false</span>        <span class="comment">// 禁用缩放</span></span><br><span class="line">controls.update()</span><br></pre></td></tr></table></figure>
+<p><strong>常用配置</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enableDamping</code></td>
+<td>启用惯性，松手后平滑减速</td>
+</tr>
+<tr>
+<td><code>dampingFactor</code></td>
+<td>阻尼系数，越小惯性越大</td>
+</tr>
+<tr>
+<td><code>maxPolarAngle</code></td>
+<td>最大极角，限制相机不能翻到底部</td>
+</tr>
+<tr>
+<td><code>minPolarAngle</code></td>
+<td>最小极角，限制相机不能到顶部</td>
+</tr>
+<tr>
+<td><code>enableZoom</code></td>
+<td>是否允许滚轮缩放</td>
+</tr>
+<tr>
+<td><code>enableRotate</code></td>
+<td>是否允许旋转</td>
+</tr>
+<tr>
+<td><code>enablePan</code></td>
+<td>是否允许平移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-3-区分拖拽和点击"><a href="#8-3-区分拖拽和点击" class="headerlink" title="8.3 区分拖拽和点击"></a>8.3 区分拖拽和点击</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mouseDownPos = <span class="keyword">new</span> THREE.Vector2()</span><br><span class="line"></span><br><span class="line">canvas.addEventListener(<span class="string">'pointerdown'</span>, (event) =&gt; &#123;</span><br><span class="line">    mouseDownPos.set(event.clientX, event.clientY)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">canvas.addEventListener(<span class="string">'pointerup'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> dx = event.clientX - mouseDownPos.x</span><br><span class="line">    <span class="keyword">const</span> dy = event.clientY - mouseDownPos.y</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 移动距离 &gt; 3px 视为拖拽（轨道控制），不触发点击</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Math</span>.sqrt(dx * dx + dy * dy) &gt; <span class="number">3</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 否则是点击，执行移动逻辑...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="9-射线检测与点击交互"><a href="#9-射线检测与点击交互" class="headerlink" title="9. 射线检测与点击交互"></a>9. 射线检测与点击交互</h2><h3 id="9-1-Raycaster-原理"><a href="#9-1-Raycaster-原理" class="headerlink" title="9.1 Raycaster 原理"></a>9.1 Raycaster 原理</h3><p>射线检测是从相机位置发出一条射线，穿过鼠标在屏幕上的位置，检测射线与哪些 3D 物体相交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">屏幕 (2D)          3D 世界</span><br><span class="line">┌─────────┐       Camera</span><br><span class="line">│    ●    │         │</span><br><span class="line">│  (x,y)  │         │ 射线</span><br><span class="line">│         │         ▼</span><br><span class="line">└─────────┘    ════════ 地面</span><br></pre></td></tr></table></figure>
+<h3 id="9-2-完整点击流程"><a href="#9-2-完整点击流程" class="headerlink" title="9.2 完整点击流程"></a>9.2 完整点击流程</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> raycaster = <span class="keyword">new</span> THREE.Raycaster()</span><br><span class="line"><span class="keyword">const</span> mouse = <span class="keyword">new</span> THREE.Vector2()</span><br><span class="line"></span><br><span class="line">canvas.addEventListener(<span class="string">'pointerup'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 1. 屏幕坐标 → 归一化设备坐标 (NDC)</span></span><br><span class="line">    <span class="comment">//    NDC 范围：x∈[-1,1], y∈[-1,1]</span></span><br><span class="line">    mouse.x = (event.clientX / sizes.width) * <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">    mouse.y = -(event.clientY / sizes.height) * <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">    <span class="comment">//         ^ 注意：屏幕 Y 轴向下，NDC Y 轴向上，需要取反</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 设置射线</span></span><br><span class="line">    raycaster.setFromCamera(mouse, camera)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 检测与地面的交点</span></span><br><span class="line">    <span class="keyword">const</span> intersects = raycaster.intersectObject(ground)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (intersects.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> point = intersects[<span class="number">0</span>].point  <span class="comment">// 交点 3D 坐标</span></span><br><span class="line">        targetPosition.set(point.x, <span class="number">0</span>, point.z)</span><br><span class="line">        isMoving = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="9-3-目标点标记"><a href="#9-3-目标点标记" class="headerlink" title="9.3 目标点标记"></a>9.3 目标点标记</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建半透明圆环标记</span></span><br><span class="line"><span class="keyword">const</span> markerGeometry = <span class="keyword">new</span> THREE.RingGeometry(<span class="number">0.15</span>, <span class="number">0.25</span>, <span class="number">32</span>)</span><br><span class="line">markerGeometry.rotateX(-<span class="built_in">Math</span>.PI / <span class="number">2</span>)  <span class="comment">// 平放在地面上</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> markerMaterial = <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">    color: <span class="string">'#ffff00'</span>,</span><br><span class="line">    side: THREE.DoubleSide,</span><br><span class="line">    opacity: <span class="number">0.8</span>,</span><br><span class="line">    transparent: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> marker = <span class="keyword">new</span> THREE.Mesh(markerGeometry, markerMaterial)</span><br><span class="line">marker.visible = <span class="literal">false</span></span><br><span class="line">marker.renderOrder = <span class="number">1</span>          <span class="comment">// 渲染顺序（后渲染）</span></span><br><span class="line">marker.material.depthTest = <span class="literal">false</span>  <span class="comment">// 禁用深度测试（始终可见）</span></span><br><span class="line">marker.frustumCulled = <span class="literal">false</span>       <span class="comment">// 禁用视锥体裁剪</span></span><br><span class="line">scene.add(marker)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点击时显示</span></span><br><span class="line">marker.position.copy(targetPosition).setY(<span class="number">0.02</span>)</span><br><span class="line">marker.visible = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 到达时隐藏</span></span><br><span class="line">marker.visible = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><strong>三个关键属性</strong>：</p>
+<ul>
+<li><code>renderOrder</code>：值越大越后渲染，显示在最前面</li>
+<li><code>depthTest: false</code>：不参与深度比较，即使被遮挡也可见</li>
+<li><code>frustumCulled: false</code>：即使超出相机视锥体也渲染</li>
+</ul>
+<h3 id="9-4-脉冲动画"><a href="#9-4-脉冲动画" class="headerlink" title="9.4 脉冲动画"></a>9.4 脉冲动画</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 tick 中更新</span></span><br><span class="line"><span class="keyword">if</span> (marker.visible) &#123;</span><br><span class="line">    <span class="keyword">const</span> elapsedTime = clock.elapsedTime</span><br><span class="line">    <span class="keyword">const</span> scale = <span class="number">1</span> + <span class="built_in">Math</span>.sin(elapsedTime * <span class="number">6</span>) * <span class="number">0.2</span></span><br><span class="line">    marker.scale.setScalar(scale)</span><br><span class="line">    marker.material.opacity = <span class="number">0.3</span> + <span class="built_in">Math</span>.sin(elapsedTime * <span class="number">6</span>) * <span class="number">0.3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="10-雾效与大气"><a href="#10-雾效与大气" class="headerlink" title="10. 雾效与大气"></a>10. 雾效与大气</h2><h3 id="10-1-雾的基本用法"><a href="#10-1-雾的基本用法" class="headerlink" title="10.1 雾的基本用法"></a>10.1 雾的基本用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 线性雾：near 开始，far 完全遮挡</span></span><br><span class="line">scene.fog = <span class="keyword">new</span> THREE.Fog(<span class="string">'#C8C8C8'</span>, <span class="number">8</span>, <span class="number">30</span>)</span><br><span class="line"><span class="comment">//                        颜色    near far</span></span><br></pre></td></tr></table></figure>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><code>color</code>：雾的颜色，应与场景背景色一致</li>
+<li><code>near (8)</code>：距离相机 8 单位内无雾</li>
+<li><code>far (30)</code>：距离相机 30 单位外完全被雾遮挡</li>
+</ul>
+<h3 id="10-2-雾的策略"><a href="#10-2-雾的策略" class="headerlink" title="10.2 雾的策略"></a>10.2 雾的策略</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 地面 120×120，雾 far=30 时边缘会露馅</span></span><br><span class="line"><span class="comment">// 扩大地面后需要同步调整雾参数</span></span><br><span class="line">scene.fog = <span class="keyword">new</span> THREE.Fog(<span class="string">'#C8C8C8'</span>, <span class="number">12</span>, <span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>经验法则</strong>：<code>far</code> 约为地面半宽的 1/2 到 2/3，确保边缘自然消失在雾中。</p>
+<h3 id="10-3-雾与材质的交互"><a href="#10-3-雾与材质的交互" class="headerlink" title="10.3 雾与材质的交互"></a>10.3 雾与材质的交互</h3><p>只有 <code>MeshStandardMaterial</code> 和 <code>MeshPhongMaterial</code> 受雾影响。<code>MeshBasicMaterial</code> 不受雾影响，这正是小地图使用 <code>MeshBasicMaterial</code> 的原因之一。</p>
+<hr>
+<h2 id="11-碰撞检测与避障"><a href="#11-碰撞检测与避障" class="headerlink" title="11. 碰撞检测与避障"></a>11. 碰撞检测与避障</h2><h3 id="11-1-圆形碰撞检测"><a href="#11-1-圆形碰撞检测" class="headerlink" title="11.1 圆形碰撞检测"></a>11.1 圆形碰撞检测</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> carRadius = <span class="number">1.4</span>  <span class="comment">// 卡车碰撞半径</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkCollision</span>(<span class="params">x, z</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> obs <span class="keyword">of</span> obstacles) &#123;</span><br><span class="line">        <span class="keyword">const</span> dx = x - obs.mesh.position.x</span><br><span class="line">        <span class="keyword">const</span> dz = z - obs.mesh.position.z</span><br><span class="line">        <span class="keyword">const</span> dist = <span class="built_in">Math</span>.sqrt(dx * dx + dz * dz)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 两圆相交 = 碰撞</span></span><br><span class="line">        <span class="keyword">if</span> (dist &lt; carRadius + obs.radius) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>原理</strong>：将卡车和障碍物都简化为圆形（2D 俯视），判断圆心距离是否小于半径之和。</p>
+<h3 id="11-2-方向避让算法"><a href="#11-2-方向避让算法" class="headerlink" title="11.2 方向避让算法"></a>11.2 方向避让算法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAvoidanceDirection</span>(<span class="params">fromX, fromZ, desiredDir</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> step = <span class="number">0.3</span>  <span class="comment">// 探测步长</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 直接方向不碰撞就直接用</span></span><br><span class="line">    <span class="keyword">const</span> testX = fromX + desiredDir.x * step</span><br><span class="line">    <span class="keyword">const</span> testZ = fromZ + desiredDir.z * step</span><br><span class="line">    <span class="keyword">if</span> (!checkCollision(testX, testZ)) &#123;</span><br><span class="line">        <span class="keyword">return</span> desiredDir.clone()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 尝试左右偏转，从小到大找可行方向</span></span><br><span class="line">    <span class="keyword">const</span> angles = [<span class="number">0.4</span>, <span class="number">-0.4</span>, <span class="number">0.8</span>, <span class="number">-0.8</span>, <span class="number">1.2</span>, <span class="number">-1.2</span>, <span class="number">1.6</span>, <span class="number">-1.6</span>]</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> angle <span class="keyword">of</span> angles) &#123;</span><br><span class="line">        <span class="keyword">const</span> cos = <span class="built_in">Math</span>.cos(angle)</span><br><span class="line">        <span class="keyword">const</span> sin = <span class="built_in">Math</span>.sin(angle)</span><br><span class="line">        <span class="keyword">const</span> newDir = <span class="keyword">new</span> THREE.Vector3(</span><br><span class="line">            desiredDir.x * cos - desiredDir.z * sin,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            desiredDir.x * sin + desiredDir.z * cos</span><br><span class="line">        ).normalize()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> tx = fromX + newDir.x * step</span><br><span class="line">        <span class="keyword">const</span> tz = fromZ + newDir.z * step</span><br><span class="line">        <span class="keyword">if</span> (!checkCollision(tx, tz)) &#123;</span><br><span class="line">            <span class="keyword">return</span> newDir</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 所有方向都碰撞，原地停止</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> THREE.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>算法流程</strong>：</p>
+<ol>
+<li>先尝试直接朝目标走</li>
+<li>被挡住则尝试 ±23°、±46°、±69°、±92° 偏转</li>
+<li>全部被挡则返回零向量（停止）</li>
+</ol>
+<h3 id="11-3-卡住检测"><a href="#11-3-卡住检测" class="headerlink" title="11.3 卡住检测"></a>11.3 卡住检测</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stuckTimer = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> lastClosestDistance = <span class="literal">Infinity</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在移动循环中：</span></span><br><span class="line"><span class="keyword">if</span> (distance &lt; lastClosestDistance - <span class="number">0.01</span>) &#123;</span><br><span class="line">    <span class="comment">// 在靠近目标，重置计时器</span></span><br><span class="line">    lastClosestDistance = distance</span><br><span class="line">    stuckTimer = <span class="number">0</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 没有靠近，累加计时</span></span><br><span class="line">    stuckTimer += deltaTime</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 超过 0.8 秒无法靠近，放弃移动</span></span><br><span class="line"><span class="keyword">if</span> (stuckTimer &gt; <span class="number">0.8</span>) &#123;</span><br><span class="line">    isMoving = <span class="literal">false</span></span><br><span class="line">    <span class="comment">// 清理标记...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解决问题</strong>：当卡车被障碍物包围无法到达目标时，不会无限抖动，而是在 0.8 秒后自动停止。</p>
+<hr>
+<h2 id="12-粒子特效：爆炸"><a href="#12-粒子特效：爆炸" class="headerlink" title="12. 粒子特效：爆炸"></a>12. 粒子特效：爆炸</h2><h3 id="12-1-粒子生成"><a href="#12-1-粒子生成" class="headerlink" title="12.1 粒子生成"></a>12.1 粒子生成</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> explosionParticles = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">triggerExplosion</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> particleCount = <span class="number">60</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; particleCount; i++) &#123;</span><br><span class="line">        <span class="comment">// 随机大小的小球</span></span><br><span class="line">        <span class="keyword">const</span> pGeo = <span class="keyword">new</span> THREE.SphereGeometry(<span class="number">0.06</span> + <span class="built_in">Math</span>.random() * <span class="number">0.1</span>, <span class="number">6</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 蓝白色调随机颜色</span></span><br><span class="line">        <span class="keyword">const</span> hue = <span class="number">0.55</span> + <span class="built_in">Math</span>.random() * <span class="number">0.15</span></span><br><span class="line">        <span class="keyword">const</span> pMat = <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">            color: <span class="keyword">new</span> THREE.Color().setHSL(hue, <span class="number">1</span>, <span class="number">0.5</span> + <span class="built_in">Math</span>.random() * <span class="number">0.5</span>),</span><br><span class="line">            transparent: <span class="literal">true</span>,</span><br><span class="line">            opacity: <span class="number">1</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> particle = <span class="keyword">new</span> THREE.Mesh(pGeo, pMat)</span><br><span class="line">        particle.position.copy(position)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 随机方向的速度向量（球面分布）</span></span><br><span class="line">        <span class="keyword">const</span> angle = <span class="built_in">Math</span>.random() * <span class="built_in">Math</span>.PI * <span class="number">2</span></span><br><span class="line">        <span class="keyword">const</span> phi = <span class="built_in">Math</span>.random() * <span class="built_in">Math</span>.PI * <span class="number">0.5</span></span><br><span class="line">        <span class="keyword">const</span> speed = <span class="number">2</span> + <span class="built_in">Math</span>.random() * <span class="number">5</span></span><br><span class="line"></span><br><span class="line">        particle.userData = &#123;</span><br><span class="line">            velocity: <span class="keyword">new</span> THREE.Vector3(</span><br><span class="line">                <span class="built_in">Math</span>.cos(phi) * <span class="built_in">Math</span>.cos(angle) * speed,</span><br><span class="line">                <span class="built_in">Math</span>.sin(phi) * speed + <span class="number">1</span>,  <span class="comment">// 额外向上速度</span></span><br><span class="line">                <span class="built_in">Math</span>.cos(phi) * <span class="built_in">Math</span>.sin(angle) * speed</span><br><span class="line">            ),</span><br><span class="line">            life: <span class="number">0.6</span> + <span class="built_in">Math</span>.random() * <span class="number">0.8</span>,  <span class="comment">// 生命周期</span></span><br><span class="line">            age: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        scene.add(particle)</span><br><span class="line">        explosionParticles.push(particle)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="12-2-粒子更新与清理"><a href="#12-2-粒子更新与清理" class="headerlink" title="12.2 粒子更新与清理"></a>12.2 粒子更新与清理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 tick 中：</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = explosionParticles.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">const</span> p = explosionParticles[i]</span><br><span class="line">    p.userData.age += deltaTime</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (p.userData.age &gt;= p.userData.life) &#123;</span><br><span class="line">        <span class="comment">// 生命周期结束，清理</span></span><br><span class="line">        scene.remove(p)</span><br><span class="line">        p.geometry.dispose()   <span class="comment">// 释放 GPU 内存</span></span><br><span class="line">        p.material.dispose()</span><br><span class="line">        explosionParticles.splice(i, <span class="number">1</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> progress = p.userData.age / p.userData.life</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新位置（速度 + 重力）</span></span><br><span class="line">        p.position.x += p.userData.velocity.x * deltaTime</span><br><span class="line">        p.position.y += p.userData.velocity.y * deltaTime</span><br><span class="line">        p.position.z += p.userData.velocity.z * deltaTime</span><br><span class="line">        p.userData.velocity.y -= <span class="number">9.8</span> * deltaTime  <span class="comment">// 重力加速度</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 淡出 + 缩小</span></span><br><span class="line">        p.material.opacity = <span class="number">1</span> - progress</span><br><span class="line">        p.scale.setScalar(<span class="number">1</span> - progress * <span class="number">0.6</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>倒序遍历数组，安全地在循环中删除元素</li>
+<li><code>dispose()</code> 释放 GPU 资源，防止内存泄漏</li>
+<li><code>userData</code> 存储每个粒子的自定义数据</li>
+</ul>
+<hr>
+<h2 id="13-多渲染器：小地图"><a href="#13-多渲染器：小地图" class="headerlink" title="13. 多渲染器：小地图"></a>13. 多渲染器：小地图</h2><h3 id="13-1-独立渲染器"><a href="#13-1-独立渲染器" class="headerlink" title="13.1 独立渲染器"></a>13.1 独立渲染器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取小地图 canvas</span></span><br><span class="line"><span class="keyword">const</span> minimapCanvas = <span class="built_in">document</span>.getElementById(<span class="string">'minimap'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建独立渲染器（透明背景）</span></span><br><span class="line"><span class="keyword">const</span> minimapRenderer = <span class="keyword">new</span> THREE.WebGLRenderer(&#123;</span><br><span class="line">    canvas: minimapCanvas,</span><br><span class="line">    alpha: <span class="literal">true</span>,        <span class="comment">// 透明背景</span></span><br><span class="line">    antialias: <span class="literal">true</span>     <span class="comment">// 抗锯齿</span></span><br><span class="line">&#125;)</span><br><span class="line">minimapRenderer.setSize(<span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">minimapRenderer.setClearColor(<span class="number">0x000000</span>, <span class="number">0</span>)  <span class="comment">// 完全透明</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-2-独立场景"><a href="#13-2-独立场景" class="headerlink" title="13.2 独立场景"></a>13.2 独立场景</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小地图使用独立场景，避免主场景的光照、阴影、雾效干扰</span></span><br><span class="line"><span class="keyword">const</span> minimapScene = <span class="keyword">new</span> THREE.Scene()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有小地图物体使用 MeshBasicMaterial（不受光影响）</span></span><br><span class="line"><span class="keyword">const</span> minimapGround = <span class="keyword">new</span> THREE.Mesh(</span><br><span class="line">    <span class="keyword">new</span> THREE.PlaneGeometry(<span class="number">120</span>, <span class="number">120</span>),</span><br><span class="line">    <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123; <span class="attr">color</span>: <span class="string">'#C8C8C8'</span> &#125;)</span><br><span class="line">)</span><br><span class="line">minimapGround.rotation.x = -<span class="built_in">Math</span>.PI / <span class="number">2</span></span><br><span class="line">minimapScene.add(minimapGround)</span><br></pre></td></tr></table></figure>
+<h3 id="13-3-正交相机"><a href="#13-3-正交相机" class="headerlink" title="13.3 正交相机"></a>13.3 正交相机</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> minimapCamera = <span class="keyword">new</span> THREE.OrthographicCamera(<span class="number">-60</span>, <span class="number">60</span>, <span class="number">60</span>, <span class="number">-60</span>, <span class="number">0.1</span>, <span class="number">200</span>)</span><br><span class="line">minimapCamera.position.set(<span class="number">0</span>, <span class="number">80</span>, <span class="number">0</span>)  <span class="comment">// 正上方俯视</span></span><br><span class="line">minimapCamera.lookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>正交相机没有透视效果，适合小地图的俯视视角。</p>
+<h3 id="13-4-同步标记"><a href="#13-4-同步标记" class="headerlink" title="13.4 同步标记"></a>13.4 同步标记</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 tick 中同步卡车标记</span></span><br><span class="line">truckMarker.position.set(carContainer.position.x, <span class="number">0.5</span>, carContainer.position.z)</span><br><span class="line">truckMarker.rotation.y = carContainer.rotation.y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 钻石标记脉冲动画</span></span><br><span class="line"><span class="keyword">if</span> (glowingSphere) &#123;</span><br><span class="line">    <span class="keyword">const</span> pulse = <span class="number">1</span> + <span class="built_in">Math</span>.sin(clock.elapsedTime * <span class="number">4</span>) * <span class="number">0.25</span></span><br><span class="line">    minimapSphereDot.scale.setScalar(pulse)</span><br><span class="line">    minimapSphereDotMat.opacity = <span class="number">0.6</span> + <span class="built_in">Math</span>.sin(clock.elapsedTime * <span class="number">4</span>) * <span class="number">0.3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染小地图</span></span><br><span class="line">minimapRenderer.render(minimapScene, minimapCamera)</span><br></pre></td></tr></table></figure>
+<h3 id="13-5-自定义形状标记"><a href="#13-5-自定义形状标记" class="headerlink" title="13.5 自定义形状标记"></a>13.5 自定义形状标记</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 Shape 绘制菱形</span></span><br><span class="line"><span class="keyword">const</span> minimapDiamondShape = <span class="keyword">new</span> THREE.Shape()</span><br><span class="line"><span class="keyword">const</span> dSize = <span class="number">1.5</span></span><br><span class="line">minimapDiamondShape.moveTo(<span class="number">0</span>, dSize)</span><br><span class="line">minimapDiamondShape.lineTo(dSize, <span class="number">0</span>)</span><br><span class="line">minimapDiamondShape.lineTo(<span class="number">0</span>, -dSize)</span><br><span class="line">minimapDiamondShape.lineTo(-dSize, <span class="number">0</span>)</span><br><span class="line">minimapDiamondShape.closePath()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> diamondGeo = <span class="keyword">new</span> THREE.ShapeGeometry(minimapDiamondShape)</span><br><span class="line">diamondGeo.rotateX(-<span class="built_in">Math</span>.PI / <span class="number">2</span>)  <span class="comment">// 平放在地面</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="14-UI-叠加层：计时器"><a href="#14-UI-叠加层：计时器" class="headerlink" title="14. UI 叠加层：计时器"></a>14. UI 叠加层：计时器</h2><h3 id="14-1-动态创建-DOM-元素"><a href="#14-1-动态创建-DOM-元素" class="headerlink" title="14.1 动态创建 DOM 元素"></a>14.1 动态创建 DOM 元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timerEl = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">timerEl.id = <span class="string">'timer'</span></span><br><span class="line">timerEl.textContent = <span class="string">'00:00:000'</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(timerEl)</span><br></pre></td></tr></table></figure>
+<h3 id="14-2-CSS-定位"><a href="#14-2-CSS-定位" class="headerlink" title="14.2 CSS 定位"></a>14.2 CSS 定位</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#timer</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">8px</span> <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">'Courier New'</span>, monospace;  <span class="comment">/* 等宽字体，数字不跳动 */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.55</span>);        <span class="comment">/* 半透明黑底 */</span></span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.3</span>);</span><br><span class="line">    <span class="attribute">pointer-events</span>: none;                    <span class="comment">/* 不阻挡鼠标事件 */</span></span><br><span class="line">    <span class="attribute">user-select</span>: none;                       <span class="comment">/* 不可选中 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="14-3-时间格式化"><a href="#14-3-时间格式化" class="headerlink" title="14.3 时间格式化"></a>14.3 时间格式化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 tick 中更新</span></span><br><span class="line"><span class="keyword">if</span> (!gamePaused) &#123;</span><br><span class="line">    elapsedGameTime += deltaTime</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> totalMs = <span class="built_in">Math</span>.floor(elapsedGameTime * <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">const</span> minutes = <span class="built_in">Math</span>.floor(totalMs / <span class="number">60000</span>)</span><br><span class="line">    <span class="keyword">const</span> seconds = <span class="built_in">Math</span>.floor((totalMs % <span class="number">60000</span>) / <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">const</span> ms = totalMs % <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">    timerEl.textContent =</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;<span class="built_in">String</span>(minutes).padStart(<span class="number">2</span>, <span class="string">'0'</span>)&#125;</span>:`</span> +</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;<span class="built_in">String</span>(seconds).padStart(<span class="number">2</span>, <span class="string">'0'</span>)&#125;</span>:`</span> +</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;<span class="built_in">String</span>(ms).padStart(<span class="number">3</span>, <span class="string">'0'</span>)&#125;</span>`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="15-游戏状态管理"><a href="#15-游戏状态管理" class="headerlink" title="15. 游戏状态管理"></a>15. 游戏状态管理</h2><h3 id="15-1-状态变量"><a href="#15-1-状态变量" class="headerlink" title="15.1 状态变量"></a>15.1 状态变量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> gamePaused = <span class="literal">false</span>       <span class="comment">// 游戏是否暂停</span></span><br><span class="line"><span class="keyword">let</span> isMoving = <span class="literal">false</span>         <span class="comment">// 卡车是否在移动</span></span><br><span class="line"><span class="keyword">let</span> elapsedGameTime = <span class="number">0</span>      <span class="comment">// 游戏经过时间</span></span><br></pre></td></tr></table></figure>
+<h3 id="15-2-状态转换"><a href="#15-2-状态转换" class="headerlink" title="15.2 状态转换"></a>15.2 状态转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">初始状态 ──点击地面──▶ 移动中 ──到达目标──▶ 空闲</span><br><span class="line">                         │</span><br><span class="line">                         ├──被挡住──▶ 空闲</span><br><span class="line">                         │</span><br><span class="line">                         └──碰到钻石──▶ 暂停（游戏结束）</span><br><span class="line">                                           │</span><br><span class="line">                                    计时器停止</span><br><span class="line">                                    点击无效</span><br><span class="line">                                    卡车不可移动</span><br></pre></td></tr></table></figure>
+<h3 id="15-3-暂停逻辑"><a href="#15-3-暂停逻辑" class="headerlink" title="15.3 暂停逻辑"></a>15.3 暂停逻辑</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件守卫</span></span><br><span class="line">canvas.addEventListener(<span class="string">'pointerup'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (gamePaused) <span class="keyword">return</span>  <span class="comment">// 暂停时忽略点击</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移动逻辑守卫</span></span><br><span class="line"><span class="keyword">if</span> (isMoving &amp;&amp; !gamePaused) &#123;</span><br><span class="line">    <span class="comment">// 只有未暂停时才移动</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 碰撞触发暂停</span></span><br><span class="line"><span class="keyword">if</span> (dist &lt; carRadius + <span class="number">0.8</span>) &#123;</span><br><span class="line">    gamePaused = <span class="literal">true</span></span><br><span class="line">    isMoving = <span class="literal">false</span></span><br><span class="line">    <span class="comment">// 清理标记...</span></span><br><span class="line">    triggerExplosion(glowingSphere.position.clone())</span><br><span class="line">    scene.remove(glowingSphere)</span><br><span class="line">    scene.remove(sphereLight)</span><br><span class="line">    glowingSphere = <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="16-代码组织与模块化"><a href="#16-代码组织与模块化" class="headerlink" title="16. 代码组织与模块化"></a>16. 代码组织与模块化</h2><h3 id="16-1-项目结构"><a href="#16-1-项目结构" class="headerlink" title="16.1 项目结构"></a>16.1 项目结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line">├── index.html      # HTML 骨架</span><br><span class="line">├── style.css       # 全局样式 + UI 组件样式</span><br><span class="line">├── script.js       # 主逻辑：场景、交互、动画</span><br><span class="line">└── truck.js        # 卡车模型模块</span><br></pre></td></tr></table></figure>
+<h3 id="16-2-模块导出-导入"><a href="#16-2-模块导出-导入" class="headerlink" title="16.2 模块导出/导入"></a>16.2 模块导出/导入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// truck.js —— 导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createTruck</span>(<span class="params">&#123; bodyColor, trailerColor &#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> car = <span class="keyword">new</span> THREE.Group()</span><br><span class="line">    <span class="comment">// ... 构建卡车 ...</span></span><br><span class="line">    <span class="keyword">return</span> car</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// script.js —— 导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; createTruck &#125; <span class="keyword">from</span> <span class="string">'./truck.js'</span></span><br><span class="line"><span class="keyword">const</span> car = createTruck(&#123; <span class="attr">bodyColor</span>: <span class="string">'#c41e3a'</span>, <span class="attr">trailerColor</span>: <span class="string">'#d62828'</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="16-3-代码分区原则"><a href="#16-3-代码分区原则" class="headerlink" title="16.3 代码分区原则"></a>16.3 代码分区原则</h3><p>在 <code>script.js</code> 中，用注释分隔不同功能区域：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Base           —— 场景、雾</span></span><br><span class="line"><span class="comment"> * Lights         —— 光照</span></span><br><span class="line"><span class="comment"> * Ground         —— 地面、网格</span></span><br><span class="line"><span class="comment"> * 障碍物          —— 方盒子生成</span></span><br><span class="line"><span class="comment"> * 发光钻石        —— 收集物</span></span><br><span class="line"><span class="comment"> * Truck          —— 卡车创建</span></span><br><span class="line"><span class="comment"> * 目标点标记      —— UI 标记</span></span><br><span class="line"><span class="comment"> * Sizes          —— 窗口尺寸</span></span><br><span class="line"><span class="comment"> * Camera         —— 相机、轨道控制</span></span><br><span class="line"><span class="comment"> * Renderer       —— 主渲染器</span></span><br><span class="line"><span class="comment"> * Minimap        —— 小地图</span></span><br><span class="line"><span class="comment"> * 点击移动逻辑    —— 交互</span></span><br><span class="line"><span class="comment"> * 计时器 DOM     —— UI</span></span><br><span class="line"><span class="comment"> * 爆炸粒子效果    —— 特效</span></span><br><span class="line"><span class="comment"> * 游戏状态        —— 状态管理</span></span><br><span class="line"><span class="comment"> * Animate        —— 动画循环</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="附录：常见问题与调试"><a href="#附录：常见问题与调试" class="headerlink" title="附录：常见问题与调试"></a>附录：常见问题与调试</h2><h3 id="A-1-物体不显示？"><a href="#A-1-物体不显示？" class="headerlink" title="A.1 物体不显示？"></a>A.1 物体不显示？</h3><p>检查清单：</p>
+<ol>
+<li>✅ 是否 <code>scene.add(mesh)</code>？</li>
+<li>✅ 相机是否朝向物体？<code>camera.lookAt(mesh.position)</code></li>
+<li>✅ 物体是否在相机 near/far 范围内？</li>
+<li>✅ 使用 <code>MeshStandardMaterial</code> 时是否有灯光？</li>
+<li>✅ 物体是否被其他物体遮挡？</li>
+</ol>
+<h3 id="A-2-阴影不显示？"><a href="#A-2-阴影不显示？" class="headerlink" title="A.2 阴影不显示？"></a>A.2 阴影不显示？</h3><p>检查清单：</p>
+<ol>
+<li>✅ <code>renderer.shadowMap.enabled = true</code></li>
+<li>✅ 光源 <code>castShadow = true</code></li>
+<li>✅ 投射物 <code>castShadow = true</code></li>
+<li>✅ 接收面 <code>receiveShadow = true</code></li>
+<li>✅ 阴影相机范围是否覆盖物体？</li>
+</ol>
+<h3 id="A-3-性能优化建议"><a href="#A-3-性能优化建议" class="headerlink" title="A.3 性能优化建议"></a>A.3 性能优化建议</h3><table>
+<thead>
+<tr>
+<th>优化项</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>几何体复用</td>
+<td>相同形状共享 Geometry 实例</td>
+</tr>
+<tr>
+<td>材质复用</td>
+<td>相同外观共享 Material 实例</td>
+</tr>
+<tr>
+<td>阴影分辨率</td>
+<td>不超过 2048</td>
+</tr>
+<tr>
+<td>粒子数量</td>
+<td>控制在 100 以内</td>
+</tr>
+<tr>
+<td>像素比</td>
+<td><code>Math.min(devicePixelRatio, 2)</code></td>
+</tr>
+<tr>
+<td>视锥体裁剪</td>
+<td>默认开启，标记类物体可关闭</td>
+</tr>
+</tbody>
+</table>
+<h3 id="A-4-调试技巧"><a href="#A-4-调试技巧" class="headerlink" title="A.4 调试技巧"></a>A.4 调试技巧</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示物体包围盒</span></span><br><span class="line"><span class="keyword">const</span> box = <span class="keyword">new</span> THREE.BoxHelper(mesh, <span class="number">0xff0000</span>)</span><br><span class="line">scene.add(box)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 显示坐标轴</span></span><br><span class="line"><span class="keyword">const</span> axes = <span class="keyword">new</span> THREE.AxesHelper(<span class="number">5</span>)</span><br><span class="line">scene.add(axes)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印物体世界坐标</span></span><br><span class="line"><span class="built_in">console</span>.log(mesh.getWorldPosition(<span class="keyword">new</span> THREE.Vector3()))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 dat.GUI 实时调参</span></span><br><span class="line"><span class="keyword">import</span> GUI <span class="keyword">from</span> <span class="string">'lil-gui'</span></span><br><span class="line"><span class="keyword">const</span> gui = <span class="keyword">new</span> GUI()</span><br><span class="line">gui.add(directionalLight, <span class="string">'intensity'</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>本教程基于 <a href="https://github.com/jinux7/trae-generated/tree/main/Threejs/truckSearchesDiamonds" target="_blank" rel="noopener">卡车寻钻</a> 项目完整代码编写，涵盖了从环境搭建到复杂交互的完整 Three.js 开发流程。建议配合源码阅读，动手修改参数观察效果变化。</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="article-tags tags">
+                
+                    <a href="/tags/Threejs/"><i class="fa fa-tag"></i>&nbsp;&nbsp;Threejs</a>
+                
+            </div>
+        
+
+        
+            <div class="art-item-footer">
+                
+                
+                    <span class="art-item-right">
+                        <a href="/2026/04/08/Agent-Skills-Specification/" rel="next" title="Agent Skills Specification">
+                            Agent Skills Specification
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+<script>
+    window.subData = {
+        title: '卡车寻钻实战教程',
+        tools: true
+    }
+</script>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+    
+        <img class='avatar waves-image' src='https://avatars2.githubusercontent.com/u/20313228?s=400&u=81b6a332e9a0f8c63e4841766106f3c8f881cfb5&v=4' />
+    
+</section>
+
+
+  <section class='m_widget categories'>
+<div class='header'><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/css/"><div class='name'>css</div><div class='badge'>11</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>196</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/nodejs/"><div class='name'>nodejs</div><div class='badge'>28</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python-rust/"><div class='name'>python&amp;rust</div><div class='badge'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/服务器/"><div class='name'>服务器</div><div class='badge'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/计算机原理/"><div class='name'>计算机原理</div><div class='badge'>26</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+
+  
+<div class="m_widget tagcloud">
+    <div class="header"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+    <div class='content'>
+        <a href="/tags/3D/" style="font-size: 14.71px; color: #949494">3D</a> <a href="/tags/AI/" style="font-size: 21.14px; color: #686868">AI</a> <a href="/tags/MYSQL笔记/" style="font-size: 21.14px; color: #686868">MYSQL笔记</a> <a href="/tags/Rust/" style="font-size: 14px; color: #999">Rust</a> <a href="/tags/Tensorflow-js/" style="font-size: 16.14px; color: #8a8a8a">Tensorflow.js</a> <a href="/tags/Threejs/" style="font-size: 16.14px; color: #8a8a8a">Threejs</a> <a href="/tags/WEB3/" style="font-size: 15.43px; color: #8f8f8f">WEB3</a> <a href="/tags/ajax/" style="font-size: 17.57px; color: #818181">ajax</a> <a href="/tags/canvas/" style="font-size: 14.71px; color: #949494">canvas</a> <a href="/tags/cordova/" style="font-size: 14px; color: #999">cordova</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/electron/" style="font-size: 14px; color: #999">electron</a> <a href="/tags/github/" style="font-size: 17.57px; color: #818181">github</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/html/" style="font-size: 17.57px; color: #818181">html</a> <a href="/tags/jquery/" style="font-size: 15.43px; color: #8f8f8f">jquery</a> <a href="/tags/linux/" style="font-size: 14.71px; color: #949494">linux</a> <a href="/tags/nodejs/" style="font-size: 15.43px; color: #8f8f8f">nodejs</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/typeScript/" style="font-size: 14.71px; color: #949494">typeScript</a> <a href="/tags/typescript/" style="font-size: 15.43px; color: #8f8f8f">typescript</a> <a href="/tags/uniapp/" style="font-size: 14px; color: #999">uniapp</a> <a href="/tags/vue/" style="font-size: 21.86px; color: #646464">vue</a> <a href="/tags/webSocket/" style="font-size: 14px; color: #999">webSocket</a> <a href="/tags/webpack/" style="font-size: 17.57px; color: #818181">webpack</a> <a href="/tags/web图形/" style="font-size: 17.57px; color: #818181">web图形</a> <a href="/tags/web安全/" style="font-size: 17.57px; color: #818181">web安全</a> <a href="/tags/web性能/" style="font-size: 19.71px; color: #727272">web性能</a> <a href="/tags/worker/" style="font-size: 14.71px; color: #949494">worker</a> <a href="/tags/兼容性/" style="font-size: 15.43px; color: #8f8f8f">兼容性</a> <a href="/tags/后端/" style="font-size: 16.86px; color: #868686">后端</a> <a href="/tags/后端代理服务/" style="font-size: 14px; color: #999">后端代理服务</a> <a href="/tags/图片处理/" style="font-size: 18.29px; color: #7c7c7c">图片处理</a> <a href="/tags/基础知识/" style="font-size: 24px; color: #555">基础知识</a> <a href="/tags/少儿编程/" style="font-size: 14px; color: #999">少儿编程</a> <a href="/tags/工具库/" style="font-size: 23.29px; color: #5a5a5a">工具库</a> <a href="/tags/微信/" style="font-size: 14.71px; color: #949494">微信</a> <a href="/tags/手写/" style="font-size: 20.43px; color: #6d6d6d">手写</a> <a href="/tags/打印/" style="font-size: 14px; color: #999">打印</a> <a href="/tags/教程/" style="font-size: 19px; color: #777">教程</a> <a href="/tags/文章收集/" style="font-size: 14px; color: #999">文章收集</a> <a href="/tags/日语/" style="font-size: 17.57px; color: #818181">日语</a> <a href="/tags/样式/" style="font-size: 17.57px; color: #818181">样式</a> <a href="/tags/正则/" style="font-size: 14px; color: #999">正则</a> <a href="/tags/浏览器/" style="font-size: 17.57px; color: #818181">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/移动端/" style="font-size: 21.86px; color: #646464">移动端</a> <a href="/tags/算法/" style="font-size: 15.43px; color: #8f8f8f">算法</a> <a href="/tags/编译/" style="font-size: 16.86px; color: #868686">编译</a> <a href="/tags/网络基础/" style="font-size: 21.14px; color: #686868">网络基础</a> <a href="/tags/调试/" style="font-size: 14.71px; color: #949494">调试</a> <a href="/tags/资源导航/" style="font-size: 14.71px; color: #949494">资源导航</a> <a href="/tags/软考/" style="font-size: 14px; color: #999">软考</a> <a href="/tags/面试题/" style="font-size: 22.57px; color: #5f5f5f">面试题</a> <a href="/tags/面试题系列/" style="font-size: 17.57px; color: #818181">面试题系列</a>
+    </div>
+</div>
+
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+    <div class="social-wrapper">
+      
+    </div>
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material-X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+
+</footer>
+
+  <script>setLoadingBarProgress(80);</script>
+  <!-- <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/js/jquery.min.js"></script>
+<!-- <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script> -->
+<script src="/js/waves.min.js"></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 推荐文章 -->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+var ALGOLIA_API_KEY = "";
+var ALGOLIA_APP_ID = "";
+var ALGOLIA_INDEX_NAME = "";
+var AZURE_SERVICE_NAME = "";
+var AZURE_INDEX_NAME = "";
+var AZURE_QUERY_KEY = "";
+var BAIDU_API_ID = "";
+var SEARCH_SERVICE = "hexo";
+var ROOT = "/"||"/";
+if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
