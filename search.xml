@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Rust编写WebAssembly</title>
+      <link href="/2026/08/14/Rust%E7%BC%96%E5%86%99WebAssembly/"/>
+      <url>/2026/08/14/Rust%E7%BC%96%E5%86%99WebAssembly/</url>
+      
+        <content type="html"><![CDATA[<p>Rust编写WebAssembly极简教程<br><a id="more"></a></p><blockquote><p>确保已经安装了rust,nodejs</p></blockquote><h2 id="安装Wasm打包工具"><a href="#安装Wasm打包工具" class="headerlink" title="安装Wasm打包工具"></a>安装Wasm打包工具</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 1. 添加 Wasm 编译目标</span><br><span class="line">rustup target add wasm32-unknown-unknown</span><br><span class="line"></span><br><span class="line"># 2. 安装 wasm-pack (用于将 Rust 编译为 Wasm 并生成 JS 胶水代码)</span><br><span class="line">cargo install wasm-pack</span><br></pre></td></tr></table></figure><h2 id="创建项目并配置"><a href="#创建项目并配置" class="headerlink" title="创建项目并配置"></a>创建项目并配置</h2><h3 id="创建一个新的-Rust-库项目"><a href="#创建一个新的-Rust-库项目" class="headerlink" title="创建一个新的 Rust 库项目"></a>创建一个新的 Rust 库项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new --lib rust-wasm-demo</span><br><span class="line">cd rust-wasm-demo</span><br></pre></td></tr></table></figure><h3 id="修改-Cargo-toml-文件，添加必要的依赖和配置"><a href="#修改-Cargo-toml-文件，添加必要的依赖和配置" class="headerlink" title="修改 Cargo.toml 文件，添加必要的依赖和配置"></a>修改 Cargo.toml 文件，添加必要的依赖和配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[package]</span><br><span class="line">name = &quot;rust-wasm-demo&quot;</span><br><span class="line">version = &quot;0.1.0&quot;</span><br><span class="line">edition = &quot;2024&quot;</span><br><span class="line"></span><br><span class="line"># 必须指定 crate-type 为 cdylib，这样才能生成 .wasm 文件</span><br><span class="line">[lib]</span><br><span class="line">crate-type = [&quot;cdylib&quot;]</span><br><span class="line"></span><br><span class="line">[dependencies]</span><br><span class="line"># wasm-bindgen 是 Rust 与 JavaScript 之间的桥梁</span><br><span class="line">wasm-bindgen = &quot;0.2&quot;</span><br></pre></td></tr></table></figure><h2 id="编写Rust代码"><a href="#编写Rust代码" class="headerlink" title="编写Rust代码"></a>编写Rust代码</h2><p>打开 src/lib.rs，清空原有内容，写入以下代码。我们通过 #[wasm_bindgen] 宏将 add 函数暴露给 JavaScript<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use wasm_bindgen::prelude::*;</span><br><span class="line"></span><br><span class="line">// 这个函数将被导出，供 JavaScript 调用</span><br><span class="line">#[wasm_bindgen]</span><br><span class="line">pub fn add(a: i32, b: i32) -&gt; i32 &#123;</span><br><span class="line">    a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="编译为WebAssembly"><a href="#编译为WebAssembly" class="headerlink" title="编译为WebAssembly"></a>编译为WebAssembly</h2><p>在项目根目录下运行以下命令，将 Rust 代码编译为 Wasm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wasm-pack build --target web</span><br></pre></td></tr></table></figure></p><blockquote><p>–target 参数说明</p></blockquote><table><thead><tr><th>target</th><th>适用场景</th></tr></thead><tbody><tr><td>web</td><td>原生 ES Module，浏览器 <code>&lt;script type=&quot;module&quot;&gt;</code> 直接用</td></tr><tr><td>bundler</td><td>给 Vite / Webpack / Rollup 等打包工具用</td></tr><tr><td>nodejs</td><td>Node.js 环境 require() 引入</td></tr><tr><td>no-modules</td><td>老式浏览器，挂在全局变量上</td></tr></tbody></table><h2 id="在浏览器中运行"><a href="#在浏览器中运行" class="headerlink" title="在浏览器中运行"></a>在浏览器中运行</h2><p>在项目根目录创建 index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Rust Wasm 极简教程&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Rust Wasm 加法演示&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;2 + 3 = &lt;span id=&quot;result&quot;&gt;&lt;/span&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 注意：type=&quot;module&quot; 是必须的 --&gt;</span><br><span class="line">    &lt;script type=&quot;module&quot;&gt;</span><br><span class="line">        // 1. 导入 wasm-pack 生成的 JS 绑定文件和 init 函数</span><br><span class="line">        import init, &#123; add &#125; from &apos;./pkg/rust_wasm_demo.js&apos;;</span><br><span class="line"></span><br><span class="line">        async function run() &#123;</span><br><span class="line">            // 2. 初始化 Wasm 模块（加载 .wasm 文件）</span><br><span class="line">            await init();</span><br><span class="line"></span><br><span class="line">            // 3. 直接调用 Rust 编写的 add 函数</span><br><span class="line">            const result = add(2, 3);</span><br><span class="line">            document.getElementById(&apos;result&apos;).textContent = result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        run();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p><h2 id="启动Server"><a href="#启动Server" class="headerlink" title="启动Server"></a>启动Server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -p 8888</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>wasm-bindgen：负责 Rust 和 JS 之间的类型转换与函数调用。</li><li>wasm-pack：负责编译、打包，生成前端可以直接使用的 npm 包或 ES6 模块。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> rust </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web性能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>卡车寻钻实战教程</title>
       <link href="/2026/08/05/%E5%8D%A1%E8%BD%A6%E5%AF%BB%E9%92%BB%E5%AE%9E%E6%88%98%E6%95%99%E7%A8%8B/"/>
       <url>/2026/08/05/%E5%8D%A1%E8%BD%A6%E5%AF%BB%E9%92%BB%E5%AE%9E%E6%88%98%E6%95%99%E7%A8%8B/</url>
@@ -1361,7 +1386,7 @@
       <link href="/2024/06/03/Three-js%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/"/>
       <url>/2024/06/03/Three-js%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA/</url>
       
-        <content type="html"><![CDATA[<p>Three.js相关学习资源导航链接<br><a id="more"></a></p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><ul><li><a href="https://threejs.org/" target="_blank" rel="noopener">官网文档</a></li><li><a href="https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene" target="_blank" rel="noopener">官方API文档</a></li><li><a href="https://techbrood.com/threejs/docs" target="_blank" rel="noopener">中文文档</a></li><li><a href="https://threejs.org/manual/#zh/fundamentals" target="_blank" rel="noopener">官方入门教程</a></li><li><a href="http://www.hewebgl.com/article/articledir/1/" target="_blank" rel="noopener">初中高级教程</a></li><li><a href="http://www.webgl3d.cn/pages/4a14ce/" target="_blank" rel="noopener">基础教程</a></li><li><a href="https://blog.csdn.net/homula123/article/details/101197463" target="_blank" rel="noopener">从零构建3D智能仓库</a></li><li><a href="https://github.com/knowledgefxg/learning-english" target="_blank" rel="noopener">英语学习</a></li></ul><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><ul><li><a href="https://threejs.org/examples/" target="_blank" rel="noopener">官网案例</a></li><li><a href="https://www.wjceo.com/blog/threejs/" target="_blank" rel="noopener">暮志未晚博客案例100篇</a></li><li><a href="http://www.yanhuangxueyuan.com/3D.html" target="_blank" rel="noopener">3D案例</a></li><li><a href="http://www.yanhuangxueyuan.com/3D/liangcang/" target="_blank" rel="noopener">物联网粮仓3D可视化</a></li><li><a href="https://ezshine.jnsii.com/cases/slowroads/" target="_blank" rel="noopener">3D版赛车游戏</a></li><li><a href="https://ezshine.jnsii.com/cases/avatarbuilder/" target="_blank" rel="noopener">Three.js开发的3D头像生成器 </a></li><li><a href="https://z2586300277.github.io/three-cesium-examples" target="_blank" rel="noopener">three-cesium-examples</a></li></ul><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><ul><li><a href="https://github.com/mrdoob/three.js/" target="_blank" rel="noopener">官方源码仓库</a></li><li><a href="https://github.com/mrdoob/three.js/tree/dev/examples" target="_blank" rel="noopener">官方示例仓库</a></li><li><a href="https://github.com/chandlerprall/Physijs" target="_blank" rel="noopener">Physijs-一款物理引擎，可以协助基于原生WebGL或使用three.js创建模拟物理现象，比如重力下落、物体碰撞等物理现象</a></li><li><a href="https://github.com/mrdoob/stats.js" target="_blank" rel="noopener">stats.js-提供了一个简单的信息框，可帮助您监视代码性能</a></li><li><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui-轻量级的icon形用户界面框架，可以用来控制Javascript的变量，比如WebGL中一个物体的尺寸、颜色</a></li><li><a href="https://github.com/tweenjs/tween.js/" target="_blank" rel="noopener">tween.js-一款可生成平滑动画效果的js动画库。可以非常方便的控制机械、游戏角色运动</a></li><li><a href="https://github.com/sshirokov/ThreeBSP" target="_blank" rel="noopener">ThreeBSP-可以将现有的模型组合出更多个性的模型来使用。如两个几何体的差集、并集、交集的展示</a></li><li><a href="https://free3d.com/3d-models/" target="_blank" rel="noopener">免费3D模型</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>Three.js相关学习资源导航链接<br><a id="more"></a></p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><ul><li><a href="https://threejs.org/" target="_blank" rel="noopener">官网文档</a></li><li><a href="https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene" target="_blank" rel="noopener">官方API文档</a></li><li><a href="https://techbrood.com/threejs/docs" target="_blank" rel="noopener">中文文档</a></li><li><a href="https://threejs.org/manual/#zh/fundamentals" target="_blank" rel="noopener">官方入门教程</a></li><li><a href="http://www.hewebgl.com/article/articledir/1/" target="_blank" rel="noopener">初中高级教程</a></li><li><a href="http://www.webgl3d.cn/pages/4a14ce/" target="_blank" rel="noopener">基础教程</a></li><li><a href="https://blog.csdn.net/homula123/article/details/101197463" target="_blank" rel="noopener">从零构建3D智能仓库</a></li><li><a href="https://github.com/knowledgefxg/learning-english" target="_blank" rel="noopener">英语学习</a></li></ul><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><ul><li><a href="https://threejs.org/examples/" target="_blank" rel="noopener">官网案例</a></li><li><a href="https://www.wjceo.com/blog/threejs/" target="_blank" rel="noopener">暮志未晚博客案例100篇</a></li><li><a href="http://www.yanhuangxueyuan.com/3D.html" target="_blank" rel="noopener">3D案例</a></li><li><a href="http://www.yanhuangxueyuan.com/3D/liangcang/" target="_blank" rel="noopener">物联网粮仓3D可视化</a></li><li><a href="https://ezshine.jnsii.com/cases/slowroads/" target="_blank" rel="noopener">3D版赛车游戏</a></li><li><a href="https://ezshine.jnsii.com/cases/avatarbuilder/" target="_blank" rel="noopener">Three.js开发的3D头像生成器 </a></li><li><a href="https://z2586300277.github.io/three-cesium-examples" target="_blank" rel="noopener">three-cesium-examples</a></li></ul><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><ul><li><a href="https://github.com/mrdoob/three.js/" target="_blank" rel="noopener">官方源码仓库</a></li><li><a href="https://github.com/mrdoob/three.js/tree/dev/examples" target="_blank" rel="noopener">官方示例仓库</a></li><li><a href="https://github.com/chandlerprall/Physijs" target="_blank" rel="noopener">Physijs-一款物理引擎，可以协助基于原生WebGL或使用three.js创建模拟物理现象，比如重力下落、物体碰撞等物理现象</a></li><li><a href="https://github.com/mrdoob/stats.js" target="_blank" rel="noopener">stats.js-提供了一个简单的信息框，可帮助您监视代码性能</a></li><li><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui-轻量级的icon形用户界面框架，可以用来控制Javascript的变量，比如WebGL中一个物体的尺寸、颜色</a></li><li><a href="https://github.com/tweenjs/tween.js/" target="_blank" rel="noopener">tween.js-一款可生成平滑动画效果的js动画库。可以非常方便的控制机械、游戏角色运动</a></li><li><a href="https://github.com/sshirokov/ThreeBSP" target="_blank" rel="noopener">ThreeBSP-可以将现有的模型组合出更多个性的模型来使用。如两个几何体的差集、并集、交集的展示</a></li><li><a href="https://free3d.com/3d-models/" target="_blank" rel="noopener">免费3D模型</a></li></ul><h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul><li><a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a></li><li><a href="https://gitee.com/SanHaoTongXue/glTF-Sample-Models" target="_blank" rel="noopener">glTF‑Sample‑Models</a></li><li><a href="https://www.nvidia.com/content/nvidiaGDC/in/en_IN/studio/canvas.html" target="_blank" rel="noopener">AI全景制作工具</a></li><li><a href="https://3d-models.hunyuan.tencent.com/world/" target="_blank" rel="noopener">腾讯混元 3D 世界模型</a></li></ul>]]></content>
       
       
       <categories>
@@ -1375,9 +1400,9 @@
             
             <tag> 工具库 </tag>
             
-            <tag> 资源导航 </tag>
-            
             <tag> Threejs </tag>
+            
+            <tag> 资源导航 </tag>
             
         </tags>
       
@@ -2235,9 +2260,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -2618,9 +2643,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 样式 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2797,9 +2822,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -3028,9 +3053,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -3157,9 +3182,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -3650,9 +3675,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -3677,9 +3702,9 @@
       
         <tags>
             
-            <tag> web性能 </tag>
-            
             <tag> 面试题 </tag>
+            
+            <tag> web性能 </tag>
             
         </tags>
       
@@ -3704,9 +3729,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
@@ -3939,9 +3964,9 @@
       
         <tags>
             
-            <tag> 网络基础 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 网络基础 </tag>
             
             <tag> github </tag>
             
@@ -4492,9 +4517,9 @@
       
         <tags>
             
-            <tag> web性能 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> web性能 </tag>
             
         </tags>
       
@@ -6466,9 +6491,9 @@
       
         <tags>
             
-            <tag> 面试题 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
